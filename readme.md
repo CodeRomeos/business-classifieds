@@ -1,6 +1,6 @@
-## A simple business classified web application
+## A simple business classifieds web application
 
-"Business Classifieds" is simple a online business listing. 
+"Business Classifieds" is a simple online business listing app. 
 
 ## Features
 
