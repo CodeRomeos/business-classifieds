@@ -16,7 +16,7 @@
 - Multiple classified categories
 - Admin can approve/disapprove lisitings
 - Admin can modify, block or delete any user
-- Browse User, Lisitings, 
+- Browse user, lisitings, 
 
 ## Request Features
 
