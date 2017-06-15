@@ -13,19 +13,19 @@
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/logout', 'Auth\LoginController@logout');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::group(['prefix'=>'admin', 'middleware'=>'role:administrator'], function() {
 	Route::group(['prefix'=>'users'], function() {
 		Route::get('/{type}', 'UserController@adminShow')->name('adminUsers');
 	});
 	Route::group(['prefix'=>'categories'], function() {
-		Route::post('/create', 'CategoryController@store');
 		Route::get('/{id}/edit', 'CategoryController@edit');
 		Route::post('/{id}/edit', 'CategoryController@update');
 		Route::post('/{id}/trash', 'CategoryController@trash');
 		Route::post('/{id}/delete', 'CategoryController@delete');
-		Route::get('/{type}', 'CategoryController@adminIndex')->name('adminCategories');
+		Route::post('/create', 'CategoryController@store');
+		Route::get('/{type?}', 'CategoryController@adminIndex')->name('adminCategories');
 	});
 	Route::get('/', 'AdminController@index')->name('adminDashboard');
 });
