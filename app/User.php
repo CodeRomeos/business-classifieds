@@ -41,4 +41,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Review');
     }
+
+    public function isAdmin()
+    {
+        return $this->hasRole('administrator');
+    }
+
+    public function hasRole($role)
+    {
+        return !! ($this->role->name == $role);
+    }
 }
