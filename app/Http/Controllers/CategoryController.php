@@ -8,6 +8,6 @@ class CategoryController extends Controller
 {
 	public function index(Request $request)
 	{
-		return view('categories.categories');
+		return view('categories.index');
 	}
 }
