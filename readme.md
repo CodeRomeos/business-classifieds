@@ -4,14 +4,14 @@
 
 ## Features
 
-###User
+### User
 - Bootstrap based responsive layout
 - Simple user login/registration
 - Business listings form with full featured WYSIWYG editor
 - User can add/manage or delete lisiting
 - User can make listings active or inactive
 
-###Admin
+### Admin
 - Intuitive Admin Dashboard
 - Multiple classified categories
 - Admin can approve/disapprove lisitings
@@ -24,7 +24,7 @@ To request new feature(s), send email at info@coderomeos.org with subject "Featu
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to CodeRomeos at info@coderomeos.org. 
+If you discover a security vulnerability, please send an e-mail to CodeRomeos at info@coderomeos.org. 
 ## License
 
 Business classified web application is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
