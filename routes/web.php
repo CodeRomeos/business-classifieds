@@ -27,9 +27,11 @@ Route::group(['prefix'=>'admin', 'middleware'=>'role:administrator'], function()
 		Route::post('/{id}/delete', 'CategoryController@delete');
 		Route::get('/{type}', 'CategoryController@adminIndex')->name('adminCategories');
 	});
+	Route::get('/', 'AdminController@index')->name('adminDashboard');
 });
 
 Route::group(['prefix'=>'u', 'middleware'=>['auth','role:advertiser']], function() {
+	Route::get('/', 'UserController@dashboard')->name('userDashboard');
 	Route::get('/profile', 'UserController@profile')->name('userProfile');
 	Route::post('/profile', 'UserController@updateProfile');
 	Route::get('/password', 'UserController@password')->name('userPassword');
@@ -39,6 +41,7 @@ Route::group(['prefix'=>'u', 'middleware'=>['auth','role:advertiser']], function
 		Route::post('/', 'BusinessController@updateUserBusiness');
 		Route::post('/activation/{type}', 'BusinessController@updateActivation');
 	});
+
 });
 
 Route::group(['prefix'=>'classifieds'], function(){
