@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     @yield('head')
 </head>
 <body>
@@ -17,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4 col-md-3">
-                    <div class="list-group">
+                    <div class="card userNav">
                         <a href='{{ route("adminDashboard") }}' class="list-group-item">Dashboard</a>
                         <a href='#' class="list-group-item">Users</a>
                         <a href='{{ route("adminCategories") }}' class="list-group-item">Categories</a>
