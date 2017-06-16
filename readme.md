@@ -1,31 +1,36 @@
-## A simple business classifieds web application
-### Note: Under Development.
+## A simple business classifieds web application based on [Laravel](http://laravel.com/) framework.
 
-"Business Classifieds" is a simple online business listing app. 
+### Note: The application is *under development* .
+
+"Business Classifieds" is a simple online business listing app.
 
 ## Features
 
 ### User
 - Bootstrap based responsive layout
 - Simple user login/registration
-- Business listings form with full featured WYSIWYG editor
-- User can add/manage or delete lisiting
-- User can make listings active or inactive
+- Classifieds listing form with full featured WYSIWYG editor
+- Create, edit or delete classified
+- Make a classified active or inactive
+- Rate and review classified
+- SEO-friendly URLs
 
 ### Admin
 - Intuitive Admin Dashboard
-- Multiple classified categories
-- Admin can approve/disapprove lisitings
-- Admin can modify, block or delete any user
-- Browse user, lisitings, 
+- Create, edit or delete multiple categories
+- Approve/disapprove lisitings
+- modify, block or delete user
+- Browse users, lisitings, inactive or active listings
+
+## [Demo](http://classifieds.demopixels.com)
 
 ## Request Features
 
-To request new feature(s), send email at info@coderomeos.org with subject "Feature Requested"
+To request new feature(s), send email at info@coderomeos.org with subject *Feature Requested*
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability, please send an e-mail to CodeRomeos at info@coderomeos.org. 
+If you discover a security vulnerability, please send an e-mail to CodeRomeos at info@coderomeos.org.
 ## License
 
 Business classified web application is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
