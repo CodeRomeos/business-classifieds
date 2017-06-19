@@ -8,22 +8,19 @@ body{
 a:hover{ text-decoration: none; }
 
 .noPadding,
-.userNav{ padding: 0 !important; }
+.userNav,
+.thumbnail{ padding: 0 !important; }
 
-.card,
-.cardInverse{
+.card{
+	background: #fff;
 	border: 1px solid #ddd;
 	box-shadow: 1px 2px 3px #ddd;
 	margin: 20px auto;
 	padding: 15px;
 }
-.card{
-	background: #fff;
+.f20{
+	font-size: 20px;
 }
-.cardInverse{
-	background: #ddd;
-}
-
 .userNav .list-group-item{
 	border: none;
 }
@@ -40,3 +37,32 @@ a:hover{ text-decoration: none; }
 	border-radius: 0
 }
 .categoryTitle{ font-weight: bold; }
+.businessBanner{
+	position: relative;
+}
+.businessTitle{
+	position: absolute;
+}
+.businessTitle{
+	background-color: rgba(0,0,0, .3);
+	left: 0;
+	padding: 5px 8px;
+	right: 0;
+	top: 0;
+	color: #fff;
+}
+.hide-bullets {
+    list-style:none;
+    margin-left: -40px;
+    margin-top:20px;
+}
+
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+    width: 100%;
+}
+
+@media screen and (min-width: 300px) and (max-width: 768px){
+	#cols-2 *{
+		text-align: center !important
+	}
+}

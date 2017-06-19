@@ -11,8 +11,12 @@ class UserController extends Controller
     	return view('users.dashboard');
     }
 
+    public function profile()
+    {
+    	return view('users.user-profile');
+    }
     public function password()
     {
-    	return view('users.password');
+    	return view('users.password-update');
     }
 }
