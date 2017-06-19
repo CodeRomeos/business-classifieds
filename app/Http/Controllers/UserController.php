@@ -10,4 +10,9 @@ class UserController extends Controller
     {
     	return view('users.dashboard');
     }
+
+    public function password()
+    {
+    	return view('users.password');
+    }
 }

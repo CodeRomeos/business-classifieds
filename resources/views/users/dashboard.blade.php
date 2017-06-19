@@ -1,11 +1,7 @@
 @extends('layouts.user')
-
 @section('content')
-<div class="panel panel-default">
-    <div class="panel-heading">Dashboard</div>
-
-    <div class="panel-body">
-        You are logged in!
-    </div>
+<div class="card">
+	<h2>Dashboard</h2>
 </div>
+
 @endsection
