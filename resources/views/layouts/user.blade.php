@@ -10,9 +10,6 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:400,700" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="{{ asset('js/custom.js') }}"></script>
     @yield('head')
 </head>
 <body>
@@ -37,6 +34,9 @@
     </div>
 
     <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
 </body>
 </html>

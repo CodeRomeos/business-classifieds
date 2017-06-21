@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Muli:400,700" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/trumbowyg.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     @yield('head')
 </head>
@@ -20,6 +21,9 @@
         @include('web.partials.footer')
     </div>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/trumbowyg.min.js') }}"></script>
 </body>
 </html>

@@ -42,6 +42,7 @@ Route::group(['prefix'=>'u', 'middleware'=>['auth','role:advertiser']], function
 		Route::post('/activation/{type}', 'BusinessController@updateActivation');
 	});
 });
+Route::get('/list-business', 'BusinessController@createBusiness')->name('userBuinsessCreate');
 
 Route::group(['prefix'=>'classifieds'], function(){
 	Route::group(['prefix'=>'categories'], function(){

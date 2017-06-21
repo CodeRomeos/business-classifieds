@@ -21,7 +21,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
                 <li><a href="{{ route('categories') }}"><i class="fa fa-th"></i> Categories</a></li>
-                <li><a href="#!"><i class="fa fa-pencil"></i> List Your Business</a></li>
+                <li><a href="{{ route('userBuinsessCreate') }}"><i class="fa fa-pencil"></i> List Your Business</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->

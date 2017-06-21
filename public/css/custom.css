@@ -43,7 +43,9 @@ a:hover{ text-decoration: none; }
 	margin: 10px auto;
 	padding: 0;
 }
-.categories .panel{ border-radius: 0; }
+.categories .panel,
+.form-control{ border-radius: 0; }
+
 .categoryTitle{ font-weight: bold; }
 
 .businessBanner{ position: relative; }
