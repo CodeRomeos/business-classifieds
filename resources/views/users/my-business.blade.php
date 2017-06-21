@@ -9,7 +9,7 @@
 				<img src="{{ asset("/images/businessBanner.png") }}" alt="" class="img-responsive">
 
 				<div class="businessTitle f20">
-					<div class="col-md-8">Umbrella Corp.</div>
+					<div class="col-md-8">Example Corporation.</div>
 					<div class="ratings">
 						<div class="col-md-4">
 							<span class="hidden-xs">Rating</span>

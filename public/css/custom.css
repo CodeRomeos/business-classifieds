@@ -11,6 +11,21 @@ a:hover{ text-decoration: none; }
 .userNav,
 .thumbnail{ padding: 0 !important; }
 
+.padding40_0{ padding: 40px 0 }
+
+.bgPrimary{ background-color: #FA503B; }
+.bgDark{ background-color: #1f1f1f; }
+
+.colorPrimary,
+.linksColorPrimary a{
+	color: #FA503B;
+}
+.colorFFF,
+.linksColorFFF a,
+.businessTitle{
+	color: #fff;
+}
+
 .card{
 	background: #fff;
 	border: 1px solid #ddd;
@@ -18,38 +33,28 @@ a:hover{ text-decoration: none; }
 	margin: 20px auto;
 	padding: 15px;
 }
-.f20{
-	font-size: 20px;
-}
-.userNav .list-group-item{
-	border: none;
-}
+.f20{ font-size: 20px; }
 
-.pagination {
-    margin: 12px 0 10px;
-}
+.userNav .list-group-item{ border: none; }
+
+.pagination { margin: 12px 0 10px; }
 
 .categories .card{
 	margin: 10px auto;
 	padding: 0;
 }
-.categories .panel{
-	border-radius: 0
-}
+.categories .panel{ border-radius: 0; }
 .categoryTitle{ font-weight: bold; }
-.businessBanner{
-	position: relative;
-}
-.businessTitle{
-	position: absolute;
-}
+
+.businessBanner{ position: relative; }
+.businessTitle{ position: absolute; }
+
 .businessTitle{
 	background-color: rgba(0,0,0, .3);
 	left: 0;
 	padding: 5px 8px;
 	right: 0;
 	top: 0;
-	color: #fff;
 }
 .hide-bullets {
     list-style:none;
@@ -65,4 +70,12 @@ a:hover{ text-decoration: none; }
 	#cols-2 *{
 		text-align: center !important
 	}
+}
+
+.cta a{
+	border: 1px solid #FA503B;
+	padding: 15px;
+	display: block;
+	max-width: 250px;
+	margin: 45px auto 15px
 }

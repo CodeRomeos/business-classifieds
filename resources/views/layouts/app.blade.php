@@ -16,8 +16,9 @@
     <div id="app">
         @include('web.partials.nav')
         @yield('content')
+        @include('web.partials.CTA')
+        @include('web.partials.footer')
     </div>
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
