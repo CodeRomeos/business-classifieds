@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Libraries\Helpers;
+use App\Http\Requests\BusinessCreateByUserRequest;
 
 class BusinessController extends Controller
 {
@@ -16,8 +19,14 @@ class BusinessController extends Controller
     	return view('users.create-business');
     }
 
-    public function store(Request $request)
+    public function store(BusinessCreateByUserRequest $request)
     {
-    	dd($request->all());
+    	$user = Helpers::findOrCreateAndLoginUser($request);
+
+    	if(!$user) {
+    		return redirect()->back()->withInput()->withErrors(['message'=>'Something went wrong. Please try again.']);
+    	}
+
+
     }
 }

@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return !! ($this->role->name == $role);
     }
+
+    public static function findByEmail($email)
+    {
+        return self::where('email', $email)->first();
+    }
 }
