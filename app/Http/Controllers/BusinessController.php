@@ -11,8 +11,13 @@ class BusinessController extends Controller
     	return view("users.my-business");
     }
 
-    public function createBusiness()
+    public function create()
     {
     	return view('users.create-business');
+    }
+
+    public function store(Request $request)
+    {
+    	dd($request->all());
     }
 }

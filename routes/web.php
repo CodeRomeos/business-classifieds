@@ -42,7 +42,8 @@ Route::group(['prefix'=>'u', 'middleware'=>['auth','role:advertiser']], function
 		Route::post('/activation/{type}', 'BusinessController@updateActivation');
 	});
 });
-Route::get('/list-business', 'BusinessController@createBusiness')->name('userBuinsessCreate');
+Route::get('/list-your-business', 'BusinessController@create')->name('userBusinessCreate');
+Route::post('/list-your-business', 'BusinessController@store');
 
 Route::group(['prefix'=>'classifieds'], function(){
 	Route::group(['prefix'=>'categories'], function(){
