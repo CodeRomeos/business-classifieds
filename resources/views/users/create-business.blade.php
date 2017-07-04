@@ -18,10 +18,22 @@
 					<div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
 						{{ Form::text('title', null, ['class'=>'form-control', 'placeholder'=>'Business Title']) }}
 					</div>
-					<div class="form-group row">
-						<div class="col-md-4">{{ Form::text('contacts', null, ['class'=>'form-control', 'placeholder'=>'Business Contacts']) }}</div>
-						<div class="col-md-4">{{ Form::text('emails', null, ['class'=>'form-control', 'placeholder'=>'Business Emails (optional..)']) }}</div>
-						<div class="col-md-4">{{ Form::text('city', null, ['class'=>'form-control', 'placeholder'=>'City']) }}</div>
+					<div class="row">
+						<div class="col-md-4">
+						<div class="form-group {{ $errors->has('emails') ? 'has-error' : '' }}">
+							{{ Form::text('emails', null, ['class'=>'form-control', 'placeholder'=>'Business Emails']) }}
+						</div>
+						</div>
+						<div class="col-md-4">
+						<div class="form-group {{ $errors->has('contacts') ? 'has-error' : '' }}">
+							{{ Form::text('contacts', null, ['class'=>'form-control', 'placeholder'=>'Business Contacts (optional..)']) }}
+						</div>
+						</div>
+						<div class="col-md-4">
+						<div class="form-group">
+							{{ Form::text('city', null, ['class'=>'form-control', 'placeholder'=>'City']) }}
+						</div>
+						</div>
 					</div>
 					<div class="form-group {{ $errors->has('body') ? 'has-error' : '' }}">
 						{{ Form::textarea('body', null, ['class'=>'form-control', 'placeholder'=>'Write an amazing and unique description about your business']) }}

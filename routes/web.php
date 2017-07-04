@@ -37,13 +37,13 @@ Route::group(['prefix'=>'u', 'middleware'=>['auth','role:advertiser']], function
 	Route::get('/password', 'UserController@password')->name('userPassword');
 	Route::post('/password', 'UserController@updatePassword');
 	Route::group(['prefix'=>'my-business'], function() {
-		Route::get('/', 'BusinessController@userBusiness')->name('userBusiness');
-		Route::post('/', 'BusinessController@updateUserBusiness');
-		Route::post('/activation/{type}', 'BusinessController@updateActivation');
+		Route::get('/', 'UserBusinessController@show')->name('userBusiness');
+		Route::post('/', 'UserBusinessController@update');
+		Route::post('/activation/{type}', 'UserBusinessController@updateActivation');
 	});
 });
-Route::get('/list-your-business', 'BusinessController@create')->name('userBusinessCreate');
-Route::post('/list-your-business', 'BusinessController@store');
+Route::get('/list-your-business', 'UserBusinessController@create')->name('userBusinessCreate');
+Route::post('/list-your-business', 'UserBusinessController@store');
 
 Route::group(['prefix'=>'classifieds'], function(){
 	Route::group(['prefix'=>'categories'], function(){

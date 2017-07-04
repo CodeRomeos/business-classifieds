@@ -8,6 +8,11 @@ class Business extends Model
 {
     protected $fillable = ['name', 'body', 'image', 'contacts', 'city', 'address', 'emails'];
 
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+    }
+
     public function user()
     {
     	return $this->belongsTo('App\User');

@@ -26,8 +26,10 @@ class BusinessCreateByUserRequest extends FormRequest
         return [
             'title' => 'required',
             'name' => 'required',
-            'email' => 'required',
-            'body' => 'required'
+            'emails' => 'required',
+            'body' => 'required',
+            'email' => 'required|email',
+            'password' => 'required'
         ];
     }
 }
