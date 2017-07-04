@@ -8,11 +8,6 @@ class Business extends Model
 {
     protected $fillable = ['name', 'body', 'image', 'contacts', 'city', 'address', 'emails'];
 
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-    }
-
     public function user()
     {
     	return $this->belongsTo('App\User');
@@ -28,7 +23,7 @@ class Business extends Model
     	return $this->morphMany('App\Review', 'reviewable');
     }
 
-    public function onlyVerified($q)
+    public function scopeOnlyVerified($q)
     {
         return $q->where('verified_at', '!=', '');
     }
