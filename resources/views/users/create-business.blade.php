@@ -41,22 +41,22 @@
 				</div>
 			</div>
 			<div class="col-sm-4">
+				<div class="card">
+					<h4>Upload Images</h4>
+					<hr>
+				</div>
 				@if(!Auth::user())
 				<div class="card">
-					<div class="row">
-						<div class="col-md-12">
-							<h4>Personal Details</h4>
-							<hr>
-							<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-							{{ Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Your Name']) }}
-							</div>
-							<div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-							{{ Form::email('email', null, ['class'=>'form-control', 'placeholder'=>'Your Email']) }}
-							</div>
-							<div class="form-group {{ (Session::has('incorrect_password') || $errors->has('password')) ? 'has-error' : '' }}">
-							{{ Form::password('password', ['class'=>'form-control', 'placeholder'=>'Enter Password']) }}
-							</div>
-						</div>
+					<h4>Personal Details</h4>
+					<hr>
+					<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+					{{ Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Your Name']) }}
+					</div>
+					<div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+					{{ Form::email('email', null, ['class'=>'form-control', 'placeholder'=>'Your Email']) }}
+					</div>
+					<div class="form-group {{ (Session::has('incorrect_password') || $errors->has('password')) ? 'has-error' : '' }}">
+					{{ Form::password('password', ['class'=>'form-control', 'placeholder'=>'Enter Password']) }}
 					</div>
 				</div>
 				@endif
