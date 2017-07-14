@@ -21,6 +21,7 @@ class CreateBusinessesTable extends Migration
             $table->string('image')->nullable();
             $table->string('contacts', 20)->nullable();
             $table->string('city', 50)->nullable();
+            $table->json('urls')->nullable();
             $table->longText('address')->nullable();
             $table->string('emails', 60)->nullable();
             $table->boolean('is_active')->default(false);

@@ -26,7 +26,8 @@ class BusinessCreateByUserRequest extends FormRequest
         return [
             'title' => 'required',
             'name' => 'required',
-            'emails' => 'required',
+            'emails.*' => 'nullable|email',
+            'contacts.0' => 'required',
             'body' => 'required',
             'email' => 'required|email',
             'password' => 'required'

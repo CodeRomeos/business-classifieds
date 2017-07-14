@@ -6,7 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Business extends Model
 {
-    protected $fillable = ['name', 'body', 'image', 'contacts', 'city', 'address', 'emails'];
+    protected $fillable = ['name', 'body', 'image', 'contacts', 'city', 'address', 'emails', 'urls'];
+
+    protected $casts = [
+        'emails' => 'array',
+        'contacts' => 'array',
+        'is_active' => 'boolean',
+        'is_approved' => 'boolean',
+        'urls' => 'array'
+    ];
 
     public function user()
     {
