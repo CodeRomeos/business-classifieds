@@ -10,7 +10,7 @@
 			</div>
 			<div class="col-md-7">
 				<div class="card">
-					<h4>Business Details</h4>
+					<h4 class="title">Business Details</h4>
 					<hr>
 					@if($errors->has('message'))
 					<p class='text-danger'>{{ $errors->first('message') }}</p>
@@ -57,7 +57,7 @@
 			</div>
 			<div class="col-sm-5">
 				<div class="card">
-					<h4>Web Links</h4>
+					<h4 class="title">Web Links</h4>
 					<hr>
 					<div class="form-group">
 						{{ Form::text('urls["website"]', null, ['class'=>'form-control input-sm', 'placeholder'=>'Website Url']) }}
@@ -77,7 +77,7 @@
 				</div>
 				@if(!Auth::user())
 				<div class="card">
-					<h4>Personal Details</h4>
+					<h4 class="title">Personal Details</h4>
 					<hr>
 					<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
 					{{ Form::text('name', null, ['class'=>'form-control input-sm', 'placeholder'=>'Your Name']) }}
