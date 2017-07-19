@@ -15,10 +15,10 @@
 </head>
 <body>
     <div id="app">
-        @include('web.partials.nav')
+        @include('layouts.partials.nav')
         <router-view></router-view>
-        @include('web.partials.CTA')
-        @include('web.partials.footer')
+        @include('layouts.partials.CTA')
+        @include('layouts.partials.footer')
     </div>
     <!-- Scripts -->
     {!! Html::script('js/app.js') !!}

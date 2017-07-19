@@ -20,8 +20,12 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 <li>
-                    <router-link to='/'><i class="fa fa-home"></i> Home</router-link>
+                    <router-link to='/' exact><i class="fa fa-home"></i> Home</router-link>
                 </li>
+                <li>
+                    <router-link to='/categories'><i class="fa fa-home"></i> Categories</router-link>
+                </li>
+
             </ul>
         </div>
     </div>
