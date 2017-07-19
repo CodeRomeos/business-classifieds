@@ -4323,7 +4323,8 @@ var routes = [{
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
 	routes: routes,
-	linkActiveClass: 'active'
+	linkActiveClass: 'active',
+	mode: 'history'
 }));
 
 /***/ }),

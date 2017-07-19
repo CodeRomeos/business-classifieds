@@ -11,8 +11,10 @@
 |
 */
 
+/*
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+*/
 
-Route::get('/', 'WelcomeController@index')->name('homepage');
+Route::get('/{all}', 'WelcomeController@index')->where(['all'=>'.*'])->name('index');
