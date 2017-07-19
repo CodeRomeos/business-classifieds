@@ -16,13 +16,13 @@
 <body>
     <div id="app">
         @include('web.partials.nav')
-        @yield('content')
+        <router-view></router-view>
         @include('web.partials.CTA')
         @include('web.partials.footer')
     </div>
     <!-- Scripts -->
     {!! Html::script('js/app.js') !!}
-    <script src="{{ asset('js/custom.js') }}"></script>
     <script src="{{ asset('js/trumbowyg.min.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
 </body>
 </html>
