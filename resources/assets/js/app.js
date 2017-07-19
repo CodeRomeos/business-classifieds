@@ -9,18 +9,16 @@ import './bootstrap.js';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import router from './routes';
-
+import ModalDialog from './components/ModalDialog';
+import LoginForm from './components/LoginForm';
 
 window.Vue = Vue;
 Vue.use(VueRouter);
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+window.Event = new Vue();
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('ModalDialog', ModalDialog);
+Vue.component('LoginForm', LoginForm);
 
 new Vue({
     el: '#app',

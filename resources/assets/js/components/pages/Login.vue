@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Home Component</h1>
+                <h1>Login Component</h1>
             </div>
         </div>
     </div>
@@ -10,7 +10,13 @@
 
 <script>
     export default {
-        mounted() {
+        data() {
+            return {
+
+            }
+        },
+        created() {
+            axios.get('/json/login');
 
         }
     }
