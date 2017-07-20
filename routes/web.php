@@ -15,7 +15,12 @@
 
 
 Route::group(['prefix'=>'json'], function() {
-
+	Route::group(['prefix'=>'u'], function() {
+		Route::get('/is-logged-in', function() {
+			$user = \Auth::check() ? \Auth::user() : null;
+			return response()->json(compact('user'));
+		});
+	});
 	Auth::routes();
 	//Route::get('/home', 'HomeController@index')->name('home');
 

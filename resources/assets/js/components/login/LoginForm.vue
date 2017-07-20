@@ -23,7 +23,7 @@
 		},
 		methods: {
 			submitLogin() {
-				consol.log('submitting login form');
+				console.log('submitting login form');
 			}
 		}
 	}

@@ -24,12 +24,7 @@
                 <li><router-link to='/list-your-business'><i class="fa fa-pencil"></i> List Your Business</router-link></li>
                 <li><router-link to='/login'><i class="fa fa-pencil"></i> Login</router-link></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown" id="menuLogin">
-                    <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
-                </li>
-            </ul>
+            <user-login-nav></user-login-nav>
         </div>
     </div>
 </nav>
-<modal-dialog show='true'>asdfsd</modal-dialog>
