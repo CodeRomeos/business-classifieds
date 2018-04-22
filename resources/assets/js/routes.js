@@ -1,21 +1,27 @@
 import VueRouter from 'vue-router';
 
+// Pages
+import Home from './components/pages/Home'
+import Categories from './components/pages/Categories'
+import ListYourBusiness from './components/pages/ListYourBusiness'
+import Login from './components/pages/Login'
+
 let routes = [
 	{
 		path: '/',
-		component: require('./components/pages/Home')
+		component: Home
 	},
 	{
 		path: '/categories',
-		component: require('./components/pages/Categories')
+		component: Categories
 	},
 	{
 		path: '/list-your-business',
-		component: require('./components/pages/ListYourBusiness')
+		component: ListYourBusiness
 	},
 	{
 		path: '/login',
-		component: require('./components/pages/Login')
+		component: Login
 	}
 ];
 
