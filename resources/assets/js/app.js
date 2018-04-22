@@ -12,7 +12,7 @@ import VueRouter from 'vue-router';
 // Routes
 import router from './routes';
 
-// Some components
+// Components
 import ModalDialog from './components/ModalDialog';
 import LoginForm from './components/login/LoginForm';
 import LoginDialog from './components/login/LoginDialog';
