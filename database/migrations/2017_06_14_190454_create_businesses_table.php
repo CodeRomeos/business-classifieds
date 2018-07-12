@@ -14,7 +14,8 @@ class CreateBusinessesTable extends Migration
     public function up()
     {
         Schema::create('businesses', function (Blueprint $table) {
-            $table->increments('id');
+			$table->increments('id');
+			$table->string('businessid')->unique();
             $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->longText('body')->nullable();
@@ -25,7 +26,7 @@ class CreateBusinessesTable extends Migration
             $table->longText('address')->nullable();
             $table->string('emails', 60)->nullable();
             $table->boolean('is_active')->default(false);
-            $table->boolean('is_approved')->default(false);
+			$table->boolean('is_approved')->default(false);
             $table->timestamps();
         });
     }

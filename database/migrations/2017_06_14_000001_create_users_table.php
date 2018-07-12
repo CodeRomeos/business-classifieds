@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->string('state')->nullable()->default(null);
             $table->longText('social_links')->nullable()->default(null);
 
-            $table->string('verification_code');
+            $table->string('verification_code')->unique();
             $table->timestamp('verified_at')->nullable()->default(null);
             $table->timestamp('blocked_at')->nullable()->default(null);
             $table->timestamp('last_login')->nullable()->default(null);
