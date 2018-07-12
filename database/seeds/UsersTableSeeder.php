@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -12,14 +11,36 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-        	'id' => 1, 'role_id' => '1', 'name' => 'Admin', 'email' => 'admin@admin.com', 'password' => bcrypt('admin123'),
-        	'is_blocked' => false, 'verified_at' => \Carbon\Carbon::now(), 'is_super_admin' => true
-        	]);
+        DB::table('users')->insert([
+        	'id' => '1',
+        	'role_id' => '1',
+        	'name' => 'NewsPiq Admin',
+        	'email' => 'admin@admin.com',
+        	'password' => bcrypt('admin@123'),
+        	'verification_code'	=> sha1(time() . str_random(10)),
+        	'verified_at' => \Carbon\Carbon::now(),
+        	'is_super_admin' => true,
+        	'created_at' => \Carbon\Carbon::now()
+        ]);
 
-        User::create([
-        	'id' => 2, 'role_id' => '2', 'name' => 'John Doe', 'email' => 'johndoe@users.com', 'password' => bcrypt('123456'),
-        	'is_blocked' => false, 'verified_at' => \Carbon\Carbon::now(), 'is_super_admin' => false
-        	]);
+        DB::table('users')->insert([
+        	'role_id' => '2',
+        	'name' => 'Author User',
+        	'email' => 'author@user.com',
+        	'password' => bcrypt('author@123'),
+        	'verification_code'	=> sha1(time() . str_random(10)),
+        	'verified_at' => \Carbon\Carbon::now(),
+        	'created_at' => \Carbon\Carbon::now()
+        ]);
+
+        DB::table('users')->insert([
+        	'role_id' => '3',
+        	'name' => 'Subscriber User',
+        	'email' => 'subscriber@user.com',
+        	'password' => bcrypt('subscriber@123'),
+        	'verification_code'	=> sha1(time() . str_random(10)),
+        	'verified_at' => \Carbon\Carbon::now(),
+        	'created_at' => \Carbon\Carbon::now()
+        ]);
     }
 }
