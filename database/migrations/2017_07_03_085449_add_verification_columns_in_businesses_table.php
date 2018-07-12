@@ -14,7 +14,7 @@ class AddVerificationColumnsInBusinessesTable extends Migration
     public function up()
     {
         Schema::table('businesses', function (Blueprint $table) {
-            $table->string('verification_code', 150)->unique()->after('is_approved');
+            $table->string('verification_code')->unique()->after('is_approved');
             $table->timestamp('verified_at')->nullable()->default(null);
         });
     }

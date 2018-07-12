@@ -14,7 +14,7 @@ class AddBusinessidColumnInBusinesessTable extends Migration
     public function up()
     {
         Schema::table('businesses', function (Blueprint $table) {
-            $table->string('businessid', 225)->unique()->after('id');
+            $table->string('businessid')->unique()->after('id');
         });
     }
 
