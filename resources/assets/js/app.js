@@ -5,31 +5,18 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import './bootstrap.js';
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+require('./bootstrap');
 
-// Routes
-import router from './routes';
+window.Vue = require('vue');
 
-// Components
-import ModalDialog from './components/ModalDialog';
-import LoginForm from './components/login/LoginForm';
-import LoginDialog from './components/login/LoginDialog';
-import UserLoginNav from './components/login/UserLoginNav';
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
 
-window.Vue = Vue;
-Vue.use(VueRouter);
+Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-window.Event = new Vue();
-
-Vue.component('ModalDialog', ModalDialog);
-Vue.component('LoginForm', LoginForm);
-Vue.component('LoginDialog', LoginDialog);
-Vue.component('UserLoginNav', UserLoginNav);
-
-new Vue({
-    el: '#app',
-
-    router
+const app = new Vue({
+    el: '#app'
 });
