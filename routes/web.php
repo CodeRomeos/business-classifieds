@@ -19,6 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::prefix('admin')->group(function() {
-	Route::get('/', 'Admin\AdminController@dashboard');
+Route::prefix('admin')->name('admin.')->group(function() {
+	Route::get('/', 'Admin\AdminController@dashboard')->name('dashboard');
 });

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
-    <meta name="author" content="Łukasz Holeczek">
-    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>CoreUI Free Bootstrap Admin Template</title>
+
+    <title>@yield('title', 'Admin')</title>
     <!-- Main styles for this application-->
     <link href="{{ asset('console/css/console-app.css') }}" rel="stylesheet">
 </head>
@@ -23,7 +20,16 @@
 		</main>
 		@include('admin.partials.aside-menu')
 	</div>
-	@include('admin.partials.footer')
+	<footer class="app-footer">
+	<div>
+		<a href="https://www.coderomeos.org">Business Classifieds</a>
+		<span>&copy; 2018 coderomeos.</span>
+	</div>
+	<div class="ml-auto">
+		<span>Powered by</span>
+		<a href="https://www.coderomeos.org">CodeRomeos</a>
+	</div>
+	</footer>
 
     <script src="{{ asset('console/js/console-app.js') }}"></script>
   </body>
