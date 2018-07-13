@@ -16,9 +16,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::prefix('admin')->name('admin.')->group(function() {
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:administrator'])->group(function() {
 	Route::get('/', 'Admin\AdminController@dashboard')->name('dashboard');
 });

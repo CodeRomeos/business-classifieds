@@ -25,5 +25,31 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token',
-    ];
+	];
+
+	public function role()
+    {
+    	return $this->belongsTo('App\Role');
+    }
+
+    public function hasRole($role)
+    {
+    	return !! ($this->role->name == $role);
+	}
+
+	public function getIsAdminAttribute()
+    {
+    	return !! ($this->hasRole('administrator'));
+	}
+
+	public function getIsAdvertiserAttribute()
+    {
+    	return !! ($this->hasRole('advertiser'));
+	}
+
+	public function getIsSubscriberAttribute()
+    {
+    	return !! ($this->hasRole('subscriber'));
+    }
+
 }
