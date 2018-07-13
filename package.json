@@ -12,11 +12,17 @@
     "devDependencies": {
         "axios": "^0.18",
         "bootstrap": "^4.0.0",
-        "popper.js": "^1.12",
         "cross-env": "^5.1",
+        "font-awesome": "^4.7.0",
         "jquery": "^3.2",
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
+        "popper.js": "^1.12",
         "vue": "^2.5.7"
+    },
+    "dependencies": {
+        "@coreui/coreui": "^2.0.3",
+        "perfect-scrollbar": "^1.4.0",
+        "simple-line-icons": "^2.4.1"
     }
 }
