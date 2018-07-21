@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/{any}', 'WelcomeController@welcome')->where('any', '.*');
+
 
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
