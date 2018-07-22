@@ -18,15 +18,15 @@ class CreateBusinessesTable extends Migration
 			$table->string('businessid')->unique();
             $table->integer('user_id')->unsigned();
             $table->string('title');
-            $table->longText('body')->nullable();
+            $table->longText('body')->nullable()->default(null);
             $table->string('image')->nullable();
-            $table->string('contacts', 20)->nullable();
-            $table->string('city', 50)->nullable();
-            $table->json('urls')->nullable();
-            $table->longText('address')->nullable();
-            $table->string('emails', 60)->nullable();
-            $table->boolean('is_active')->default(false);
-			$table->boolean('is_approved')->default(false);
+            $table->longText('contacts')->nullable()->default(null);
+            $table->string('city', 50)->nullable()->default(null);
+            $table->longText('urls')->nullable()->default(null);
+            $table->longText('address')->nullable()->default(null);
+            $table->longText('emails')->nullable()->default(null);
+            $table->boolean('is_active', 1)->nullable()->default(null);
+            $table->timestamp('approved_at')->nullable()->default(null);
             $table->timestamps();
         });
     }
