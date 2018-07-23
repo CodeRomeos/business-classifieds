@@ -12,7 +12,7 @@
                 <router-link tag='li' to="/" class='nav-item'>
                     <a class='nav-link'>Home</a>
                 </router-link>
-                <router-link tag='li' to="listings" class='nav-item'>
+                <router-link tag='li' to="/listings" class='nav-item'>
                     <a class='nav-link'>Lisings</a>
                 </router-link>
                 </ul>

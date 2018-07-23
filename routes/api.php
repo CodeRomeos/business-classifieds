@@ -20,6 +20,7 @@ Route::namespace('Api')->prefix('v1')->group(function() {
 
     Route::prefix('businesses')->group(function(){
         Route::get('/', 'BusinessController@index');
+        Route::get('/{businessid}', 'BusinessController@show');
     });
 
     Route::middleware('auth:api')->get('/user', function (Request $request) {
