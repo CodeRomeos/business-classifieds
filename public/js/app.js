@@ -50955,16 +50955,42 @@ var index_esm = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_auth__ = __webpack_require__(82);
+
+
+var user = Object(__WEBPACK_IMPORTED_MODULE_0__helpers_auth__["a" /* getLocalUser */])();
+
 /* harmony default export */ __webpack_exports__["a"] = ({
     state: {
-        welcomeMessage: 'Welcome to Business classifieds'
+        welcomeMessage: 'Welcome to Business classifieds',
+        currentUser: user,
+        isLoggedIn: !!user,
+        loading: false,
+        auth_error: null
     },
     getters: {
         welcome: function welcome(state) {
             return state.welcomeMessage;
+        },
+        isLoading: function isLoading(state) {
+            return state.loading;
+        },
+        isLoggedIn: function isLoggedIn(state) {
+            return state.isLoggedIn;
+        },
+        currentUser: function currentUser(state) {
+            return state.currentUser;
+        },
+        authError: function authError(state) {
+            return state.auth_error;
         }
     },
-    mutations: {},
+    mutations: {
+        login: function login(state) {
+            state.loading = true;
+            state.auth_error = null;
+        }
+    },
 
     actions: {}
 });
@@ -51788,6 +51814,48 @@ if (false) {
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-7a9a8bb2", module.exports)
   }
+}
+
+/***/ }),
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export login */
+/* harmony export (immutable) */ __webpack_exports__["a"] = getLocalUser;
+function login(credentials) {
+    return new Promise(function (res, rej) {
+        axios.post('/api/v1/login', credentials).then(function (resopons) {
+            res(response.data);
+        }).catch(function (error) {
+            rej("Error");
+        });
+    });
+}
+
+function getLocalUser() {
+    var userStr = localStorage.getItem('user');
+
+    if (!user) {
+        return null;
+    }
+
+    return JSON.parse(userStr);
 }
 
 /***/ })

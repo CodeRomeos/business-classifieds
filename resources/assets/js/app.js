@@ -13,6 +13,10 @@ const store = new Vuex.Store(StoreData);
 
 import TheApp from './components/TheApp.vue';
 
+router.beforeEach((to, from, next) => {
+
+});
+
 const app = new Vue({
     el: '#app',
     render: h => h(TheApp),

@@ -13,7 +13,7 @@ let routes = [
 		path: '/listings',
         component: Listings,
         name: 'listings'
-	}
+    }
 ];
 
 export default new VueRouter({
