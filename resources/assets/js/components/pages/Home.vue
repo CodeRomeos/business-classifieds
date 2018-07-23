@@ -2,7 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Home Component</h1>
+                <h1>{{ welcome }}</h1>
+
             </div>
         </div>
     </div>
@@ -12,6 +13,11 @@
     export default {
         mounted() {
 
+        },
+        computed: {
+            welcome() {
+                return this.$store.getters.welcome
+            }
         }
     }
 </script>

@@ -24,6 +24,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
+            'id' => '2',
         	'role_id' => '2',
         	'name' => 'Advertiser User',
         	'email' => 'advertiser@user.com',
@@ -34,6 +35,7 @@ class UsersTableSeeder extends Seeder
 		]);
 
 		DB::table('users')->insert([
+            'id' => '3',
         	'role_id' => '3',
         	'name' => 'Editor User',
         	'email' => 'editor@user.com',
@@ -44,6 +46,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
+            'id' => '4',
         	'role_id' => '4',
         	'name' => 'Subscriber User',
         	'email' => 'subscriber@user.com',

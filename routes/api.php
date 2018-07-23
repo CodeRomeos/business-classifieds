@@ -18,6 +18,10 @@ Route::namespace('Api')->prefix('v1')->group(function() {
     Route::post('login', 'Auth\LoginController@login');
     Route::post('register', 'Auth\RegisterController@register');
 
+    Route::prefix('businesses')->group(function(){
+        Route::get('/', 'BusinessController@index');
+    });
+
     Route::middleware('auth:api')->get('/user', function (Request $request) {
         return $request->user();
     });
