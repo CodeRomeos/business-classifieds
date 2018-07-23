@@ -47169,7 +47169,7 @@ var app = new Vue({
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
-  * CoreUI v2.0.3 (https://coreui.io)
+  * CoreUI v2.0.4 (https://coreui.io)
   * Copyright 2018 Łukasz Holeczek
   * Licensed under MIT (https://coreui.io)
   */
@@ -47200,7 +47200,7 @@ var app = new Vue({
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI (v2.0.3): ajax-load.js
+   * CoreUI (v2.0.4): ajax-load.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -47212,7 +47212,7 @@ var app = new Vue({
      * ------------------------------------------------------------------------
      */
     var NAME = 'ajaxLoad';
-    var VERSION = '2.0.3';
+    var VERSION = '2.0.4';
     var DATA_KEY = 'coreui.ajaxLoad';
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
     var ClassName = {
@@ -47405,7 +47405,7 @@ var app = new Vue({
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI (v2.0.3): toggle-classes.js
+   * CoreUI (v2.0.4): toggle-classes.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -47430,7 +47430,7 @@ var app = new Vue({
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI (v2.0.3): aside-menu.js
+   * CoreUI (v2.0.4): aside-menu.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -47442,7 +47442,7 @@ var app = new Vue({
      * ------------------------------------------------------------------------
      */
     var NAME = 'aside-menu';
-    var VERSION = '2.0.3';
+    var VERSION = '2.0.4';
     var DATA_KEY = 'coreui.aside-menu';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -47539,7 +47539,7 @@ var app = new Vue({
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI (v2.0.3): sidebar.js
+   * CoreUI (v2.0.4): sidebar.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -47551,7 +47551,7 @@ var app = new Vue({
      * ------------------------------------------------------------------------
      */
     var NAME = 'sidebar';
-    var VERSION = '2.0.3';
+    var VERSION = '2.0.4';
     var DATA_KEY = 'coreui.sidebar';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -47741,7 +47741,7 @@ var app = new Vue({
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v2.0.3): get-style.js
+   * CoreUI Utilities (v2.0.4): get-style.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -47808,7 +47808,7 @@ var app = new Vue({
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v2.0.3): hex-to-rgb.js
+   * CoreUI Utilities (v2.0.4): hex-to-rgb.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -47844,7 +47844,7 @@ var app = new Vue({
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v2.0.3): hex-to-rgba.js
+   * CoreUI Utilities (v2.0.4): hex-to-rgba.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -47884,7 +47884,7 @@ var app = new Vue({
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI (v2.0.3): rgb-to-hex.js
+   * CoreUI (v2.0.4): rgb-to-hex.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -47909,7 +47909,7 @@ var app = new Vue({
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI (v2.0.3): index.js
+   * CoreUI (v2.0.4): index.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */

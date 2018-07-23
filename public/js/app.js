@@ -50271,8 +50271,6 @@ var store = new __WEBPACK_IMPORTED_MODULE_3_vuex__["a" /* default */].Store(__WE
 
 
 
-__WEBPACK_IMPORTED_MODULE_5__routes__["a" /* default */].beforeEach(function (to, from, next) {});
-
 var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
     el: '#app',
     render: function render(h) {
@@ -52202,7 +52200,7 @@ exports = module.exports = __webpack_require__(38)(false);
 
 
 // module
-exports.push([module.i, "\nbody {\r\n    padding-top: 54px;\n}\n@media (min-width: 992px) {\nbody {\r\n        padding-top: 56px;\n}\n}\r\n", ""]);
+exports.push([module.i, "\nbody {\r\n    padding-top: 54px;\n}\n@media (min-width: 992px) {\nbody {\r\n        padding-top: 56px;\n}\n}\n.fade-enter-active, .fade-leave-active {\r\n  -webkit-transition: opacity .2s;\r\n  transition: opacity .2s;\n}\n.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\n.slide-fade-enter-active {\r\n  -webkit-transition: all .3s ease;\r\n  transition: all .3s ease;\n}\n.slide-fade-leave-active {\r\n  -webkit-transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\r\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter, .slide-fade-leave-to\r\n/* .slide-fade-leave-active below version 2.1.8 */ {\r\n  -webkit-transform: translateX(10px);\r\n          transform: translateX(10px);\r\n  opacity: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -52215,6 +52213,8 @@ exports.push([module.i, "\nbody {\r\n    padding-top: 54px;\n}\n@media (min-widt
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__partials_Navbar_vue__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__partials_Navbar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__partials_Navbar_vue__);
+//
+//
 //
 //
 //
@@ -52429,7 +52429,12 @@ var render = function() {
     [
       _c("navbar"),
       _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_c("router-view")], 1)
+      _c(
+        "div",
+        { staticClass: "content" },
+        [_c("transition", { attrs: { name: "fade" } }, [_c("router-view")], 1)],
+        1
+      )
     ],
     1
   )
