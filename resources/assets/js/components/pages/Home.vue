@@ -1,6 +1,6 @@
 <template>
     <section id='home'>
-        <div id='slider' class='mb-5'>
+        <div id='banner' class='mb-5'>
             <img src='/images/banner1.jpg' class='img-fluid'>
         </div>
         <div class="container">
