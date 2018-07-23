@@ -3,21 +3,25 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>{{ welcome }}</h1>
-
+				<businesses />
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    export default {
-        mounted() {
+import Businesses from '../Businesses.vue';
+export default {
+	mounted() {
 
-        },
-        computed: {
-            welcome() {
-                return this.$store.getters.welcome
-            }
-        }
+	},
+	computed: {
+		welcome() {
+			return this.$store.getters.welcome
+		}
+	},
+    components: {
+        Businesses
     }
+}
 </script>

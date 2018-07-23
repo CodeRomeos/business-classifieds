@@ -25,5 +25,12 @@ class BusinessController extends Controller
         return $this->respondWithPagination([
 			    'data'=>$data,
 		    ], $businesses);
-    }
+	}
+
+	public function show(Request $request, Businesses $repo, $businessid)
+	{
+		$business = $repo->approvedAndActive()->where('businessid', $businessid)->firstOrFail();
+
+		return $this->respond(['data' => new BusinessResource($business)]);
+	}
 }
