@@ -19,11 +19,12 @@ class Business extends JsonResource
             'businessid' => $this->businessid,
             'title' => $this->title,
             'body' => $this->body,
-            'image' => asset($this->image),
-            'contacts' => $this->contacts,
+            // 'image' => asset($this->image),
+            'image' => $this->image,
+            'contacts' => json_decode($this->contacts),
             'city' => $this->city,
             'address' => $this->address,
-            'emails' => $this->emails
+            'emails' => json_decode($this->emails)
         ];
     }
 }

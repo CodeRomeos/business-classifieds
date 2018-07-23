@@ -47355,42 +47355,6 @@ var View = {
       }
     }
 
-<<<<<<< HEAD
-var disposed = false
-var normalizeComponent = __webpack_require__(46)
-/* script */
-var __vue_script__ = __webpack_require__(47)
-/* template */
-var __vue_template__ = __webpack_require__(48)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\login\\LoginForm.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2788fbf3", Component.options)
-  } else {
-    hotAPI.reload("data-v-2788fbf3", Component.options)
-=======
     return h(component, data, children)
   }
 };
@@ -47413,7 +47377,6 @@ function resolveProps (route, config) {
           "expecting an object, function or boolean."
         );
       }
->>>>>>> 348c12d868b84b46b16fbcd8df0a7980f23457b0
   }
 }
 
@@ -47805,19 +47768,6 @@ function install (Vue) {
   if (install.installed && _Vue === Vue) { return }
   install.installed = true;
 
-<<<<<<< HEAD
-/* harmony default export */ __webpack_exports__["default"] = ({
-	data: function data() {
-		return {};
-	},
-
-	methods: {
-		submitLogin: function submitLogin() {
-			console.log('submitting login form');
-		}
-	}
-});
-=======
   _Vue = Vue;
 
   var isDef = function (v) { return v !== undefined; };
@@ -47828,7 +47778,6 @@ function install (Vue) {
       i(vm, callVal);
     }
   };
->>>>>>> 348c12d868b84b46b16fbcd8df0a7980f23457b0
 
   Vue.mixin({
     beforeCreate: function beforeCreate () {
@@ -47847,54 +47796,6 @@ function install (Vue) {
     }
   });
 
-<<<<<<< HEAD
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "login-form" }, [
-    _c(
-      "form",
-      {
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.submitLogin($event)
-          }
-        }
-      },
-      [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)]
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("input", { staticClass: "form-control", attrs: { type: "email" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("input", { staticClass: "form-control", attrs: { type: "password" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("input", {
-        staticClass: "btn btn-block btn-primary",
-        attrs: { type: "submit" }
-      })
-    ])
-=======
   Object.defineProperty(Vue.prototype, '$router', {
     get: function get () { return this._routerRoot._router }
   });
@@ -47925,7 +47826,6 @@ function resolvePath (
   var firstChar = relative.charAt(0);
   if (firstChar === '/') {
     return relative
->>>>>>> 348c12d868b84b46b16fbcd8df0a7980f23457b0
   }
 
   if (firstChar === '?' || firstChar === '#') {
@@ -51886,11 +51786,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-<<<<<<< HEAD
-    require("vue-hot-reload-api")      .rerender("data-v-2788fbf3", module.exports)
-=======
     require("vue-hot-reload-api")      .rerender("data-v-7a9a8bb2", module.exports)
->>>>>>> 348c12d868b84b46b16fbcd8df0a7980f23457b0
   }
 }
 
