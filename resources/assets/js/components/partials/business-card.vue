@@ -19,7 +19,7 @@
 				<div class="col-md-3">
 					<br>
 					<br>
-					<router-link class='btn btn-success btn-lg' :to="{ name: 'business', params: { businessid: business.businessid }}">Show</router-link>
+					<router-link class='btn btn-primary btn-lg' :to="{ name: 'business', params: { businessid: business.businessid }}">Show</router-link>
 				</div>
 			</div>
 
@@ -35,12 +35,3 @@ export default {
 	]
 }
 </script>
-
-<style>
-.business-card {
-	border: none;
-    border-radius: 0;
-    padding: 10px;
-	box-shadow: 0px 4px 6px #dfdfdf;
-}
-</style>

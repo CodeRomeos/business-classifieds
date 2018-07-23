@@ -10475,3 +10475,67 @@ a.text-dark:focus {
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.btn {
+  border-radius: 0;
+}
+
+a {
+  color: #03a9f4;
+}
+
+h3,
+.business-card .card-title {
+  font-weight: bold;
+}
+
+.business-card {
+  border: none;
+  border-radius: 0;
+  padding: 33px;
+  -webkit-box-shadow: 0px 5px 10px #dfdfdf;
+          box-shadow: 0px 5px 10px #dfdfdf;
+}
+
+.card-text {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 16px;
+}
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-fade-enter-active {
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.slide-fade-leave-active {
+  -webkit-transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  -webkit-transform: translateX(10px);
+          transform: translateX(10px);
+  opacity: 0;
+}
+

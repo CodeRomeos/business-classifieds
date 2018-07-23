@@ -12,3 +12,51 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+.btn {
+    border-radius: 0
+}
+a {
+    color: #03a9f4
+}
+h3,
+.business-card .card-title {
+    font-weight: bold
+}
+.business-card {
+	border: none;
+    border-radius: 0;
+    padding: 33px;
+    box-shadow: 0px 5px 10px #dfdfdf;
+}
+
+.card-text {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px
+}
+
+body {
+    padding-top: 54px;
+}
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .2s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
