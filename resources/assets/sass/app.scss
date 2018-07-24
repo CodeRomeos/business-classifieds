@@ -15,6 +15,19 @@ body {
 	background: $body-bg;
 	font-family: 'Raleway', sans-serif;
 }
+
+.text-white {
+    color: #FFF
+}
+
+.text-center {
+	text-align: center
+}
+
+a {
+	text-decoration: none
+}
+
 .container {
 	display: grid;
 	grid-template-areas:
@@ -29,6 +42,8 @@ input[type=text] {
     border: 0;
     @extend .pl-1;
     @extend .pr-1;
+    @extend .pt-0;
+    @extend .pb-0;
 }
 
 .homepage-container {
@@ -40,9 +55,29 @@ input[type=text] {
 	// @extend .mt-5;
 }
 
+.header a,
+.search input[type=text],
+.navbar a {
+    line-height: 60px;
+    display: inline-block;
+    @extend .pl-1;
+    @extend .pr-1;
+}
+
+.navbar a {
+    color: #333
+}
+.navbar a:hover {
+    background: #FFC107
+}
+
 .header {
 	grid-area: header;
-	background: #333;
+    background: #333;
+
+    a {
+        @extend .text-white
+    }
 }
 
 .main {
@@ -60,9 +95,9 @@ input[type=text] {
     width: 100%
 }
 
-nav {
+.navbar {
 	grid-area: nav;
-	background: #ddd;
+	background: #e1e7ea;
 }
 
 .hero {
@@ -90,13 +125,6 @@ nav {
 	.card-text {
 		font-size: 1.2em;
 	}
-}
-
-.text-enter {
-	text-align: center !important
-}
-a {
-	text-decoration: none
 }
 
 // Bootstrap

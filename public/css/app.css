@@ -446,7 +446,8 @@ th {
   margin-top: 0rem !important;
 }
 
-.pt-0 {
+.pt-0,
+input[type=text] {
   padding-top: 0rem !important;
 }
 
@@ -454,7 +455,8 @@ th {
   margin-bottom: 0rem !important;
 }
 
-.pb-0 {
+.pb-0,
+input[type=text] {
   padding-bottom: 0rem !important;
 }
 
@@ -495,7 +497,10 @@ th {
 }
 
 .pl-1,
-input[type=text] {
+input[type=text],
+.header a,
+.search input[type=text],
+.navbar a {
   padding-left: 1rem !important;
 }
 
@@ -504,7 +509,10 @@ input[type=text] {
 }
 
 .pr-1,
-input[type=text] {
+input[type=text],
+.header a,
+.search input[type=text],
+.navbar a {
   padding-right: 1rem !important;
 }
 
@@ -648,6 +656,19 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+.text-white,
+.header a {
+  color: #FFF;
+}
+
+.text-center {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
 .container {
   display: grid;
   grid-template-areas: "header" "nav" "search" "main" "footer";
@@ -661,6 +682,21 @@ input[type=text] {
   display: grid;
   grid-template-columns: 1fr 6fr 1fr;
   grid-template-areas: "hero hero hero" ". content .";
+}
+
+.header a,
+.search input[type=text],
+.navbar a {
+  line-height: 60px;
+  display: inline-block;
+}
+
+.navbar a {
+  color: #333;
+}
+
+.navbar a:hover {
+  background: #FFC107;
 }
 
 .header {
@@ -683,9 +719,9 @@ input[type=text] {
   width: 100%;
 }
 
-nav {
+.navbar {
   grid-area: nav;
-  background: #ddd;
+  background: #e1e7ea;
 }
 
 .hero {
@@ -720,14 +756,6 @@ nav {
 
 .card .card-text {
   font-size: 1.2em;
-}
-
-.text-enter {
-  text-align: center !important;
-}
-
-a {
-  text-decoration: none;
 }
 
 /*

@@ -1,11 +1,7 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <router-link tag='li' to="/" class='nav-item'>
-			<a class='nav-link'>Home</a>
-		</router-link>
-		<router-link tag='li' to="/listings" class='nav-item'>
-			<a class='nav-link'>Lisings</a>
-		</router-link>
+    <nav class="navbar">
+        <router-link to="/">Home</router-link>
+		<router-link to="/listings">Lisings</router-link>
     </nav>
 </template>
 

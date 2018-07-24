@@ -48084,10 +48084,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -48107,19 +48103,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "nav",
-    { staticClass: "navbar navbar-expand-lg navbar-dark bg-dark fixed-top" },
+    { staticClass: "navbar" },
     [
-      _c(
-        "router-link",
-        { staticClass: "nav-item", attrs: { tag: "li", to: "/" } },
-        [_c("a", { staticClass: "nav-link" }, [_vm._v("Home")])]
-      ),
+      _c("router-link", { attrs: { to: "/" } }, [_vm._v("Home")]),
       _vm._v(" "),
-      _c(
-        "router-link",
-        { staticClass: "nav-item", attrs: { tag: "li", to: "/listings" } },
-        [_c("a", { staticClass: "nav-link" }, [_vm._v("Lisings")])]
-      )
+      _c("router-link", { attrs: { to: "/listings" } }, [_vm._v("Lisings")])
     ],
     1
   )
