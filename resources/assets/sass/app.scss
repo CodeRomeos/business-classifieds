@@ -25,6 +25,12 @@ body {
 		"footer";
 }
 
+input[type=text] {
+    border: 0;
+    @extend .pl-1;
+    @extend .pr-1;
+}
+
 .homepage-container {
 	display: grid;
 	grid-template-columns: 1fr 6fr 1fr;
@@ -45,7 +51,13 @@ body {
 
 .search {
 	grid-area: search;
-	background: #777;
+    background: #777;
+    height: 55px
+}
+
+.search input[type=text] {
+    height: 100%;
+    width: 100%
 }
 
 nav {

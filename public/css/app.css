@@ -494,7 +494,8 @@ th {
   margin-left: 1rem !important;
 }
 
-.pl-1 {
+.pl-1,
+input[type=text] {
   padding-left: 1rem !important;
 }
 
@@ -502,7 +503,8 @@ th {
   margin-right: 1rem !important;
 }
 
-.pr-1 {
+.pr-1,
+input[type=text] {
   padding-right: 1rem !important;
 }
 
@@ -651,6 +653,10 @@ body {
   grid-template-areas: "header" "nav" "search" "main" "footer";
 }
 
+input[type=text] {
+  border: 0;
+}
+
 .homepage-container {
   display: grid;
   grid-template-columns: 1fr 6fr 1fr;
@@ -669,6 +675,12 @@ body {
 .search {
   grid-area: search;
   background: #777;
+  height: 55px;
+}
+
+.search input[type=text] {
+  height: 100%;
+  width: 100%;
 }
 
 nav {

@@ -48163,7 +48163,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "search" }, [_vm._v("search")]),
+      _vm._m(0),
       _vm._v(" "),
       _c("navbar"),
       _vm._v(" "),
@@ -48177,7 +48177,16 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "search" }, [
+      _c("input", { attrs: { type: "text", placeholder: "search..." } })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
