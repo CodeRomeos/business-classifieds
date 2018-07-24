@@ -1,31 +1,27 @@
 <template>
-	<div class="container mt-3">
-		<div class="row">
-			<div class="col-md-12">
-			<div class="card business-card mb-4" v-if='business'>
+    <div class="listings-page-container">
+        <div>laksdj</div>
+            <div class="card business-card mb-2" v-if='business'>
+                <div class="crad-thumb">
+                    <img :src="business.image" style='width: 100%'>
+                </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img :src="business.image" style='width: 100%'>
-                        </div>
-                        <div class="col-md-6">
-                            <h3 class="card-title"><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link></h3>
-                            <div class="card-text">
-                                <p>
-                                    {{ business.contacts.join() }}
-                                    <br>
-                                    {{ business.address }}
-                                </p>
-                                {{ business.body }}
-                            </div>
-                        </div>
+                    <h3 class="card-title mt-1"><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link></h3>
+                    <div class="card-text">
+                        <p>
+                            {{ business.contacts.join() }}
+                            <br>
+                            {{ business.address }}
+                        </p>
+                        {{ business.body }}
+                        <p class='mt-2'>
+                        <router-link class='btn btn-primary' :to="{ name: 'business', params: { businessid: business.businessid }}">Show</router-link>
+                        </p>
                     </div>
-
                 </div>
             </div>
-			</div>
-		</div>
-	</div>
+        <div>laksdj</div>
+    </div>
 </template>
 
 <script>

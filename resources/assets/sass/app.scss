@@ -1,6 +1,7 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+// @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url('https://fonts.googleapis.com/css?family=Lato|Raleway');
 
 // Variables
 @import "variables";
@@ -13,7 +14,7 @@ h1, h2, h3 {
 }
 body {
 	background: $body-bg;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Lato', sans-serif;
 }
 
 .text-white {
@@ -36,6 +37,10 @@ a {
 		"search"
 		"main"
 		"footer";
+}
+
+.listings-page-container {
+    display: grid;
 }
 
 input[type=text] {
@@ -123,7 +128,7 @@ input[type=text] {
 		}
 	}
 	.card-text {
-		font-size: 1.2em;
+
 	}
 }
 

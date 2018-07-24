@@ -47709,6 +47709,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -47726,18 +47730,43 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container mt-5" }, [
-    _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        { staticClass: "col-md-12" },
-        [_c("h1", [_vm._v("Listings")]), _vm._v(" "), _c("businesses")],
-        1
-      )
-    ])
-  ])
+  return _c(
+    "div",
+    { staticClass: "listings-page-container" },
+    [
+      _c("div", { staticStyle: { background: "#555" } }),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticStyle: { background: "#eee" } }),
+      _vm._v(" "),
+      _c("div", { staticStyle: { background: "#444" } }),
+      _vm._v(" "),
+      _c("div", { staticStyle: { background: "#555" } }),
+      _vm._v(" "),
+      _c("div", { staticStyle: { background: "#666" } }),
+      _vm._v(" "),
+      _c("div", { staticStyle: { background: "#eee" } }),
+      _vm._v(" "),
+      _c("businesses"),
+      _vm._v(" "),
+      _c("div", [_vm._v("laksdj")])
+    ],
+    1
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "pl-2", staticStyle: { background: "#ddd" } },
+      [_c("h2", [_vm._v("Listings")])]
+    )
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -47826,10 +47855,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'business',
@@ -47863,68 +47888,84 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container mt-3" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _vm.business
-          ? _c("div", { staticClass: "card business-card mb-4" }, [
-              _c("div", { staticClass: "card-body" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("img", {
-                      staticStyle: { width: "100%" },
-                      attrs: { src: _vm.business.image }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c(
-                      "h3",
-                      { staticClass: "card-title" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            attrs: {
-                              to: {
-                                name: "business",
-                                params: { businessid: _vm.business.businessid }
-                              }
-                            }
-                          },
-                          [_vm._v(_vm._s(_vm.business.title))]
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "card-text" }, [
-                      _c("p", [
-                        _vm._v(
-                          "\n                                    " +
-                            _vm._s(_vm.business.contacts.join()) +
-                            "\n                                    "
-                        ),
-                        _c("br"),
-                        _vm._v(
-                          "\n                                    " +
-                            _vm._s(_vm.business.address) +
-                            "\n                                "
-                        )
-                      ]),
-                      _vm._v(
-                        "\n                                " +
-                          _vm._s(_vm.business.body) +
-                          "\n                            "
-                      )
-                    ])
-                  ])
-                ])
-              ])
+  return _c("div", { staticClass: "listings-page-container" }, [
+    _c("div", [_vm._v("laksdj")]),
+    _vm._v(" "),
+    _vm.business
+      ? _c("div", { staticClass: "card business-card mb-2" }, [
+          _c("div", { staticClass: "crad-thumb" }, [
+            _c("img", {
+              staticStyle: { width: "100%" },
+              attrs: { src: _vm.business.image }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c(
+              "h3",
+              { staticClass: "card-title mt-1" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      to: {
+                        name: "business",
+                        params: { businessid: _vm.business.businessid }
+                      }
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.business.title))]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-text" }, [
+              _c("p", [
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(_vm.business.contacts.join()) +
+                    "\n                        "
+                ),
+                _c("br"),
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(_vm.business.address) +
+                    "\n                    "
+                )
+              ]),
+              _vm._v(
+                "\n                    " +
+                  _vm._s(_vm.business.body) +
+                  "\n                    "
+              ),
+              _c(
+                "p",
+                { staticClass: "mt-2" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: {
+                        to: {
+                          name: "business",
+                          params: { businessid: _vm.business.businessid }
+                        }
+                      }
+                    },
+                    [_vm._v("Show")]
+                  )
+                ],
+                1
+              )
             ])
-          : _vm._e()
-      ])
-    ])
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", [_vm._v("laksdj")])
   ])
 }
 var staticRenderFns = []

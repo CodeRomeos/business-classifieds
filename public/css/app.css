@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);/*! normalize.scss v0.1.0 | MIT License | based on git.io/normalize */
+@import url(https://fonts.googleapis.com/css?family=Lato|Raleway);/*! normalize.scss v0.1.0 | MIT License | based on git.io/normalize */
 
 /**
  * 1. Set default font family to sans-serif.
@@ -653,7 +653,7 @@ h3 {
 
 body {
   background: #f5f8fa;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 .text-white,
@@ -672,6 +672,10 @@ a {
 .container {
   display: grid;
   grid-template-areas: "header" "nav" "search" "main" "footer";
+}
+
+.listings-page-container {
+  display: grid;
 }
 
 input[type=text] {
@@ -754,10 +758,6 @@ input[type=text] {
   color: #222;
 }
 
-.card .card-text {
-  font-size: 1.2em;
-}
-
 /*
 .navbar-laravel {
   background-color: #fff;
@@ -835,6 +835,11 @@ body {
   .container {
     grid-template-columns: 200px auto 250px;
     grid-template-areas: "header search nav" "main main main" "footer footer footer";
+  }
+
+  .listings-page-container {
+    grid-template-columns: 200px auto 250px;
+    grid-template-rows: 200px 60px auto;
   }
 
   .business-card {
