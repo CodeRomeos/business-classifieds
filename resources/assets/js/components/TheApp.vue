@@ -1,6 +1,6 @@
 <template>
     <div id="app" class='container'>
-        <div class="header">
+        <div class="header text-center">
 			<router-link to="/" class='navbar-brand'>
                 {{ APP_NAME }}
             </router-link>

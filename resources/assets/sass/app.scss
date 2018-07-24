@@ -21,7 +21,7 @@ body {
 }
 
 .text-white {
-    color: #FFF
+    color: #FFF !important
 }
 
 .text-center {
@@ -79,13 +79,16 @@ input[type=text] {
 .navbar a {
     color: #333
 }
+
+.navbar .router-link-exact-active,
 .navbar a:hover {
-    background: #FFC107
+    background: #e25021;
+    @extend .text-white
 }
 
 .header {
 	grid-area: header;
-    background: #333;
+    background: #FF5722;
 
     a {
         @extend .text-white
@@ -108,12 +111,11 @@ input[type=text] {
 
 .navbar {
 	grid-area: nav;
-	background: #e1e7ea;
+	background: #f5f8fa;
 }
 
 .hero {
 	grid-area: hero;
-	background: yellow;
 	line-height: 0
 }
 

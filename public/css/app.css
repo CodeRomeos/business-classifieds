@@ -660,8 +660,10 @@ body {
 }
 
 .text-white,
+.navbar .router-link-exact-active,
+.navbar a:hover,
 .header a {
-  color: #FFF;
+  color: #FFF !important;
 }
 
 .text-center {
@@ -706,13 +708,14 @@ input[type=text] {
   color: #333;
 }
 
+.navbar .router-link-exact-active,
 .navbar a:hover {
-  background: #FFC107;
+  background: #e25021;
 }
 
 .header {
   grid-area: header;
-  background: #333;
+  background: #FF5722;
 }
 
 .main {
@@ -731,12 +734,11 @@ input[type=text] {
 
 .navbar {
   grid-area: nav;
-  background: #e1e7ea;
+  background: #f5f8fa;
 }
 
 .hero {
   grid-area: hero;
-  background: yellow;
   line-height: 0;
 }
 
@@ -837,14 +839,21 @@ body {
   opacity: 0;
 }
 
-@media only screen and (min-width: 768px) {
+@media (min-width: 768px) {
+  .listings-page-container {
+    grid-template-columns: 300px auto;
+    grid-template-rows: 200px 60px auto;
+  }
+}
+
+@media (min-width: 992px) {
   .container {
-    grid-template-columns: 200px auto 250px;
-    grid-template-areas: "header search nav" "main main main" "footer footer footer";
+    grid-template-columns: 300px auto 250px;
+    grid-template-areas: "header nav search" "main main main" "footer footer footer";
   }
 
   .listings-page-container {
-    grid-template-columns: 200px auto 250px;
+    grid-template-columns: 300px auto 250px;
     grid-template-rows: 200px 60px auto;
   }
 

@@ -47713,6 +47713,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -47730,30 +47732,43 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "listings-page-container" },
-    [
-      _c("div", { staticStyle: { background: "#555" } }),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticStyle: { background: "#eee" } }),
-      _vm._v(" "),
-      _c("div", { staticStyle: { background: "#444" } }),
-      _vm._v(" "),
-      _c("div", { staticStyle: { background: "#555" } }),
-      _vm._v(" "),
-      _c("div", { staticStyle: { background: "#666" } }),
-      _vm._v(" "),
-      _c("div", { staticStyle: { background: "#eee" } }),
-      _vm._v(" "),
-      _c("businesses"),
-      _vm._v(" "),
-      _c("div", [_vm._v("laksdj")])
-    ],
-    1
-  )
+  return _c("div", { staticClass: "listings-page-container" }, [
+    _c("div", {
+      staticClass: "page-grid-item-1",
+      staticStyle: { background: "#1e2c33" }
+    }),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", {
+      staticClass: "page-grid-item-3",
+      staticStyle: { background: "#eee" }
+    }),
+    _vm._v(" "),
+    _c("div", {
+      staticClass: "page-grid-item-4",
+      staticStyle: { background: "rgb(38, 55, 64)" }
+    }),
+    _vm._v(" "),
+    _c("div", {
+      staticClass: "page-grid-item-5",
+      staticStyle: { background: "#555" }
+    }),
+    _vm._v(" "),
+    _c("div", {
+      staticClass: "page-grid-item-6",
+      staticStyle: { background: "rgb(38, 55, 64)" }
+    }),
+    _vm._v(" "),
+    _c("div", {
+      staticClass: "page-grid-item-7",
+      staticStyle: { background: "#1e2c33" }
+    }),
+    _vm._v(" "),
+    _c("div", { staticClass: "page-grid-item-8" }, [_c("businesses")], 1),
+    _vm._v(" "),
+    _c("div", { staticClass: "page-grid-item-9" }, [_vm._v("laksdj")])
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -47762,7 +47777,10 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "pl-2", staticStyle: { background: "#ddd" } },
+      {
+        staticClass: "pl-2 page-grid-item-2",
+        staticStyle: { background: "#ddd" }
+      },
       [_c("h2", [_vm._v("Listings")])]
     )
   }
@@ -47855,6 +47873,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'business',
@@ -47888,66 +47915,64 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "listings-page-container" }, [
-    _c("div", [_vm._v("laksdj")]),
-    _vm._v(" "),
-    _vm.business
-      ? _c("div", { staticClass: "card business-card mb-2" }, [
-          _c("div", { staticClass: "crad-thumb" }, [
-            _c("img", {
-              staticStyle: { width: "100%" },
-              attrs: { src: _vm.business.image }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c(
-              "h3",
-              { staticClass: "card-title mt-1" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      to: {
-                        name: "business",
-                        params: { businessid: _vm.business.businessid }
-                      }
-                    }
-                  },
-                  [_vm._v(_vm._s(_vm.business.title))]
-                )
-              ],
-              1
-            ),
+  return _vm.business
+    ? _c("div", { staticClass: "listings-page-container" }, [
+        _c("div", {
+          staticClass: "page-grid-item-1",
+          staticStyle: { background: "#1e2c33" }
+        }),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "pl-2 page-grid-item-2",
+            staticStyle: { background: "#ddd" }
+          },
+          [_c("h2", [_vm._v(_vm._s(_vm.business.title))])]
+        ),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "page-grid-item-3",
+          staticStyle: { background: "#eee" }
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "page-grid-item-4",
+          staticStyle: { background: "rgb(38, 55, 64)" }
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "page-grid-item-5",
+          staticStyle: { background: "#555" }
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "page-grid-item-6",
+          staticStyle: { background: "rgb(38, 55, 64)" }
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "page-grid-item-7",
+          staticStyle: { background: "#1e2c33" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "page-grid-item-8" }, [
+          _c("div", { staticClass: "card business-card mb-2" }, [
+            _c("div", { staticClass: "crad-thumb" }, [
+              _c("img", {
+                staticStyle: { width: "100%" },
+                attrs: { src: _vm.business.image }
+              })
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-text" }, [
-              _c("p", [
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(_vm.business.contacts.join()) +
-                    "\n                        "
-                ),
-                _c("br"),
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(_vm.business.address) +
-                    "\n                    "
-                )
-              ]),
-              _vm._v(
-                "\n                    " +
-                  _vm._s(_vm.business.body) +
-                  "\n                    "
-              ),
+            _c("div", { staticClass: "card-body" }, [
               _c(
-                "p",
-                { staticClass: "mt-2" },
+                "h3",
+                { staticClass: "card-title mt-1" },
                 [
                   _c(
                     "router-link",
                     {
-                      staticClass: "btn btn-primary",
                       attrs: {
                         to: {
                           name: "business",
@@ -47955,18 +47980,59 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("Show")]
+                    [_vm._v(_vm._s(_vm.business.title))]
                   )
                 ],
                 1
-              )
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-text" }, [
+                _c("p", [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.business.contacts.join()) +
+                      "\n                            "
+                  ),
+                  _c("br"),
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.business.address) +
+                      "\n                        "
+                  )
+                ]),
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(_vm.business.body) +
+                    "\n                        "
+                ),
+                _c(
+                  "p",
+                  { staticClass: "mt-2" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: {
+                          to: {
+                            name: "business",
+                            params: { businessid: _vm.business.businessid }
+                          }
+                        }
+                      },
+                      [_vm._v("Show")]
+                    )
+                  ],
+                  1
+                )
+              ])
             ])
           ])
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    _c("div", [_vm._v("laksdj")])
-  ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "page-grid-item-9" }, [_vm._v("laksdj")])
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -48177,7 +48243,7 @@ var render = function() {
     [
       _c(
         "div",
-        { staticClass: "header" },
+        { staticClass: "header text-center" },
         [
           _c(
             "router-link",
