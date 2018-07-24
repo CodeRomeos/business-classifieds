@@ -499,7 +499,6 @@ input[type=text] {
 .pl-1,
 input[type=text],
 .header a,
-.search input[type=text],
 .navbar a {
   padding-left: 1rem !important;
 }
@@ -511,7 +510,6 @@ input[type=text],
 .pr-1,
 input[type=text],
 .header a,
-.search input[type=text],
 .navbar a {
   padding-right: 1rem !important;
 }
@@ -644,6 +642,11 @@ input[type=text],
   padding-right: 5rem !important;
 }
 
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 h1,
 h2,
 h3 {
@@ -692,6 +695,10 @@ input[type=text] {
 .search input[type=text],
 .navbar a {
   line-height: 60px;
+}
+
+.header a,
+.navbar a {
   display: inline-block;
 }
 

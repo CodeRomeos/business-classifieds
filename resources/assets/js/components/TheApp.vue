@@ -5,8 +5,8 @@
                 {{ APP_NAME }}
             </router-link>
 		</div>
-		<div class="search"><input type='text' placeholder='search...'></div>
 		<navbar />
+        <div class="search"><input type='text' placeholder='search...'></div>
         <div class="main">
             <transition name='fade'>
             <router-view></router-view>
