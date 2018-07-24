@@ -4,10 +4,81 @@
 
 // Variables
 @import "variables";
+@import '~normalize.scss/normalize';
+@import "mixin";
+
+h1, h2, h3 {
+	font-family: 'Raleway', sans-serif;
+}
+body {
+	background: $body-bg;
+	font-family: 'Raleway', sans-serif;
+}
+.container {
+	display: grid;
+	grid-template-areas:
+		"header"
+		"nav"
+		"search"
+		"main"
+		"footer";
+}
+
+.homepage-container {
+	display: grid;
+	grid-template-columns: 1fr 6fr 1fr;
+	grid-template-areas:
+	"hero hero hero"
+	". content .";
+}
+
+.header {
+	grid-area: header;
+	background: #333;
+}
+
+.main {
+	grid-area: main;
+}
+
+.search {
+	grid-area: search;
+	background: #777;
+}
+
+nav {
+	grid-area: nav;
+	background: #ddd;
+}
+
+.hero {
+	grid-area: hero;
+	background: yellow;
+	line-height: 0
+}
+
+.content {
+	grid-area: content;
+}
+.business-card {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	grid-column-gap: 20px;
+}
+.card{
+	@include card();
+}
+.text-enter {
+	text-align: center !important
+}
+a {
+	color: $bg-primary
+}
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
 
+/*
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -50,6 +121,7 @@ body {
         padding-top: 56px;
     }
 }
+*/
 .fade-enter-active, .fade-leave-active {
   transition: opacity .2s;
 }
@@ -67,3 +139,5 @@ body {
   transform: translateX(10px);
   opacity: 0;
 }
+
+@import "media-queries";

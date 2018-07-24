@@ -1,7 +1,13 @@
 <template>
-    <div id="app">
-        <navbar></navbar>
-        <div class="content">
+    <div id="app" class='container'>
+        <div class="header">
+			<router-link to="/" class='navbar-brand'>
+                {{ APP_NAME }}
+            </router-link>
+		</div>
+		<div class="search">search</div>
+		<navbar />
+        <div class="main">
             <transition name='fade'>
             <router-view></router-view>
             </transition>

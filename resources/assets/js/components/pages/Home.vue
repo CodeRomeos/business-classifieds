@@ -1,6 +1,11 @@
 <template>
-    <section id='home'>
-        <div id='banner' class='mb-5'>
+    <section id='home' class='homepage-container'>
+		<div class="hero"><img src='/images/banner1.jpg' style='width: 100%'></div>
+		<div class="content">
+			<h1>{{ welcome }}</h1>
+        	<businesses />
+		</div>
+        <!-- <div id='banner' class='mb-5'>
             <img src='/images/banner1.jpg' class='img-fluid'>
         </div>
         <div class="container-fluid">
@@ -14,6 +19,7 @@
                 </div>
             </div>
         </div>
+		-->
     </section>
 </template>
 

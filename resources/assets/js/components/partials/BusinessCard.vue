@@ -1,12 +1,10 @@
 <template>
 	<div class="card business-card mb-4">
+		<div class="crad-thumb">
+			<img :src="business.image" style='width: 100%'>
+		</div>
 		<div class="card-body">
-			<div class="row">
-				<div class="col-md-5">
-					<img :src="business.image" style='width: 100%'>
-				</div>
-				<div class="col-md-7">
-					<h3 class="card-title"><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link></h3>
+				<h3 class="card-title"><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link></h3>
 					<div class="card-text">
 						<p>
 							{{ business.contacts.join() }}
@@ -18,10 +16,6 @@
 						<router-link class='btn btn-primary' :to="{ name: 'business', params: { businessid: business.businessid }}">Show</router-link>
 						</p>
 					</div>
-				</div>
-
-			</div>
-
 		</div>
 	</div>
 </template>
