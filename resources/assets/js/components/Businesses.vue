@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import BusinessCard from './partials/business-card';
+import BusinessCard from './partials/BusinessCard';
 export default {
 	name: 'businesses',
 	created() {

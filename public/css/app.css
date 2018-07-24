@@ -10475,6 +10475,12 @@ a.text-dark:focus {
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+h1,
+.h1 {
+  margin-top: 39px;
+  margin-bottom: 2.5rem;
+}
+
 .btn {
   border-radius: 0;
 }
@@ -10491,9 +10497,7 @@ h3,
 .card {
   border: none;
   border-radius: 0;
-  padding: 33px;
-  -webkit-box-shadow: 0px 5px 10px #dfdfdf;
-          box-shadow: 0px 5px 10px #dfdfdf;
+  padding: 20px;
 }
 
 .card-text {

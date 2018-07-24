@@ -2,10 +2,10 @@
 	<div class="card business-card mb-4">
 		<div class="card-body">
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-md-5">
 					<img :src="business.image" style='width: 100%'>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-7">
 					<h3 class="card-title"><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link></h3>
 					<div class="card-text">
 						<p>
@@ -14,13 +14,12 @@
 							{{ business.address }}
 						</p>
 						{{ business.body }}
+						<p class='mt-2'>
+						<router-link class='btn btn-primary' :to="{ name: 'business', params: { businessid: business.businessid }}">Show</router-link>
+						</p>
 					</div>
 				</div>
-				<div class="col-md-3">
-					<br>
-					<br>
-					<router-link class='btn btn-primary btn-lg' :to="{ name: 'business', params: { businessid: business.businessid }}">Show</router-link>
-				</div>
+
 			</div>
 
 		</div>
