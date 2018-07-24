@@ -21,10 +21,10 @@ class Business extends JsonResource
             'body' => $this->body,
             // 'image' => asset($this->image),
             'image' => $this->image,
-            'contacts' => $this->contacts,
+            'contacts' => $this->contactsParsed,
             'city' => $this->city,
             'address' => $this->address,
-            'emails' => $this->emails
+            'emails' => $this->emailsParsed
         ];
     }
 }

@@ -12,10 +12,27 @@ class Business extends Model
         'emails' => 'array',
         'urls' => 'array',
         'contacts' => 'array'
-    ];
+	];
+
+	public $appends = ['contactsParsed', 'urlsParsed', 'emailsParsed'];
 
     public function user()
     {
     	return $this->hasMany('App\User');
+	}
+
+    public function getContactsParsedAttribute()
+    {
+        return is_array($this->contacts) ? $this->contacts : (array) json_decode($this->contacts);
+	}
+
+	public function getUrlsParsedAttribute()
+    {
+        return is_array($this->urls) ? $this->urls : (array) json_decode($this->urls);
+	}
+
+	public function getEmailsParsedAttribute()
+    {
+        return is_array($this->emails) ? $this->emails : (array) json_decode($this->emails);
     }
 }
