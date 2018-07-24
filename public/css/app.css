@@ -726,7 +726,6 @@ input[type=text] {
 }
 
 .search input[type=text] {
-  height: 100%;
   width: 100%;
 }
 
