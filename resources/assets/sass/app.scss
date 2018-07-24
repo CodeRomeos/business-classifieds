@@ -9,6 +9,7 @@
 
 h1, h2, h3 {
 	font-family: 'Raleway', sans-serif;
+	color: #2f2520;
 }
 body {
 	background: $body-bg;
@@ -30,6 +31,7 @@ body {
 	grid-template-areas:
 	"hero hero hero"
 	". content .";
+	// @extend .mt-5;
 }
 
 .header {
@@ -62,17 +64,27 @@ nav {
 }
 .business-card {
 	display: grid;
-	grid-template-columns: 1fr 2fr;
 	grid-column-gap: 20px;
 }
 .card{
 	@include card();
+	.card-title {
+		color: #222;
+		font-size: 22px;
+		a {
+			color: #222;
+		}
+	}
+	.card-text {
+		font-size: 1.2em;
+	}
 }
+
 .text-enter {
 	text-align: center !important
 }
 a {
-	color: $bg-primary
+	text-decoration: none
 }
 
 // Bootstrap

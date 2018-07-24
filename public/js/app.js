@@ -47339,7 +47339,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card business-card mb-4" }, [
+  return _c("div", { staticClass: "card business-card mb-2" }, [
     _c("div", { staticClass: "crad-thumb" }, [
       _c("img", {
         staticStyle: { width: "100%" },
@@ -47350,7 +47350,7 @@ var render = function() {
     _c("div", { staticClass: "card-body" }, [
       _c(
         "h3",
-        { staticClass: "card-title" },
+        { staticClass: "card-title mt-1" },
         [
           _c(
             "router-link",
@@ -47371,16 +47371,12 @@ var render = function() {
       _c("div", { staticClass: "card-text" }, [
         _c("p", [
           _vm._v(
-            "\n\t\t\t\t\t\t" +
-              _vm._s(_vm.business.contacts.join()) +
-              "\n\t\t\t\t\t\t"
+            "\n\t\t\t\t" + _vm._s(_vm.business.contacts.join()) + "\n\t\t\t\t"
           ),
           _c("br"),
-          _vm._v(
-            "\n\t\t\t\t\t\t" + _vm._s(_vm.business.address) + "\n\t\t\t\t\t"
-          )
+          _vm._v("\n\t\t\t\t" + _vm._s(_vm.business.address) + "\n\t\t\t")
         ]),
-        _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.business.body) + "\n\t\t\t\t\t"),
+        _vm._v("\n\t\t\t" + _vm._s(_vm.business.body) + "\n\t\t\t"),
         _c(
           "p",
           { staticClass: "mt-2" },
@@ -47614,7 +47610,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "content" },
+        { staticClass: "content mt-2" },
         [
           _c("h1", [_vm._v(_vm._s(_vm.welcome))]),
           _vm._v(" "),

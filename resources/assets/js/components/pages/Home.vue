@@ -1,7 +1,7 @@
 <template>
     <section id='home' class='homepage-container'>
 		<div class="hero"><img src='/images/banner1.jpg' style='width: 100%'></div>
-		<div class="content">
+		<div class="content mt-2">
 			<h1>{{ welcome }}</h1>
         	<businesses />
 		</div>
