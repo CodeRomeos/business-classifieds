@@ -42,7 +42,12 @@ body {
 }
 
 a {
-	text-decoration: none
+    text-decoration: none;
+    color: #2196F3;
+
+    &:hover {
+        color: #3F51B5;
+    }
 }
 
 input[type=text] {
@@ -53,8 +58,9 @@ input[type=text] {
     @extend .pr-1;
 }
 
-.add-listing-CTA {
+.home-ad-listing-CTA {
     grid-area: addlistingcta;
+    align-self: center;
 }
 
 .hero {
@@ -204,4 +210,10 @@ input[type=text] {
 
 .home-ad-block {
 	grid-area: homeadblock
+}
+
+.btn-CTA {
+    background: #e25021;
+    padding: 15px 25px;
+    @extend .text-white;
 }

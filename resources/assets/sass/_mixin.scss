@@ -1,17 +1,3 @@
-@mixin card() {
-	background-color: #fff;
-	padding: 20px;
-	margin-bottom: 15px;
-  }
-
-	//Images
-
-@mixin img-fluid {
-	max-width: 100%;
-	height: auto;
-}
-
-
 //Spaces
 $spaceamounts: (0, 1, 2, 3, 4, 5); // Adjust this to include the pixel amounts you need.
 $sides: ( "", top, bottom, left, right); // Leave this variable alone
@@ -47,4 +33,17 @@ $repeat: 6;  // How often you want the pattern to repeat.
     #category-thumbs a:nth-child(#{length($colors)}n+#{$i}) {
 		background: nth($colors, $i);
     }
+}
+
+@mixin card() {
+	background-color: #fff;
+	@extend .p-2;
+	margin-bottom: 15px;
+}
+
+	//Images
+
+@mixin img-fluid {
+	max-width: 100%;
+	height: auto;
 }

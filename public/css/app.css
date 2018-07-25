@@ -4554,6 +4554,7 @@ input[type=text],
 }
 
 .p-2,
+.card,
 #category-thumbs a {
   padding: 2rem !important;
 }
@@ -4815,7 +4816,8 @@ body {
 .navbar a:hover,
 .header a,
 #category-thumbs a,
-#category-thumbs a:hover {
+#category-thumbs a:hover,
+.btn-CTA {
   color: #FFF !important;
 }
 
@@ -4835,14 +4837,21 @@ body {
 
 a {
   text-decoration: none;
+  color: #2196F3;
+}
+
+a:hover {
+  color: #3F51B5;
 }
 
 input[type=text] {
   border: 0;
 }
 
-.add-listing-CTA {
+.home-ad-listing-CTA {
   grid-area: addlistingcta;
+  -ms-flex-item-align: center;
+      align-self: center;
 }
 
 .hero {
@@ -4903,7 +4912,6 @@ input[type=text] {
 
 .card {
   background-color: #fff;
-  padding: 20px;
   margin-bottom: 15px;
 }
 
@@ -4967,7 +4975,6 @@ input[type=text] {
 
 #category-thumbs a {
   background-color: #fff;
-  padding: 20px;
   margin-bottom: 15px;
   background: transparent;
   position: relative;
@@ -4997,6 +5004,11 @@ input[type=text] {
 
 .home-ad-block {
   grid-area: homeadblock;
+}
+
+.btn-CTA {
+  background: #e25021;
+  padding: 15px 25px;
 }
 
 @media (min-width: 768px) {
