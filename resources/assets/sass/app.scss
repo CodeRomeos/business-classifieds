@@ -67,7 +67,9 @@ input[type=text] {
 
 .homepage-container {
 	display: grid;
-	// @extend .mt-5;
+	grid-template-areas:
+        "addlistingcta"
+        "content";
 }
 
 
@@ -84,7 +86,8 @@ input[type=text] {
 }
 
 .content {
-    grid-area: content;    
+	grid-area: content;
+	@extend .p-1;
 }
 
 .header a,

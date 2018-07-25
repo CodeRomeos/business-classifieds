@@ -488,7 +488,8 @@ input[type=text] {
   margin: 1rem !important;
 }
 
-.p-1 {
+.p-1,
+.content {
   padding: 1rem !important;
 }
 
@@ -774,6 +775,7 @@ input[type=text] {
 
 .homepage-container {
   display: grid;
+  grid-template-areas: "addlistingcta" "content";
 }
 
 .add-listing-CTA {
@@ -905,8 +907,8 @@ input[type=text] {
   }
 
   .homepage-container {
-    grid-template-columns: 300px auto 250px;
-    grid-template-areas: "addlistingcta hero hero" ". content .";
+    grid-template-columns: 150px 150px auto 150px 150px;
+    grid-template-areas: "addlistingcta addlistingcta hero hero hero" ". content content content .";
   }
 }
 
