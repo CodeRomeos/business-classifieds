@@ -1,0 +1,27 @@
+.container {
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-areas:
+		"header"
+		"nav"
+		"search"
+		"main"
+		"footer";
+}
+
+.listings-page-container {
+	display: grid;
+	grid-template-columns: 100%;
+    grid-template-areas:
+        "addlistingcta"
+        "content";
+}
+
+.homepage-container {
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-areas:
+		"addlistingcta"
+		"content"
+		"homeadblock";
+}

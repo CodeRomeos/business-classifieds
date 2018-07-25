@@ -21,20 +21,30 @@ $sides: ( "", top, bottom, left, right); // Leave this variable alone
 				.m-#{$space} {
 					margin: #{$space}rem !important;
 				}
-	
+
 				.p-#{$space} {
 					padding: #{$space}rem !important;
-				}			
+				}
 		}
 		@else {
 			.m#{str-slice($side, 0, 1)}-#{$space} {
 				margin-#{$side}: #{$space}rem !important;
 			}
-	
+
 			.p#{str-slice($side, 0, 1)}-#{$space} {
 				padding-#{$side}: #{$space}rem !important;
-			}			
+			}
 		}
-		
+
 	}
+}
+
+$colors: #F44336, #3F51B5, #9C27B0, #4CAF50, #00BCD4, #CDDC39;
+$repeat: 6;  // How often you want the pattern to repeat.
+// Warning: a higher number outputs more CSS.
+
+@for $i from 1 through $repeat {
+    #category-thumbs a:nth-child(#{length($colors)}n+#{$i}) {
+		background: nth($colors, $i);
+    }
 }

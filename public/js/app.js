@@ -47160,6 +47160,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Businesses_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Businesses_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_Sidebar_vue__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_Sidebar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__partials_Sidebar_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__partials_CategoryThumbs_vue__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__partials_CategoryThumbs_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__partials_CategoryThumbs_vue__);
 //
 //
 //
@@ -47174,6 +47176,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+
 
 
 
@@ -47187,7 +47195,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	components: {
 		Businesses: __WEBPACK_IMPORTED_MODULE_0__Businesses_vue___default.a,
-		Sidebar: __WEBPACK_IMPORTED_MODULE_1__partials_Sidebar_vue___default.a
+		Sidebar: __WEBPACK_IMPORTED_MODULE_1__partials_Sidebar_vue___default.a,
+		CategoryThumbs: __WEBPACK_IMPORTED_MODULE_2__partials_CategoryThumbs_vue___default.a
 	}
 });
 
@@ -47599,10 +47608,14 @@ var render = function() {
       _vm._v(" "),
       _vm._m(1),
       _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
       _c(
         "div",
-        { staticClass: "content mt-2" },
+        { staticClass: "content" },
         [
+          _c("category-thumbs"),
+          _vm._v(" "),
           _c("h1", [_vm._v(_vm._s(_vm.welcome))]),
           _vm._v(" "),
           _c("businesses")
@@ -47635,6 +47648,22 @@ var staticRenderFns = [
         attrs: { src: "/images/banner1.jpg" }
       })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "pr-2 pl-2 home-ad-block bg-primary text-white" },
+      [
+        _c("h2", [_vm._v("List your business for FREE!")]),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-CTA", attrs: { href: "#!" } }, [
+          _vm._v("List My Business")
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -48216,7 +48245,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "nav",
-    { staticClass: "navbar" },
+    { staticClass: "navbar clearfix" },
     [
       _c("router-link", { attrs: { to: "/" } }, [_vm._v("Home")]),
       _vm._v(" "),
@@ -48294,6 +48323,164 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-7a9a8bb2", module.exports)
+  }
+}
+
+/***/ }),
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(92)
+/* template */
+var __vue_template__ = __webpack_require__(93)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\partials\\CategoryThumbs.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6a76ec9e", Component.options)
+  } else {
+    hotAPI.reload("data-v-6a76ec9e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 92 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	name: 'category-thumbs'
+});
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "text-center", attrs: { id: "category-thumbs" } },
+      [
+        _c("a", { attrs: { href: "#!" } }, [
+          _c("span", { staticClass: "fa fa-2x fa-building" }),
+          _c("br"),
+          _c("br"),
+          _vm._v("Category")
+        ]),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "#!" } }, [
+          _c("span", { staticClass: "fa fa-2x fa-building" }),
+          _c("br"),
+          _c("br"),
+          _vm._v("Category")
+        ]),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "#!" } }, [
+          _c("span", { staticClass: "fa fa-2x fa-building" }),
+          _c("br"),
+          _c("br"),
+          _vm._v("Category")
+        ]),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "#!" } }, [
+          _c("span", { staticClass: "fa fa-2x fa-building" }),
+          _c("br"),
+          _c("br"),
+          _vm._v("Category")
+        ]),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "#!" } }, [
+          _c("span", { staticClass: "fa fa-2x fa-building" }),
+          _c("br"),
+          _c("br"),
+          _vm._v("Category")
+        ]),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "#!" } }, [
+          _c("span", { staticClass: "fa fa-2x fa-building" }),
+          _c("br"),
+          _c("br"),
+          _vm._v("Category")
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6a76ec9e", module.exports)
   }
 }
 

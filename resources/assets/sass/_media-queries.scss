@@ -8,8 +8,8 @@
     .homepage-container {
         grid-template-columns: 150px 150px auto 150px 150px;
         grid-template-areas:
-            "addlistingcta addlistingcta hero hero hero"
-            ". content content content .";
+			"addlistingcta addlistingcta hero hero hero"
+            "homeadblock homeadblock content content content";
     }
 }
 @media (min-width: 992px) {
