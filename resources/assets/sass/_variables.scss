@@ -5,5 +5,12 @@ $bg-primary: #FA503B;
 
 // Typography
 $font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 0.9rem;
+$font-size-base: 0.9rem !default;
 $line-height-base: 1.6;
+
+$h1-font-size:                $font-size-base * 2.5 !default;
+$h2-font-size:                $font-size-base * 2 !default;
+$h3-font-size:                $font-size-base * 1.75 !default;
+$h4-font-size:                $font-size-base * 1.5 !default;
+$h5-font-size:                $font-size-base * 1.25 !default;
+$h6-font-size:                $font-size-base !default;

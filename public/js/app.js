@@ -47174,17 +47174,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -47608,6 +47597,8 @@ var render = function() {
     [
       _vm._m(0),
       _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
       _c(
         "div",
         { staticClass: "content mt-2" },
@@ -47622,6 +47613,18 @@ var render = function() {
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "add-listing-CTA pr-2 pl-2" }, [
+      _c("h2", [_vm._v("List your business for FREE!")]),
+      _vm._v(" "),
+      _c("a", { staticClass: "btn btn-CTA", attrs: { href: "#!" } }, [
+        _vm._v("List My Business")
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -47715,6 +47718,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -47750,10 +47755,11 @@ var render = function() {
       staticStyle: { background: "rgb(38, 55, 64)" }
     }),
     _vm._v(" "),
-    _c("div", {
-      staticClass: "page-grid-item-5",
-      staticStyle: { background: "#555" }
-    }),
+    _c(
+      "div",
+      { staticClass: "page-grid-item-5", staticStyle: { background: "#555" } },
+      [_vm._v(" \n            icons\n        ")]
+    ),
     _vm._v(" "),
     _c("div", {
       staticClass: "page-grid-item-6",
@@ -47781,7 +47787,7 @@ var staticRenderFns = [
         staticClass: "pl-2 page-grid-item-2",
         staticStyle: { background: "#ddd" }
       },
-      [_c("h2", [_vm._v("Listings")])]
+      [_c("h2", [_vm._v("Search")])]
     )
   }
 ]

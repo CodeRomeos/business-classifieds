@@ -11,10 +11,18 @@
 * {
     box-sizing: border-box;
 }
-h1, h2, h3 {
-	font-family: 'Raleway', sans-serif;
-	color: #2f2520;
-}
+h1, .h1 { font-size: $h1-font-size; }
+h2, .h2 { font-size: $h2-font-size; }
+h3, .h3 { font-size: $h3-font-size; }
+h4, .h4 { font-size: $h4-font-size; }
+h5, .h5 { font-size: $h5-font-size; }
+h6, .h6 { font-size: $h6-font-size; }
+
+// Transformation
+.text-lowercase  { text-transform: lowercase !important; }
+.text-uppercase  { text-transform: uppercase !important; }
+.text-capitalize { text-transform: capitalize !important; }
+
 body {
 	background: $body-bg;
 	font-family: 'Lato', sans-serif;
@@ -44,6 +52,9 @@ a {
 
 .listings-page-container {
     display: grid;
+    grid-template-areas:
+        "addlistingcta"
+        "content";
 }
 
 input[type=text] {
@@ -56,11 +67,24 @@ input[type=text] {
 
 .homepage-container {
 	display: grid;
-	grid-template-columns: 1fr 6fr 1fr;
-	grid-template-areas:
-	"hero hero hero"
-	". content .";
 	// @extend .mt-5;
+}
+
+
+.add-listing-CTA {
+    grid-area: addlistingcta;
+}
+
+
+.hero {
+	grid-area: hero;
+    line-height: 0;
+    height: 300px;
+    overflow: hidden
+}
+
+.content {
+    grid-area: content;    
 }
 
 .header a,
@@ -114,14 +138,7 @@ input[type=text] {
 	background: #f5f8fa;
 }
 
-.hero {
-	grid-area: hero;
-	line-height: 0
-}
 
-.content {
-	grid-area: content;
-}
 .business-card {
 	display: grid;
 	grid-column-gap: 20px;
@@ -143,50 +160,18 @@ input[type=text] {
 // Bootstrap
 // @import '~bootstrap/scss/bootstrap';
 
-/*
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
-
-h1, .h1 {
-	margin-top: 39px;
-	margin-bottom: 2.5rem
-}
 
 .btn {
-    border-radius: 0
+    display: inline-block;
+    @extend .text-center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
 }
-a {
-    color: #03a9f4
-}
-
-h3,
-.business-card .card-title {
-    font-weight: bold
-}
-
-.card {
-	border: none;
-    border-radius: 0;
-    padding: 20px;
-    // box-shadow: 0px 5px 10px #dfdfdf;
+.img-fluid {
+    @include img-fluid;
 }
 
-.card-text {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 16px
-}
-
-body {
-    padding-top: 54px;
-}
-@media (min-width: 992px) {
-    body {
-        padding-top: 56px;
-    }
-}
-*/
 .fade-enter-active, .fade-leave-active {
   transition: opacity .2s;
 }
@@ -204,5 +189,27 @@ body {
   transform: translateX(10px);
   opacity: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @import "media-queries";

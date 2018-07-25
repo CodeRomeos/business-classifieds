@@ -1,25 +1,14 @@
 <template>
     <section id='home' class='homepage-container'>
+        <div class='add-listing-CTA pr-2 pl-2'>
+            <h2>List your business for FREE!</h2>
+            <a href="#!" class="btn btn-CTA">List My Business</a>
+        </div>
 		<div class="hero"><img src='/images/banner1.jpg' style='width: 100%'></div>
 		<div class="content mt-2">
 			<h1>{{ welcome }}</h1>
         	<businesses />
 		</div>
-        <!-- <div id='banner' class='mb-5'>
-            <img src='/images/banner1.jpg' class='img-fluid'>
-        </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-3 offset-md-1">
-					<sidebar />
-                </div>
-                <div class="col-md-7">
-                    <h1>{{ welcome }}</h1>
-                    <businesses />
-                </div>
-            </div>
-        </div>
-		-->
     </section>
 </template>
 
