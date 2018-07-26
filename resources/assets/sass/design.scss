@@ -136,10 +136,6 @@ nav {
 	@extend .pt-2;
 }
 
-.content {
-	grid-area: content
-}
-
 .card{
 	@include card();
 	.card-title {
