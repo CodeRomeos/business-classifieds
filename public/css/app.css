@@ -4802,7 +4802,8 @@ header {
   margin: 1.5rem !important;
 }
 
-.p-4 {
+.p-4,
+.business-card {
   padding: 1.5rem !important;
 }
 
@@ -5061,6 +5062,17 @@ header {
   }
 }
 
+.business-card {
+  display: grid;
+  grid-column-gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .business-card {
+    grid-template-columns: minmax(200px, 350px) auto;
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -5237,11 +5249,6 @@ nav a,
 
 .content {
   grid-area: content;
-}
-
-.business-card {
-  display: grid;
-  grid-column-gap: 20px;
 }
 
 .card {

@@ -72,3 +72,13 @@ header {
 		}
 	}
 }
+
+
+.business-card {
+    display: grid;
+    grid-column-gap: 20px;
+    @extend .p-4;
+    @include tablet {
+        grid-template-columns: minmax(200px, 350px) auto
+    }
+}

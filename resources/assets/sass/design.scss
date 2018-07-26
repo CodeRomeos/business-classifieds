@@ -140,11 +140,6 @@ nav {
 	grid-area: content
 }
 
-.business-card {
-	display: grid;
-	grid-column-gap: 20px;
-}
-
 .card{
 	@include card();
 	.card-title {
