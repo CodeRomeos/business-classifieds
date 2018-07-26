@@ -3,25 +3,72 @@
 	grid-template-columns: 100%;
 	grid-template-areas:
 		"header"
-		"nav"
-		"search"
 		"main"
 		"footer";
-}
 
-.listings-page-container {
-	display: grid;
-	grid-template-columns: 100%;
-    grid-template-areas:
-        "addlistingcta"
-        "content";
+	@include mobile {
+		grid-template-columns: 10px 250px auto 250px 10px;
+        grid-template-areas:
+			"header header header header header"
+			"main main main main main"
+			"footer footer footer footer footer";
+	}
+
+	@include tablet {
+		grid-template-columns: 40px 300px auto 300px 40px;
+	}
+
+	@include desktop {
+		grid-template-columns: 120px 300px auto 300px 120px;
+	}
 }
 
 .homepage-container {
 	display: grid;
-	grid-template-columns: 100%;
+	grid-template-rows: 250px auto;
 	grid-template-areas:
-		"addlistingcta"
-		"content"
-		"homeadblock";
+		"hero"
+		"content";
+}
+
+header {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas:
+		"navbarbrand nav"
+		"headermid headermid";
+	align-items: center;
+
+	@include mobile {
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas:
+			"navbarbrand nav"
+			"headermid";
+		border: 0;
+	}
+
+	@include tablet {
+		grid-template-columns: 40px 300px auto 300px 40px;
+		grid-template-areas:
+			". navbarbrand headermid nav .";
+	}
+
+	@include desktop {
+		grid-template-columns: 120px 300px auto 300px 120px;
+	}
+}
+
+.listing-search-form {
+	form{
+		display: grid;
+		column-gap: 5px;
+
+		@include mobile {
+			grid-template-columns: 1.20fr 1.20fr 0.6fr;
+		}
+
+		@include tablet {
+			grid-template-columns: 1.20fr 1.20fr 0.6fr;
+		}
+	}
 }

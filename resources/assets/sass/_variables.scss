@@ -2,6 +2,7 @@
 // Body
 $body-bg: #f5f8fa;
 $bg-primary: #f75724;
+$bg-white: #FFF;
 
 // Typography
 $font-family-sans-serif: "Raleway", sans-serif;
@@ -14,3 +15,8 @@ $h3-font-size:                $font-size-base * 1.75 !default;
 $h4-font-size:                $font-size-base * 1.5 !default;
 $h5-font-size:                $font-size-base * 1.25 !default;
 $h6-font-size:                $font-size-base !default;
+
+// RWD
+$mobile-width: 576px;
+$tablet-width: 768px;
+$desktop-width: 992px;

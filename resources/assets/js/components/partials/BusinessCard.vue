@@ -1,7 +1,7 @@
 <template>
 	<div class="card business-card mb-2">
 		<div class="crad-thumb">
-			<img :src="business.image" style='width: 100%'>
+			<img :src="business.image" class='img-fluid'>
 		</div>
 		<div class="card-body">
 			<h3 class="card-title mt-1"><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link></h3>

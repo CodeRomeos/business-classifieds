@@ -1,17 +1,22 @@
 <template>
     <div id="app" class='container'>
-        <div class="header text-center">
-			<router-link to="/" class='navbar-brand'>
+        <header class="header">
+			<router-link to="/" class='navbar-brand' style="font-size: 45px;">
                 {{ APP_NAME }}
             </router-link>
-		</div>
-		<navbar />
-        <div class="search"><input type='text' placeholder='search...'></div>
-        <div class="main">
+			<div class='header-mid text-center'>
+				<a href='#'><strong>Claim you listing</strong></a>
+			</div>
+			<navbar />
+		</header>
+        <main class="main">
             <transition name='fade'>
             <router-view></router-view>
             </transition>
-        </div>
+        </main>
+		<footer class="footer">
+			footer
+		</footer>
     </div>
 </template>
 

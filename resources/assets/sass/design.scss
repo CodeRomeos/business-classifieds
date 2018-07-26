@@ -16,6 +16,13 @@ h6, .h6 { font-size: $h6-font-size; }
 .text-uppercase  { text-transform: uppercase !important; }
 .text-capitalize { text-transform: capitalize !important; }
 
+//Positions
+.isRelative{ position: relative}
+.isAbsolute{ position: absolute}
+.isFixed{ position: fixed;}
+
+
+
 .clearfix {
 	clear: both;
 }
@@ -34,16 +41,21 @@ body {
 }
 
 .bg-white {
-	background-color: #FFF !important;
+	background-color: $bg-white !important;
 }
-
+.text-dark-light{
+	color: #525454
+}
 .text-center {
 	text-align: center
 }
 
+.text-right {
+	text-align: right
+}
+
 a {
     text-decoration: none;
-    color: #2196F3;
 
     &:hover {
         color: #3F51B5;
@@ -58,74 +70,56 @@ input[type=text] {
     @extend .pr-1;
 }
 
-.home-ad-listing-CTA {
-    grid-area: addlistingcta;
-    align-self: center;
+header {
+	grid-area: header;
+	background: #FFF;
+	@extend .border-1;
+}
+
+main {
+	grid-area: main;
+}
+
+footer {
+	grid-area: footer;
+}
+
+.navbar-brand {
+	grid-area: navbarbrand;
+	@extend .text-dark-light;
+}
+
+nav {
+	grid-area: nav;
+	@extend .text-right
+}
+
+.header-mid {
+	grid-area: headermid;
+}
+
+.navbar-brand,
+.header-mid,
+nav {
+	@extend .p-2;
 }
 
 .hero {
 	grid-area: hero;
-    line-height: 0;
-    height: 300px;
-    overflow: hidden
+	@extend .bg-white;
+	// @extend .px-5;
+	@extend .pt-2;
 }
 
 .content {
-	grid-area: content;
+	grid-area: content
 }
-
-.header a,
-.search input[type=text],
-.navbar a {
-    line-height: 60px;
-}
-
-.navbar a {
-	color: #333;
-	float: left;
-	@extend .pl-1;
-	@extend .pr-1;
-}
-
-.navbar .router-link-exact-active,
-.navbar a:hover {
-    background: #e25021;
-    @extend .text-white
-}
-
-.header {
-	grid-area: header;
-    background: #FF5722;
-
-    a {
-        @extend .text-white
-    }
-}
-
-.main {
-	grid-area: main;
-}
-
-.search {
-	grid-area: search;
-    background: #777;
-    height: 55px
-}
-
-.search input[type=text] {
-    width: 100%
-}
-
-.navbar {
-	grid-area: nav;
-	background: #f5f8fa;
-}
-
 
 .business-card {
 	display: grid;
 	grid-column-gap: 20px;
 }
+
 .card{
 	@include card();
 	.card-title {
@@ -135,14 +129,7 @@ input[type=text] {
 			color: #222;
 		}
 	}
-	.card-text {
-
-	}
 }
-
-// Bootstrap
-// @import '~bootstrap/scss/bootstrap';
-
 
 .btn {
 	display: inline-block;
@@ -151,69 +138,31 @@ input[type=text] {
     vertical-align: middle;
     user-select: none;
 }
+
 .img-fluid {
     @include img-fluid;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .2s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
-.slide-fade-enter-active {
-  transition: all .3s ease;
-}
-.slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateX(10px);
-  opacity: 0;
-}
+.listing-search-form {
+	.form{
+		background: $body-bg;
+		margin-top: 80px;
+	}
+	.input-container{
 
-#category-thumbs {
-	background: rgb(30, 44, 51);
-	grid-area: categorythumbs;
-	a {
-		@extend .p-2;
-		@include card();
-		@extend .btn;
-		@extend .mb-0;
-		@extend .text-white;
-		background: transparent;
-		position: relative;
-
-		&:before {
-			display: block;
-			background: transparent;
+		input{
+			border: 1px solid #555;
 			width: 100%;
-			content: " ";
-			height: 20px;
-			position: absolute;
-			top: 0;
-			left: 0;
-			transition: top 0.5s;
-		}
+			@extend .p-2;
+			font-size: 1.3rem;
+			border: 1px solid #ddd;
 
-		&:hover {
-			background: #000;
-			@extend .text-white;
-			&:before {
-				top: -15px;
-				background: $bg-primary;
-			}
+		}
+		input[type='submit']{
+			background: $bg-primary;
+			border: 1px solid $bg-primary;
+			color: #fff;
+			display: inline-block;
 		}
 	}
-}
-
-.home-ad-block {
-	grid-area: homeadblock
-}
-
-.btn-CTA {
-    background: #e25021;
-    padding: 15px 25px;
-    @extend .text-white;
 }

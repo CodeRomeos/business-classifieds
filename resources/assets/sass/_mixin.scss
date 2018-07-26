@@ -1,27 +1,59 @@
 //Spaces
-$spaceamounts: (0, 1, 2, 3, 4, 5); // Adjust this to include the pixel amounts you need.
+$spaceamounts: (0, 0.25, 0.5, 1, 1.5, 3); // Adjust this to include the pixel amounts you need.
 $sides: ( "", top, bottom, left, right); // Leave this variable alone
-@each $space in $spaceamounts {
+
+// https://stackoverflow.com/questions/45789591/sass-for-loop-including-0
+@for $i from 0 through length($sides) {
 	@each $side in $sides {
 		@if $side == "" {
-				.m-#{$space} {
-					margin: #{$space}rem !important;
+
+				.m-#{$i} {
+					margin: #{nth($spaceamounts, $i + 1	)}rem !important;
 				}
 
-				.p-#{$space} {
-					padding: #{$space}rem !important;
+				.p-#{$i} {
+					padding: #{nth($spaceamounts, $i + 1 )}rem !important;
 				}
+
+				// Border
+				.border-#{$i} {
+					border: #{$i}px solid #ddd;
+				}
+
 		}
 		@else {
-			.m#{str-slice($side, 0, 1)}-#{$space} {
-				margin-#{$side}: #{$space}rem !important;
+			.m#{str-slice($side, 0, 1)}-#{$i} {
+				margin-#{$side}: #{nth($spaceamounts, $i + 1 )}rem !important;
 			}
 
-			.p#{str-slice($side, 0, 1)}-#{$space} {
-				padding-#{$side}: #{$space}rem !important;
+			.p#{str-slice($side, 0, 1)}-#{$i} {
+				padding-#{$side}: #{nth($spaceamounts, $i + 1 )}rem !important;
 			}
+
+			.border-#{str-slice($side, 0, 1)}-#{$i} {
+				border-#{$side}: #{$i}px solid #ddd;
+			}
+
 		}
+	}
+	.mx-#{$i} {
+		margin-left: #{nth($spaceamounts, $i + 1 )}rem !important;
+		margin-right: #{nth($spaceamounts, $i + 1 )}rem !important;
+	}
 
+	.px-#{$i} {
+		padding-left: #{nth($spaceamounts, $i + 1 )}rem !important;
+		padding-right: #{nth($spaceamounts, $i + 1 )}rem !important;
+	}
+
+	.my-#{$i} {
+		margin-top: #{nth($spaceamounts, $i + 1	)}rem !important;
+		margin-bottom: #{nth($spaceamounts, $i + 1	)}rem !important;
+	}
+
+	.py-#{$i} {
+		padding-top: #{nth($spaceamounts, $i + 1 )}rem !important;
+		padding-bottom: #{nth($spaceamounts, $i + 1 )}rem !important;
 	}
 }
 
@@ -36,14 +68,31 @@ $repeat: 6;  // How often you want the pattern to repeat.
 }
 
 @mixin card() {
-	background-color: #fff;
+	background-color: $bg-white;
 	@extend .p-2;
 	margin-bottom: 15px;
 }
 
-	//Images
-
+//Images
 @mixin img-fluid {
 	max-width: 100%;
 	height: auto;
+}
+
+@mixin mobile {
+	@media (min-width: #{$mobile-width}) {
+    	@content;
+  	}
+}
+
+@mixin tablet {
+	@media (min-width: #{$tablet-width}) {
+    	@content;
+  	}
+}
+
+@mixin desktop {
+	@media (min-width: #{$desktop-width}) {
+    	@content;
+  	}
 }
