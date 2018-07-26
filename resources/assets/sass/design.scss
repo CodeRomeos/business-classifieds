@@ -14,7 +14,7 @@ h6, .h6 { font-size: $h6-font-size; }
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6,
 header {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Raleway', sans-serif;
 }
 
 h1, h2, h3,
@@ -40,7 +40,9 @@ h1, h2, h3,
 
 body {
 	background: $body-bg;
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Merriweather', serif;
+    line-height: 1.7;
+    color: #171717;
 }
 
 .text-white {

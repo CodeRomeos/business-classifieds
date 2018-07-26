@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Merriweather|Raleway);@charset "UTF-8";
 
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
@@ -5111,7 +5111,7 @@ h6,
 .h5,
 .h6,
 header {
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 h1,
@@ -5153,7 +5153,9 @@ h3,
 
 body {
   background: #f5f8fa;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Merriweather', serif;
+  line-height: 1.7;
+  color: #171717;
 }
 
 .text-white {
