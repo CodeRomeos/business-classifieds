@@ -5074,6 +5074,32 @@ header {
   }
 }
 
+.content {
+  grid-area: content;
+  display: grid;
+  margin: auto;
+}
+
+@media (min-width: 576px) {
+  .content {
+    max-width: calc(100% - 20px);
+    grid-template-columns: 250px auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .content {
+    max-width: calc(100% - 80px);
+    grid-template-columns: 300px auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .content {
+    max-width: calc(100% - 240px);
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -5266,10 +5292,6 @@ nav a,
 
 .hero {
   grid-area: hero;
-}
-
-.content {
-  grid-area: content;
 }
 
 .card {

@@ -5,9 +5,13 @@
 			<listing-search-form />
 			</div>
 		</div>
+
 		<div class="content">
-			<h1 class='pl-2 pr-2'>{{ welcome }}</h1>
-        	<businesses />
+            <sidebar />
+            <div>
+                <h1 class='pl-2 pr-2'>{{ welcome }}</h1>
+        	    <businesses />
+            </div>
 		</div>
     </section>
 </template>
@@ -15,6 +19,8 @@
 <script>
 import Businesses from '../Businesses.vue';
 import ListingSearchForm from '../ListingSearchForm.vue';
+import Sidebar from '../partials/Sidebar.vue';
+import CtaBanner from '../partials/CtaBanner.vue';
 
 export default {
 	mounted() {
@@ -27,7 +33,9 @@ export default {
 	},
     components: {
 		Businesses,
-		ListingSearchForm
+		ListingSearchForm,
+        Sidebar,
+        CtaBanner
     }
 }
 </script>
