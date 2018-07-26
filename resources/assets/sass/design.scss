@@ -17,6 +17,11 @@ header {
     font-family: 'Raleway', sans-serif;
 }
 
+h1, h2, h3,
+.h1, .h2, .h3 {
+    color: $color-heading;
+}
+
 // Transformation
 .text-lowercase  { text-transform: lowercase !important; }
 .text-uppercase  { text-transform: uppercase !important; }
@@ -164,7 +169,9 @@ nav {
 .listing-search-form {
 	.form{
 		background: $body-bg;
-		margin-top: 80px;
+        margin-top: 80px;
+        padding: 20px;
+        background: #dadada;
 	}
 	.input-container{
 

@@ -5045,8 +5045,8 @@ header {
 
 .listing-search-form form {
   display: grid;
-  -webkit-column-gap: 5px;
-          column-gap: 5px;
+  -webkit-column-gap: 17px;
+          column-gap: 17px;
 }
 
 @media (min-width: 576px) {
@@ -5112,6 +5112,15 @@ h6,
 .h6,
 header {
   font-family: 'Raleway', sans-serif;
+}
+
+h1,
+h2,
+h3,
+.h1,
+.h2,
+.h3 {
+  color: #4d545d;
 }
 
 .text-lowercase {
@@ -5265,6 +5274,8 @@ nav a,
 .listing-search-form .form {
   background: #f5f8fa;
   margin-top: 80px;
+  padding: 20px;
+  background: #dadada;
 }
 
 .listing-search-form .input-container input {

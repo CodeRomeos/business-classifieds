@@ -61,7 +61,7 @@ header {
 .listing-search-form {
 	form{
 		display: grid;
-		column-gap: 5px;
+		column-gap: 17px;
 
 		@include mobile {
 			grid-template-columns: 1.20fr 1.20fr 0.6fr;
