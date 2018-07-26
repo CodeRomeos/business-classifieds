@@ -23,7 +23,7 @@
                         </p>
                         {{ business.body }}
                         <p class='mt-2'>
-                        <router-link class='btn btn-primary' :to="{ name: 'business', params: { businessid: business.businessid }}">Show</router-link>
+                        <router-link class='btn btn-sm' :to="{ name: 'business', params: { businessid: business.businessid }}">Show</router-link>
                         </p>
                     </div>
                 </div>

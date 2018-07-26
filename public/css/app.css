@@ -4487,7 +4487,8 @@ input[type=text] {
   border-top: 0px solid #ddd;
 }
 
-.mb-0 {
+.mb-0,
+.card .card-title {
   margin-bottom: 0rem !important;
 }
 
@@ -5082,32 +5083,32 @@ header {
 
 h1,
 .h1 {
-  font-size: 2.25rem;
+  font-size: 2.5rem;
 }
 
 h2,
 .h2 {
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 
 h3,
 .h3 {
-  font-size: 1.575rem;
+  font-size: 1.75rem;
 }
 
 h4,
 .h4 {
-  font-size: 1.35rem;
+  font-size: 1.5rem;
 }
 
 h5,
 .h5 {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
 }
 
 h6,
 .h6 {
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 h1,
@@ -5159,8 +5160,14 @@ h3,
   position: fixed;
 }
 
-.clearfix {
+.clearfix::after {
+  display: block;
   clear: both;
+  content: "";
+}
+
+html {
+  font-size: 1rem;
 }
 
 body {
@@ -5170,7 +5177,8 @@ body {
   color: #171717;
 }
 
-.text-white {
+.text-white,
+.header-mid .btn {
   color: #FFF !important;
 }
 
@@ -5226,7 +5234,13 @@ footer {
 
 .navbar-brand {
   grid-area: navbarbrand;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 576px) {
+  .navbar-brand {
+    font-size: 1.8rem;
+  }
 }
 
 nav {
@@ -5235,12 +5249,19 @@ nav {
 
 nav a,
 .header-mid a {
-  font-size: 1.2rem;
   font-weight: 700;
 }
 
 .header-mid {
   grid-area: headermid;
+}
+
+.header-mid .btn {
+  display: block;
+}
+
+.header-mid .btn:hover {
+  background-position: right center;
 }
 
 .hero {
@@ -5258,11 +5279,17 @@ nav a,
 
 .card .card-title {
   color: #222;
-  font-size: 22px;
 }
 
 .card .card-title a {
   color: #222;
+}
+
+.card .card-title .dealsIn {
+  color: #999;
+  font-size: 14px;
+  display: block;
+  line-height: .6;
 }
 
 .btn {
@@ -5273,6 +5300,16 @@ nav a,
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  background-image: -webkit-gradient(linear, left top, right top, from(#4CB8C4), color-stop(51%, #3CD3AD), to(#4CB8C4));
+  background-image: linear-gradient(to right, #4CB8C4 0%, #3CD3AD 51%, #4CB8C4 100%);
+}
+
+.btn-sm {
+  padding: 5px 15px;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  border-radius: 0;
+  color: white;
 }
 
 .img-fluid {
@@ -5290,13 +5327,10 @@ nav a,
 .listing-search-form .input-container input {
   border: 1px solid #555;
   width: 100%;
-  font-size: 1.3rem;
   border: 1px solid #ddd;
 }
 
 .listing-search-form .input-container input[type='submit'] {
-  background: #f75724;
-  border: 1px solid #f75724;
   color: #fff;
   display: inline-block;
 }

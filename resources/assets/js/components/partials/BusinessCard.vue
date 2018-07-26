@@ -4,16 +4,17 @@
 			<img :src="business.image" class='img-fluid'>
 		</div>
 		<div class="card-body">
-			<h3 class="card-title mt-1"><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link></h3>
+			<h3 class="card-title mt-1"><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link>
+			<small class="dealsIn">Tour operator in Delhi</small></h3>
 			<div class="card-text">
 				<p>
-					{{ business.contacts.join() }}
+					<strong>Phone:</strong>{{ business.contacts.join() }}
 					<br>
-					{{ business.address }}
+					<strong> Address:</strong> {{ business.address }}
 				</p>
 				{{ business.body }}
 				<p class='mt-2'>
-				<router-link class='btn btn-primary' :to="{ name: 'business', params: { businessid: business.businessid }}">Show</router-link>
+				<router-link class='btn btn-sm' :to="{ name: 'business', params: { businessid: business.businessid }}">Show</router-link>
 				</p>
 			</div>
 		</div>

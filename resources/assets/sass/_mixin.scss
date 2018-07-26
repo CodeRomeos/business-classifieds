@@ -1,3 +1,21 @@
+@mixin clearfix() {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+
+// Transitions
+@mixin transition( $property: all, $duration: 0.4s, $ttf: ease-out) {
+  -webkit-transition: $property $duration $ttf;
+  -moz-transition: $property $duration $ttf;
+  -ms-transition: $property $duration $ttf;
+  -o-transition: $property $duration $ttf;
+  transition: $property $duration $ttf;
+}
+
+
 //Spaces
 $spaceamounts: (0, 0.25, 0.5, 1, 1.5, 3); // Adjust this to include the pixel amounts you need.
 $sides: ( "", top, bottom, left, right); // Leave this variable alone
@@ -77,6 +95,15 @@ $repeat: 6;  // How often you want the pattern to repeat.
 @mixin img-fluid {
 	max-width: 100%;
 	height: auto;
+}
+
+// Buttons Sizing
+@mixin button-size($padding-y, $padding-x, $font-size, $line-height, $border-radius, $color) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  line-height: $line-height;
+  border-radius: $border-radius;
+  color: $color;
 }
 
 @mixin mobile {

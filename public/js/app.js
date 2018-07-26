@@ -47315,6 +47315,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'business-card',
@@ -47353,18 +47354,23 @@ var render = function() {
               }
             },
             [_vm._v(_vm._s(_vm.business.title))]
-          )
+          ),
+          _vm._v(" "),
+          _c("small", { staticClass: "dealsIn" }, [
+            _vm._v("Tour operator in Delhi")
+          ])
         ],
         1
       ),
       _vm._v(" "),
       _c("div", { staticClass: "card-text" }, [
         _c("p", [
-          _vm._v(
-            "\n\t\t\t\t" + _vm._s(_vm.business.contacts.join()) + "\n\t\t\t\t"
-          ),
+          _c("strong", [_vm._v("Phone:")]),
+          _vm._v(_vm._s(_vm.business.contacts.join()) + "\n\t\t\t\t"),
           _c("br"),
-          _vm._v("\n\t\t\t\t" + _vm._s(_vm.business.address) + "\n\t\t\t")
+          _vm._v(" "),
+          _c("strong", [_vm._v(" Address:")]),
+          _vm._v(" " + _vm._s(_vm.business.address) + "\n\t\t\t")
         ]),
         _vm._v("\n\t\t\t" + _vm._s(_vm.business.body) + "\n\t\t\t"),
         _c(
@@ -47374,7 +47380,7 @@ var render = function() {
             _c(
               "router-link",
               {
-                staticClass: "btn btn-primary",
+                staticClass: "btn btn-sm",
                 attrs: {
                   to: {
                     name: "business",
@@ -47932,7 +47938,7 @@ var render = function() {
                     _c(
                       "router-link",
                       {
-                        staticClass: "btn btn-primary",
+                        staticClass: "btn btn-sm",
                         attrs: {
                           to: {
                             name: "business",
@@ -48194,7 +48200,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "header-mid text-center" }, [
-      _c("a", { attrs: { href: "#" } }, [
+      _c("a", { staticClass: "btn", attrs: { href: "#" } }, [
         _c("strong", [_vm._v("Claim you listing")])
       ])
     ])

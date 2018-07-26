@@ -35,9 +35,17 @@ h1, h2, h3,
 
 
 .clearfix {
-	clear: both;
+	@include clearfix();
 }
 
+html{
+	font-size: $font-size-base;
+	// @include mobile {
+	// 	font-size:
+	// 	.;
+	// }
+
+}
 body {
 	background: $body-bg;
     font-family: 'Merriweather', serif;
@@ -86,7 +94,7 @@ input[type=text] {
 
 header {
 	grid-area: header;
-	background: #FFF;
+	background: $bg-white;
     @extend .border-b-1;
     @extend .py-3;
 }
@@ -102,8 +110,11 @@ footer {
 .navbar-brand {
 	grid-area: navbarbrand;
     @extend .text-dark-light;
-    font-size: 2.5rem;
-    @extend .pl-3;
+    font-size: 1.5rem;
+	@extend .pl-3;
+	@include mobile{
+		font-size: 1.8rem;
+	}
 }
 
 nav {
@@ -114,13 +125,18 @@ nav {
 
 nav a,
 .header-mid a {
-    font-size: 1.2rem;
+    // font-size: 1.2rem;
     font-weight: 700;
     @extend .p-2;
 }
 
 .header-mid {
 	grid-area: headermid;
+	.btn{
+		&:hover { background-position: right center; }
+		@extend .text-white;
+		display: block
+	}
 }
 
 .navbar-brand,
@@ -132,7 +148,6 @@ nav {
 .hero {
 	grid-area: hero;
 	@extend .bg-white;
-	// @extend .px-5;
 	@extend .pt-2;
 }
 
@@ -144,20 +159,36 @@ nav {
 	@include card();
 	.card-title {
 		color: #222;
-		font-size: 22px;
+		@extend .mb-0;
 		a {
 			color: #222;
 		}
+		.dealsIn{
+			color: #999;
+			font-size: 14px;
+			display: block;
+			line-height: .6;;
+		}
 	}
 }
-
 .btn {
-	display: inline-block;
-    @extend .text-center;
-    white-space: nowrap;
-    vertical-align: middle;
-    user-select: none;
+  display: inline-block;
+  @extend .text-center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  background-image: linear-gradient(to right, #4CB8C4 0%, #3CD3AD 51%, #4CB8C4 100%);
 }
+.btn-sm{
+	  @include button-size( 5px, 15px, .8rem, 1.5, 0, white)
+}
+
+// .btn-md{
+// 	  @include button-size( 5px, 15px, .8rem, 1.5, 0, white)
+// }
+// .btn-lg{
+// 	  @include button-size( 5px, 15px, .8rem, 1.5, 0, white)
+// }
 
 .img-fluid {
     @include img-fluid;
@@ -176,13 +207,13 @@ nav {
 			border: 1px solid #555;
 			width: 100%;
 			@extend .p-2;
-			font-size: 1.3rem;
+			// font-size: 1.3rem;
 			border: 1px solid #ddd;
 
 		}
 		input[type='submit']{
-			background: $bg-primary;
-			border: 1px solid $bg-primary;
+			// background: $bg-primary;
+			// border: 1px solid $bg-primary;
 			color: #fff;
 			display: inline-block;
 		}
