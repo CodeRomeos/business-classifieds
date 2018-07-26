@@ -14,7 +14,7 @@ h6, .h6 { font-size: $h6-font-size; }
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6,
 header {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto Slab', serif;
 }
 
 h1, h2, h3,
@@ -40,7 +40,7 @@ h1, h2, h3,
 
 body {
 	background: $body-bg;
-	font-family: 'Lato', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 
 .text-white {
@@ -170,8 +170,8 @@ nav {
 	.form{
 		background: $body-bg;
         margin-top: 80px;
-        padding: 20px;
-        background: #dadada;
+        padding: 15px;
+        background: #ececec;
 	}
 	.input-container{
 

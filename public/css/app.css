@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Lato|Raleway);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab);@charset "UTF-8";
 
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
@@ -5111,7 +5111,7 @@ h6,
 .h5,
 .h6,
 header {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto Slab', serif;
 }
 
 h1,
@@ -5153,7 +5153,7 @@ h3,
 
 body {
   background: #f5f8fa;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .text-white {
@@ -5274,8 +5274,8 @@ nav a,
 .listing-search-form .form {
   background: #f5f8fa;
   margin-top: 80px;
-  padding: 20px;
-  background: #dadada;
+  padding: 15px;
+  background: #ececec;
 }
 
 .listing-search-form .input-container input {
