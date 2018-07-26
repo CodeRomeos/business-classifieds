@@ -2,12 +2,12 @@
 	<div class="listing-search-form">
 		<form action="" class="form">
 			<div class="input-container">
-				<!-- <label for="What">what</label> -->
-				<input type="text" name="n" id="" required placeholder="What">
+				<input type="text" name="n" id="" required >
+				<label for="What">What</label>
 			</div>
 			<div class="input-container">
-				<!-- <label for="where">Where</label> -->
-				<input type="text" name="n" id="" required placeholder="Where">
+				<input type="text" name="n" id="" required >
+				<label for="where">Where</label>
 			</div>
 			<div class="input-container">
 				<input type="submit" name="n" value="Submit" id="" class="btn" >

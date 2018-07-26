@@ -5174,11 +5174,13 @@ h3,
   text-transform: capitalize !important;
 }
 
-.isRelative {
+.isRelative,
+.listing-search-form .input-container {
   position: relative;
 }
 
-.isAbsolute {
+.isAbsolute,
+.listing-search-form .input-container label {
   position: absolute;
 }
 
@@ -5344,12 +5346,34 @@ nav a,
   margin-top: 80px;
   padding: 15px;
   background: #ececec;
+  -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+  /*
+			background: #f6f6f7;
+			-webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+			box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+
+		*/
 }
 
 .listing-search-form .input-container input {
   border: 1px solid #555;
   width: 100%;
   border: 1px solid #ddd;
+}
+
+.listing-search-form .input-container input:focus + label {
+  top: -15px;
+  left: 6px;
+  font-size: 10px;
+}
+
+.listing-search-form .input-container label {
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+  display: block;
+  top: 5px;
+  left: 8px;
 }
 
 .listing-search-form .input-container input[type='submit'] {

@@ -47550,26 +47550,18 @@ var staticRenderFns = [
       _c("form", { staticClass: "form", attrs: { action: "" } }, [
         _c("div", { staticClass: "input-container" }, [
           _c("input", {
-            attrs: {
-              type: "text",
-              name: "n",
-              id: "",
-              required: "",
-              placeholder: "What"
-            }
-          })
+            attrs: { type: "text", name: "n", id: "", required: "" }
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "What" } }, [_vm._v("What")])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "input-container" }, [
           _c("input", {
-            attrs: {
-              type: "text",
-              name: "n",
-              id: "",
-              required: "",
-              placeholder: "Where"
-            }
-          })
+            attrs: { type: "text", name: "n", id: "", required: "" }
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "where" } }, [_vm._v("Where")])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "input-container" }, [
