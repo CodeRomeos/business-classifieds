@@ -1,7 +1,7 @@
 <template>
     <div id="app" class='container'>
         <header class="header">
-			<router-link to="/" class='navbar-brand' style="font-size: 45px;">
+			<router-link to="/" class='navbar-brand'>
                 {{ APP_NAME }}
             </router-link>
 			<div class='header-mid text-center'>

@@ -4552,8 +4552,7 @@ input[type=text] {
   padding: 0.25rem !important;
 }
 
-.border-1,
-header {
+.border-1 {
   border: 1px solid #ddd;
 }
 
@@ -4577,7 +4576,8 @@ header {
   padding-bottom: 0.25rem !important;
 }
 
-.border-b-1 {
+.border-b-1,
+header {
   border-bottom: 1px solid #ddd;
 }
 
@@ -4632,6 +4632,8 @@ input[type=text] {
 }
 
 .p-2,
+nav a,
+.header-mid a,
 .navbar-brand,
 .header-mid,
 nav,
@@ -4753,7 +4755,8 @@ nav,
   margin-left: 1rem !important;
 }
 
-.pl-3 {
+.pl-3,
+.navbar-brand {
   padding-left: 1rem !important;
 }
 
@@ -4765,7 +4768,8 @@ nav,
   margin-right: 1rem !important;
 }
 
-.pr-3 {
+.pr-3,
+nav {
   padding-right: 1rem !important;
 }
 
@@ -4788,7 +4792,8 @@ nav,
   margin-bottom: 1rem !important;
 }
 
-.py-3 {
+.py-3,
+header {
   padding-top: 1rem !important;
   padding-bottom: 1rem !important;
 }
@@ -5021,7 +5026,6 @@ header {
   header {
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "navbarbrand nav" "headermid";
-    border: 0;
   }
 }
 
@@ -5029,6 +5033,7 @@ header {
   header {
     grid-template-columns: 40px 300px auto 300px 40px;
     grid-template-areas: ". navbarbrand headermid nav .";
+    border: 0;
   }
 }
 
@@ -5091,6 +5096,22 @@ h5,
 h6,
 .h6 {
   font-size: 0.9rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+header {
+  font-family: 'Raleway', sans-serif;
 }
 
 .text-lowercase {
@@ -5156,10 +5177,11 @@ nav {
 
 a {
   text-decoration: none;
+  color: #f75724;
 }
 
 a:hover {
-  color: #3F51B5;
+  color: #4d545d;
 }
 
 input[type=text] {
@@ -5181,10 +5203,17 @@ footer {
 
 .navbar-brand {
   grid-area: navbarbrand;
+  font-size: 2.5rem;
 }
 
 nav {
   grid-area: nav;
+}
+
+nav a,
+.header-mid a {
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
 .header-mid {
