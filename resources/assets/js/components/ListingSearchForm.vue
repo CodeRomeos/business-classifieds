@@ -3,11 +3,11 @@
 		<form action="" class="form">
 			<div class="input-container">
 				<input type="text" name="n" id="" required >
-				<label for="What">What</label>
+				<!-- <label for="What">What</label> -->
 			</div>
 			<div class="input-container">
 				<input type="text" name="n" id="" required >
-				<label for="where">Where</label>
+				<!-- <label for="where">Where</label> -->
 			</div>
 			<div class="input-container">
 				<input type="submit" name="n" value="Submit" id="" class="btn" >

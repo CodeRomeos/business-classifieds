@@ -48,7 +48,6 @@ header {
 		grid-template-columns: 20px 250px auto 250px 20px;
 		grid-template-areas:
             ". navbarbrand headermid nav .";
-        border: 0;
 	}
 
 	@include desktop {

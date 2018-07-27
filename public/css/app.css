@@ -4712,8 +4712,7 @@ p,
   margin-bottom: 0.5rem !important;
 }
 
-.py-2,
-header {
+.py-2 {
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
 }
@@ -5036,7 +5035,6 @@ header {
   header {
     grid-template-columns: 20px 250px auto 250px 20px;
     grid-template-areas: ". navbarbrand headermid nav .";
-    border: 0;
   }
 }
 
@@ -5201,7 +5199,7 @@ html {
 }
 
 body {
-  background: #f5f8fa;
+  background: #f3f3f6;
   font-family: "Lato", sans-serif;
   line-height: 1.5;
   color: #171717;
@@ -5366,9 +5364,9 @@ nav a,
 }
 
 .listing-search-form .form {
-  background: #f5f8fa;
+  background: #f3f3f6;
   padding: 15px;
-  background: #ececec;
+  background: #f3f3f6;
   /*
 			background: #f6f6f7;
 			-webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
