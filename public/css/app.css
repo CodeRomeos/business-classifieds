@@ -5205,8 +5205,7 @@ body {
   color: #171717;
 }
 
-.text-white,
-.header-mid .btn {
+.text-white {
   color: #FFF !important;
 }
 
@@ -5324,8 +5323,6 @@ nav a,
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  background-image: -webkit-gradient(linear, left top, right top, from(#4CB8C4), color-stop(51%, #3CD3AD), to(#4CB8C4));
-  background-image: linear-gradient(to right, #4CB8C4 0%, #3CD3AD 51%, #4CB8C4 100%);
 }
 
 .btn-sm {
@@ -5333,7 +5330,12 @@ nav a,
   font-size: 0.8rem;
   line-height: 1.5;
   border-radius: 0;
-  color: white;
+  color: "";
+}
+
+.bg-grad {
+  background-image: -webkit-gradient(linear, left top, right top, from(#4CB8C4), color-stop(51%, #3CD3AD), to(#4CB8C4));
+  background-image: linear-gradient(to right, #4CB8C4 0%, #3CD3AD 51%, #4CB8C4 100%);
 }
 
 .img-fluid {
@@ -5346,8 +5348,6 @@ nav a,
   margin-top: 80px;
   padding: 15px;
   background: #ececec;
-  -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
-  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
   /*
 			background: #f6f6f7;
 			-webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);

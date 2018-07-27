@@ -134,7 +134,7 @@ nav a,
 	grid-area: headermid;
 	.btn{
 		&:hover { background-position: right center; }
-		@extend .text-white;
+		// @extend .text-white;
 		display: block
 	}
 }
@@ -173,10 +173,12 @@ nav {
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
-  background-image: linear-gradient(to right, #4CB8C4 0%, #3CD3AD 51%, #4CB8C4 100%);
 }
 .btn-sm{
-	  @include button-size( 5px, 15px, .8rem, 1.5, 0, white)
+	  @include button-size( 5px, 15px, .8rem, 1.5, 0, '')
+}
+.bg-grad{
+	background-image: linear-gradient(to right, #4CB8C4 0%, #3CD3AD 51%, #4CB8C4 100%);	
 }
 
 // .btn-md{
@@ -197,8 +199,8 @@ nav {
         padding: 15px;
 		background: #ececec;
 
-		-webkit-box-shadow: 0 15px 30px 0 rgba(0,0,0,.11), 0 5px 15px 0 rgba(0,0,0,.08);
-		box-shadow: 0 15px 30px 0 rgba(0,0,0,.11), 0 5px 15px 0 rgba(0,0,0,.08);
+		// -webkit-box-shadow: 0 15px 30px 0 rgba(0,0,0,.11), 0 5px 15px 0 rgba(0,0,0,.08);
+		// box-shadow: 0 15px 30px 0 rgba(0,0,0,.11), 0 5px 15px 0 rgba(0,0,0,.08);
 		/*
 			background: #f6f6f7;
 			-webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
