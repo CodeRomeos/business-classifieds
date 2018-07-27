@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Merriweather|Raleway);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Lato|Raleway);@charset "UTF-8";
 
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
@@ -4474,7 +4474,8 @@ th {
   border: 0px solid #ddd;
 }
 
-.mt-0 {
+.mt-0,
+p {
   margin-top: 0rem !important;
 }
 
@@ -4660,7 +4661,8 @@ nav,
   border-top: 2px solid #ddd;
 }
 
-.mb-2 {
+.mb-2,
+p {
   margin-bottom: 0.5rem !important;
 }
 
@@ -4711,7 +4713,8 @@ nav,
   margin-bottom: 0.5rem !important;
 }
 
-.py-2 {
+.py-2,
+header {
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
 }
@@ -4793,8 +4796,7 @@ nav {
   margin-bottom: 1rem !important;
 }
 
-.py-3,
-header {
+.py-3 {
   padding-top: 1rem !important;
   padding-bottom: 1rem !important;
 }
@@ -4865,7 +4867,8 @@ header {
   margin-right: 1.5rem !important;
 }
 
-.px-4 {
+.px-4,
+.container {
   padding-left: 1.5rem !important;
   padding-right: 1.5rem !important;
 }
@@ -4984,34 +4987,32 @@ header {
   background: #CDDC39;
 }
 
-.container {
+.app-grid {
   display: grid;
-  grid-template-columns: 100%;
   grid-template-areas: "header" "main" "footer";
 }
 
 @media (min-width: 576px) {
-  .container {
+  .app-grid {
     grid-template-columns: 10px 250px auto 250px 10px;
     grid-template-areas: "header header header header header" "main main main main main" "footer footer footer footer footer";
   }
 }
 
 @media (min-width: 768px) {
-  .container {
+  .app-grid {
     grid-template-columns: 40px 300px auto 300px 40px;
   }
 }
 
 @media (min-width: 992px) {
-  .container {
+  .app-grid {
     grid-template-columns: 120px 300px auto 300px 120px;
   }
 }
 
 .homepage-container {
   display: grid;
-  grid-template-rows: 250px auto;
   grid-template-areas: "hero" "content";
 }
 
@@ -5033,7 +5034,7 @@ header {
 
 @media (min-width: 768px) {
   header {
-    grid-template-columns: 40px 300px auto 300px 40px;
+    grid-template-columns: 20px 250px auto 250px 20px;
     grid-template-areas: ". navbarbrand headermid nav .";
     border: 0;
   }
@@ -5066,37 +5067,39 @@ header {
 .business-card {
   display: grid;
   grid-column-gap: 20px;
+  grid-template-rows: 210px 65px auto;
 }
 
-@media (min-width: 768px) {
-  .business-card {
-    grid-template-columns: minmax(200px, 350px) auto;
-  }
+.business-card .card-thumb {
+  max-height: 200px;
+  overflow: hidden;
 }
 
 .content {
   grid-area: content;
+}
+
+.businesses {
   display: grid;
-  margin: auto;
-}
-
-@media (min-width: 576px) {
-  .content {
-    max-width: calc(100% - 20px);
-    grid-template-columns: 250px auto;
-  }
-}
-
-@media (min-width: 768px) {
-  .content {
-    max-width: calc(100% - 80px);
-    grid-template-columns: 300px auto;
-  }
+  grid-template-areas: "sidebar" "businesscards";
 }
 
 @media (min-width: 992px) {
-  .content {
-    max-width: calc(100% - 240px);
+  .businesses {
+    grid-template-columns: 300px auto;
+    grid-template-areas: "sidebar businesscards";
+  }
+}
+
+.business-cards {
+  grid-area: businesscards;
+  display: grid;
+  grid-column-gap: 8px;
+}
+
+@media (min-width: 992px) {
+  .business-cards {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -5148,9 +5151,8 @@ h6,
 .h3,
 .h4,
 .h5,
-.h6,
-header {
-  font-family: 'Raleway', sans-serif;
+.h6 {
+  font-family: "Raleway", sans-serif;
 }
 
 h1,
@@ -5200,9 +5202,14 @@ html {
 
 body {
   background: #f5f8fa;
-  font-family: 'Merriweather', serif;
-  line-height: 1.7;
+  font-family: "Lato", sans-serif;
+  line-height: 1.5;
   color: #171717;
+}
+
+.container {
+  margin: auto;
+  max-width: 1092px;
 }
 
 .text-white {
@@ -5235,7 +5242,7 @@ nav {
 
 a {
   text-decoration: none;
-  color: #f75724;
+  color: #333;
 }
 
 a:hover {
@@ -5249,6 +5256,7 @@ input[type=text] {
 header {
   grid-area: header;
   background: #FFF;
+  font-family: "Raleway", sans-serif;
 }
 
 main {
@@ -5261,6 +5269,7 @@ footer {
 
 .navbar-brand {
   grid-area: navbarbrand;
+  font-weight: 700;
   font-size: 1.5rem;
 }
 
@@ -5276,7 +5285,7 @@ nav {
 
 nav a,
 .header-mid a {
-  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .header-mid {
@@ -5300,6 +5309,10 @@ nav a,
   margin-bottom: 15px;
 }
 
+.card .card-text {
+  font-size: 14px;
+}
+
 .card .card-title {
   color: #222;
 }
@@ -5308,11 +5321,9 @@ nav a,
   color: #222;
 }
 
-.card .card-title .dealsIn {
+.card .subtitle {
   color: #999;
-  font-size: 14px;
-  display: block;
-  line-height: .6;
+  font-size: 13px;
 }
 
 .btn {
@@ -5345,7 +5356,6 @@ nav a,
 
 .listing-search-form .form {
   background: #f5f8fa;
-  margin-top: 80px;
   padding: 15px;
   background: #ececec;
   /*

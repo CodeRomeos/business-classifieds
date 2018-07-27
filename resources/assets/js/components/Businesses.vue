@@ -1,21 +1,28 @@
 <template>
 	<div class="businesses">
-		<div class='text-center' v-if='loading'>
-			<img src='/images/loader.gif'>
+		<sidebar class='filter-sidebar'>
+			<h2>Sidebar</h2>
+		</sidebar>
+        <div class='business-cards'>
+			<div class='text-center' v-if='loading'>
+				<img src='/images/loader.gif'>
+			</div>
+			<business-card v-else v-for="(business, index) in businesses" :key="index" :business="business"></business-card>
 		</div>
-		<business-card v-else v-for="(business, index) in businesses" :key="index" :business="business"></business-card>
 	</div>
 </template>
 
 <script>
 import BusinessCard from './partials/BusinessCard';
+import Sidebar from './partials/Sidebar.vue';
 export default {
 	name: 'businesses',
 	created() {
 		this.fetchBusinesses();
 	},
 	components: {
-		BusinessCard
+		BusinessCard,
+		Sidebar
 	},
 	data() {
 		return {

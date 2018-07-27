@@ -24,20 +24,18 @@ $sides: ( "", top, bottom, left, right); // Leave this variable alone
 @for $i from 0 through length($sides) {
 	@each $side in $sides {
 		@if $side == "" {
+			.m-#{$i} {
+				margin: #{nth($spaceamounts, $i + 1	)}rem !important;
+			}
 
-				.m-#{$i} {
-					margin: #{nth($spaceamounts, $i + 1	)}rem !important;
-				}
+			.p-#{$i} {
+				padding: #{nth($spaceamounts, $i + 1 )}rem !important;
+			}
 
-				.p-#{$i} {
-					padding: #{nth($spaceamounts, $i + 1 )}rem !important;
-				}
-
-				// Border
-				.border-#{$i} {
-					border: #{$i}px solid #ddd;
-				}
-
+			// Border
+			.border-#{$i} {
+				border: #{$i}px solid #ddd;
+			}
 		}
 		@else {
 			.m#{str-slice($side, 0, 1)}-#{$i} {
@@ -51,7 +49,6 @@ $sides: ( "", top, bottom, left, right); // Leave this variable alone
 			.border-#{str-slice($side, 0, 1)}-#{$i} {
 				border-#{$side}: #{$i}px solid #ddd;
 			}
-
 		}
 	}
 	.mx-#{$i} {
@@ -89,6 +86,9 @@ $repeat: 6;  // How often you want the pattern to repeat.
 	background-color: $bg-white;
 	@extend .p-2;
 	margin-bottom: 15px;
+	.card-text {
+		font-size: 14px
+	}
 }
 
 //Images

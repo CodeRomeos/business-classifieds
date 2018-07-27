@@ -1,11 +1,11 @@
 <template>
-    <div id="app" class='container'>
+    <div id="app" class='app-grid'>
         <header class="header">
 			<router-link to="/" class='navbar-brand'>
                 {{ APP_NAME }}
             </router-link>
 			<div class='header-mid text-center'>
-				<a href='#' class="btn"><strong>Claim you listing</strong></a>
+				<a href='#' class="btn">Claim you listing</a>
 			</div>
 			<navbar />
 		</header>

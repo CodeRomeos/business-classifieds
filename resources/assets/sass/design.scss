@@ -12,9 +12,8 @@ h5, .h5 { font-size: $h5-font-size; }
 h6, .h6 { font-size: $h6-font-size; }
 
 h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6,
-header {
-    font-family: 'Raleway', sans-serif;
+.h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: $heading-font;
 }
 
 h1, h2, h3,
@@ -32,8 +31,6 @@ h1, h2, h3,
 .isAbsolute{ position: absolute}
 .isFixed{ position: fixed;}
 
-
-
 .clearfix {
 	@include clearfix();
 }
@@ -48,9 +45,16 @@ html{
 }
 body {
 	background: $body-bg;
-    font-family: 'Merriweather', serif;
-    line-height: 1.7;
+	font-family: $body-font;
+    line-height: 1.5;
     color: #171717;
+}
+
+
+.container {
+	margin: auto;
+	max-width: $desktop-width + 100px;
+	@extend .px-4;
 }
 
 .text-white {
@@ -77,11 +81,16 @@ body {
 
 a {
     text-decoration: none;
-    color: $color-primary;
+    color: $text-dark;
 
     &:hover{
         color: #4d545d;
     }
+}
+
+p {
+	@extend .mt-0;
+	@extend .mb-2;
 }
 
 input[type=text] {
@@ -95,8 +104,9 @@ input[type=text] {
 header {
 	grid-area: header;
 	background: $bg-white;
+	font-family: $heading-font;
     @extend .border-b-1;
-    @extend .py-3;
+    @extend .py-2;
 }
 
 main {
@@ -109,6 +119,7 @@ footer {
 
 .navbar-brand {
 	grid-area: navbarbrand;
+	font-weight: 700;
     @extend .text-dark-light;
     font-size: 1.5rem;
 	@extend .pl-3;
@@ -125,8 +136,7 @@ nav {
 
 nav a,
 .header-mid a {
-    // font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 1.1rem;
     @extend .p-2;
 }
 
@@ -159,12 +169,10 @@ nav {
 		a {
 			color: #222;
 		}
-		.dealsIn{
-			color: #999;
-			font-size: 14px;
-			display: block;
-			line-height: .6;;
-		}
+	}
+	.subtitle {
+		color: #999;
+		font-size: 13px;
 	}
 }
 .btn {
@@ -178,7 +186,7 @@ nav {
 	  @include button-size( 5px, 15px, .8rem, 1.5, 0, '')
 }
 .bg-grad{
-	background-image: linear-gradient(to right, #4CB8C4 0%, #3CD3AD 51%, #4CB8C4 100%);	
+	background-image: linear-gradient(to right, #4CB8C4 0%, #3CD3AD 51%, #4CB8C4 100%);
 }
 
 // .btn-md{
@@ -195,7 +203,6 @@ nav {
 .listing-search-form {
 	.form{
 		background: $body-bg;
-        margin-top: 80px;
         padding: 15px;
 		background: #ececec;
 

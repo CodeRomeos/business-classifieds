@@ -1,6 +1,6 @@
 <template>
-    <aside>
-        <h4>Sidebar</h4>
+    <aside class='sidebar'>
+        <slot></slot>
     </aside>
 </template>
 

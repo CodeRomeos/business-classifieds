@@ -1,18 +1,16 @@
 <template>
 	<div class="card business-card mb-2">
-		<div class="crad-thumb">
+		<div class="card-thumb">
 			<img :src="business.image" class='img-fluid'>
 		</div>
+		<div>
+			<h3 class="h5 card-title mt-1"><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link></h3>
+			<p class='subtitle'>Tour operator in Delhi</p>
+		</div>
 		<div class="card-body">
-			<h3 class="card-title mt-1"><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link>
-			<small class="dealsIn">Tour operator in Delhi</small></h3>
 			<div class="card-text">
-				<p>
-					<strong>Phone:</strong>{{ business.contacts.join() }}
-					<br>
-					<strong> Address:</strong> {{ business.address }}
-				</p>
-				{{ business.body }}
+				<p>Phone: {{ business.contacts.join() }}</p>
+				<p> Address: {{ business.address }}</p>
 				<p class='mt-2'>
 				<router-link class='btn btn-sm' :to="{ name: 'business', params: { businessid: business.businessid }}">Show</router-link>
 				</p>

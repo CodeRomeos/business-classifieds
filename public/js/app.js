@@ -47160,10 +47160,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Businesses_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Businesses_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ListingSearchForm_vue__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ListingSearchForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ListingSearchForm_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__partials_Sidebar_vue__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__partials_Sidebar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__partials_Sidebar_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__partials_CtaBanner_vue__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__partials_CtaBanner_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__partials_CtaBanner_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__partials_CtaBanner_vue__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__partials_CtaBanner_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__partials_CtaBanner_vue__);
 //
 //
 //
@@ -47179,10 +47177,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-
 
 
 
@@ -47199,8 +47193,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	components: {
 		Businesses: __WEBPACK_IMPORTED_MODULE_0__Businesses_vue___default.a,
 		ListingSearchForm: __WEBPACK_IMPORTED_MODULE_1__ListingSearchForm_vue___default.a,
-		Sidebar: __WEBPACK_IMPORTED_MODULE_2__partials_Sidebar_vue___default.a,
-		CtaBanner: __WEBPACK_IMPORTED_MODULE_3__partials_CtaBanner_vue___default.a
+		CtaBanner: __WEBPACK_IMPORTED_MODULE_2__partials_CtaBanner_vue___default.a
 	}
 });
 
@@ -47212,6 +47205,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__partials_BusinessCard__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__partials_BusinessCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__partials_BusinessCard__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_Sidebar_vue__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_Sidebar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__partials_Sidebar_vue__);
 //
 //
 //
@@ -47221,6 +47216,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -47230,7 +47231,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 
 	components: {
-		BusinessCard: __WEBPACK_IMPORTED_MODULE_0__partials_BusinessCard___default.a
+		BusinessCard: __WEBPACK_IMPORTED_MODULE_0__partials_BusinessCard___default.a,
+		Sidebar: __WEBPACK_IMPORTED_MODULE_1__partials_Sidebar_vue___default.a
 	},
 	data: function data() {
 		return {
@@ -47326,8 +47328,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'business-card',
@@ -47343,17 +47343,17 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card business-card mb-2" }, [
-    _c("div", { staticClass: "crad-thumb" }, [
+    _c("div", { staticClass: "card-thumb" }, [
       _c("img", {
         staticClass: "img-fluid",
         attrs: { src: _vm.business.image }
       })
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
+    _c("div", [
       _c(
         "h3",
-        { staticClass: "card-title mt-1" },
+        { staticClass: "h5 card-title mt-1" },
         [
           _c(
             "router-link",
@@ -47366,25 +47366,20 @@ var render = function() {
               }
             },
             [_vm._v(_vm._s(_vm.business.title))]
-          ),
-          _vm._v(" "),
-          _c("small", { staticClass: "dealsIn" }, [
-            _vm._v("Tour operator in Delhi")
-          ])
+          )
         ],
         1
       ),
       _vm._v(" "),
+      _c("p", { staticClass: "subtitle" }, [_vm._v("Tour operator in Delhi")])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
       _c("div", { staticClass: "card-text" }, [
-        _c("p", [
-          _c("strong", [_vm._v("Phone:")]),
-          _vm._v(_vm._s(_vm.business.contacts.join()) + "\n\t\t\t\t"),
-          _c("br"),
-          _vm._v(" "),
-          _c("strong", [_vm._v(" Address:")]),
-          _vm._v(" " + _vm._s(_vm.business.address) + "\n\t\t\t")
-        ]),
-        _vm._v("\n\t\t\t" + _vm._s(_vm.business.body) + "\n\t\t\t"),
+        _c("p", [_vm._v("Phone: " + _vm._s(_vm.business.contacts.join()))]),
+        _vm._v(" "),
+        _c("p", [_vm._v(" Address: " + _vm._s(_vm.business.address))]),
+        _vm._v(" "),
         _c(
           "p",
           { staticClass: "mt-2" },
@@ -47431,18 +47426,29 @@ var render = function() {
     "div",
     { staticClass: "businesses" },
     [
-      _vm.loading
-        ? _c("div", { staticClass: "text-center" }, [
-            _c("img", { attrs: { src: "/images/loader.gif" } })
-          ])
-        : _vm._l(_vm.businesses, function(business, index) {
-            return _c("business-card", {
-              key: index,
-              attrs: { business: business }
-            })
-          })
+      _c("sidebar", { staticClass: "filter-sidebar" }, [
+        _c("h2", [_vm._v("Sidebar")])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "business-cards" },
+        [
+          _vm.loading
+            ? _c("div", { staticClass: "text-center" }, [
+                _c("img", { attrs: { src: "/images/loader.gif" } })
+              ])
+            : _vm._l(_vm.businesses, function(business, index) {
+                return _c("business-card", {
+                  key: index,
+                  attrs: { business: business }
+                })
+              })
+        ],
+        2
+      )
     ],
-    2
+    1
   )
 }
 var staticRenderFns = []
@@ -47655,16 +47661,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("aside", { staticClass: "sidebar" }, [_vm._t("default")], 2)
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("aside", [_c("h4", [_vm._v("Sidebar")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -47733,6 +47732,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'cta-banner'
@@ -47746,13 +47749,35 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "text-center", attrs: { id: "cta-banner" } },
-    [_vm._v("\n    CTA Banner\n")]
-  )
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "text-center bg-grad py-3 px-5 text-white",
+        attrs: { id: "cta-banner" }
+      },
+      [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "h2" }, [
+            _vm._v("Claim Your Business Listing For FREE!")
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "It’s fast, easy and convenient! Local.com has also partnered with Yext so you can claim your business listings on Local.com as well as 40+ other sites."
+            )
+          ])
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -47774,11 +47799,17 @@ var render = function() {
     "section",
     { staticClass: "homepage-container", attrs: { id: "home" } },
     [
-      _c("div", { staticClass: "hero" }, [
+      _c("div", { staticClass: "hero py-5" }, [
         _c(
           "div",
-          { staticStyle: { "max-width": "768px", margin: "auto" } },
-          [_c("listing-search-form")],
+          { staticClass: "container py-5" },
+          [
+            _c("div", { staticClass: "h2" }, [
+              _vm._v("Dolore quasi enim exercitationem")
+            ]),
+            _vm._v(" "),
+            _c("listing-search-form", { staticClass: "mt-3" })
+          ],
           1
         )
       ]),
@@ -47787,19 +47818,9 @@ var render = function() {
         "div",
         { staticClass: "content" },
         [
-          _c("sidebar"),
+          _c("cta-banner"),
           _vm._v(" "),
-          _c(
-            "div",
-            [
-              _c("h1", { staticClass: "pl-2 pr-2" }, [
-                _vm._v(_vm._s(_vm.welcome))
-              ]),
-              _vm._v(" "),
-              _c("businesses")
-            ],
-            1
-          )
+          _c("businesses", { staticClass: "container" })
         ],
         1
       )
@@ -48361,7 +48382,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container", attrs: { id: "app" } }, [
+  return _c("div", { staticClass: "app-grid", attrs: { id: "app" } }, [
     _c(
       "header",
       { staticClass: "header" },
@@ -48394,7 +48415,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "header-mid text-center" }, [
       _c("a", { staticClass: "btn", attrs: { href: "#" } }, [
-        _c("strong", [_vm._v("Claim you listing")])
+        _vm._v("Claim you listing")
       ])
     ])
   }

@@ -1,17 +1,14 @@
 <template>
     <section id='home' class='homepage-container'>
-		<div class="hero">
-			<div style='max-width: 768px; margin: auto'>
-			<listing-search-form />
+		<div class="hero py-5">
+			<div class='container py-5'>
+				<div class='h2'>Dolore quasi enim exercitationem</div>
+				<listing-search-form class='mt-3' />
 			</div>
 		</div>
-
 		<div class="content">
-            <sidebar />
-            <div>
-                <h1 class='pl-2 pr-2'>{{ welcome }}</h1>
-        	    <businesses />
-            </div>
+			<cta-banner />
+			<businesses class='container' />
 		</div>
     </section>
 </template>
@@ -19,7 +16,6 @@
 <script>
 import Businesses from '../Businesses.vue';
 import ListingSearchForm from '../ListingSearchForm.vue';
-import Sidebar from '../partials/Sidebar.vue';
 import CtaBanner from '../partials/CtaBanner.vue';
 
 export default {
@@ -34,7 +30,6 @@ export default {
     components: {
 		Businesses,
 		ListingSearchForm,
-        Sidebar,
         CtaBanner
     }
 }
