@@ -93,12 +93,15 @@ p {
 	@extend .mb-2;
 }
 
-input[type=text] {
-    border: 0;
-    @extend .pt-0;
-    @extend .pb-0;
-    @extend .pl-1;
-    @extend .pr-1;
+.input-container {
+	@extend .mb-2;
+}
+
+input[type=text],
+.input-field {
+	border: 1px solid #ccc;
+    width: 100%;
+	@extend .p-2
 }
 
 header {
@@ -200,8 +203,24 @@ nav {
     @include img-fluid;
 }
 
+.form {
+	.input-container{
+		input{
+			width: 100%;
+			@extend .p-2;
+			border: 1px solid #ddd;
+			&:focus {
+				outline-color: red;
+			}
+		}
+		label {
+
+		}
+	}
+}
+
 .listing-search-form {
-	.form{
+	.form {
 		background: $body-bg;
         padding: 15px;
 		background: #ececec;
@@ -217,33 +236,15 @@ nav {
 	}
 	.input-container{
 		@extend .isRelative;
-		input{
-			border: 1px solid #555;
-			width: 100%;
-			@extend .p-2;
-			// @extend .mb-3;
 
-			// @include mobile { margin-bottom: 0; }
-			// @include tablet { margin-bottom: 0; }
-			// @include desktop { margin-bottom: 0 }
-			// font-size: 1.3rem;
-			border: 1px solid #ddd;
-			&:focus + label{
-				top: -15px; left: 6px; font-size: 10px;
-			}
-		}
-		label{
-			@extend .isAbsolute;
-			@include transition();
-			display: block;
-			top: 5px;
-			left: 8px;
-		}
 		input[type='submit']{
-			// background: $bg-primary;
-			// border: 1px solid $bg-primary;
 			color: #fff;
 			display: inline-block;
 		}
 	}
+}
+
+.sidebar {
+	background: #FFF;
+	@extend .px-4;
 }

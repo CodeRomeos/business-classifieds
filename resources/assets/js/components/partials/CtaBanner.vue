@@ -1,8 +1,8 @@
 <template>
-    <div id="cta-banner" class='text-center bg-grad py-3 px-5 text-white'>
+    <div id="cta-banner" class='text-center bg-primary py-3 px-5 text-white'>
 		<div class="container">
-        <div class='h2'>Claim Your Business Listing For FREE!</div>
-		<p>It’s fast, easy and convenient! Local.com has also partnered with Yext so you can claim your business listings on Local.com as well as 40+ other sites.</p>
+        <div class='h2 text-white'><strong>Create Your Business Listing For FREE!</strong></div>
+		<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, eveniet consectetur. Dolorum!</p>
 		</div>
 
     </div>

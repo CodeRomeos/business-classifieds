@@ -96,6 +96,7 @@ header {
 	grid-template-areas:
 	"sidebar"
 	"businesscards";
+	grid-gap: 8px;
 
 	@include desktop {
 		grid-template-columns: 300px auto;

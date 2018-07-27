@@ -4479,8 +4479,7 @@ p {
   margin-top: 0rem !important;
 }
 
-.pt-0,
-input[type=text] {
+.pt-0 {
   padding-top: 0rem !important;
 }
 
@@ -4493,8 +4492,7 @@ input[type=text] {
   margin-bottom: 0rem !important;
 }
 
-.pb-0,
-input[type=text] {
+.pb-0 {
   padding-bottom: 0rem !important;
 }
 
@@ -4587,8 +4585,7 @@ header {
   margin-left: 0.25rem !important;
 }
 
-.pl-1,
-input[type=text] {
+.pl-1 {
   padding-left: 0.25rem !important;
 }
 
@@ -4600,8 +4597,7 @@ input[type=text] {
   margin-right: 0.25rem !important;
 }
 
-.pr-1,
-input[type=text] {
+.pr-1 {
   padding-right: 0.25rem !important;
 }
 
@@ -4634,13 +4630,15 @@ input[type=text] {
 }
 
 .p-2,
+input[type=text],
+.input-field,
 nav a,
 .header-mid a,
 .navbar-brand,
 .header-mid,
 nav,
 .card,
-.listing-search-form .input-container input {
+.form .input-container input {
   padding: 0.5rem !important;
 }
 
@@ -4662,7 +4660,8 @@ nav,
 }
 
 .mb-2,
-p {
+p,
+.input-container {
   margin-bottom: 0.5rem !important;
 }
 
@@ -4868,7 +4867,8 @@ nav {
 }
 
 .px-4,
-.container {
+.container,
+.sidebar {
   padding-left: 1.5rem !important;
   padding-right: 1.5rem !important;
 }
@@ -5082,6 +5082,7 @@ header {
 .businesses {
   display: grid;
   grid-template-areas: "sidebar" "businesscards";
+  grid-gap: 8px;
 }
 
 @media (min-width: 992px) {
@@ -5181,8 +5182,7 @@ h3,
   position: relative;
 }
 
-.isAbsolute,
-.listing-search-form .input-container label {
+.isAbsolute {
   position: absolute;
 }
 
@@ -5217,7 +5217,7 @@ body {
 }
 
 .bg-primary {
-  background-color: #f75724;
+  background-color: #4CB8C4;
 }
 
 .bg-white,
@@ -5249,8 +5249,10 @@ a:hover {
   color: #4d545d;
 }
 
-input[type=text] {
-  border: 0;
+input[type=text],
+.input-field {
+  border: 1px solid #ccc;
+  width: 100%;
 }
 
 header {
@@ -5354,6 +5356,15 @@ nav a,
   height: auto;
 }
 
+.form .input-container input {
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+.form .input-container input:focus {
+  outline-color: red;
+}
+
 .listing-search-form .form {
   background: #f5f8fa;
   padding: 15px;
@@ -5366,29 +5377,13 @@ nav a,
 		*/
 }
 
-.listing-search-form .input-container input {
-  border: 1px solid #555;
-  width: 100%;
-  border: 1px solid #ddd;
-}
-
-.listing-search-form .input-container input:focus + label {
-  top: -15px;
-  left: 6px;
-  font-size: 10px;
-}
-
-.listing-search-form .input-container label {
-  -webkit-transition: all 0.4s ease-out;
-  transition: all 0.4s ease-out;
-  display: block;
-  top: 5px;
-  left: 8px;
-}
-
 .listing-search-form .input-container input[type='submit'] {
   color: #fff;
   display: inline-block;
+}
+
+.sidebar {
+  background: #FFF;
 }
 
 .fade-enter-active,

@@ -2,6 +2,9 @@
 	<div class="businesses">
 		<sidebar class='filter-sidebar'>
 			<h2>Sidebar</h2>
+			<div class="input-container">
+				<input type='text' class='input-field'>
+			</div>
 		</sidebar>
         <div class='business-cards'>
 			<div class='text-center' v-if='loading'>
