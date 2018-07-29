@@ -178,14 +178,16 @@ nav {
 	}
 }
 .btn {
-  display: inline-block;
-  @extend .text-center;
-  white-space: nowrap;
-  vertical-align: middle;
-  user-select: none;
+    display: inline-block;
+    @extend .text-center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: none;
+    padding: 0.4rem 0.6rem;
 }
 .btn-sm{
-	  @include button-size( 5px, 15px, .8rem, 1.5, 0, '')
+	@include button-size( 5px, 15px, .8rem, 1.5, 0, '')
 }
 .bg-grad{
 	background-image: linear-gradient(to right, #4CB8C4 0%, #3CD3AD 51%, #4CB8C4 100%);

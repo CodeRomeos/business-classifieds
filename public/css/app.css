@@ -5078,16 +5078,18 @@ header {
 }
 
 .businesses {
-  display: grid;
-  grid-template-areas: "sidebar" "businesscards";
-  grid-gap: 8px;
-}
+  /*
+	display: grid;
+	grid-template-areas:
+	"sidebar"
+	"businesscards";
+	grid-gap: 8px;
 
-@media (min-width: 992px) {
-  .businesses {
-    grid-template-columns: 300px auto;
-    grid-template-areas: "sidebar businesscards";
-  }
+	@include desktop {
+		grid-template-columns: 300px auto;
+		grid-template-areas:
+		"sidebar businesscards"
+	}*/
 }
 
 .business-cards {
@@ -5096,9 +5098,32 @@ header {
   grid-column-gap: 8px;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .business-cards {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 992px) {
+  .business-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.business-search-form {
+  display: grid;
+  grid-gap: 8px;
+}
+
+@media (min-width: 768px) {
+  .business-search-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 992px) {
+  .business-search-form {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
@@ -5334,6 +5359,8 @@ nav a,
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  border: none;
+  padding: 0.4rem 0.6rem;
 }
 
 .btn-sm {

@@ -47224,6 +47224,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -47509,40 +47520,57 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "businesses" },
-    [
-      _c("sidebar", { staticClass: "filter-sidebar" }, [
-        _c("h2", [_vm._v("Sidebar")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "input-container" }, [
-          _c("input", { staticClass: "input-field", attrs: { type: "text" } })
-        ])
+  return _c("div", { staticClass: "businesses" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "business-cards" },
+      [
+        _vm.loading
+          ? _c("div", { staticClass: "text-center" }, [
+              _c("img", { attrs: { src: "/images/loader.gif" } })
+            ])
+          : _vm._l(_vm.businesses, function(business, index) {
+              return _c("business-card", {
+                key: index,
+                attrs: { business: business }
+              })
+            })
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "business-search-form" }, [
+      _c("div", { staticClass: "input-container" }, [
+        _c("input", {
+          staticClass: "input",
+          attrs: { type: "text", placeholder: "What..." }
+        })
       ]),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "business-cards" },
-        [
-          _vm.loading
-            ? _c("div", { staticClass: "text-center" }, [
-                _c("img", { attrs: { src: "/images/loader.gif" } })
-              ])
-            : _vm._l(_vm.businesses, function(business, index) {
-                return _c("business-card", {
-                  key: index,
-                  attrs: { business: business }
-                })
-              })
-        ],
-        2
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
+      _c("div", { staticClass: "input-container" }, [
+        _c("input", {
+          staticClass: "input",
+          attrs: { type: "text", placeholder: "Where..." }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "input-container" }, [
+        _c("button", { staticClass: "btn" }, [
+          _c("i", { staticClass: "icon-magnifier icons" }),
+          _vm._v(" Search")
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -47823,7 +47851,7 @@ var render = function() {
         [
           _c("cta-banner"),
           _vm._v(" "),
-          _c("businesses", { staticClass: "container" })
+          _c("businesses", { staticClass: "container mt-5" })
         ],
         1
       )

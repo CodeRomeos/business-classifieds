@@ -1,11 +1,22 @@
 <template>
 	<div class="businesses">
-		<sidebar class='filter-sidebar'>
+		<!-- <sidebar class='filter-sidebar'>
 			<h2>Sidebar</h2>
 			<div class="input-container">
 				<input type='text' class='input-field'>
 			</div>
-		</sidebar>
+		</sidebar> -->
+        <div class="business-search-form">
+            <div class="input-container">
+                <input type="text" class="input" placeholder="What...">
+            </div>
+            <div class="input-container">
+                <input type="text" class="input" placeholder="Where...">
+            </div>
+            <div class="input-container">
+                <button class="btn"><i class='icon-magnifier icons'></i> Search</button>
+            </div>
+        </div>
         <div class='business-cards'>
 			<div class='text-center' v-if='loading'>
 				<img src='/images/loader.gif'>
