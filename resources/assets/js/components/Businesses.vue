@@ -8,13 +8,18 @@
 		</sidebar> -->
         <div class="business-search-form">
             <div class="input-container">
-                <input type="text" class="input" placeholder="What...">
+                <input type="text" class="input-field" placeholder="What...">
             </div>
             <div class="input-container">
-                <input type="text" class="input" placeholder="Where...">
+                <input type="text" class="input-field" placeholder="Where...">
             </div>
             <div class="input-container">
-                <button class="btn"><i class='icon-magnifier icons'></i> Search</button>
+                <select name="" id="" class="input-field">
+                    <option value="">Select Category</option>
+                </select>
+            </div>
+            <div class="input-container">
+                <button class="btn btn-primary btn-block"><i class='icon-magnifier icons'></i> Search</button>
             </div>
         </div>
         <div class='business-cards'>

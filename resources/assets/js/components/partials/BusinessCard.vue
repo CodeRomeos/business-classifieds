@@ -12,10 +12,19 @@
 				<p>Phone: {{ business.contacts.join() }}</p>
 				<p> Address: {{ business.address }}</p>
 				<p class='mt-2'>
-				<router-link class='btn btn-sm' :to="{ name: 'business', params: { businessid: business.businessid }}">Show</router-link>
+				<router-link class='btn btn-sm btn-primary' :to="{ name: 'business', params: { businessid: business.businessid }}">Show</router-link>
 				</p>
 			</div>
 		</div>
+        <div class="card-footer">
+            <div class="ratings">
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+            </div>
+        </div>
 	</div>
 </template>
 

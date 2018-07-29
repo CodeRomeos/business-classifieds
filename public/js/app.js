@@ -47235,6 +47235,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -47342,6 +47347,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'business-card',
@@ -47401,7 +47415,7 @@ var render = function() {
             _c(
               "router-link",
               {
-                staticClass: "btn btn-sm",
+                staticClass: "btn btn-sm btn-primary",
                 attrs: {
                   to: {
                     name: "business",
@@ -47415,10 +47429,31 @@ var render = function() {
           1
         )
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _vm._m(0)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-footer" }, [
+      _c("div", { staticClass: "ratings" }, [
+        _c("span", { staticClass: "fa fa-star" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "fa fa-star" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "fa fa-star" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "fa fa-star" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "fa fa-star" })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -47550,20 +47585,28 @@ var staticRenderFns = [
     return _c("div", { staticClass: "business-search-form" }, [
       _c("div", { staticClass: "input-container" }, [
         _c("input", {
-          staticClass: "input",
+          staticClass: "input-field",
           attrs: { type: "text", placeholder: "What..." }
         })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "input-container" }, [
         _c("input", {
-          staticClass: "input",
+          staticClass: "input-field",
           attrs: { type: "text", placeholder: "Where..." }
         })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "input-container" }, [
-        _c("button", { staticClass: "btn" }, [
+        _c(
+          "select",
+          { staticClass: "input-field", attrs: { name: "", id: "" } },
+          [_c("option", { attrs: { value: "" } }, [_vm._v("Select Category")])]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "input-container" }, [
+        _c("button", { staticClass: "btn btn-primary btn-block" }, [
           _c("i", { staticClass: "icon-magnifier icons" }),
           _vm._v(" Search")
         ])

@@ -4651,7 +4651,8 @@ nav,
 }
 
 .pt-2,
-.hero {
+.hero,
+.card .card-footer {
   padding-top: 0.5rem !important;
 }
 
@@ -4661,7 +4662,7 @@ nav,
 
 .mb-2,
 p,
-.input-container {
+.business-search-form {
   margin-bottom: 0.5rem !important;
 }
 
@@ -4721,7 +4722,8 @@ p,
   margin: 1rem !important;
 }
 
-.p-3 {
+.p-3,
+.business-search-form {
   padding: 1rem !important;
 }
 
@@ -5065,7 +5067,7 @@ header {
 .business-card {
   display: grid;
   grid-column-gap: 20px;
-  grid-template-rows: 210px 65px auto;
+  grid-template-rows: 210px 65px auto 20px;
 }
 
 .business-card .card-thumb {
@@ -5117,13 +5119,7 @@ header {
 
 @media (min-width: 768px) {
   .business-search-form {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (min-width: 992px) {
-  .business-search-form {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -5363,6 +5359,15 @@ nav a,
   padding: 0.4rem 0.6rem;
 }
 
+.btn-block {
+  width: 100%;
+}
+
+.btn-primary {
+  background: #4CB8C4;
+  color: #FFF;
+}
+
 .btn-sm {
   padding: 5px 15px;
   font-size: 0.8rem;
@@ -5409,6 +5414,14 @@ nav a,
 
 .sidebar {
   background: #FFF;
+}
+
+.ratings .fa-star {
+  color: orange;
+}
+
+.business-search-form {
+  background: white;
 }
 
 .fade-enter-active,
