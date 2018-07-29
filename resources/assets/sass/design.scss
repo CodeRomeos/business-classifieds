@@ -166,10 +166,10 @@ nav {
 .card{
 	@include card();
 	.card-title {
-		color: #222;
+		color: #092c61;
 		@extend .mb-0;
 		a {
-			color: #222;
+			color: #092c61;
 		}
 	}
 	.subtitle {
