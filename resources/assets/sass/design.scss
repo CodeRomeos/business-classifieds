@@ -18,7 +18,7 @@ h1, h2, h3, h4, h5, h6,
 
 h1, h2, h3,
 .h1, .h2, .h3 {
-    color: $color-heading;
+    color: $text-dark;
 }
 
 // Transformation
@@ -159,17 +159,18 @@ nav {
 
 .hero {
 	grid-area: hero;
+	background: url(/images/bg-1.PNG);
 	@extend .bg-white;
 	@extend .pt-2;
 }
 
-.card{
+.card {
 	@include card();
 	.card-title {
-		color: #092c61;
+		color: $text-dark;
 		@extend .mb-0;
 		a {
-			color: #092c61;
+			color: $text-dark;
 		}
 	}
 	.subtitle {
@@ -177,7 +178,7 @@ nav {
 		font-size: 13px;
     }
     .card-footer {
-        @extend .pt-2;
+		@extend .border-t-1;
     }
 }
 .btn {
@@ -233,7 +234,7 @@ nav {
 .listing-search-form {
 	.form {
 		background: $body-bg;
-        padding: 15px;
+        @extend .p-3;
 		//background: #ececec;
 		background: $body-bg;
 
@@ -270,5 +271,19 @@ nav {
 .business-search-form {
     @extend .p-3;
     background: white;
-    @extend .mb-2;
+    @extend .mb-3;
+}
+
+.business-card {
+	padding-bottom: 0 !important;
+	margin-bottom: 0 !important;
+
+	.card-thumb {
+		max-height: 200px;
+		overflow: hidden;
+	}
+
+	.card-footer {
+		align-content: center;
+	}
 }

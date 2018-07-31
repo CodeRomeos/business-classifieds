@@ -4564,7 +4564,8 @@ p {
   padding-top: 0.25rem !important;
 }
 
-.border-t-1 {
+.border-t-1,
+.card .card-footer {
   border-top: 1px solid #ddd;
 }
 
@@ -4637,7 +4638,6 @@ nav a,
 .navbar-brand,
 .header-mid,
 nav,
-.card,
 .form .input-container input {
   padding: 0.5rem !important;
 }
@@ -4651,8 +4651,7 @@ nav,
 }
 
 .pt-2,
-.hero,
-.card .card-footer {
+.hero {
   padding-top: 0.5rem !important;
 }
 
@@ -4661,8 +4660,7 @@ nav,
 }
 
 .mb-2,
-p,
-.business-search-form {
+p {
   margin-bottom: 0.5rem !important;
 }
 
@@ -4723,6 +4721,8 @@ p,
 }
 
 .p-3,
+.card,
+.listing-search-form .form,
 .business-search-form {
   padding: 1rem !important;
 }
@@ -4743,7 +4743,8 @@ p,
   border-top: 3px solid #ddd;
 }
 
-.mb-3 {
+.mb-3,
+.business-search-form {
   margin-bottom: 1rem !important;
 }
 
@@ -4805,8 +4806,7 @@ nav {
   margin: 1.5rem !important;
 }
 
-.p-4,
-.business-card {
+.p-4 {
   padding: 1.5rem !important;
 }
 
@@ -5067,12 +5067,12 @@ header {
 .business-card {
   display: grid;
   grid-column-gap: 20px;
-  grid-template-rows: 210px 65px auto 20px;
+  grid-template-rows: 210px 90px auto 40px;
 }
 
-.business-card .card-thumb {
-  max-height: 200px;
-  overflow: hidden;
+.business-card .card-footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .content {
@@ -5097,7 +5097,7 @@ header {
 .business-cards {
   grid-area: businesscards;
   display: grid;
-  grid-column-gap: 8px;
+  grid-gap: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -5114,13 +5114,19 @@ header {
 
 .business-search-form {
   display: grid;
-  grid-gap: 8px;
+  grid-gap: 1rem;
 }
 
 @media (min-width: 768px) {
   .business-search-form {
     grid-template-columns: repeat(4, 1fr);
   }
+}
+
+.hero .how-it-works {
+  display: grid;
+  grid-gap: 0.7rem;
+  grid-template-columns: 0.8fr 0.8fr 0.8fr 0.6fr;
 }
 
 *,
@@ -5181,7 +5187,7 @@ h3,
 .h1,
 .h2,
 .h3 {
-  color: #4d545d;
+  color: #333;
 }
 
 .text-lowercase {
@@ -5236,7 +5242,7 @@ body {
 }
 
 .bg-primary {
-  background-color: #4CB8C4;
+  background-color: #3f51b5;
 }
 
 .bg-white,
@@ -5323,6 +5329,7 @@ nav a,
 
 .hero {
   grid-area: hero;
+  background: url(/images/bg-1.PNG);
 }
 
 .card {
@@ -5335,11 +5342,11 @@ nav a,
 }
 
 .card .card-title {
-  color: #092c61;
+  color: #333;
 }
 
 .card .card-title a {
-  color: #092c61;
+  color: #333;
 }
 
 .card .subtitle {
@@ -5364,7 +5371,7 @@ nav a,
 }
 
 .btn-primary {
-  background: #4CB8C4;
+  background: #3f51b5;
   color: #FFF;
 }
 
@@ -5397,7 +5404,6 @@ nav a,
 
 .listing-search-form .form {
   background: #f3f3f6;
-  padding: 15px;
   background: #f3f3f6;
   /*
 			background: #f6f6f7;
@@ -5422,6 +5428,21 @@ nav a,
 
 .business-search-form {
   background: white;
+}
+
+.business-card {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.business-card .card-thumb {
+  max-height: 200px;
+  overflow: hidden;
+}
+
+.business-card .card-footer {
+  -ms-flex-line-pack: center;
+      align-content: center;
 }
 
 .fade-enter-active,

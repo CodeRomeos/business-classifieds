@@ -6,8 +6,17 @@ use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
 {
-    public function welcome()
+    public function welcome(Request $request, $any = null)
     {
-        return view('web.welcome');
+		/*
+		$route = explode('/', $any);
+		$not_allowed_by_vue = ['login', 'logout', 'admin'];
+		if(! in_array($route[0], $not_allowed_by_vue)) {
+        	return view('web.welcome');
+		}
+		*/
+
+		return view('web.welcome');
+
     }
 }
