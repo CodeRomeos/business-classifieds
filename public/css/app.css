@@ -5114,13 +5114,19 @@ header {
 
 .business-search-form {
   display: grid;
-  grid-gap: 8px;
+  grid-gap: 1rem;
 }
 
 @media (min-width: 768px) {
   .business-search-form {
     grid-template-columns: repeat(4, 1fr);
   }
+}
+
+.hero .how-it-works {
+  display: grid;
+  grid-gap: 0.7rem;
+  grid-template-columns: 0.8fr 0.8fr 0.8fr 0.6fr;
 }
 
 *,
@@ -5323,6 +5329,7 @@ nav a,
 
 .hero {
   grid-area: hero;
+  background: url(/images/bg-1.PNG);
 }
 
 .card {

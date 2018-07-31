@@ -121,9 +121,16 @@ header {
 
 .business-search-form {
     display: grid;
-    grid-gap: 8px;
+    grid-gap: 1rem;
 
     @include tablet {
 		grid-template-columns: repeat(4, 1fr);
+	}
+}
+.hero {
+	.how-it-works{
+		display: grid;
+		grid-gap: 0.7rem;
+		grid-template-columns: 0.8fr 0.8fr 0.8fr 0.6fr;
 	}
 }

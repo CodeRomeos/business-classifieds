@@ -47158,10 +47158,8 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Businesses_vue__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Businesses_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Businesses_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ListingSearchForm_vue__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ListingSearchForm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ListingSearchForm_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__partials_CtaBanner_vue__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__partials_CtaBanner_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__partials_CtaBanner_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_CtaBanner_vue__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_CtaBanner_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__partials_CtaBanner_vue__);
 //
 //
 //
@@ -47177,7 +47175,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -47192,8 +47205,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	components: {
 		Businesses: __WEBPACK_IMPORTED_MODULE_0__Businesses_vue___default.a,
-		ListingSearchForm: __WEBPACK_IMPORTED_MODULE_1__ListingSearchForm_vue___default.a,
-		CtaBanner: __WEBPACK_IMPORTED_MODULE_2__partials_CtaBanner_vue___default.a
+		CtaBanner: __WEBPACK_IMPORTED_MODULE_1__partials_CtaBanner_vue___default.a
 	}
 });
 
@@ -47418,14 +47430,14 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-footer" }, [
+    _c("div", { staticClass: "card-footer text-center" }, [
       _vm._m(1),
       _vm._v(" "),
       _vm._m(2),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "text-right" },
+        {},
         [
           _c(
             "router-link",
@@ -47476,7 +47488,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
+    return _c("div", {}, [
       _c("a", { attrs: { href: "#!" } }, [
         _c("span", { staticClass: "icons icon-share" })
       ])
@@ -47653,130 +47665,9 @@ if (false) {
 }
 
 /***/ }),
-/* 62 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = __webpack_require__(63)
-/* template */
-var __vue_template__ = __webpack_require__(64)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\ListingSearchForm.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6759a5c9", Component.options)
-  } else {
-    hotAPI.reload("data-v-6759a5c9", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 63 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-	name: "listing-search-form"
-});
-
-/***/ }),
-/* 64 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "listing-search-form" }, [
-      _c("form", { staticClass: "form", attrs: { action: "" } }, [
-        _c("div", { staticClass: "input-container" }, [
-          _c("input", {
-            attrs: { type: "text", name: "n", id: "", required: "" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "input-container" }, [
-          _c("input", {
-            attrs: { type: "text", name: "n", id: "", required: "" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "input-container" }, [
-          _c("input", {
-            staticClass: "btn",
-            attrs: { type: "submit", name: "n", value: "Submit", id: "" }
-          })
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6759a5c9", module.exports)
-  }
-}
-
-/***/ }),
+/* 62 */,
+/* 63 */,
+/* 64 */,
 /* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -47902,20 +47793,7 @@ var render = function() {
     "section",
     { staticClass: "homepage-container", attrs: { id: "home" } },
     [
-      _c("div", { staticClass: "hero py-5" }, [
-        _c(
-          "div",
-          { staticClass: "container py-5" },
-          [
-            _c("div", { staticClass: "h2" }, [
-              _vm._v("Dolore quasi enim exercitationem")
-            ]),
-            _vm._v(" "),
-            _c("listing-search-form", { staticClass: "mt-3" })
-          ],
-          1
-        )
-      ]),
+      _vm._m(0),
       _vm._v(" "),
       _c(
         "div",
@@ -47930,7 +47808,82 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "hero py-5" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("h2", { staticClass: "h2 text-center" }, [_vm._v("How it works")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "how-it-works" }, [
+          _c("div", [
+            _c(
+              "p",
+              {
+                staticClass: "text-center",
+                staticStyle: { "font-size": "48px" }
+              },
+              [_c("span", { staticClass: "icons icon-magnifier" })]
+            ),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quibusdam ipsum nesciunt perferendis voluptatem rem."
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "p",
+              {
+                staticClass: "text-center",
+                staticStyle: { "font-size": "48px" }
+              },
+              [_c("span", { staticClass: "icons icon-map" })]
+            ),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quibusdam ipsum nesciunt perferendis voluptatem rem."
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "p",
+              {
+                staticClass: "text-center",
+                staticStyle: { "font-size": "48px" }
+              },
+              [_c("span", { staticClass: "icons icon-directions" })]
+            ),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quibusdam ipsum nesciunt perferendis voluptatem rem."
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "p",
+              {
+                staticClass: "text-center",
+                staticStyle: { "font-size": "100px" }
+              },
+              [_c("span", { staticClass: "icons icon-layers" })]
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

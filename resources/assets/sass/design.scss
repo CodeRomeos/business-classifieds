@@ -159,6 +159,7 @@ nav {
 
 .hero {
 	grid-area: hero;
+	background: url(/images/bg-1.PNG);
 	@extend .bg-white;
 	@extend .pt-2;
 }

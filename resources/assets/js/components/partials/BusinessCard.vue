@@ -22,10 +22,10 @@
 				<br>
 			</div>
 		</div>
-        <div class="card-footer">
+        <div class="card-footer text-center">
 			<div><a href='#!'><span class='fa fa-bookmark-o'></span></a></div>
-			<div class='text-center'><a href='#!'><span class='icons icon-share'></span></a></div>
-			<div class='text-right'><router-link class='' :to="{ name: 'business', params: { businessid: business.businessid }}">View</router-link></div>
+			<div class=''><a href='#!'><span class='icons icon-share'></span></a></div>
+			<div class=''><router-link class='' :to="{ name: 'business', params: { businessid: business.businessid }}">View</router-link></div>
         </div>
 	</div>
 </template>
