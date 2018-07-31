@@ -47356,6 +47356,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'business-card',
@@ -47399,6 +47401,8 @@ var render = function() {
         1
       ),
       _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
       _c("p", { staticClass: "subtitle" }, [_vm._v("Tour operator in Delhi")])
     ]),
     _vm._v(" "),
@@ -47408,30 +47412,37 @@ var render = function() {
         _vm._v(" "),
         _c("p", [_vm._v(" Address: " + _vm._s(_vm.business.address))]),
         _vm._v(" "),
-        _c(
-          "p",
-          { staticClass: "mt-2" },
-          [
-            _c(
-              "router-link",
-              {
-                staticClass: "btn btn-sm btn-primary",
-                attrs: {
-                  to: {
-                    name: "business",
-                    params: { businessid: _vm.business.businessid }
-                  }
-                }
-              },
-              [_vm._v("Show")]
-            )
-          ],
-          1
-        )
+        _c("p", [_vm._v("Hours: Open ⋅ Closes 7PM")]),
+        _vm._v(" "),
+        _c("br")
       ])
     ]),
     _vm._v(" "),
-    _vm._m(0)
+    _c("div", { staticClass: "card-footer" }, [
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "text-right" },
+        [
+          _c(
+            "router-link",
+            {
+              attrs: {
+                to: {
+                  name: "business",
+                  params: { businessid: _vm.business.businessid }
+                }
+              }
+            },
+            [_vm._v("View")]
+          )
+        ],
+        1
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -47439,17 +47450,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-footer" }, [
-      _c("div", { staticClass: "ratings" }, [
-        _c("span", { staticClass: "fa fa-star" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "fa fa-star" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "fa fa-star" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "fa fa-star" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "fa fa-star" })
+    return _c("div", { staticClass: "ratings" }, [
+      _c("span", { staticClass: "fa fa-star" }),
+      _vm._v(" "),
+      _c("span", { staticClass: "fa fa-star" }),
+      _vm._v(" "),
+      _c("span", { staticClass: "fa fa-star" }),
+      _vm._v(" "),
+      _c("span", { staticClass: "fa fa-star" }),
+      _vm._v(" "),
+      _c("span", { staticClass: "fa fa-star" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("a", { attrs: { href: "#!" } }, [
+        _c("span", { staticClass: "fa fa-bookmark-o" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center" }, [
+      _c("a", { attrs: { href: "#!" } }, [
+        _c("span", { staticClass: "icons icon-share" })
       ])
     ])
   }
@@ -48410,6 +48439,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -48433,7 +48463,9 @@ var render = function() {
     [
       _c("router-link", { attrs: { to: "/" } }, [_vm._v("Home")]),
       _vm._v(" "),
-      _c("router-link", { attrs: { to: "/listings" } }, [_vm._v("Lisings")])
+      _c("router-link", { attrs: { to: "/listings" } }, [_vm._v("Lisings")]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "/login" } }, [_vm._v("Login")])
     ],
     1
   )

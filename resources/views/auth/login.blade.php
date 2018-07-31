@@ -1,7 +1,20 @@
 @extends('web.layout')
 
 @section('content')
-<div class="container">
+<header class="header">
+	<a href="/" class='navbar-brand'>
+		{{ env('APP_NAME') }}
+	</a>
+	<div class='header-mid text-center'>
+		<a href='#' class="btn">Claim you listing</a>
+	</div>
+	<nav class="navbar clearfix">
+		<a href="/">Home</a>
+		<a href="/listings">Lisings</a>
+	</nav>
+</header>
+
+<div class="">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

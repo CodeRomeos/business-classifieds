@@ -5,25 +5,27 @@
 		</div>
 		<div>
 			<h3 class="h5 card-title mt-1"><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link></h3>
-			<p class='subtitle'>Tour operator in Delhi</p>
-		</div>
-		<div class="card-body">
-			<div class="card-text">
-				<p>Phone: {{ business.contacts.join() }}</p>
-				<p> Address: {{ business.address }}</p>
-				<p class='mt-2'>
-				<router-link class='btn btn-sm btn-primary' :to="{ name: 'business', params: { businessid: business.businessid }}">Show</router-link>
-				</p>
-			</div>
-		</div>
-        <div class="card-footer">
-            <div class="ratings">
+			<div class="ratings">
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
             </div>
+			<p class='subtitle'>Tour operator in Delhi</p>
+		</div>
+		<div class="card-body">
+			<div class="card-text">
+				<p>Phone: {{ business.contacts.join() }}</p>
+				<p> Address: {{ business.address }}</p>
+				<p>Hours: Open ⋅ Closes 7PM</p>
+				<br>
+			</div>
+		</div>
+        <div class="card-footer">
+			<div><a href='#!'><span class='fa fa-bookmark-o'></span></a></div>
+			<div class='text-center'><a href='#!'><span class='icons icon-share'></span></a></div>
+			<div class='text-right'><router-link class='' :to="{ name: 'business', params: { businessid: business.businessid }}">View</router-link></div>
         </div>
 	</div>
 </template>
