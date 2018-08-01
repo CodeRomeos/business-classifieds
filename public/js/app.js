@@ -47639,14 +47639,6 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "input-container" }, [
-        _c(
-          "select",
-          { staticClass: "input-field", attrs: { name: "", id: "" } },
-          [_c("option", { attrs: { value: "" } }, [_vm._v("Select Category")])]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-container" }, [
         _c("button", { staticClass: "btn btn-primary btn-block" }, [
           _c("i", { staticClass: "icon-magnifier icons" }),
           _vm._v(" Search")

@@ -13,11 +13,11 @@
             <div class="input-container">
                 <input type="text" class="input-field" placeholder="Where...">
             </div>
-            <div class="input-container">
+            <!-- <div class="input-container">
                 <select name="" id="" class="input-field">
                     <option value="">Select Category</option>
                 </select>
-            </div>
+            </div> -->
             <div class="input-container">
                 <button class="btn btn-primary btn-block"><i class='icon-magnifier icons'></i> Search</button>
             </div>

@@ -5119,7 +5119,7 @@ header {
 
 @media (min-width: 768px) {
   .business-search-form {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr 180px;
   }
 }
 
