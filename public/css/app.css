@@ -4466,7 +4466,8 @@ th {
   margin: 0rem !important;
 }
 
-.p-0 {
+.p-0,
+.business-search-form .btn {
   padding: 0rem !important;
 }
 
@@ -4631,14 +4632,12 @@ header {
 }
 
 .p-2,
-input[type=text],
 .input-field,
 nav a,
 .header-mid a,
 .navbar-brand,
 .header-mid,
-nav,
-.form .input-container input {
+nav {
   padding: 0.5rem !important;
 }
 
@@ -4743,8 +4742,7 @@ p {
   border-top: 3px solid #ddd;
 }
 
-.mb-3,
-.business-search-form {
+.mb-3 {
   margin-bottom: 1rem !important;
 }
 
@@ -5014,7 +5012,7 @@ nav {
 
 .homepage-container {
   display: grid;
-  grid-template-areas: "hero" "content";
+  grid-template-areas: "content" "hero";
 }
 
 header {
@@ -5241,13 +5239,19 @@ body {
   color: #FFF !important;
 }
 
-.bg-primary {
+.bg-primary,
+.btn-primary {
   background-color: #3f51b5;
+  background-image: url(/images/bg-1.PNG);
 }
 
 .bg-white,
 .hero {
   background-color: #FFF !important;
+}
+
+.text-dark {
+  color: #333;
 }
 
 .text-dark-light,
@@ -5274,10 +5278,10 @@ a:hover {
   color: #4d545d;
 }
 
-input[type=text],
 .input-field {
-  border: 1px solid #ccc;
   width: 100%;
+  border: 0;
+  border-bottom: 1px solid #ddd;
 }
 
 header {
@@ -5329,7 +5333,6 @@ nav a,
 
 .hero {
   grid-area: hero;
-  background: url(/images/bg-1.PNG);
 }
 
 .card {
@@ -5371,7 +5374,6 @@ nav a,
 }
 
 .btn-primary {
-  background: #3f51b5;
   color: #FFF;
 }
 
@@ -5391,15 +5393,6 @@ nav a,
 .img-fluid {
   max-width: 100%;
   height: auto;
-}
-
-.form .input-container input {
-  width: 100%;
-  border: 1px solid #ddd;
-}
-
-.form .input-container input:focus {
-  outline-color: red;
 }
 
 .listing-search-form .form {
@@ -5428,13 +5421,17 @@ nav a,
 
 .business-search-form {
   background: white;
-  -webkit-box-shadow: 1px 2px 3px #ddd;
-          box-shadow: 1px 2px 3px #ddd;
 }
 
 .business-search-form .btn {
   font-weight: bold;
   letter-spacing: 1px;
+}
+
+.business-search-form .btn,
+.business-search-form .input-field {
+  height: 50px;
+  line-height: 50px;
 }
 
 .business-card {

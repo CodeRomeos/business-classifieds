@@ -23,8 +23,7 @@
 			</div>
 		</div>
 		<div class="content">
-			<cta-banner />
-			<businesses class='container mt-5' />
+			<businesses />
 		</div>
     </section>
 </template>

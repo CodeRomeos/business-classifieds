@@ -63,11 +63,17 @@ body {
 
 .bg-primary {
 	background-color: $bg-primary;
+	background-image: url(/images/bg-1.PNG);
 }
 
 .bg-white {
 	background-color: $bg-white !important;
 }
+
+.text-dark {
+	color: $text-dark;
+}
+
 .text-dark-light{
 	color: #525454
 }
@@ -93,15 +99,11 @@ p {
 	@extend .mb-2;
 }
 
-.input-container {
-
-}
-
-input[type=text],
 .input-field {
-	border: 1px solid #ccc;
     width: 100%;
-	@extend .p-2
+	@extend .p-2;
+	border: 0;
+	border-bottom: 1px solid #ddd;
 }
 
 header {
@@ -159,7 +161,6 @@ nav {
 
 .hero {
 	grid-area: hero;
-	background: url(/images/bg-1.PNG);
 	@extend .bg-white;
 	@extend .pt-2;
 }
@@ -196,7 +197,8 @@ nav {
 }
 
 .btn-primary {
-    background: $bg-primary;
+	// background: $bg-primary;
+	@extend .bg-primary;
     color: #FFF;
 }
 
@@ -216,19 +218,6 @@ nav {
 
 .img-fluid {
     @include img-fluid;
-}
-
-.form {
-	.input-container{
-		input {
-			width: 100%;
-			@extend .p-2;
-			border: 1px solid #ddd;
-			&:focus {
-				outline-color: red;
-			}
-		}
-	}
 }
 
 .listing-search-form {
@@ -269,13 +258,20 @@ nav {
 }
 
 .business-search-form {
-    @extend .p-3;
+	@extend .p-3;
     background: white;
-	@extend .mb-3;
-	box-shadow: 1px 2px 3px #ddd;
+	// box-shadow: 1px 2px 3px #ddd;
 	.btn{
 		font-weight: bold;
-    	letter-spacing: 1px;
+		letter-spacing: 1px;
+
+		@extend .p-0;
+	}
+
+	.btn,
+	.input-field {
+		height: 50px;
+		line-height: 50px;
 	}
 }
 

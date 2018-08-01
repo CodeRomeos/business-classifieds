@@ -47190,7 +47190,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -47252,6 +47251,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -47601,7 +47607,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "business-cards" },
+      { staticClass: "business-cards container" },
       [
         _vm.loading
           ? _c("div", { staticClass: "text-center" }, [
@@ -47623,25 +47629,45 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "business-search-form" }, [
-      _c("div", { staticClass: "input-container" }, [
-        _c("input", {
-          staticClass: "input-field",
-          attrs: { type: "text", placeholder: "What..." }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-container" }, [
-        _c("input", {
-          staticClass: "input-field",
-          attrs: { type: "text", placeholder: "Where..." }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-container" }, [
-        _c("button", { staticClass: "btn btn-primary btn-block" }, [
-          _c("i", { staticClass: "icon-magnifier icons" }),
-          _vm._v(" Search")
+    return _c("section", { staticClass: "bg-primary py-3" }, [
+      _c("div", { staticClass: "container text-white text-center py-3" }, [
+        _c("div", { staticClass: "h2 text-white" }, [
+          _c("strong", [_vm._v("Lorem ipsum dolor sit.")])
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, eveniet consectetur. Dolorum!"
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "business-search-form mt-5 mb-2 text-dark" }, [
+          _c("div", { staticClass: "input-container" }, [
+            _c(
+              "select",
+              { staticClass: "input-field", attrs: { name: "", id: "" } },
+              [
+                _c("option", { attrs: { value: "" } }, [
+                  _vm._v("Search for ...")
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-container" }, [
+            _c(
+              "select",
+              { staticClass: "input-field", attrs: { name: "", id: "" } },
+              [_c("option", { attrs: { value: "" } }, [_vm._v("City")])]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-container" }, [
+            _c("button", { staticClass: "btn btn-primary btn-block" }, [
+              _c("i", { staticClass: "icon-magnifier icons" }),
+              _vm._v(" Search")
+            ])
+          ])
         ])
       ])
     ])
@@ -47732,33 +47758,29 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { staticClass: "text-center py-3", attrs: { id: "cta-banner" } },
+    [_vm._m(0), _vm._v(" "), _vm._t("default")],
+    2
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "text-center bg-primary py-3 px-5 text-white",
-        attrs: { id: "cta-banner" }
-      },
-      [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "h2 text-white" }, [
-            _c("strong", [_vm._v("Create Your Business Listing For FREE!")])
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, eveniet consectetur. Dolorum!"
-            )
-          ])
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "container px-5 text-white" }, [
+      _c("div", { staticClass: "h2 text-white" }, [
+        _c("strong", [_vm._v("Create Your Business Listing For FREE!")])
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, eveniet consectetur. Dolorum!"
+        )
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -47784,16 +47806,7 @@ var render = function() {
     [
       _vm._m(0),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "content" },
-        [
-          _c("cta-banner"),
-          _vm._v(" "),
-          _c("businesses", { staticClass: "container mt-5" })
-        ],
-        1
-      )
+      _c("div", { staticClass: "content" }, [_c("businesses")], 1)
     ]
   )
 }

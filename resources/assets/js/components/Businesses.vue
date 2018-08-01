@@ -6,23 +6,29 @@
 				<input type='text' class='input-field'>
 			</div>
 		</sidebar> -->
-        <div class="business-search-form">
-            <div class="input-container">
-                <input type="text" class="input-field" placeholder="What...">
-            </div>
-            <div class="input-container">
-                <input type="text" class="input-field" placeholder="Where...">
-            </div>
-            <!-- <div class="input-container">
-                <select name="" id="" class="input-field">
-                    <option value="">Select Category</option>
-                </select>
-            </div> -->
-            <div class="input-container">
-                <button class="btn btn-primary btn-block"><i class='icon-magnifier icons'></i> Search</button>
-            </div>
-        </div>
-        <div class='business-cards'>
+		<section class="bg-primary py-3">
+			<div class="container text-white text-center py-3">
+				<div class='h2 text-white'><strong>Lorem ipsum dolor sit.</strong></div>
+				<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, eveniet consectetur. Dolorum!</p>
+
+				<div class="business-search-form mt-5 mb-2 text-dark">
+					<div class="input-container">
+						<select name="" id="" class="input-field">
+							<option value="">Search for ...</option>
+						</select>
+					</div>
+					<div class="input-container">
+						<select name="" id="" class="input-field">
+							<option value="">City</option>
+						</select>
+					</div>
+					<div class="input-container">
+						<button class="btn btn-primary btn-block"><i class='icon-magnifier icons'></i> Search</button>
+					</div>
+				</div>
+			</div>
+		</section>
+        <div class='business-cards container'>
 			<div class='text-center' v-if='loading'>
 				<img src='/images/loader.gif'>
 			</div>
@@ -34,6 +40,7 @@
 <script>
 import BusinessCard from './partials/BusinessCard';
 import Sidebar from './partials/Sidebar.vue';
+
 export default {
 	name: 'businesses',
 	created() {
