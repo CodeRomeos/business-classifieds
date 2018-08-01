@@ -5428,6 +5428,13 @@ nav a,
 
 .business-search-form {
   background: white;
+  -webkit-box-shadow: 1px 2px 3px #ddd;
+          box-shadow: 1px 2px 3px #ddd;
+}
+
+.business-search-form .btn {
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 .business-card {

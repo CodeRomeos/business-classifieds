@@ -271,7 +271,12 @@ nav {
 .business-search-form {
     @extend .p-3;
     background: white;
-    @extend .mb-3;
+	@extend .mb-3;
+	box-shadow: 1px 2px 3px #ddd;
+	.btn{
+		font-weight: bold;
+    	letter-spacing: 1px;
+	}
 }
 
 .business-card {
