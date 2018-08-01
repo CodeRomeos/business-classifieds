@@ -8,7 +8,8 @@ export default {
         currentUser: user,
         isLoggedIn: !!user,
         loading: false,
-        auth_error: null
+		auth_error: null,
+		loginModal: false
     },
     getters: {
         welcome(state) {
@@ -25,7 +26,10 @@ export default {
         },
         authError(state) {
             return state.auth_error;
-        }
+		},
+		loginModal(state) {
+			return state.loginModal;
+		}
     },
     mutations: {
         login(state) {
@@ -47,12 +51,25 @@ export default {
             localStorage.removeItem("user");
             state.isLoggedIn = false;
             state.currentUser = null;
-        }
+		},
+		hideLoginModal(state) {
+			state.loginModal = false;
+		},
+		showLoginModal(state) {
+			state.loginModal = true;
+		}
+
     },
 
     actions: {
         login(context) {
             context.commit('login');
-        }
+		},
+		showLoginModal(context) {
+			context.commit('showLoginModal');
+		},
+		hideLoginModal(context) {
+			context.commit('hideLoginModal');
+		}
     }
 }

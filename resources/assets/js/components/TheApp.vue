@@ -10,6 +10,7 @@
 			<navbar />
 		</header>
         <main class="main">
+			<login-modal></login-modal>
             <transition name='fade'>
             <router-view></router-view>
             </transition>
@@ -22,15 +23,24 @@
 
 <script>
 import Navbar from './partials/Navbar.vue';
+import Modal from './partials/Modal.vue';
+import LoginModal from './auth/LoginModal.vue';
 export default {
     name: 'the-app',
     data() {
         return {
             APP_NAME: process.env.MIX_APP_NAME
         }
-    },
+	},
+	computed: {
+		loginModal() {
+
+		}
+	},
     components: {
-        Navbar
+		Navbar,
+		Modal,
+		LoginModal
     }
 }
 </script>
