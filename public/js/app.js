@@ -47607,7 +47607,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "business-cards container" },
+      { staticClass: "business-cards container my-3" },
       [
         _vm.loading
           ? _c("div", { staticClass: "text-center" }, [
@@ -47641,7 +47641,7 @@ var staticRenderFns = [
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "business-search-form mt-5 mb-2 text-dark" }, [
+        _c("div", { staticClass: "business-search-form mt-5 text-dark" }, [
           _c("div", { staticClass: "input-container" }, [
             _c(
               "select",

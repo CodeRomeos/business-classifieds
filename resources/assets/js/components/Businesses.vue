@@ -11,7 +11,7 @@
 				<div class='h2 text-white'><strong>Lorem ipsum dolor sit.</strong></div>
 				<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, eveniet consectetur. Dolorum!</p>
 
-				<div class="business-search-form mt-5 mb-2 text-dark">
+				<div class="business-search-form mt-5 text-dark">
 					<div class="input-container">
 						<select name="" id="" class="input-field">
 							<option value="">Search for ...</option>
@@ -28,7 +28,7 @@
 				</div>
 			</div>
 		</section>
-        <div class='business-cards container'>
+        <div class='business-cards container my-3'>
 			<div class='text-center' v-if='loading'>
 				<img src='/images/loader.gif'>
 			</div>
