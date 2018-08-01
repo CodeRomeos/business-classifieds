@@ -4489,7 +4489,8 @@ p {
 }
 
 .mb-0,
-.card .card-title {
+.card .card-title,
+.how-it-works li .card-title {
   margin-bottom: 0rem !important;
 }
 
@@ -4566,7 +4567,8 @@ p {
 }
 
 .border-t-1,
-.card .card-footer {
+.card .card-footer,
+.how-it-works li .card-footer {
   border-top: 1px solid #ddd;
 }
 
@@ -4721,6 +4723,7 @@ p {
 
 .p-3,
 .card,
+.how-it-works li,
 .listing-search-form .form,
 .business-search-form {
   padding: 1rem !important;
@@ -5193,6 +5196,11 @@ h3,
   color: #333;
 }
 
+ul,
+ol {
+  list-style-type: none;
+}
+
 .text-lowercase {
   text-transform: lowercase !important;
 }
@@ -5340,24 +5348,29 @@ nav a,
   grid-area: hero;
 }
 
-.card {
+.card,
+.how-it-works li {
   background-color: #FFF;
   margin-bottom: 15px;
 }
 
-.card .card-text {
+.card .card-text,
+.how-it-works li .card-text {
   font-size: 14px;
 }
 
-.card .card-title {
+.card .card-title,
+.how-it-works li .card-title {
   color: #333;
 }
 
-.card .card-title a {
+.card .card-title a,
+.how-it-works li .card-title a {
   color: #333;
 }
 
-.card .subtitle {
+.card .subtitle,
+.how-it-works li .subtitle {
   color: #999;
   font-size: 13px;
 }

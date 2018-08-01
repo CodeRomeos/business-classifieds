@@ -20,7 +20,7 @@ h1, h2, h3,
 .h1, .h2, .h3 {
     color: $text-dark;
 }
-
+ul,ol { list-style-type: none; }
 // Transformation
 .text-lowercase  { text-transform: lowercase !important; }
 .text-uppercase  { text-transform: uppercase !important; }
@@ -288,3 +288,7 @@ nav {
 		align-content: center;
 	}
 }
+
+.how-it-works li {
+	@extend .card; 
+} 

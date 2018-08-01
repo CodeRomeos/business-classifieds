@@ -47206,6 +47206,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -47831,71 +47837,66 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "hero py-5" }, [
+    return _c("div", { staticClass: "hero py-3" }, [
       _c("div", { staticClass: "container" }, [
-        _c("h2", { staticClass: "h2 text-center" }, [_vm._v("How it works")]),
+        _c("h2", { staticClass: "h1 text-center" }, [_vm._v("How it works")]),
         _vm._v(" "),
         _c("div", { staticClass: "how-it-works" }, [
           _c("div", [
-            _c(
-              "p",
-              {
-                staticClass: "text-center",
-                staticStyle: { "font-size": "48px" }
-              },
-              [_c("span", { staticClass: "icons icon-magnifier" })]
-            ),
+            _c("ul", { staticClass: "p-0" }, [
+              _c("li", [
+                _c("p", { staticClass: "h4" }, [
+                  _c("span", { staticClass: "icons icon-magnifier" }),
+                  _vm._v(" "),
+                  _c("strong", [_vm._v("Easy registration")])
+                ]),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quibusdam ipsum nesciunt perferendis voluptatem rem."
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("p", { staticClass: "h4" }, [
+                  _c("span", { staticClass: "icons icon-map" }),
+                  _vm._v(" "),
+                  _c("strong", [_vm._v("Promote your listing")])
+                ]),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quibusdam ipsum nesciunt perferendis voluptatem rem."
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("p", { staticClass: "h4" }, [
+                  _c("span", { staticClass: "icons icon-directions" }),
+                  _vm._v(" "),
+                  _c("strong", [_vm._v("Increase sales benefits")])
+                ]),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quibusdam ipsum nesciunt perferendis voluptatem rem."
+                  )
+                ])
+              ])
+            ]),
             _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quibusdam ipsum nesciunt perferendis voluptatem rem."
-              )
+            _c("a", { staticClass: "btn btn-primary", attrs: { href: "#1" } }, [
+              _vm._v("Claim your business")
             ])
           ]),
           _vm._v(" "),
           _c("div", [
-            _c(
-              "p",
-              {
-                staticClass: "text-center",
-                staticStyle: { "font-size": "48px" }
-              },
-              [_c("span", { staticClass: "icons icon-map" })]
-            ),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quibusdam ipsum nesciunt perferendis voluptatem rem."
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _c(
-              "p",
-              {
-                staticClass: "text-center",
-                staticStyle: { "font-size": "48px" }
-              },
-              [_c("span", { staticClass: "icons icon-directions" })]
-            ),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quibusdam ipsum nesciunt perferendis voluptatem rem."
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _c(
-              "p",
-              {
-                staticClass: "text-center",
-                staticStyle: { "font-size": "100px" }
-              },
-              [_c("span", { staticClass: "icons icon-layers" })]
-            )
+            _c("img", {
+              staticClass: "img-fluid",
+              attrs: { src: "/images/web-page-screen.svg", alt: "" }
+            })
           ])
         ])
       ])

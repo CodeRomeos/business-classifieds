@@ -1,23 +1,29 @@
 <template>
     <section id='home' class='homepage-container'>
-		<div class="hero py-5">
+		<div class="hero py-3">
 			<div class='container'>
-				<h2 class='h2 text-center'>How it works</h2>
+				<h2 class='h1 text-center'>How it works</h2>
 				<div class="how-it-works">
 					<div>
-						<p class='text-center' style='font-size: 48px'><span class='icons icon-magnifier'></span></p>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quibusdam ipsum nesciunt perferendis voluptatem rem.</p>
+						<ul class="p-0">
+							<li>
+								<p class="h4"> <span class='icons icon-magnifier'></span> <strong>Easy registration</strong></p>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quibusdam ipsum nesciunt perferendis voluptatem rem.</p>
+							</li>
+							<li>
+								<p class="h4"> <span class='icons icon-map'></span> <strong>Promote your listing</strong></p>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quibusdam ipsum nesciunt perferendis voluptatem rem.</p>
+							</li>
+							<li>
+								<p class="h4"> <span class='icons icon-directions'></span> <strong>Increase sales benefits</strong></p>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quibusdam ipsum nesciunt perferendis voluptatem rem.</p>
+							</li>
+						</ul>
+						<a href="#1" class="btn btn-primary">Claim your business</a>
 					</div>
+					
 					<div>
-						<p class='text-center' style='font-size: 48px'><span class='icons icon-map'></span></p>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quibusdam ipsum nesciunt perferendis voluptatem rem.</p>
-					</div>
-					<div>
-						<p class='text-center' style='font-size: 48px'><span class='icons icon-directions'></span></p>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quibusdam ipsum nesciunt perferendis voluptatem rem.</p>
-					</div>
-					<div>
-						<p class='text-center' style='font-size: 100px'><span class='icons icon-layers'></span></p>
+						<img src="/images/web-page-screen.svg" alt="" class="img-fluid">
 					</div>
 				</div>
 			</div>
