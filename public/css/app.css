@@ -5124,7 +5124,12 @@ header {
 .hero .how-it-works {
   display: grid;
   grid-gap: 0.7rem;
-  grid-template-columns: 0.8fr 0.8fr 0.8fr 0.6fr;
+}
+
+@media (min-width: 768px) {
+  .hero .how-it-works {
+    grid-template-columns: 2fr 1fr;
+  }
 }
 
 *,
