@@ -48394,7 +48394,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -48416,8 +48415,6 @@ var render = function() {
     "nav",
     { staticClass: "navbar clearfix" },
     [
-      _c("router-link", { attrs: { to: "/" } }, [_vm._v("Home")]),
-      _vm._v(" "),
       _c("router-link", { attrs: { to: "/listings" } }, [_vm._v("Lisings")]),
       _vm._v(" "),
       _c("a", { attrs: { href: "/login" } }, [_vm._v("Login")])

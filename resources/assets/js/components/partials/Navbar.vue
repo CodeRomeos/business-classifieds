@@ -1,6 +1,5 @@
 <template>
     <nav class="navbar clearfix">
-        <router-link to="/">Home</router-link>
 		<router-link to="/listings">Lisings</router-link>
 		<a href="/login">Login</a>
     </nav>
