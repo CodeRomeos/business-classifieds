@@ -61,6 +61,10 @@ body {
     color: #FFF !important
 }
 
+.bg-transparent {
+	background-color: transparent
+}
+
 .bg-primary {
 	background-color: $bg-primary;
 	background-image: url(/images/bg-1.PNG);
@@ -291,44 +295,5 @@ nav {
 
 .how-it-works li {
 	@extend .card;
-}
-
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    .modal-backdrop {
-        background: #00000094;
-        width: 100%;
-        height: 100%;
-    }
-
-    .modal-content {
-        display: flex;
-        position: absolute;
-        top: calc(50% - 200px);
-        max-width: 800px;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
-        align-items: center;
-        justify-content: center;
-        @extend .px-5;
-        .card {
-            flex: 1;
-            position: relative;
-        }
-
-        .btn-close {
-            position: absolute;
-            right: 0;
-            top: -46px;
-            background: transparent;
-            color: #FFF;
-        }
-    }
 }
 
