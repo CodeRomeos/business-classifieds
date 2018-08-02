@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\Controller;
 use App\Events\UserWasRegistered;
 use Validator;
+use App\Http\Resources\User as UserResource;
 
 class LoginController extends Controller
 {
@@ -19,16 +20,16 @@ class LoginController extends Controller
 		if(auth()->attempt(['email' => request('email'), 'password' => request('password')]))
 		{
 			$user = auth()->user();
-			$success['user'] = $user->name;
-			$success['role'] = $user->role->name;
+			$success['user'] = new UserResource($user);
 
 			if($user->isAdmin)
 			{
+                $success['isAdmin'] = true;
 				$success['redirect'] = route('admin.dashboard');
 				return $this->respond(['data' => $success]);
 			}
 
-			$success['token'] = $user->createToken(config('auth.token_name'))->accessToken;
+			$success['access_token'] = $user->createToken(config('auth.token_name'))->accessToken;
 
             return $this->respond(['data' => $success]);
         }

@@ -47053,16 +47053,12 @@ var user = Object(__WEBPACK_IMPORTED_MODULE_0__helpers_auth__["a" /* getLocalUse
         welcomeMessage: 'Welcome to Business classifieds',
         currentUser: user,
         isLoggedIn: !!user,
-        loading: false,
         auth_error: null,
         loginModal: false
     },
     getters: {
         welcome: function welcome(state) {
             return state.welcomeMessage;
-        },
-        isLoading: function isLoading(state) {
-            return state.loading;
         },
         isLoggedIn: function isLoggedIn(state) {
             return state.isLoggedIn;
@@ -47079,19 +47075,18 @@ var user = Object(__WEBPACK_IMPORTED_MODULE_0__helpers_auth__["a" /* getLocalUse
     },
     mutations: {
         login: function login(state) {
-            state.loading = true;
+
             state.auth_error = null;
         },
         loginSuccess: function loginSuccess(state, payload) {
-            state.auth.error = null;
+            state.auth_error = null;
             state.isLoggedIn = true;
-            state.loading = false;
-            state.currentUser = Object.assign({}, payload.user, { token: payload.access_token });
+            state.loginModal = false;
+            state.currentUser = Object.assign({}, payload.data.user, { token: payload.data.access_token });
             localStorage.setItem("user", JSON.stringify(state.currentUser));
         },
         loginFailed: function loginFailed(state, payload) {
-            state.loading = false;
-            state.auth_error = payload.error;
+            state.auth_error = payload.data.error;
         },
         logout: function logout(state) {
             localStorage.removeItem("user");
@@ -47109,6 +47104,9 @@ var user = Object(__WEBPACK_IMPORTED_MODULE_0__helpers_auth__["a" /* getLocalUse
     actions: {
         login: function login(context) {
             context.commit('login');
+        },
+        logout: function logout(context) {
+            context.commit('logout');
         },
         showLoginModal: function showLoginModal(context) {
             context.commit('showLoginModal');
@@ -48791,6 +48789,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(38);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -48798,6 +48799,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	mounted: function mounted() {},
@@ -48807,9 +48811,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		};
 	},
 
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['isLoggedIn'])),
 	methods: {
 		loginModal: function loginModal() {
 			this.$store.dispatch('showLoginModal');
+		},
+		logout: function logout() {
+			this.$store.dispatch('logout');
 		}
 	}
 });
@@ -48828,10 +48836,32 @@ var render = function() {
     [
       _c("router-link", { attrs: { to: "/listings" } }, [_vm._v("Lisings")]),
       _vm._v(" "),
-      !this.$store.isLoggedIn
-        ? _c("a", { attrs: { href: "#!" }, on: { click: _vm.loginModal } }, [
-            _vm._v("Login")
+      !_vm.isLoggedIn
+        ? _c(
+            "a",
+            {
+              attrs: { href: "javascript:void(0)" },
+              on: { click: _vm.loginModal }
+            },
+            [_vm._v("Login")]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.isLoggedIn
+        ? _c("a", { attrs: { href: "javascript:void(0)" } }, [
+            _vm._v("My Account")
           ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.isLoggedIn
+        ? _c(
+            "a",
+            {
+              attrs: { href: "javascript:void(0)" },
+              on: { click: _vm.logout }
+            },
+            [_vm._v("Logout")]
+          )
         : _vm._e()
     ],
     1
@@ -49094,59 +49124,60 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	name: "login",
-	data: function data() {
-		return {
-			form: {
-				email: "",
-				password: ""
-			},
-			error: null,
-			loading: false
-		};
-	},
+				name: "login",
+				data: function data() {
+								return {
+												form: {
+																email: "",
+																password: ""
+												},
+												error: null,
+												loading: false
+								};
+				},
 
-	computed: {},
-	methods: {
-		authenticate: function authenticate() {
-			var _this = this;
+				computed: {},
+				methods: {
+								authenticate: function authenticate() {
+												var _this = this;
 
-			this.loading = true;
-			this.disable_inputs();
-			this.$store.dispatch('login');
-			Object(__WEBPACK_IMPORTED_MODULE_0__helpers_auth__["b" /* login */])(this.$data.form).then(function (res) {
-				_this.loading = false;
-				_this.enable_inputs();
-				//this.$store.commit('loginSuccess', res);
+												this.loading = true;
+												this.disable_inputs();
+												this.$store.dispatch('login');
+												Object(__WEBPACK_IMPORTED_MODULE_0__helpers_auth__["b" /* login */])(this.$data.form).then(function (res) {
+																_this.loading = false;
+																_this.enable_inputs();
 
-				if (res.data.role == 'administrator') {
-					axios.post('/login', _this.$data.form).then(function (response) {
-						window.location.href = res.data.redirect;
-					}).catch(function (error) {
-						_this.loading = false;
-						_this.enable_inputs();
-						console.log({ error: error });
-					});
+																if (res.data.isAdmin) {
+																				axios.post('/login', _this.$data.form).then(function (response) {
+																								window.location.href = res.data.redirect;
+																				}).catch(function (error) {
+																								_this.loading = false;
+																								_this.enable_inputs();
+																				});
+																} else {
+																				_this.$store.commit('loginSuccess', res);
+																}
+
+																//this.$router.push({path: '/'});
+												}).catch(function (error) {
+																_this.loading = false;
+																_this.enable_inputs();
+																console.log({ error: error });
+																_this.$store.commit('loginFailed', { error: error });
+												});
+								},
+								disable_inputs: function disable_inputs() {
+												$('#login_name').prop('disabled', true);
+												$('#login_password').prop('disabled', true);
+												$('#login_submit').prop('disabled', true);
+								},
+								enable_inputs: function enable_inputs() {
+												$('#login_name').prop('disabled', false);
+												$('#login_password').prop('disabled', false);
+												$('#login_submit').prop('disabled', false);
+								}
 				}
-				//this.$router.push({path: '/'});
-			}).catch(function (error) {
-				_this.loading = false;
-				_this.enable_inputs();
-				console.log({ error: error });
-				//this.$store.commit('loginFailed', {error});
-			});
-		},
-		disable_inputs: function disable_inputs() {
-			$('#login_name').prop('disabled', true);
-			$('#login_password').prop('disabled', true);
-			$('#login_submit').prop('disabled', true);
-		},
-		enable_inputs: function enable_inputs() {
-			$('#login_name').prop('disabled', false);
-			$('#login_password').prop('disabled', false);
-			$('#login_submit').prop('disabled', false);
-		}
-	}
 });
 
 /***/ }),

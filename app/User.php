@@ -37,7 +37,12 @@ class User extends Authenticatable
     public function hasRole($role)
     {
     	return !! ($this->role->name == $role);
-	}
+    }
+
+    public function getRoleNameAttribute()
+    {
+        return $this->role->name;
+    }
 
 	public function getIsAdminAttribute()
     {
