@@ -49,7 +49,18 @@ export default {
 					this.loading = false;
 					this.enable_inputs();
 					//this.$store.commit('loginSuccess', res);
-					console.log(res);
+
+					if(res.data.role == 'administrator') {
+						 axios.post('/login', this.$data.form)
+							.then((response) => {
+								window.location.href = res.data.redirect;
+							})
+							.catch((error) => {
+								this.loading = false;
+								this.enable_inputs();
+								console.log({error});
+							});
+					}
                     //this.$router.push({path: '/'});
                 })
                 .catch((error) => {

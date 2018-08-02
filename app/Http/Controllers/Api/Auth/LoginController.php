@@ -19,10 +19,17 @@ class LoginController extends Controller
 		if(auth()->attempt(['email' => request('email'), 'password' => request('password')]))
 		{
 			$user = auth()->user();
+			$success['user'] = $user->name;
+			$success['role'] = $user->role->name;
+
+			if($user->isAdmin)
+			{
+				$success['redirect'] = route('admin.dashboard');
+				return $this->respond(['data' => $success]);
+			}
 
 			$success['token'] = $user->createToken(config('auth.token_name'))->accessToken;
-            $success['user'] = $user->name;
-            $success['role'] = $user->role->name;
+
             return $this->respond(['data' => $success]);
         }
         else {
