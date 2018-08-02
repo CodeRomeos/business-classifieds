@@ -45927,10 +45927,10 @@ if (inBrowser && window.Vue) {
 /* harmony export (immutable) */ __webpack_exports__["a"] = getLocalUser;
 function login(credentials) {
     return new Promise(function (res, rej) {
-        axios.post('/api/v1/login', credentials).then(function (resopons) {
+        axios.post('/api/v1/login', credentials).then(function (response) {
             res(response.data);
         }).catch(function (error) {
-            rej("Error");
+            rej(error);
         });
     });
 }
@@ -46102,7 +46102,7 @@ var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
 /* unused harmony export install */
 /* unused harmony export mapState */
 /* unused harmony export mapMutations */
-/* unused harmony export mapGetters */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mapGetters; });
 /* unused harmony export mapActions */
 /* unused harmony export createNamespacedHelpers */
 /**
@@ -48645,16 +48645,20 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Login_vue__ = __webpack_require__(82);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Login_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_Modal_vue__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_Modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__partials_Modal_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Login_vue__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Login_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__partials_Modal_vue__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__partials_Modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__partials_Modal_vue__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
 //
 //
 //
+
 
 
 
@@ -48665,19 +48669,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	created: function created() {},
 
-	computed: {
-		loginModal: function loginModal() {
-			return this.$store.state.loginModal;
-		}
-	},
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['loginModal'])),
 	methods: {
 		closeLogin: function closeLogin() {
 			this.$store.dispatch('hideLoginModal');
 		}
 	},
 	components: {
-		Login: __WEBPACK_IMPORTED_MODULE_0__Login_vue___default.a,
-		Modal: __WEBPACK_IMPORTED_MODULE_1__partials_Modal_vue___default.a
+		Login: __WEBPACK_IMPORTED_MODULE_1__Login_vue___default.a,
+		Modal: __WEBPACK_IMPORTED_MODULE_2__partials_Modal_vue___default.a
 	}
 });
 
@@ -48758,33 +48758,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "login",
-    data: function data() {
-        return {
-            form: {
-                email: "",
-                password: ""
-            },
-            error: null
-        };
-    },
+				name: "login",
+				data: function data() {
+								return {
+												form: {
+																email: "",
+																password: ""
+												},
+												error: null,
+												loading: false
+								};
+				},
 
-    methods: {
-        authenticate: function authenticate() {
-            var _this = this;
+				computed: {},
+				methods: {
+								authenticate: function authenticate() {
+												var _this = this;
 
-            this.$store.dispatch('login');
-            Object(__WEBPACK_IMPORTED_MODULE_0__helpers_auth__["b" /* login */])(this.$data.form).then(function (res) {
-                _this.$store.commit('loginSuccess', res);
-                _this.$router.push({ path: '/' });
-            }).catch(function (error) {
-                _this.$store.commit('loginFailed', { error: error });
-            });
-        }
-    }
+												this.loading = true;
+												this.disable_inputs();
+												this.$store.dispatch('login');
+												Object(__WEBPACK_IMPORTED_MODULE_0__helpers_auth__["b" /* login */])(this.$data.form).then(function (res) {
+																_this.loading = false;
+																_this.enable_inputs();
+																//this.$store.commit('loginSuccess', res);
+																console.log(res);
+																//this.$router.push({path: '/'});
+												}).catch(function (error) {
+																_this.loading = false;
+																_this.enable_inputs();
+																console.log({ error: error });
+																//this.$store.commit('loginFailed', {error});
+												});
+								},
+								disable_inputs: function disable_inputs() {
+												$('#login_name').prop('disabled', true);
+												$('#login_password').prop('disabled', true);
+												$('#login_submit').prop('disabled', true);
+								},
+								enable_inputs: function enable_inputs() {
+												$('#login_name').prop('disabled', false);
+												$('#login_password').prop('disabled', false);
+												$('#login_submit').prop('disabled', false);
+								}
+				}
 });
 
 /***/ }),
@@ -48798,63 +48819,80 @@ var render = function() {
   return _c("div", { staticClass: "login" }, [
     _c("div", { staticClass: "card" }, [
       _c("div", { staticClass: "card-body" }, [
-        _c("h3", { staticClass: "card-title" }, [_vm._v("Login")]),
+        _c("h3", { staticClass: "card-title" }, [
+          _vm._v("Login"),
+          _vm.loading ? _c("span", [_vm._m(0)]) : _vm._e()
+        ]),
         _vm._v(" "),
-        _c("form", { staticClass: "mt-3" }, [
-          _c("div", { staticClass: "input-container mb-3" }, [
-            _c("label", { attrs: { for: "email" } }, [_vm._v("Email: ")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.email,
-                  expression: "form.email"
-                }
-              ],
-              staticClass: "input-field",
-              attrs: { type: "email" },
-              domProps: { value: _vm.form.email },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "email", $event.target.value)
-                }
+        _c(
+          "form",
+          {
+            staticClass: "mt-3",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.authenticate($event)
               }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "input-container mb-3" }, [
-            _c("label", { attrs: { for: "password" } }, [_vm._v("Password: ")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.password,
-                  expression: "form.password"
-                }
-              ],
-              staticClass: "input-field",
-              attrs: { type: "password" },
-              domProps: { value: _vm.form.password },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            }
+          },
+          [
+            _c("div", { staticClass: "input-container mb-3" }, [
+              _c("label", { attrs: { for: "email" } }, [_vm._v("Email: ")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.email,
+                    expression: "form.email"
                   }
-                  _vm.$set(_vm.form, "password", $event.target.value)
+                ],
+                staticClass: "input-field",
+                attrs: { type: "email", id: "login_name" },
+                domProps: { value: _vm.form.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "email", $event.target.value)
+                  }
                 }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _vm._m(0)
-        ])
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-container mb-3" }, [
+              _c("label", { attrs: { for: "password" } }, [
+                _vm._v("Password: ")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.password,
+                    expression: "form.password"
+                  }
+                ],
+                staticClass: "input-field",
+                attrs: { type: "password", id: "login_password" },
+                domProps: { value: _vm.form.password },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "password", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
+          ]
+        )
       ])
     ])
   ])
@@ -48864,10 +48902,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("small", [_c("span", { staticClass: "fa fa-refresh fa-spin" })])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "input-container mb-3" }, [
       _c("input", {
         staticClass: "btn btn-primary",
-        attrs: { type: "submit", value: "Login" }
+        attrs: { type: "submit", value: "Login", id: "login_submit" }
       })
     ])
   }

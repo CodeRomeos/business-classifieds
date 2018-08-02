@@ -20,12 +20,12 @@ class LoginController extends Controller
 		{
 			$user = auth()->user();
 
-			$success['token'] =  $user->createToken(config('auth.token_name'))->accessToken;
+			$success['token'] = $user->createToken(config('auth.token_name'))->accessToken;
             $success['user'] = $user->name;
             $success['role'] = $user->role->name;
             return $this->respond(['data' => $success]);
         }
-        else{
+        else {
             return $this->respondUnauthorised();
         }
 	}

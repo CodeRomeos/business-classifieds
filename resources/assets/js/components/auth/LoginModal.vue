@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Login from './Login.vue'
 import Modal from '../partials/Modal.vue'
 export default {
@@ -18,9 +19,9 @@ export default {
 
 	},
 	computed: {
-		loginModal() {
-			return this.$store.state.loginModal;
-		}
+		...mapGetters([
+			'loginModal'
+		])
 	},
 	methods: {
 		closeLogin() {
