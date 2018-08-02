@@ -2,18 +2,19 @@
     <div class="login">
 		<div class="card">
 			<div class="card-body">
-				<h3 class="card-title">Login</h3>
-				<form class='mt-3'>
+				<h3 class="card-title">Login<span v-if='loading'><small> <span class='fa fa-refresh fa-spin'></span></small></span></h3>
+
+				<form class='mt-3' @submit.prevent='authenticate'>
 					<div class="input-container mb-3">
 						<label for='email'>Email: </label>
-						<input type='email' v-model="form.email" class='input-field'>
+						<input type='email' v-model="form.email" class='input-field' id='login_name'>
 					</div>
 					<div class="input-container mb-3">
 						<label for='password'>Password: </label>
-						<input type='password' v-model="form.password" class='input-field'>
+						<input type='password' v-model="form.password" class='input-field' id='login_password'>
 					</div>
 					<div class="input-container mb-3">
-						<input type='submit' value='Login' class='btn btn-primary'>
+						<input type='submit' value='Login' class='btn btn-primary' id='login_submit'>
 					</div>
 				</form>
 			</div>
@@ -31,22 +32,55 @@ export default {
                 email: "",
                 password: ""
             },
-            error: null
+			error: null,
+			loading: false
         }
-    },
+	},
+	computed: {
+
+	},
     methods: {
         authenticate() {
+			this.loading = true;
+			this.disable_inputs();
             this.$store.dispatch('login');
             login(this.$data.form)
                 .then((res) => {
-                    this.$store.commit('loginSuccess', res);
-                    this.$router.push({path: '/'});
+					this.loading = false;
+					this.enable_inputs();
+					//this.$store.commit('loginSuccess', res);
+
+					if(res.data.role == 'administrator') {
+						 axios.post('/login', this.$data.form)
+							.then((response) => {
+								window.location.href = res.data.redirect;
+							})
+							.catch((error) => {
+								this.loading = false;
+								this.enable_inputs();
+								console.log({error});
+							});
+					}
+                    //this.$router.push({path: '/'});
                 })
                 .catch((error) => {
-                    this.$store.commit('loginFailed', {error});
+					this.loading = false;
+					this.enable_inputs();
+					console.log({error});
+                    //this.$store.commit('loginFailed', {error});
                 });
 
-        }
+		},
+		disable_inputs() {
+			$('#login_name').prop('disabled', true);
+			$('#login_password').prop('disabled', true);
+			$('#login_submit').prop('disabled', true);
+		},
+		enable_inputs() {
+			$('#login_name').prop('disabled', false);
+			$('#login_password').prop('disabled', false);
+			$('#login_submit').prop('disabled', false);
+		}
     }
 }
 </script>
