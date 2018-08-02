@@ -290,7 +290,8 @@ nav {
 }
 
 .how-it-works li {
-	@extend .card;
+	// @extend .card;
+	@extend .p-2;
 }
 
 .modal {

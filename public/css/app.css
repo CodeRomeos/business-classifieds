@@ -4489,8 +4489,7 @@ p {
 }
 
 .mb-0,
-.card .card-title,
-.how-it-works li .card-title {
+.card .card-title {
   margin-bottom: 0rem !important;
 }
 
@@ -4567,8 +4566,7 @@ p {
 }
 
 .border-t-1,
-.card .card-footer,
-.how-it-works li .card-footer {
+.card .card-footer {
   border-top: 1px solid #ddd;
 }
 
@@ -4639,7 +4637,8 @@ nav a,
 .header-mid a,
 .navbar-brand,
 .header-mid,
-nav {
+nav,
+.how-it-works li {
   padding: 0.5rem !important;
 }
 
@@ -4723,7 +4722,6 @@ p {
 
 .p-3,
 .card,
-.how-it-works li,
 .listing-search-form .form,
 .business-search-form {
   padding: 1rem !important;
@@ -5349,29 +5347,24 @@ nav a,
   grid-area: hero;
 }
 
-.card,
-.how-it-works li {
+.card {
   background-color: #FFF;
   margin-bottom: 15px;
 }
 
-.card .card-text,
-.how-it-works li .card-text {
+.card .card-text {
   font-size: 14px;
 }
 
-.card .card-title,
-.how-it-works li .card-title {
+.card .card-title {
   color: #333;
 }
 
-.card .card-title a,
-.how-it-works li .card-title a {
+.card .card-title a {
   color: #333;
 }
 
-.card .subtitle,
-.how-it-works li .subtitle {
+.card .subtitle {
   color: #999;
   font-size: 13px;
 }
@@ -5500,9 +5493,7 @@ nav a,
           justify-content: center;
 }
 
-.modal .modal-content .card,
-.modal .modal-content .how-it-works li,
-.how-it-works .modal .modal-content li {
+.modal .modal-content .card {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;

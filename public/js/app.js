@@ -47884,11 +47884,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "hero py-3" }, [
+    return _c("div", { staticClass: "hero" }, [
       _c("div", { staticClass: "container" }, [
         _c("h2", { staticClass: "h1 text-center" }, [_vm._v("How it works")]),
         _vm._v(" "),
-        _c("div", { staticClass: "how-it-works" }, [
+        _c("div", { staticClass: "how-it-works mb-5" }, [
           _c("div", [
             _c("ul", { staticClass: "p-0" }, [
               _c("li", [
@@ -47934,9 +47934,11 @@ var staticRenderFns = [
               ])
             ]),
             _vm._v(" "),
-            _c("a", { staticClass: "btn btn-primary", attrs: { href: "#1" } }, [
-              _vm._v("Claim your business")
-            ])
+            _c(
+              "a",
+              { staticClass: "ml-1 btn btn-primary", attrs: { href: "#!" } },
+              [_vm._v("Claim your business")]
+            )
           ]),
           _vm._v(" "),
           _c("div", [
