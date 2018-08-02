@@ -1,25 +1,23 @@
 <template>
-    <div class="login row justified-content-center">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">Login</div>
-                <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <label for='email'>Email: </label>
-                            <input type='email' v-model="form.email" class='form-control'>
-                        </div>
-                        <div class="form-group">
-                            <label for='password'>Password: </label>
-                            <input type='password' v-model="form.password" class='form-control'>
-                        </div>
-                        <div class="form-group">
-                            <input type='submit' value='Login' class='btn btn-primary'>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+    <div class="login">
+		<div class="card">
+			<div class="card-body">
+				<h3 class="card-title">Login</h3>
+				<form class='mt-3'>
+					<div class="input-container mb-3">
+						<label for='email'>Email: </label>
+						<input type='email' v-model="form.email" class='input-field'>
+					</div>
+					<div class="input-container mb-3">
+						<label for='password'>Password: </label>
+						<input type='password' v-model="form.password" class='input-field'>
+					</div>
+					<div class="input-container mb-3">
+						<input type='submit' value='Login' class='btn btn-primary'>
+					</div>
+				</form>
+			</div>
+		</div>
     </div>
 </template>
 

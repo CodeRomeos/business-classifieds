@@ -123,3 +123,9 @@ $repeat: 6;  // How often you want the pattern to repeat.
     	@content;
   	}
 }
+
+@mixin largescreen {
+	@media (min-width: #{$largescreen-width}) {
+    	@content;
+  	}
+}

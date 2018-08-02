@@ -47443,8 +47443,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'business-card',
@@ -47467,33 +47465,31 @@ var render = function() {
       })
     ]),
     _vm._v(" "),
-    _c("div", [
-      _c(
-        "h3",
-        { staticClass: "h5 card-title mt-1" },
-        [
-          _c(
-            "router-link",
-            {
-              attrs: {
-                to: {
-                  name: "business",
-                  params: { businessid: _vm.business.businessid }
-                }
+    _c(
+      "h3",
+      { staticClass: "h5 card-title mt-1" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              to: {
+                name: "business",
+                params: { businessid: _vm.business.businessid }
               }
-            },
-            [_vm._v(_vm._s(_vm.business.title))]
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c("p", { staticClass: "subtitle" }, [_vm._v("Tour operator in Delhi")])
-    ]),
+            }
+          },
+          [_vm._v(_vm._s(_vm.business.title))]
+        )
+      ],
+      1
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("p", { staticClass: "subtitle" }, [_vm._v("Tour operator in Delhi")]),
+      _vm._v(" "),
       _c("div", { staticClass: "card-text" }, [
         _c("p", [_vm._v("Phone: " + _vm._s(_vm.business.contacts.join()))]),
         _vm._v(" "),
@@ -48762,8 +48758,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -48801,69 +48795,65 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "login row justified-content-center" }, [
-    _c("div", { staticClass: "col-md-4" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-header" }, [_vm._v("Login")]),
+  return _c("div", { staticClass: "login" }, [
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-body" }, [
+        _c("h3", { staticClass: "card-title" }, [_vm._v("Login")]),
         _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("form", [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "email" } }, [_vm._v("Email: ")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.email,
-                    expression: "form.email"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "email" },
-                domProps: { value: _vm.form.email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "email", $event.target.value)
-                  }
-                }
-              })
-            ]),
+        _c("form", { staticClass: "mt-3" }, [
+          _c("div", { staticClass: "input-container mb-3" }, [
+            _c("label", { attrs: { for: "email" } }, [_vm._v("Email: ")]),
             _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "password" } }, [
-                _vm._v("Password: ")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.password,
-                    expression: "form.password"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "password" },
-                domProps: { value: _vm.form.password },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "password", $event.target.value)
-                  }
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.email,
+                  expression: "form.email"
                 }
-              })
-            ]),
+              ],
+              staticClass: "input-field",
+              attrs: { type: "email" },
+              domProps: { value: _vm.form.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "email", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-container mb-3" }, [
+            _c("label", { attrs: { for: "password" } }, [_vm._v("Password: ")]),
             _vm._v(" "),
-            _vm._m(0)
-          ])
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.password,
+                  expression: "form.password"
+                }
+              ],
+              staticClass: "input-field",
+              attrs: { type: "password" },
+              domProps: { value: _vm.form.password },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "password", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
         ])
       ])
     ])
@@ -48874,7 +48864,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
+    return _c("div", { staticClass: "input-container mb-3" }, [
       _c("input", {
         staticClass: "btn btn-primary",
         attrs: { type: "submit", value: "Login" }

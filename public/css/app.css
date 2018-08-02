@@ -5069,7 +5069,11 @@ header {
 .business-card {
   display: grid;
   grid-column-gap: 20px;
-  grid-template-rows: 210px 90px auto 40px;
+  grid-template-rows: 210px 50px auto 40px;
+}
+
+.business-card .card-title {
+  overflow: hidden;
 }
 
 .business-card .card-footer {
@@ -5111,6 +5115,12 @@ header {
 @media (min-width: 992px) {
   .business-cards {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 1350px) {
+  .business-cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
@@ -5280,7 +5290,7 @@ body {
 
 .container {
   margin: auto;
-  max-width: 1092px;
+  max-width: 1350px;
 }
 
 .text-white,
@@ -5502,6 +5512,10 @@ nav a,
 .business-card .card-thumb {
   max-height: 200px;
   overflow: hidden;
+}
+
+.business-card .card-title {
+  font-size: 16px;
 }
 
 .business-card .card-footer {

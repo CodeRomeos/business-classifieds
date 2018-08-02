@@ -73,9 +73,13 @@ header {
 
 .business-card {
     display: grid;
-    grid-column-gap: 20px;
+	grid-column-gap: 20px;
 
-	grid-template-rows: 210px 90px auto 40px;
+	.card-title{
+		overflow: hidden;
+	}
+
+	grid-template-rows: 210px 50px auto 40px;
     @include desktop {
         //grid-template-columns: minmax(200px, 350px) auto
 	}
@@ -116,6 +120,10 @@ header {
 
 	@include desktop {
 		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	@include largescreen {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
 	}
 }
 

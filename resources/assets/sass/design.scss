@@ -53,7 +53,7 @@ body {
 
 .container {
 	margin: auto;
-	max-width: $desktop-width + 100px;
+	max-width: $largescreen-width;
 	@extend .px-4;
 }
 
@@ -286,6 +286,10 @@ nav {
 	.card-thumb {
 		max-height: 200px;
 		overflow: hidden;
+	}
+
+	.card-title {
+		font-size: 16px;
 	}
 
 	.card-footer {
