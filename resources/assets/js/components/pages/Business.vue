@@ -2,11 +2,16 @@
     <div class="business-page pt-3" v-if='business'>
         <div class="">
             <div class="card mb-0">
-                <h1 class="h1 my-2"><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link></h1>
+                <div class="logo">
+                    <img src="/images/dummy-logo.svg" alt="" class="img-fluid">
+                </div>
+                <div>
+                    <h1 class="h1 mt-2 mb-1"><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link></h1>
+                    <p class="subtitle">Founded on 14 February 2015/ Joined August 2015</p>
+                </div>
             </div>
-            <div class="carsd">
-                <img src="https://lorempixel.com/1024/550/business/?14686" alt="" class="img-fluid" style="width: 100%">
-            </div>
+            <img src="https://lorempixel.com/1024/550/business/?14686" alt="" class="img-fluid" style="width: 100%">
+
             <div class="card px-5">
                 <h3 class="my-2">About</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error at quasi tempore nostrum unde, consequuntur atque tempora. Deserunt commodi asperiores unde libero maxime dolores, labore, laudantium eum eos cumque voluptatem dicta ad beatae. Provident nam debitis laborum eveniet animi facere ea harum ad, odit quam.</p>
@@ -62,7 +67,7 @@
         </div>
         <div class="">
             <div class="card">
-                <h4><span class='icons icon-phone'></span> {{ business.contacts.join() }}</h4>                
+                <h4><span class='icons icon-phone'></span> {{ business.contacts.join() }}</h4>
             </div>
             <div class="card">
                 <h4>How many people trust?</h4>
@@ -79,8 +84,8 @@
                 <h4>How to reach</h4>
                 <p><span class='icons icon-phone'></span> {{ business.contacts.join() }}</p>
                 <p><span class='icons icon-location-pin'></span> {{ business.address }}</p>
-                <p><span class='icons icon-envelope'></span> contact@example.com</p>                
-                <p><span class='fa fa-globe'></span> www.example.com</p>                
+                <p><span class='icons icon-envelope'></span> contact@example.com</p>
+                <p><span class='fa fa-globe'></span> www.example.com</p>
             </div>
 
             <div class="card">
@@ -112,7 +117,7 @@
                     <li> - Voluptatem accusantium ut nisi repellat! Consequuntur!</li>
                 </ul>
             </div>
-            
+
         </div>
     </div>
 </template>

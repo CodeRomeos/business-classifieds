@@ -305,6 +305,9 @@ nav {
 }
 
 .business-page{
+	.logo{
+		max-width: 12rem;
+	}
 	h4{
 		@extend .m-0;
 		@extend .mb-2;
@@ -312,7 +315,7 @@ nav {
 }
 .qa{
 	.que{
-		
+
 		font-weight: bold;
 		@extend .mb-1;
 	}

@@ -5542,6 +5542,10 @@ nav a,
       align-content: center;
 }
 
+.business-page .logo {
+  max-width: 12rem;
+}
+
 .qa .que {
   font-weight: bold;
 }
