@@ -4462,7 +4462,8 @@ th {
   padding: 0;
 }
 
-.m-0 {
+.m-0,
+.business-page h4 {
   margin: 0rem !important;
 }
 
@@ -4489,8 +4490,7 @@ p {
 }
 
 .mb-0,
-.card .card-title,
-.how-it-works li .card-title {
+.card .card-title {
   margin-bottom: 0rem !important;
 }
 
@@ -4567,12 +4567,12 @@ p {
 }
 
 .border-t-1,
-.card .card-footer,
-.how-it-works li .card-footer {
+.card .card-footer {
   border-top: 1px solid #ddd;
 }
 
-.mb-1 {
+.mb-1,
+.qa .que {
   margin-bottom: 0.25rem !important;
 }
 
@@ -4639,7 +4639,8 @@ nav a,
 .header-mid a,
 .navbar-brand,
 .header-mid,
-nav {
+nav,
+.how-it-works li {
   padding: 0.5rem !important;
 }
 
@@ -4661,7 +4662,8 @@ nav {
 }
 
 .mb-2,
-p {
+p,
+.business-page h4 {
   margin-bottom: 0.5rem !important;
 }
 
@@ -4724,7 +4726,6 @@ p {
 .p-3,
 .modal-wrapper,
 .card,
-.how-it-works li,
 .listing-search-form .form,
 .business-search-form {
   padding: 1rem !important;
@@ -5146,6 +5147,17 @@ header {
   }
 }
 
+.business-page {
+  display: grid;
+  grid-gap: 1rem;
+}
+
+@media (min-width: 992px) {
+  .business-page {
+    grid-template-columns: 1fr minmax(15rem, 466px);
+  }
+}
+
 .modal-mask {
   z-index: 9998;
   top: 0;
@@ -5236,6 +5248,10 @@ h3,
 .h2,
 .h3 {
   color: #333;
+}
+
+.debug {
+  border: 1px dashed red;
 }
 
 ul,
@@ -5400,29 +5416,24 @@ nav a,
   grid-area: hero;
 }
 
-.card,
-.how-it-works li {
+.card {
   background-color: #FFF;
   margin-bottom: 15px;
 }
 
-.card .card-text,
-.how-it-works li .card-text {
+.card .card-text {
   font-size: 14px;
 }
 
-.card .card-title,
-.how-it-works li .card-title {
+.card .card-title {
   color: #333;
 }
 
-.card .card-title a,
-.how-it-works li .card-title a {
+.card .card-title a {
   color: #333;
 }
 
-.card .subtitle,
-.how-it-works li .subtitle {
+.card .subtitle {
   color: #999;
   font-size: 13px;
 }
@@ -5521,6 +5532,10 @@ nav a,
 .business-card .card-footer {
   -ms-flex-line-pack: center;
       align-content: center;
+}
+
+.qa .que {
+  font-weight: bold;
 }
 
 .fade-enter-active,

@@ -47880,11 +47880,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "hero py-3" }, [
+    return _c("div", { staticClass: "hero" }, [
       _c("div", { staticClass: "container" }, [
         _c("h2", { staticClass: "h1 text-center" }, [_vm._v("How it works")]),
         _vm._v(" "),
-        _c("div", { staticClass: "how-it-works" }, [
+        _c("div", { staticClass: "how-it-works mb-5" }, [
           _c("div", [
             _c("ul", { staticClass: "p-0" }, [
               _c("li", [
@@ -47930,9 +47930,11 @@ var staticRenderFns = [
               ])
             ]),
             _vm._v(" "),
-            _c("a", { staticClass: "btn btn-primary", attrs: { href: "#1" } }, [
-              _vm._v("Claim your business")
-            ])
+            _c(
+              "a",
+              { staticClass: "ml-1 btn btn-primary", attrs: { href: "#!" } },
+              [_vm._v("Claim your business")]
+            )
           ]),
           _vm._v(" "),
           _c("div", [
@@ -48140,6 +48142,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'business',
@@ -48174,125 +48200,192 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.business
-    ? _c("div", { staticClass: "listings-page-container" }, [
-        _c("div", {
-          staticClass: "page-grid-item-1",
-          staticStyle: { background: "#1e2c33" }
-        }),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "pl-2 page-grid-item-2",
-            staticStyle: { background: "#ddd" }
-          },
-          [_c("h2", [_vm._v(_vm._s(_vm.business.title))])]
-        ),
-        _vm._v(" "),
-        _c("div", {
-          staticClass: "page-grid-item-3",
-          staticStyle: { background: "#eee" }
-        }),
-        _vm._v(" "),
-        _c("div", {
-          staticClass: "page-grid-item-4",
-          staticStyle: { background: "rgb(38, 55, 64)" }
-        }),
-        _vm._v(" "),
-        _c("div", {
-          staticClass: "page-grid-item-5",
-          staticStyle: { background: "#555" }
-        }),
-        _vm._v(" "),
-        _c("div", {
-          staticClass: "page-grid-item-6",
-          staticStyle: { background: "rgb(38, 55, 64)" }
-        }),
-        _vm._v(" "),
-        _c("div", {
-          staticClass: "page-grid-item-7",
-          staticStyle: { background: "#1e2c33" }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "page-grid-item-8" }, [
-          _c("div", { staticClass: "card business-card mb-2" }, [
-            _c("div", { staticClass: "crad-thumb" }, [
-              _c("img", {
-                staticStyle: { width: "100%" },
-                attrs: { src: _vm.business.image }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c(
-                "h3",
-                { staticClass: "card-title mt-1" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      attrs: {
-                        to: {
-                          name: "business",
-                          params: { businessid: _vm.business.businessid }
-                        }
-                      }
-                    },
-                    [_vm._v(_vm._s(_vm.business.title))]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-text" }, [
-                _c("p", [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.business.contacts.join()) +
-                      "\n                            "
-                  ),
-                  _c("br"),
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.business.address) +
-                      "\n                        "
-                  )
-                ]),
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(_vm.business.body) +
-                    "\n                        "
-                ),
+    ? _c("div", { staticClass: "business-page pt-3" }, [
+        _c("div", {}, [
+          _c("div", { staticClass: "card mb-0" }, [
+            _c(
+              "h1",
+              { staticClass: "h1 my-2" },
+              [
                 _c(
-                  "p",
-                  { staticClass: "mt-2" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "btn btn-sm",
-                        attrs: {
-                          to: {
-                            name: "business",
-                            params: { businessid: _vm.business.businessid }
-                          }
-                        }
-                      },
-                      [_vm._v("Show")]
-                    )
-                  ],
-                  1
+                  "router-link",
+                  {
+                    attrs: {
+                      to: {
+                        name: "business",
+                        params: { businessid: _vm.business.businessid }
+                      }
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.business.title))]
                 )
-              ])
-            ])
-          ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2)
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "page-grid-item-9" }, [_vm._v("laksdj")])
+        _c("div", {}, [
+          _vm._m(3),
+          _vm._v(" "),
+          _c("div", { staticClass: "card" }, [
+            _c("h4", [_vm._v("How to reach")]),
+            _vm._v(" "),
+            _c("p", [
+              _c("span", { staticClass: "icons icon-phone" }),
+              _vm._v(" " + _vm._s(_vm.business.contacts.join()))
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _c("span", { staticClass: "icons icon-location-pin" }),
+              _vm._v(" " + _vm._s(_vm.business.address))
+            ]),
+            _vm._v(" "),
+            _vm._m(4),
+            _vm._v(" "),
+            _vm._m(5)
+          ]),
+          _vm._v(" "),
+          _vm._m(6)
+        ])
       ])
     : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "carsd" }, [
+      _c("img", {
+        staticClass: "img-fluid",
+        staticStyle: { width: "100%" },
+        attrs: {
+          src: "https://lorempixel.com/1024/550/business/?14686",
+          alt: ""
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card" }, [
+      _c("h3", { staticClass: "my-2" }, [_vm._v("About")]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error at quasi tempore nostrum unde, consequuntur atque tempora. Deserunt commodi asperiores unde libero maxime dolores, labore, laudantium eum eos cumque voluptatem dicta ad beatae. Provident nam debitis laborum eveniet animi facere ea harum ad, odit quam."
+        )
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta eaque ut nemo facere eius itaque praesentium consequuntur aspernatur, accusantium, dicta saepe, blanditiis vero ea! Quidem eveniet deleniti nulla."
+        )
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolore unde quaerat necessitatibus, aperiam saepe! Harum, distinctio ut cupiditate non impedit nemo, dolores accusamus quia voluptate et, accusantium explicabo aspernatur."
+        )
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi cum voluptatibus sunt sit! Earum qui natus quasi dolorem rem esse possimus non fuga, saepe veritatis iure quae illo minus est numquam nobis ullam minima perferendis officia dolor? Soluta fugit nihil ea cum dolore, nulla, aliquam dignissimos at quae, delectus quos illo iste amet maxime! Vero voluptates quibusdam molestias aspernatur accusantium soluta laborum natus. In harum et earum nemo."
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card" }, [
+      _c("h4", [_vm._v("Questions and Answers")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "qa" }, [
+        _c("p", { staticClass: "que" }, [
+          _vm._v(" Q: Do you deals in car parts?")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "ans" }, [
+          _vm._v(
+            " A: Yes.  Soluta eaque ut nemo facere eius itaque praesentium consequuntur aspernatur."
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card" }, [
+      _c("h4", [_vm._v("How many people trust?")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "ratings" }, [
+        _c("span", { staticClass: "fa fa-star" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "fa fa-star" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "fa fa-star" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "fa fa-star" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "fa fa-star" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "subtitle text-right" }, [
+          _vm._v(" 9,11,432 Ratings & 1,35,957 Review")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("span", { staticClass: "icons icon-envelope" }),
+      _vm._v(" contact@example.com")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("span", { staticClass: "fa fa-globe" }),
+      _vm._v(" www.example.com")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card" }, [
+      _c("h4", [_vm._v("Highlights")]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "pl-2" }, [
+        _c("li", [_vm._v(" - Lorem ipsum dolor sit amet consectetur.")]),
+        _vm._v(" "),
+        _c("li", [_vm._v(" - Corporis similique aut mollitia aperiam nihil!")]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v(" - Voluptatem accusantium ut nisi repellat! Consequuntur!")
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

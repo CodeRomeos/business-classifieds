@@ -145,3 +145,13 @@ header {
 		}
 	}
 }
+
+.business-page{
+	display: grid;
+	grid-gap: 1rem;
+	@include desktop {
+		grid-template-columns: 1fr minmax(15rem, $mobile-width - 110px);
+	}
+	
+	
+}

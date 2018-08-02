@@ -20,6 +20,8 @@ h1, h2, h3,
 .h1, .h2, .h3 {
     color: $text-dark;
 }
+
+.debug { border: 1px dashed red; }
 ul,ol { list-style-type: none; }
 // Transformation
 .text-lowercase  { text-transform: lowercase !important; }
@@ -298,6 +300,20 @@ nav {
 }
 
 .how-it-works li {
-	@extend .card;
+	// @extend .card;
+	@extend .p-2;
 }
 
+.business-page{
+	h4{
+		@extend .m-0;
+		@extend .mb-2;
+	}
+}
+.qa{
+	.que{
+		
+		font-weight: bold;
+		@extend .mb-1;
+	}
+}
