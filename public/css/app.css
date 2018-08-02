@@ -5158,6 +5158,12 @@ header {
   }
 }
 
+.grid-col-4 {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .modal-mask {
   z-index: 9998;
   top: 0;
