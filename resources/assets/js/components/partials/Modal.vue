@@ -4,7 +4,7 @@
 		<div class="modal-wrapper">
 			<div class="modal-container">
 				<div class="card">
-					<button class="btn btn-close" @click="close">X</button>
+					<button class="btn btn-close" @click="close"><span class='fa fa-times'></span></button>
 					<slot></slot>
 				</div>
 			</div>

@@ -5191,8 +5191,10 @@ header {
 }
 
 .modal-container .btn-close {
-  right: 0;
-  top: -46px;
+  right: 0px;
+  top: 0px;
+  width: 40px;
+  height: 40px;
 }
 
 *,
@@ -5315,8 +5317,7 @@ body {
   max-width: 1350px;
 }
 
-.text-white,
-.modal-container .btn-close {
+.text-white {
   color: #FFF !important;
 }
 
@@ -5337,7 +5338,8 @@ body {
   background-color: #FFF !important;
 }
 
-.text-dark {
+.text-dark,
+.modal-container .btn-close {
   color: #333;
 }
 
