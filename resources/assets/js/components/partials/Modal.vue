@@ -1,15 +1,16 @@
 <template>
-    <transition name="slide-fade">
-	<div class='modal'>
-        <div class="modal-backdrop" @click="close"></div>
-        <div class="modal-content">
-            <div class="card">
-                <button @click="close" class='btn btn-close'><span class='fa fa-times fa-2x'></span></button>
-                <slot></slot>
-            </div>
-        </div>
-	</div>
-    </transition>
+    <transition name="modal">
+    <div class="modal-mask">
+		<div class="modal-wrapper">
+			<div class="modal-container">
+				<div class="card">
+					<button class="btn btn-close" @click="close">X</button>
+					<slot></slot>
+				</div>
+			</div>
+		</div>
+    </div>
+  	</transition>
 </template>
 
 <script>

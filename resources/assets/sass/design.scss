@@ -20,6 +20,8 @@ h1, h2, h3,
 .h1, .h2, .h3 {
     color: $text-dark;
 }
+
+.debug { border: 1px dashed red; }
 ul,ol { list-style-type: none; }
 // Transformation
 .text-lowercase  { text-transform: lowercase !important; }
@@ -53,12 +55,16 @@ body {
 
 .container {
 	margin: auto;
-	max-width: $desktop-width + 100px;
+	max-width: $largescreen-width;
 	@extend .px-4;
 }
 
 .text-white {
     color: #FFF !important
+}
+
+.bg-transparent {
+	background-color: transparent
 }
 
 .bg-primary {
@@ -284,6 +290,10 @@ nav {
 		overflow: hidden;
 	}
 
+	.card-title {
+		font-size: 16px;
+	}
+
 	.card-footer {
 		align-content: center;
 	}
@@ -294,42 +304,16 @@ nav {
 	@extend .p-2;
 }
 
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    .modal-backdrop {
-        background: #00000094;
-        width: 100%;
-        height: 100%;
-    }
-
-    .modal-content {
-        display: flex;
-        position: absolute;
-        top: calc(50% - 200px);
-        max-width: 800px;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
-        align-items: center;
-        justify-content: center;
-        @extend .px-5;
-        .card {
-            flex: 1;
-            position: relative;
-        }
-
-        .btn-close {
-            position: absolute;
-            right: 0;
-            top: -46px;
-            background: transparent;
-            color: #FFF;
-        }
-    }
+.business-page{
+	h4{
+		@extend .m-0;
+		@extend .mb-2;
+	}
 }
-
+.qa{
+	.que{
+		
+		font-weight: bold;
+		@extend .mb-1;
+	}
+}

@@ -4462,7 +4462,8 @@ th {
   padding: 0;
 }
 
-.m-0 {
+.m-0,
+.business-page h4 {
   margin: 0rem !important;
 }
 
@@ -4570,7 +4571,8 @@ p {
   border-top: 1px solid #ddd;
 }
 
-.mb-1 {
+.mb-1,
+.qa .que {
   margin-bottom: 0.25rem !important;
 }
 
@@ -4660,7 +4662,8 @@ nav,
 }
 
 .mb-2,
-p {
+p,
+.business-page h4 {
   margin-bottom: 0.5rem !important;
 }
 
@@ -4721,6 +4724,7 @@ p {
 }
 
 .p-3,
+.modal-wrapper,
 .card,
 .listing-search-form .form,
 .business-search-form {
@@ -4948,8 +4952,7 @@ nav {
   margin-right: 3rem !important;
 }
 
-.px-5,
-.modal .modal-content {
+.px-5 {
   padding-left: 3rem !important;
   padding-right: 3rem !important;
 }
@@ -5067,7 +5070,11 @@ header {
 .business-card {
   display: grid;
   grid-column-gap: 20px;
-  grid-template-rows: 210px 90px auto 40px;
+  grid-template-rows: 210px 50px auto 40px;
+}
+
+.business-card .card-title {
+  overflow: hidden;
 }
 
 .business-card .card-footer {
@@ -5112,6 +5119,12 @@ header {
   }
 }
 
+@media (min-width: 1350px) {
+  .business-cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
 .business-search-form {
   display: grid;
   grid-gap: 1rem;
@@ -5132,6 +5145,48 @@ header {
   .hero .how-it-works {
     grid-template-columns: 2fr 1fr;
   }
+}
+
+.business-page {
+  display: grid;
+  grid-gap: 1rem;
+}
+
+@media (min-width: 992px) {
+  .business-page {
+    grid-template-columns: 1fr minmax(15rem, 466px);
+  }
+}
+
+.modal-mask {
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: table;
+  -webkit-transition: opacity .3s ease;
+  transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-container {
+  margin: 0px auto;
+  max-width: 576px;
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+}
+
+.modal-container .btn-close {
+  right: 0;
+  top: -46px;
 }
 
 *,
@@ -5195,6 +5250,10 @@ h3,
   color: #333;
 }
 
+.debug {
+  border: 1px dashed red;
+}
+
 ul,
 ol {
   list-style-type: none;
@@ -5213,15 +5272,18 @@ ol {
 }
 
 .isRelative,
+.modal-container,
 .listing-search-form .input-container {
   position: relative;
 }
 
-.isAbsolute {
+.isAbsolute,
+.modal-container .btn-close {
   position: absolute;
 }
 
-.isFixed {
+.isFixed,
+.modal-mask {
   position: fixed;
 }
 
@@ -5244,11 +5306,17 @@ body {
 
 .container {
   margin: auto;
-  max-width: 1092px;
+  max-width: 1350px;
 }
 
-.text-white {
+.text-white,
+.modal-container .btn-close {
   color: #FFF !important;
+}
+
+.bg-transparent,
+.modal-container .btn-close {
+  background-color: transparent;
 }
 
 .bg-primary,
@@ -5258,6 +5326,7 @@ body {
 }
 
 .bg-white,
+.modal-container,
 .hero {
   background-color: #FFF !important;
 }
@@ -5456,56 +5525,17 @@ nav a,
   overflow: hidden;
 }
 
+.business-card .card-title {
+  font-size: 16px;
+}
+
 .business-card .card-footer {
   -ms-flex-line-pack: center;
       align-content: center;
 }
 
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.modal .modal-backdrop {
-  background: #00000094;
-  width: 100%;
-  height: 100%;
-}
-
-.modal .modal-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: absolute;
-  top: calc(50% - 200px);
-  max-width: 800px;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.modal .modal-content .card {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  position: relative;
-}
-
-.modal .modal-content .btn-close {
-  position: absolute;
-  right: 0;
-  top: -46px;
-  background: transparent;
-  color: #FFF;
+.qa .que {
+  font-weight: bold;
 }
 
 .fade-enter-active,
@@ -5577,5 +5607,28 @@ bounce-enter-active {
     -webkit-transform: scale(1);
             transform: scale(1);
   }
+}
+
+/*
+* The following styles are auto-applied to elements with
+* transition="modal" when their visibility is toggled
+* by Vue.js.
+*
+* You can easily play with the modal transition by editing
+* these styles.
+*/
+
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-leave-active {
+  opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 

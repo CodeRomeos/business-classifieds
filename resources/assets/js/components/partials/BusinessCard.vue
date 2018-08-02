@@ -3,8 +3,8 @@
 		<div class="card-thumb">
 			<img :src="business.image" class='img-fluid'>
 		</div>
-		<div>
-			<h3 class="h5 card-title mt-1"><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link></h3>
+		<h3 class="h5 card-title mt-1"><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link></h3>
+		<div class="card-body">
 			<div class="ratings">
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
@@ -13,8 +13,6 @@
                 <span class="fa fa-star"></span>
             </div>
 			<p class='subtitle'>Tour operator in Delhi</p>
-		</div>
-		<div class="card-body">
 			<div class="card-text">
 				<p>Phone: {{ business.contacts.join() }}</p>
 				<p> Address: {{ business.address }}</p>
