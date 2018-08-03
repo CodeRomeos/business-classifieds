@@ -153,8 +153,8 @@ header {
 	grid-gap: 1rem;
 	grid-template-areas:
 		"businesspagelogo"
-		"businesspagetitle"		
-		"businesspagephoneaddress"		
+		"businesspagetitle"
+		"businesspagephoneaddress"
 		"businesspageslider"
 		"businessaboutcard"
 		"highlightscard"
@@ -162,29 +162,29 @@ header {
 		"businesspageuactivity"
 		"businesspageservices"
 		"businesspagefaqs";
-	
+
 	@include tablet {
 		// grid-template-columns: 1fr minmax(15rem, $mobile-width - 110px);
 		grid-template-columns: 280px auto 280px;
-		
+
 		grid-template-areas:
 			"businesspagelogo businesspageslider businesspageslider"
 			"businesspagetitle businesspagetitle businesspagetitle"
-			"businessaboutcard businessaboutcard businesspagephoneaddress"			
+			"businessaboutcard businessaboutcard businesspagephoneaddress"
 			"businessaboutcard businessaboutcard businesspagesociallinks"
 			"businesspageservices businesspageservices businesspageuactivity"
 			"businesspagefaqs businesspagefaqs highlightscard";
 	}
-		
+
 	@include desktop {
 		// grid-template-columns: 1fr minmax(15rem, $mobile-width - 110px);
 		grid-template-columns: 280px auto 400px;
 		grid-template-rows: 300px auto;
-		
+
 		grid-template-areas:
 			"businesspagelogo businesspageslider businesspagephoneaddress"
 			"businesspagesociallinks businesspagetitle businesspageuactivity"
-			"businessaboutcard businessaboutcard highlightscard"			
+			"businessaboutcard businessaboutcard highlightscard"
 			"businessaboutcard businessaboutcard highlightscard"
 			"businesspageservices businesspageservices businesspageservices"
 			"businesspagefaqs businesspagefaqs .";
@@ -192,14 +192,14 @@ header {
 	.info-header{
 		@extend .d-grid;
 		grid-gap: 1rem;
-	
+
 		@include tablet {
 			grid-template-columns: 200px auto;
 		}
 	}
 
-	
-	
+
+
 }
 
 .card-logo {
@@ -253,6 +253,6 @@ header {
 	grid-gap: 1rem;
 	@include tablet{
 		grid-template-columns: repeat(4, 1fr);
-	} 
-	
+	}
+
 }

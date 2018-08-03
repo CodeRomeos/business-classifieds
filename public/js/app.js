@@ -49187,60 +49187,59 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-				name: "login",
-				data: function data() {
-								return {
-												form: {
-																email: "",
-																password: ""
-												},
-												error: null,
-												loading: false
-								};
-				},
+	name: "login",
+	data: function data() {
+		return {
+			form: {
+				email: "",
+				password: ""
+			},
+			error: null,
+			loading: false
+		};
+	},
 
-				computed: {},
-				methods: {
-								authenticate: function authenticate() {
-												var _this = this;
+	computed: {},
+	methods: {
+		authenticate: function authenticate() {
+			var _this = this;
 
-												this.loading = true;
-												this.disable_inputs();
-												this.$store.dispatch('login');
-												Object(__WEBPACK_IMPORTED_MODULE_0__helpers_auth__["b" /* login */])(this.$data.form).then(function (res) {
-																_this.loading = false;
-																_this.enable_inputs();
+			this.loading = true;
+			this.disable_inputs();
+			this.$store.dispatch('login');
+			Object(__WEBPACK_IMPORTED_MODULE_0__helpers_auth__["b" /* login */])(this.$data.form).then(function (res) {
+				_this.loading = false;
+				_this.enable_inputs();
+				//this.$store.commit('loginSuccess', res);
 
-																if (res.data.isAdmin) {
-																				axios.post('/login', _this.$data.form).then(function (response) {
-																								window.location.href = res.data.redirect;
-																				}).catch(function (error) {
-																								_this.loading = false;
-																								_this.enable_inputs();
-																				});
-																} else {
-																				_this.$store.commit('loginSuccess', res);
-																}
-
-																//this.$router.push({path: '/'});
-												}).catch(function (error) {
-																_this.loading = false;
-																_this.enable_inputs();
-																console.log({ error: error });
-																_this.$store.commit('loginFailed', { error: error });
-												});
-								},
-								disable_inputs: function disable_inputs() {
-												$('#login_name').prop('disabled', true);
-												$('#login_password').prop('disabled', true);
-												$('#login_submit').prop('disabled', true);
-								},
-								enable_inputs: function enable_inputs() {
-												$('#login_name').prop('disabled', false);
-												$('#login_password').prop('disabled', false);
-												$('#login_submit').prop('disabled', false);
-								}
+				if (res.data.role == 'administrator') {
+					axios.post('/login', _this.$data.form).then(function (response) {
+						window.location.href = res.data.redirect;
+					}).catch(function (error) {
+						_this.loading = false;
+						_this.enable_inputs();
+						console.log({ error: error });
+					});
 				}
+				//this.$router.push({path: '/'});
+			}).catch(function (error) {
+				_this.loading = false;
+				_this.enable_inputs();
+				console.log({ error: error });
+				//this.$store.commit('loginFailed', {error});
+			});
+		},
+		disable_inputs: function disable_inputs() {
+			$('#login_name').prop('disabled', true);
+			$('#login_password').prop('disabled', true);
+			$('#login_submit').prop('disabled', true);
+		},
+		enable_inputs: function enable_inputs() {
+			$('#login_name').prop('disabled', false);
+			$('#login_password').prop('disabled', false);
+			$('#login_submit').prop('disabled', false);
+		}
+	}
 });
 
 /***/ }),

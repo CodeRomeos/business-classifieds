@@ -5156,13 +5156,13 @@ header {
 
 .business-page {
   grid-gap: 1rem;
-  grid-template-areas: "businesspagelogo" "businesspagetitle"		 "businesspagephoneaddress"		 "businesspageslider" "businessaboutcard" "highlightscard" "businesspagesociallinks" "businesspageuactivity" "businesspageservices" "businesspagefaqs";
+  grid-template-areas: "businesspagelogo" "businesspagetitle" "businesspagephoneaddress" "businesspageslider" "businessaboutcard" "highlightscard" "businesspagesociallinks" "businesspageuactivity" "businesspageservices" "businesspagefaqs";
 }
 
 @media (min-width: 768px) {
   .business-page {
     grid-template-columns: 280px auto 280px;
-    grid-template-areas: "businesspagelogo businesspageslider businesspageslider" "businesspagetitle businesspagetitle businesspagetitle" "businessaboutcard businessaboutcard businesspagephoneaddress"			 "businessaboutcard businessaboutcard businesspagesociallinks" "businesspageservices businesspageservices businesspageuactivity" "businesspagefaqs businesspagefaqs highlightscard";
+    grid-template-areas: "businesspagelogo businesspageslider businesspageslider" "businesspagetitle businesspagetitle businesspagetitle" "businessaboutcard businessaboutcard businesspagephoneaddress" "businessaboutcard businessaboutcard businesspagesociallinks" "businesspageservices businesspageservices businesspageuactivity" "businesspagefaqs businesspagefaqs highlightscard";
   }
 }
 
@@ -5170,7 +5170,7 @@ header {
   .business-page {
     grid-template-columns: 280px auto 400px;
     grid-template-rows: 300px auto;
-    grid-template-areas: "businesspagelogo businesspageslider businesspagephoneaddress" "businesspagesociallinks businesspagetitle businesspageuactivity" "businessaboutcard businessaboutcard highlightscard"			 "businessaboutcard businessaboutcard highlightscard" "businesspageservices businesspageservices businesspageservices" "businesspagefaqs businesspagefaqs .";
+    grid-template-areas: "businesspagelogo businesspageslider businesspagephoneaddress" "businesspagesociallinks businesspagetitle businesspageuactivity" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard highlightscard" "businesspageservices businesspageservices businesspageservices" "businesspagefaqs businesspagefaqs .";
   }
 }
 
