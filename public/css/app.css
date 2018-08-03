@@ -4490,7 +4490,8 @@ p {
 }
 
 .mb-0,
-.card .card-title {
+.card .card-title,
+.business-page .card {
   margin-bottom: 0rem !important;
 }
 
@@ -4991,8 +4992,23 @@ nav {
   background: #CDDC39;
 }
 
-.app-grid {
+.d-grid,
+.app-grid,
+.homepage-container,
+header,
+.listing-search-form form,
+.business-card,
+.business-card .card-footer,
+.business-cards,
+.business-search-form,
+.hero .how-it-works,
+.business-page,
+.business-page .info-header,
+.grid-col-4 {
   display: grid;
+}
+
+.app-grid {
   grid-template-areas: "header" "main" "footer";
 }
 
@@ -5016,13 +5032,10 @@ nav {
 }
 
 .homepage-container {
-  display: grid;
   grid-template-areas: "content" "hero";
 }
 
 header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   grid-template-areas: "navbarbrand nav" "headermid headermid";
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -5050,7 +5063,6 @@ header {
 }
 
 .listing-search-form form {
-  display: grid;
   -webkit-column-gap: 17px;
           column-gap: 17px;
 }
@@ -5068,7 +5080,6 @@ header {
 }
 
 .business-card {
-  display: grid;
   grid-column-gap: 20px;
   grid-template-rows: 210px 50px auto 40px;
 }
@@ -5078,7 +5089,6 @@ header {
 }
 
 .business-card .card-footer {
-  display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
 
@@ -5088,7 +5098,7 @@ header {
 
 .businesses {
   /*
-	display: grid;
+	@extend .d-grid;
 	grid-template-areas:
 	"sidebar"
 	"businesscards";
@@ -5103,7 +5113,6 @@ header {
 
 .business-cards {
   grid-area: businesscards;
-  display: grid;
   grid-gap: 1rem;
 }
 
@@ -5126,7 +5135,6 @@ header {
 }
 
 .business-search-form {
-  display: grid;
   grid-gap: 1rem;
 }
 
@@ -5137,7 +5145,6 @@ header {
 }
 
 .hero .how-it-works {
-  display: grid;
   grid-gap: 0.7rem;
 }
 
@@ -5148,20 +5155,95 @@ header {
 }
 
 .business-page {
-  display: grid;
   grid-gap: 1rem;
+  grid-template-areas: "businesspagelogo" "businesspagetitle"		 "businesspagephoneaddress"		 "businesspageslider" "businessaboutcard" "highlightscard" "businesspagesociallinks" "businesspageuactivity" "businesspageservices" "businesspagefaqs";
+}
+
+@media (min-width: 768px) {
+  .business-page {
+    grid-template-columns: 280px auto 280px;
+    grid-template-areas: "businesspagelogo businesspageslider businesspageslider" "businesspagetitle businesspagetitle businesspagetitle" "businessaboutcard businessaboutcard businesspagephoneaddress"			 "businessaboutcard businessaboutcard businesspagesociallinks" "businesspageservices businesspageservices businesspageuactivity" "businesspagefaqs businesspagefaqs highlightscard";
+  }
 }
 
 @media (min-width: 992px) {
   .business-page {
-    grid-template-columns: 1fr minmax(15rem, 466px);
+    grid-template-columns: 280px auto 400px;
+    grid-template-rows: 300px auto;
+    grid-template-areas: "businesspagelogo businesspageslider businesspagephoneaddress" "businesspagesociallinks businesspagetitle businesspageuactivity" "businessaboutcard businessaboutcard highlightscard"			 "businessaboutcard businessaboutcard highlightscard" "businesspageservices businesspageservices businesspageservices" "businesspagefaqs businesspagefaqs .";
   }
 }
 
-.grid-col-4 {
-  display: grid;
+.business-page .info-header {
   grid-gap: 1rem;
-  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (min-width: 768px) {
+  .business-page .info-header {
+    grid-template-columns: 200px auto;
+  }
+}
+
+.card-logo {
+  grid-area: businesspagelogo;
+}
+
+.card-business-title {
+  grid-area: businesspagetitle;
+}
+
+.rating-card {
+  grid-area: businesspageratings;
+}
+
+.address-card {
+  grid-area: businesspageaddress;
+}
+
+.phone-card {
+  grid-area: businesspagephone;
+}
+
+.slider {
+  grid-area: businesspageslider;
+}
+
+.businesspage-u-activity {
+  grid-area: businesspageuactivity;
+}
+
+.social-links-card {
+  grid-area: businesspagesociallinks;
+}
+
+.about-card {
+  grid-area: businessaboutcard;
+}
+
+.highlights-card {
+  grid-area: highlightscard;
+}
+
+.service-offered {
+  grid-area: businesspageservices;
+}
+
+.faqs-card {
+  grid-area: businesspagefaqs;
+}
+
+.phone-and-address {
+  grid-area: businesspagephoneaddress;
+}
+
+.grid-col-4 {
+  grid-gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .grid-col-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .modal-mask {
@@ -5305,6 +5387,18 @@ html {
   font-size: 1rem;
 }
 
+.d-block,
+.header-mid .btn {
+  display: block;
+}
+
+.d-inline-b,
+.btn,
+.listing-search-form .input-container input[type='submit'],
+.business-page .social-links-card a {
+  display: inline-block;
+}
+
 body {
   background: #f3f3f6;
   font-family: "Lato", sans-serif;
@@ -5349,7 +5443,8 @@ body {
 }
 
 .text-center,
-.btn {
+.btn,
+.business-page .info-header {
   text-align: center;
 }
 
@@ -5412,10 +5507,6 @@ nav a,
   grid-area: headermid;
 }
 
-.header-mid .btn {
-  display: block;
-}
-
 .header-mid .btn:hover {
   background-position: right center;
 }
@@ -5447,7 +5538,6 @@ nav a,
 }
 
 .btn {
-  display: inline-block;
   white-space: nowrap;
   vertical-align: middle;
   -webkit-user-select: none;
@@ -5497,7 +5587,6 @@ nav a,
 
 .listing-search-form .input-container input[type='submit'] {
   color: #fff;
-  display: inline-block;
 }
 
 .sidebar {
@@ -5542,8 +5631,29 @@ nav a,
       align-content: center;
 }
 
-.business-page .logo {
-  max-width: 12rem;
+@media (min-width: 768px) {
+  .business-page .info-header {
+    text-align: left;
+  }
+}
+
+.business-page .info-header .logo {
+  margin: auto;
+  width: 5rem;
+}
+
+@media (min-width: 768px) {
+  .business-page .info-header .logo {
+    width: 12rem;
+  }
+}
+
+.business-page .slider {
+  line-height: 0;
+}
+
+.business-page .social-links-card a {
+  font-size: 1.75rem;
 }
 
 .qa .que {

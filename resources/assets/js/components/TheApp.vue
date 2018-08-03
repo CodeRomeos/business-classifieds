@@ -5,7 +5,7 @@
                 {{ APP_NAME }}
             </router-link>
 			<div class='header-mid text-center'>
-				<a href='#' class="btn">Claim you listing</a>
+				<a href='#' class="btn">Claim your listing</a>
 			</div>
 			<navbar />
 		</header>

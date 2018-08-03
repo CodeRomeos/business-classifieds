@@ -23,6 +23,8 @@ h1, h2, h3,
 
 .debug { border: 1px dashed red; }
 ul,ol { list-style-type: none; }
+
+
 // Transformation
 .text-lowercase  { text-transform: lowercase !important; }
 .text-uppercase  { text-transform: uppercase !important; }
@@ -43,8 +45,10 @@ html{
 	// 	font-size:
 	// 	.;
 	// }
-
 }
+
+.d-block { display: block; }
+.d-inline-b { display: inline-block; }
 body {
 	background: $body-bg;
 	font-family: $body-font;
@@ -155,7 +159,7 @@ nav a,
 	.btn{
 		&:hover { background-position: right center; }
 		// @extend .text-white;
-		display: block
+		@extend .d-block;
 	}
 }
 
@@ -189,7 +193,7 @@ nav {
     }
 }
 .btn {
-    display: inline-block;
+    @extend .d-inline-b;
     @extend .text-center;
     white-space: nowrap;
     vertical-align: middle;
@@ -247,7 +251,7 @@ nav {
 
 		input[type='submit'] {
 			color: #fff;
-			display: inline-block;
+			@extend .d-inline-b;
 		}
 	}
 }
@@ -305,13 +309,38 @@ nav {
 }
 
 .business-page{
-	.logo{
-		max-width: 12rem;
+	.info-header{
+		@extend .text-center;
+		
+		@include tablet {
+			text-align: left;
+		}
+		.logo {
+			
+			margin: auto;
+			width: 5rem;
+			@include tablet {
+				width: 12rem;	
+			}
+		}
+	}
+	.slider {
+		line-height: 0;
 	}
 	h4{
 		@extend .m-0;
 		@extend .mb-2;
 	}
+	.social-links-card{
+		a{
+			@extend .d-inline-b;
+			font-size: $h3-font-size;
+		}
+	}
+	.card {
+		@extend .mb-0;
+	}
+	
 }
 .qa{
 	.que{

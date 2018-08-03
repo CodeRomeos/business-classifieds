@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar clearfix">
-		<router-link to="/listings">Lisings</router-link>
+		<router-link to="/listings">Listings</router-link>
 		<a href="javascript:void(0)" v-if="!isLoggedIn" @click="loginModal">Login</a>
 		<a href="javascript:void(0)" v-if="isLoggedIn">My Account</a>
 		<a href="javascript:void(0)" v-if="isLoggedIn" @click="logout">Logout</a>

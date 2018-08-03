@@ -1,5 +1,7 @@
+.d-grid{ display: grid; }
+
 .app-grid {
-	display: grid;
+	@extend .d-grid;
 	grid-template-areas:
 		"header"
 		"main"
@@ -23,15 +25,15 @@
 }
 
 .homepage-container {
-	display: grid;
+	@extend .d-grid;
 	grid-template-areas:
 		"content"
 		"hero";
 }
 
 header {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
+	@extend .d-grid;
+	// grid-template-columns: 1fr 1fr;
 	grid-template-areas:
 		"navbarbrand nav"
 		"headermid headermid";
@@ -57,7 +59,7 @@ header {
 
 .listing-search-form {
 	form{
-		display: grid;
+		@extend .d-grid;
 		column-gap: 17px;
 
 		@include mobile {
@@ -72,7 +74,7 @@ header {
 
 
 .business-card {
-    display: grid;
+    @extend .d-grid;
 	grid-column-gap: 20px;
 
 	.card-title{
@@ -85,7 +87,7 @@ header {
 	}
 
 	.card-footer {
-		display: grid;
+		@extend .d-grid;
 		grid-template-columns: repeat(3, 1fr);
 	}
 }
@@ -96,7 +98,7 @@ header {
 
 .businesses {
     /*
-	display: grid;
+	@extend .d-grid;
 	grid-template-areas:
 	"sidebar"
 	"businesscards";
@@ -111,7 +113,7 @@ header {
 
 .business-cards {
 	grid-area: businesscards;
-	display: grid;
+	@extend .d-grid;
     grid-gap: 1rem;
 
     @include tablet {
@@ -128,7 +130,7 @@ header {
 }
 
 .business-search-form {
-    display: grid;
+    @extend .d-grid;
     grid-gap: 1rem;
 
     @include tablet {
@@ -137,7 +139,7 @@ header {
 }
 .hero {
 	.how-it-works{
-		display: grid;
+		@extend .d-grid;
 		grid-gap: 0.7rem;
 
 		@include tablet {
@@ -147,16 +149,110 @@ header {
 }
 
 .business-page{
-	display: grid;
+	@extend .d-grid;
 	grid-gap: 1rem;
-	@include desktop {
-		grid-template-columns: 1fr minmax(15rem, $mobile-width - 110px);
+	grid-template-areas:
+		"businesspagelogo"
+		"businesspagetitle"		
+		"businesspagephoneaddress"		
+		"businesspageslider"
+		"businessaboutcard"
+		"highlightscard"
+		"businesspagesociallinks"
+		"businesspageuactivity"
+		"businesspageservices"
+		"businesspagefaqs";
+	
+	@include tablet {
+		// grid-template-columns: 1fr minmax(15rem, $mobile-width - 110px);
+		grid-template-columns: 280px auto 280px;
+		
+		grid-template-areas:
+			"businesspagelogo businesspageslider businesspageslider"
+			"businesspagetitle businesspagetitle businesspagetitle"
+			"businessaboutcard businessaboutcard businesspagephoneaddress"			
+			"businessaboutcard businessaboutcard businesspagesociallinks"
+			"businesspageservices businesspageservices businesspageuactivity"
+			"businesspagefaqs businesspagefaqs highlightscard";
 	}
+		
+	@include desktop {
+		// grid-template-columns: 1fr minmax(15rem, $mobile-width - 110px);
+		grid-template-columns: 280px auto 400px;
+		grid-template-rows: 300px auto;
+		
+		grid-template-areas:
+			"businesspagelogo businesspageslider businesspagephoneaddress"
+			"businesspagesociallinks businesspagetitle businesspageuactivity"
+			"businessaboutcard businessaboutcard highlightscard"			
+			"businessaboutcard businessaboutcard highlightscard"
+			"businesspageservices businesspageservices businesspageservices"
+			"businesspagefaqs businesspagefaqs .";
+	}
+	.info-header{
+		@extend .d-grid;
+		grid-gap: 1rem;
+	
+		@include tablet {
+			grid-template-columns: 200px auto;
+		}
+	}
+
 	
 	
 }
+
+.card-logo {
+	grid-area: businesspagelogo;
+}
+
+.card-business-title {
+	grid-area: businesspagetitle;
+}
+
+.rating-card {
+	grid-area: businesspageratings;
+}
+.address-card {
+	grid-area: businesspageaddress;
+}
+.phone-card {
+	grid-area: businesspagephone;
+}
+.slider {
+	grid-area: businesspageslider;
+}
+.businesspage-u-activity {
+	grid-area: businesspageuactivity
+}
+.social-links-card {
+	grid-area: businesspagesociallinks
+}
+.about-card {
+	grid-area: businessaboutcard
+}
+
+.highlights-card {
+	grid-area: highlightscard;
+}
+
+.service-offered {
+	grid-area: businesspageservices
+}
+
+.faqs-card{
+	grid-area: businesspagefaqs
+}
+
+.phone-and-address {
+	grid-area: businesspagephoneaddress
+}
+
 .grid-col-4{
-	display: grid;
+	@extend .d-grid;
 	grid-gap: 1rem;
-	grid-template-columns: repeat(4, 1fr);
+	@include tablet{
+		grid-template-columns: repeat(4, 1fr);
+	} 
+	
 }
