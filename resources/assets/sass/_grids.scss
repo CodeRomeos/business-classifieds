@@ -169,26 +169,43 @@ header {
 
 		grid-template-areas:
 			"businesspagelogo businesspageslider businesspageslider"
-			"businesspagetitle businesspagetitle businesspagetitle"
+			"businesspagetitle businesspagetitle businesspagephoneaddress"
 			"businessaboutcard businessaboutcard businesspagephoneaddress"
+			"businessaboutcard businessaboutcard businesspagephoneaddress"
+			"businessaboutcard businessaboutcard highlightscard"
+			"businessaboutcard businessaboutcard highlightscard"
+			"businessaboutcard businessaboutcard highlightscard"
 			"businessaboutcard businessaboutcard businesspagesociallinks"
-			"businesspageservices businesspageservices businesspageuactivity"
-			"businesspagefaqs businesspagefaqs highlightscard";
+			"businessaboutcard businessaboutcard businesspageuactivity"
+			"businesspageservices businesspageservices businesspageservices"
+			"businesspagefaqs businesspagefaqs businesspagefaqs";
 	}
 
 	@include desktop {
 		// grid-template-columns: 1fr minmax(15rem, $mobile-width - 110px);
-		grid-template-columns: 280px auto 400px;
-		grid-template-rows: 300px auto;
+		grid-template-columns: 220px 80px auto 80px 300px;
+		grid-template-rows: minmax(250px, 340px) auto;
 
 		grid-template-areas:
-			"businesspagelogo businesspageslider businesspagephoneaddress"
-			"businesspagesociallinks businesspagetitle businesspageuactivity"
-			"businessaboutcard businessaboutcard highlightscard"
-			"businessaboutcard businessaboutcard highlightscard"
-			"businesspageservices businesspageservices businesspageservices"
-			"businesspagefaqs businesspagefaqs .";
-	}
+			"businesspagelogo businesspagelogo businesspageslider businesspageslider businesspagephoneaddress"
+			"businesspagesociallinks businesspagesociallinks businesspagetitle businesspagetitle businesspageuactivity"
+			"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
+			"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
+			"businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices"
+			"businesspagefaqs businesspagefaqs businesspagefaqs businesspagefaqs .";
+    }
+
+    @include largescreen {
+
+		grid-template-areas:
+			"businesspagelogo businesspagelogo businesspageslider businesspagephoneaddress businesspagephoneaddress"
+			"businesspagesociallinks businesspagesociallinks businesspagetitle businesspageuactivity businesspageuactivity"
+			"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
+			"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
+			"businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices"
+			"businesspagefaqs businesspagefaqs businesspagefaqs . .";
+    }
+
 	.info-header{
 		@extend .d-grid;
 		grid-gap: 1rem;
