@@ -48280,7 +48280,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.business
-    ? _c("div", { staticClass: "business-page pt-3" }, [
+    ? _c("div", { staticClass: "business-page" }, [
         _c("div", { staticClass: "card  text-center card-logo" }, [
           _c("img", {
             staticClass: "img-fluid",

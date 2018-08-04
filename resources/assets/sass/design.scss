@@ -309,18 +309,21 @@ nav {
 }
 
 .business-page{
+    @include tablet {
+        padding: 1rem;
+    }
 	.info-header{
 		@extend .text-center;
-		
+
 		@include tablet {
 			text-align: left;
 		}
 		.logo {
-			
+
 			margin: auto;
 			width: 5rem;
 			@include tablet {
-				width: 12rem;	
+				width: 12rem;
 			}
 		}
 	}
@@ -340,7 +343,7 @@ nav {
 	.card {
 		@extend .mb-0;
 	}
-	
+
 }
 .qa{
 	.que{

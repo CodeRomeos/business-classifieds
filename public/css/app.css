@@ -5638,6 +5638,12 @@ nav a,
 }
 
 @media (min-width: 768px) {
+  .business-page {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
   .business-page .info-header {
     text-align: left;
   }

@@ -1,6 +1,6 @@
 <template>
-    <div class="business-page pt-3" v-if='business'>
-        
+    <div class="business-page" v-if='business'>
+
             <div class="card  text-center card-logo">
                 <img src="/images/dummy-logo.svg" alt="" class="img-fluid">
                 <h3 class='h6 mb-0'>{{ business.title }}</h3>
@@ -19,19 +19,19 @@
                     <span class="subtitle text-right"> 9,11,432 Ratings & 1,35,957 Review</span>
                 </div>
             </div>
-        
-        
+
+
         <div class="card phone-and-address mb-0">
         <div class="phone-card">
             <h4><span class='icons icon-phone'></span> {{ business.contacts.join() }}</h4>
         </div>
-        
+
         <div class="address-card">
             <!-- <h4>How to reach</h4> -->
             <p><span class='icons icon-phone'></span> {{ business.contacts.join() }}</p>
             <p><span class='icons icon-location-pin'></span> {{ business.address }}</p>
             <p><span class='icons icon-envelope'></span> contact@example.com</p>
-            
+
         </div>
         </div>
 
@@ -58,10 +58,10 @@
 
         <div class="card social-links-card">
             <h4>Connect</h4>
-            <a href="#!" title="Share page"><i class="fa fa-fw fa-twitter"></i></a>            
+            <a href="#!" title="Share page"><i class="fa fa-fw fa-twitter"></i></a>
 
             <a href="#!" title="Rate & review"><i class="fa fa-fw fa-facebook"></i></a>
-            
+
             <a href="#!" title="Save for later"><i class="fa fa-fw fa-google-plus"></i></a>
 
             <a href="#!" title="Report"><i class="fa fa-fw fa-linkedin"></i></a>
