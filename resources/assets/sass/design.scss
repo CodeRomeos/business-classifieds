@@ -311,15 +311,9 @@ nav {
 .business-page{
     @include tablet {
         padding: 1rem;
-    }
-	.info-header{
-		@extend .text-center;
-
-		@include tablet {
-			text-align: left;
-		}
-		.logo {
-
+	}
+	.card-logo {
+		img {
 			margin: auto;
 			width: 5rem;
 			@include tablet {
@@ -342,12 +336,26 @@ nav {
 	}
 	.card {
 		@extend .mb-0;
+		font-size: 14px;
+	}
+	.phone-and-address{
+		p{
+			@extend .mb-1
+		}
+	}
+	span.icons{
+		width: 1.625rem;
+		height: 1.625rem;
+		line-height: 1.625rem;
+		background: $body-bg;
+		@extend .d-inline-b;
+		@extend .text-center;
+		border-radius: 50%;
 	}
 
 }
 .qa{
 	.que{
-
 		font-weight: bold;
 		@extend .mb-1;
 	}

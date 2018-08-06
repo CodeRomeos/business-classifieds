@@ -4573,6 +4573,7 @@ p {
 }
 
 .mb-1,
+.business-page .phone-and-address p,
 .qa .que {
   margin-bottom: 0.25rem !important;
 }
@@ -5003,7 +5004,6 @@ header,
 .business-search-form,
 .hero .how-it-works,
 .business-page,
-.business-page .info-header,
 .grid-col-4 {
   display: grid;
 }
@@ -5159,37 +5159,6 @@ header {
   grid-template-areas: "businesspagelogo" "businesspagetitle" "businesspagephoneaddress" "businesspageslider" "businessaboutcard" "highlightscard" "businesspagesociallinks" "businesspageuactivity" "businesspageservices" "businesspagefaqs";
 }
 
-@media (min-width: 768px) {
-  .business-page {
-    grid-template-columns: 280px auto 280px;
-    grid-template-areas: "businesspagelogo businesspageslider businesspageslider" "businesspagetitle businesspagetitle businesspagephoneaddress" "businessaboutcard businessaboutcard businesspagephoneaddress" "businessaboutcard businessaboutcard businesspagephoneaddress" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard businesspagesociallinks" "businessaboutcard businessaboutcard businesspageuactivity" "businesspageservices businesspageservices businesspageservices" "businesspagefaqs businesspagefaqs businesspagefaqs";
-  }
-}
-
-@media (min-width: 992px) {
-  .business-page {
-    grid-template-columns: 220px 80px auto 80px 300px;
-    grid-template-rows: minmax(250px, 340px) auto;
-    grid-template-areas: "businesspagelogo businesspagelogo businesspageslider businesspageslider businesspagephoneaddress" "businesspagesociallinks businesspagesociallinks businesspagetitle businesspagetitle businesspageuactivity" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices" "businesspagefaqs businesspagefaqs businesspagefaqs businesspagefaqs .";
-  }
-}
-
-@media (min-width: 1350px) {
-  .business-page {
-    grid-template-areas: "businesspagelogo businesspagelogo businesspageslider businesspagephoneaddress businesspagephoneaddress" "businesspagesociallinks businesspagesociallinks businesspagetitle businesspageuactivity businesspageuactivity" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices" "businesspagefaqs businesspagefaqs businesspagefaqs . .";
-  }
-}
-
-.business-page .info-header {
-  grid-gap: 1rem;
-}
-
-@media (min-width: 768px) {
-  .business-page .info-header {
-    grid-template-columns: 200px auto;
-  }
-}
-
 .card-logo {
   grid-area: businesspagelogo;
 }
@@ -5244,12 +5213,7 @@ header {
 
 .grid-col-4 {
   grid-gap: 1rem;
-}
-
-@media (min-width: 768px) {
-  .grid-col-4 {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .modal-mask {
@@ -5401,7 +5365,8 @@ html {
 .d-inline-b,
 .btn,
 .listing-search-form .input-container input[type='submit'],
-.business-page .social-links-card a {
+.business-page .social-links-card a,
+.business-page span.icons {
   display: inline-block;
 }
 
@@ -5450,7 +5415,7 @@ body {
 
 .text-center,
 .btn,
-.business-page .info-header {
+.business-page span.icons {
   text-align: center;
 }
 
@@ -5643,19 +5608,13 @@ nav a,
   }
 }
 
-@media (min-width: 768px) {
-  .business-page .info-header {
-    text-align: left;
-  }
-}
-
-.business-page .info-header .logo {
+.business-page .card-logo img {
   margin: auto;
   width: 5rem;
 }
 
 @media (min-width: 768px) {
-  .business-page .info-header .logo {
+  .business-page .card-logo img {
     width: 12rem;
   }
 }
@@ -5666,6 +5625,18 @@ nav a,
 
 .business-page .social-links-card a {
   font-size: 1.75rem;
+}
+
+.business-page .card {
+  font-size: 14px;
+}
+
+.business-page span.icons {
+  width: 1.625rem;
+  height: 1.625rem;
+  line-height: 1.625rem;
+  background: #f3f3f6;
+  border-radius: 50%;
 }
 
 .qa .que {
