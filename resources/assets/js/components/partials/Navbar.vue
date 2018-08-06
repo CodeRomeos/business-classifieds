@@ -8,7 +8,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex';
+import { logout } from '../../helpers/auth';
 export default {
 	mounted() {
 
@@ -28,7 +29,9 @@ export default {
 			this.$store.dispatch('showLoginModal');
         },
         logout() {
-            this.$store.dispatch('logout');
+            logout().then((res) => {
+                this.$store.commit('logout', res.data);
+            });
         }
 	}
 }

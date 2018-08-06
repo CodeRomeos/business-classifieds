@@ -153,7 +153,7 @@ export default {
 	methods: {
 		fetchBusiness() {
 			var businessId = this.$route.params.businessid
-			axios.get('/api/v1/businesses/' + businessId).then(response => {
+			axios.get('/spa/businesses/' + businessId).then(response => {
 				this.business = response.data.data;
 				document.title = this.business.title;
 			});

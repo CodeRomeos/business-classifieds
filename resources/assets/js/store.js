@@ -1,12 +1,8 @@
-import {getLocalUser} from "./helpers/auth";
-
-const user = getLocalUser();
-
 export default {
     state: {
         welcomeMessage: 'Welcome to Business classifieds',
-        currentUser: user,
-        isLoggedIn: !!user,
+        currentUser: null,
+        isLoggedIn: false,
 		auth_error: null,
 		loginModal: false
     },
@@ -29,23 +25,27 @@ export default {
     },
     mutations: {
         login(state) {
-
             state.auth_error = null;
+        },
+        setCurrentUser(state, payload) {
+            state.currentUser = payload.user;
+            state.isLoggedIn = true;
         },
         loginSuccess(state, payload) {
             state.auth_error = null;
             state.isLoggedIn = true;
             state.loginModal = false;
-            state.currentUser = Object.assign({}, payload.data.user, {token: payload.data.access_token});
-            localStorage.setItem("user", JSON.stringify(state.currentUser));
+
+            state.currentUser = payload.user;
+            //localStorage.setItem("user", JSON.stringify(state.currentUser));
         },
         loginFailed(state, payload) {
             state.auth_error = payload.data.error;
         },
-        logout(state) {
-            localStorage.removeItem("user");
+        logout(state, payload) {
             state.isLoggedIn = false;
             state.currentUser = null;
+            axios.defaults.headers.common['X-CSRF-TOKEN'] = payload.csrfToken;
 		},
 		hideLoginModal(state) {
 			state.loginModal = false;
