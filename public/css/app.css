@@ -5004,7 +5004,8 @@ header,
 .business-search-form,
 .hero .how-it-works,
 .business-page,
-.grid-col-4 {
+.grid-col-4,
+.grid-col-2 {
   display: grid;
 }
 
@@ -5157,6 +5158,14 @@ header {
 .business-page {
   grid-gap: 1rem;
   grid-template-areas: "businesspagelogo" "businesspagetitle" "businesspagephoneaddress" "businesspageslider" "businessaboutcard" "highlightscard" "businesspagesociallinks" "businesspageuactivity" "businesspageservices" "businesspagefaqs";
+}
+
+@media (min-width: 992px) {
+  .business-page {
+    grid-template-columns: 220px 80px auto 80px 300px;
+    grid-template-rows: minmax(250px, 340px) auto;
+    grid-template-areas: "businesspagelogo businesspagelogo businesspageslider businesspageslider businesspagephoneaddress" "businesspagesociallinks businesspagesociallinks businesspagetitle businesspagetitle businesspageuactivity" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices" "businesspagefaqs businesspagefaqs businesspagefaqs businesspagefaqs .";
+  }
 }
 
 .card-logo {
@@ -5637,6 +5646,11 @@ nav a,
   line-height: 1.625rem;
   background: #f3f3f6;
   border-radius: 50%;
+}
+
+.business-page .grid-col-2 {
+  grid-gap: .25rem;
+  grid-template-columns: 26px 1fr;
 }
 
 .qa .que {

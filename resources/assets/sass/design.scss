@@ -352,7 +352,10 @@ nav {
 		@extend .text-center;
 		border-radius: 50%;
 	}
-
+	.grid-col-2{
+		grid-gap: .25rem;
+		grid-template-columns: 26px 1fr;
+	}
 }
 .qa{
 	.que{

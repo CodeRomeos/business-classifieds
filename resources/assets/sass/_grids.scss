@@ -181,19 +181,19 @@ header {
 	// 		"businesspagefaqs businesspagefaqs businesspagefaqs";
 	// }
 
-	// @include desktop {
-	// 	// grid-template-columns: 1fr minmax(15rem, $mobile-width - 110px);
-	// 	grid-template-columns: 220px 80px auto 80px 300px;
-	// 	grid-template-rows: minmax(250px, 340px) auto;
+	@include desktop {
+		// grid-template-columns: 1fr minmax(15rem, $mobile-width - 110px);
+		grid-template-columns: 220px 80px auto 80px 300px;
+		grid-template-rows: minmax(250px, 340px) auto;
 
-	// 	grid-template-areas:
-	// 		"businesspagelogo businesspagelogo businesspageslider businesspageslider businesspagephoneaddress"
-	// 		"businesspagesociallinks businesspagesociallinks businesspagetitle businesspagetitle businesspageuactivity"
-	// 		"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
-	// 		"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
-	// 		"businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices"
-	// 		"businesspagefaqs businesspagefaqs businesspagefaqs businesspagefaqs .";
-    // }
+		grid-template-areas:
+			"businesspagelogo businesspagelogo businesspageslider businesspageslider businesspagephoneaddress"
+			"businesspagesociallinks businesspagesociallinks businesspagetitle businesspagetitle businesspageuactivity"
+			"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
+			"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
+			"businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices"
+			"businesspagefaqs businesspagefaqs businesspagefaqs businesspagefaqs .";
+    }
 
     // @include largescreen {
 
@@ -272,4 +272,7 @@ header {
 	// @include tablet{
 	// 	grid-template-columns: repeat(4, 1fr);
 	// }
+}
+.grid-col-2{
+	@extend .d-grid;
 }
