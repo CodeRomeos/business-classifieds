@@ -1,6 +1,6 @@
 export function login(credentials) {
     return new Promise((res, rej) => {
-        axios.post('/api/v1/login', credentials)
+        axios.post('/spa/login', credentials)
             .then((response) => {
                 res(response.data);
             })
@@ -10,7 +10,17 @@ export function login(credentials) {
     })
 }
 
-export function getLocalUser() {
+export function getAuthUser() {
+    return new Promise((res, rej) => {
+        axios.get('/spa/user')
+            .then((response) => {
+                res(response.data);
+            })
+            .catch((error) => {
+                rej(error);
+            })
+    });
+    /*
     const userStr = localStorage.getItem('user');
 
     if(!userStr) {
@@ -18,4 +28,17 @@ export function getLocalUser() {
     }
 
     return JSON.parse(userStr);
+    */
+}
+
+export function logout() {
+    return new Promise((res, rej) => {
+        axios.get('/spa/logout')
+            .then((response) => {
+                res(response);
+            })
+            .catch((error) => {
+                rej(error);
+            })
+    });
 }

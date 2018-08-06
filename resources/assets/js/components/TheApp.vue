@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import { getAuthUser } from '../helpers/auth';
 import Navbar from './partials/Navbar.vue';
 import Modal from './partials/Modal.vue';
 import LoginModal from './auth/LoginModal.vue';
@@ -31,8 +33,18 @@ export default {
         return {
             APP_NAME: process.env.MIX_APP_NAME
         }
-	},
+    },
+    created() {
+        getAuthUser().then((res) => {
+            if('user' in res.data) {
+                this.$store.commit('setCurrentUser', res.data);
+            }
+        });
+    },
 	computed: {
+        ...mapGetters([
+
+		]),
 		loginModal() {
 
 		}
