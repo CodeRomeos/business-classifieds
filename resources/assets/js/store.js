@@ -40,12 +40,12 @@ export default {
             //localStorage.setItem("user", JSON.stringify(state.currentUser));
         },
         loginFailed(state, payload) {
-            state.auth_error = payload.data.error;
+            //state.auth_error = payload.data.error;
         },
         logout(state, payload) {
             state.isLoggedIn = false;
             state.currentUser = null;
-            axios.defaults.headers.common['X-CSRF-TOKEN'] = payload.csrfToken;
+			window.axios.defaults.headers.common['X-CSRF-TOKEN'] = payload.csrfToken;
 		},
 		hideLoginModal(state) {
 			state.loginModal = false;

@@ -3,7 +3,8 @@
 		<div class="card">
 			<div class="card-body">
 				<h3 class="card-title">Login<span v-if='loading'><small> <span class='fa fa-refresh fa-spin'></span></small></span></h3>
-
+				<div class='alert alert-danger' v-if='error'>Wrong email or password</div>
+				<div class='alert alert-success' v-if='success'>Login successful.</div>
 				<form class='mt-3' @submit.prevent='authenticate'>
 					<div class="input-container mb-3">
 						<label for='email'>Email: </label>
@@ -32,7 +33,8 @@ export default {
                 email: "",
                 password: ""
             },
-			error: null,
+			error: false,
+			success: false,
 			loading: false
         }
 	},
@@ -46,22 +48,27 @@ export default {
             this.$store.dispatch('login');
             login(this.$data.form)
                 .then((res) => {
+					this.success = true;
+					this.error = false;
 					this.loading = false;
 					this.enable_inputs();
+					window.setTimeout(() => {
 
-					if(res.data.redirect && res.data.isAdmin) {
-						window.location.href = res.data.redirect;
-                    }
-                    else {
-                        this.$store.commit('loginSuccess', res.data);
-                    }
-                    //this.$router.push({path: '/'});
+						if(res.data.redirect && res.data.isAdmin) {
+							window.location.href = res.data.redirect;
+						}
+						else {
+							this.$store.commit('loginSuccess', res.data);
+						}
+					}, 1000).bind(this);
+
                 })
                 .catch((error) => {
+					this.success = false;
 					this.loading = false;
+					this.error = true;
 					this.enable_inputs();
-					console.log({error});
-                    //this.$store.commit('loginFailed', {error});
+                    this.$store.commit('loginFailed', {error});
                 });
 
 		},
