@@ -5676,6 +5676,10 @@ nav a,
   font-weight: bold;
 }
 
+.alert-danger {
+  color: red;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   -webkit-transition: opacity .2s;
