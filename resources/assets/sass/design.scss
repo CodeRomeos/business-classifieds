@@ -35,6 +35,13 @@ ul,ol { list-style-type: none; }
 .isAbsolute{ position: absolute}
 .isFixed{ position: fixed;}
 
+.t-0 { top: 0}
+.l-0 { left: 0}
+.b-0 { bottom: 0}
+.r-0 {right: 0}
+
+
+
 .clearfix {
 	@include clearfix();
 }
@@ -331,7 +338,7 @@ nav {
 	.social-links-card{
 		a{
 			@extend .d-inline-b;
-			font-size: $h3-font-size;
+			font-size: $h5-font-size;
 		}
 	}
 	.card {

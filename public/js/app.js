@@ -48234,33 +48234,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'business',
@@ -48278,7 +48251,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var _this = this;
 
 			var businessId = this.$route.params.businessid;
-			axios.get('/spa/businesses/' + businessId).then(function (response) {
+			axios.get('/api/v1/businesses/' + businessId).then(function (response) {
 				_this.business = response.data.data;
 				document.title = _this.business.title;
 			});
@@ -48295,13 +48268,10 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.business
-    ? _c("div", { staticClass: "business-page" }, [
-        _c("div", { staticClass: "card text-center card-logo" }, [
-          _c("img", {
-            staticClass: "img-fluid",
-            attrs: { src: "/images/dummy-logo.svg", alt: "" }
-          }),
-          _vm._v(" "),
+    ? _c("div", { staticClass: "business-page pt-3" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card card-business-title" }, [
           _c(
             "h1",
             { staticClass: "h4 mt-2 mb-1" },
@@ -48322,172 +48292,94 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _vm._m(0)
+          _c("p", { staticClass: "subtitle" }, [
+            _vm._v("Founded on 14 February 2015")
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
         ]),
         _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
         _c("div", { staticClass: "card phone-and-address mb-0" }, [
-          _c("div", { staticClass: "phone-card" }, [
-            _c("h4", { staticClass: "h6" }, [
-              _c("span", { staticClass: "icons icon-phone" }),
-              _vm._v(" " + _vm._s(_vm.business.contacts.join()))
+          _c("div", { staticClass: "phone-card grid-col-2" }, [
+            _c("span", { staticClass: "icons icon-phone" }),
+            _vm._v(" "),
+            _c("div", [
+              _c("strong", [_vm._v(" " + _vm._s(_vm.business.contacts.join()))])
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "address-card" }, [
-            _c("p", [
-              _c("span", { staticClass: "icons icon-location-pin" }),
-              _vm._v(" " + _vm._s(_vm.business.address))
-            ]),
+          _c("div", { staticClass: "address-card grid-col-2" }, [
+            _c("span", { staticClass: "icons icon-location-pin" }),
+            _c("p", [_vm._v(" " + _vm._s(_vm.business.address))]),
             _vm._v(" "),
-            _vm._m(2),
+            _c("span", { staticClass: "icons icon-envelope" }),
+            _c("p", [_vm._v(" contact@example.com")]),
             _vm._v(" "),
-            _vm._m(3)
-          ])
+            _c("span", { staticClass: "icons icon-globe" }),
+            _c("p", [_vm._v(" www.example.com")])
+          ]),
+          _vm._v(" "),
+          _vm._m(2)
         ]),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "business-page-banner",
+          staticStyle: {
+            overflow: "hidden",
+            "background-image":
+              "url(https://lorempixel.com/1028/480/business/?14686)",
+            "background-size": "cover"
+          }
+        }),
+        _vm._v(" "),
+        _vm._m(3),
         _vm._v(" "),
         _vm._m(4),
         _vm._v(" "),
         _vm._m(5),
         _vm._v(" "),
-        _vm._m(6),
-        _vm._v(" "),
-        _vm._m(7),
-        _vm._v(" "),
-        _vm._m(8),
-        _vm._v(" "),
         _c("div", { staticClass: "card px-5 service-offered" }, [
-          _c("h4", { staticClass: "my-2" }, [_vm._v("Services Offered")]),
+          _c("h3", { staticClass: "my-2" }, [_vm._v("Services Offered")]),
           _vm._v(" "),
-          _c("div", { staticClass: "-" }, [
-            _c("div", [
-              _c("div", { staticClass: "mb-2" }, [
-                _c("div", { staticClass: "card-thumb" }, [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    attrs: { src: _vm.business.image }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "h2",
-                  { staticClass: "h6 card-title mt-1" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        attrs: {
-                          to: {
-                            name: "business",
-                            params: { businessid: _vm.business.businessid }
+          _c(
+            "div",
+            {},
+            _vm._l(4, function(index) {
+              return _c("div", { key: index }, [
+                _c("div", { staticClass: "mb-2" }, [
+                  _c("div", { staticClass: "card-thumb" }, [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      attrs: { src: _vm.business.image }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "h2",
+                    { staticClass: "h6 card-title mt-1" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          attrs: {
+                            to: {
+                              name: "business",
+                              params: { businessid: _vm.business.businessid }
+                            }
                           }
-                        }
-                      },
-                      [_vm._v(_vm._s(_vm.business.title))]
-                    )
-                  ],
-                  1
-                )
+                        },
+                        [_vm._v(_vm._s(_vm.business.title))]
+                      )
+                    ],
+                    1
+                  )
+                ])
               ])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", { staticClass: "mb-2" }, [
-                _c("div", { staticClass: "card-thumb" }, [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    attrs: { src: _vm.business.image }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "h2",
-                  { staticClass: "h6 card-title mt-1" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        attrs: {
-                          to: {
-                            name: "business",
-                            params: { businessid: _vm.business.businessid }
-                          }
-                        }
-                      },
-                      [_vm._v(_vm._s(_vm.business.title))]
-                    )
-                  ],
-                  1
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", { staticClass: "mb-2" }, [
-                _c("div", { staticClass: "card-thumb" }, [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    attrs: { src: _vm.business.image }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "h2",
-                  { staticClass: "h6 card-title mt-1" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        attrs: {
-                          to: {
-                            name: "business",
-                            params: { businessid: _vm.business.businessid }
-                          }
-                        }
-                      },
-                      [_vm._v(_vm._s(_vm.business.title))]
-                    )
-                  ],
-                  1
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", { staticClass: "mb-2" }, [
-                _c("div", { staticClass: "card-thumb" }, [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    attrs: { src: _vm.business.image }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "h2",
-                  { staticClass: "h6 card-title mt-1" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        attrs: {
-                          to: {
-                            name: "business",
-                            params: { businessid: _vm.business.businessid }
-                          }
-                        }
-                      },
-                      [_vm._v(_vm._s(_vm.business.title))]
-                    )
-                  ],
-                  1
-                )
-              ])
-            ])
-          ])
+            })
+          )
         ]),
         _vm._v(" "),
-        _vm._m(9)
+        _vm._m(6)
       ])
     : _vm._e()
 }
@@ -48496,39 +48388,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "subtitle" }, [
-      _vm._v("Founded on 14 February 2015"),
-      _c("br"),
-      _vm._v("Joined August 2015")
+    return _c("div", { staticClass: "card text-center card-logo" }, [
+      _c("img", {
+        staticClass: "img-fluid",
+        attrs: { src: "/images/dummy-logo.svg", alt: "" }
+      })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card card-business-title" }, [
-      _c("div", { staticClass: "ratings mt-1 text-center" }, [
-        _c("span", { staticClass: "fa fa-star" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "fa fa-star" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "fa fa-star" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "fa fa-star" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "fa fa-star" }),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c("span", { staticClass: "subtitle" }, [
-          _vm._v(" 9,11,432 Ratings & 1,35,957 Review"),
-          _c("br"),
-          _vm._v(" "),
-          _c("span", { staticClass: "icons icon-eye" }),
-          _vm._v(" 2120 Views  "),
-          _c("span", { staticClass: "icons icon-heart" }),
-          _vm._v(" 68 Favorites")
-        ])
+    return _c("div", { staticClass: "ratings mt-1" }, [
+      _c("span", { staticClass: "fa fa-star" }),
+      _vm._v(" "),
+      _c("span", { staticClass: "fa fa-star" }),
+      _vm._v(" "),
+      _c("span", { staticClass: "fa fa-star" }),
+      _vm._v(" "),
+      _c("span", { staticClass: "fa fa-star" }),
+      _vm._v(" "),
+      _c("span", { staticClass: "fa fa-star" }),
+      _vm._v(" "),
+      _c("span", { staticClass: "subtitle text-right" }, [
+        _vm._v(" 9,11,432 Ratings & 1,35,957 Review")
       ])
     ])
   },
@@ -48536,45 +48419,34 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", [
-      _c("span", { staticClass: "icons icon-envelope" }),
-      _vm._v(" contact@example.com")
+    return _c("div", { staticClass: "social-links-card" }, [
+      _c("a", { attrs: { href: "#!", title: "Share page" } }, [
+        _c("i", { staticClass: "fa fa-fw fa-twitter" })
+      ]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "#!", title: "Rate & review" } }, [
+        _c("i", { staticClass: "fa fa-fw fa-facebook" })
+      ]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "#!", title: "Save for later" } }, [
+        _c("i", { staticClass: "fa fa-fw fa-google-plus" })
+      ]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "#!", title: "Report" } }, [
+        _c("i", { staticClass: "fa fa-fw fa-linkedin" })
+      ]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "#!", title: "Report" } }, [
+        _c("i", { staticClass: "fa fa-fw fa-youtube" })
+      ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "m-0" }, [
-      _c("span", { staticClass: "icons icon-globe" }),
-      _vm._v(" www.example.com")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "slider", staticStyle: { overflow: "hidden" } },
-      [
-        _c("img", {
-          staticClass: "img-fluid",
-          staticStyle: { width: "100%" },
-          attrs: {
-            src: "https://lorempixel.com/1024/550/business/?14686",
-            alt: ""
-          }
-        })
-      ]
-    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card px-5 about-card" }, [
-      _c("h4", { staticClass: "my-2" }, [_vm._v("About")]),
+      _c("h3", { staticClass: "my-2" }, [_vm._v("About")]),
       _vm._v(" "),
       _c("p", [
         _vm._v(
@@ -48605,6 +48477,46 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card businesspage-u-activity" }, [
+      _c("div", { staticClass: "grid-col-4 text-center" }, [
+        _c("div", [
+          _c("a", { attrs: { href: "#!", title: "Share page" } }, [
+            _c("i", { staticClass: "fa fa-fw fa-2x fa-share-alt" })
+          ]),
+          _c("br"),
+          _vm._v("\n                Share\n            ")
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("a", { attrs: { href: "#!", title: "Rate & review" } }, [
+            _c("i", { staticClass: "fa fa-fw fa-2x fa-star" })
+          ]),
+          _c("br"),
+          _vm._v("\n                Review\n            ")
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("a", { attrs: { href: "#!", title: "Save for later" } }, [
+            _c("i", { staticClass: "fa fa-fw fa-2x fa-bookmark-o" })
+          ]),
+          _c("br"),
+          _vm._v("\n                Save\n            ")
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("a", { attrs: { href: "#!", title: "Report" } }, [
+            _c("i", { staticClass: "fa fa-fw fa-2x fa-exclamation-triangle" })
+          ]),
+          _c("br"),
+          _vm._v("\n                Report\n            ")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card highlights-card" }, [
       _c("h4", [_vm._v("Highlights")]),
       _vm._v(" "),
@@ -48615,78 +48527,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("li", [
           _vm._v(" - Voluptatem accusantium ut nisi repellat! Consequuntur!")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card social-links-card" }, [
-      _c("h4", [_vm._v("Connect")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#!", title: "Share page" } }, [
-        _c("i", { staticClass: "fa fa-fw fa-twitter" })
-      ]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#!", title: "Rate & review" } }, [
-        _c("i", { staticClass: "fa fa-fw fa-facebook" })
-      ]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#!", title: "Save for later" } }, [
-        _c("i", { staticClass: "fa fa-fw fa-google-plus" })
-      ]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#!", title: "Report" } }, [
-        _c("i", { staticClass: "fa fa-fw fa-linkedin" })
-      ]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#!", title: "Report" } }, [
-        _c("i", { staticClass: "fa fa-fw fa-youtube" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card businesspage-u-activity" }, [
-      _c("div", { staticClass: "grid-col-4" }, [
-        _c("div", [
-          _c("a", { attrs: { href: "#!", title: "Share page" } }, [
-            _c("i", { staticClass: "fa fa-fw fa-2x fa-share-alt" }),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v("Share")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("a", { attrs: { href: "#!", title: "Rate & review" } }, [
-            _c("i", { staticClass: "fa fa-fw fa-2x fa-star" }),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v("Review")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("a", { attrs: { href: "#!", title: "Save for later" } }, [
-            _c("i", { staticClass: "fa fa-fw fa-2x fa-bookmark-o" }),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v("Save")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("a", { attrs: { href: "#!", title: "Report" } }, [
-            _c("i", { staticClass: "fa fa-fw fa-2x fa-exclamation-triangle" }),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v("Report")
-          ])
         ])
       ])
     ])

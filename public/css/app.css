@@ -5157,14 +5157,29 @@ header {
 
 .business-page {
   grid-gap: 1rem;
-  grid-template-areas: "businesspagelogo" "businesspagetitle" "businesspagephoneaddress" "businesspageslider" "businessaboutcard" "highlightscard" "businesspagesociallinks" "businesspageuactivity" "businesspageservices" "businesspagefaqs";
+  grid-template-areas: "businesspagelogo" "businesspagetitle" "businesspagephoneaddress" "businesspagebanner" "businessaboutcard" "highlightscard"		 "businesspageuactivity" "businesspageservices" "businesspagefaqs";
+}
+
+@media (min-width: 768px) {
+  .business-page {
+    grid-template-columns: 280px auto 280px;
+    grid-template-areas: "businesspagelogo businesspagebanner businesspagebanner" "businesspagetitle businesspagetitle businesspagephoneaddress"			 "businessaboutcard businessaboutcard businesspagephoneaddress" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard businesspageuactivity" "businesspageservices businesspageservices businesspageservices" "businesspagefaqs businesspagefaqs businesspagefaqs";
+  }
 }
 
 @media (min-width: 992px) {
   .business-page {
-    grid-template-columns: 220px 80px auto 80px 300px;
-    grid-template-rows: minmax(250px, 340px) auto;
-    grid-template-areas: "businesspagelogo businesspagelogo businesspageslider businesspageslider businesspagephoneaddress" "businesspagesociallinks businesspagesociallinks businesspagetitle businesspagetitle businesspageuactivity" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices" "businesspagefaqs businesspagefaqs businesspagefaqs businesspagefaqs .";
+    grid-template-columns: 230px 50px auto 50px 200px;
+    grid-template-rows: minmax(200px, 250px) auto;
+    grid-template-areas: "businesspagebanner businesspagebanner businesspagebanner businesspagephoneaddress businesspagephoneaddress" "businesspagebanner businesspagebanner businesspagebanner businesspageuactivity businesspageuactivity" "businesspagelogo businesspagelogo businesspagetitle highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices" "businesspagefaqs businesspagefaqs businesspagefaqs businesspagefaqs .";
+  }
+}
+
+@media (min-width: 1350px) {
+  .business-page {
+    grid-template-columns: 260px 80px auto 80px 260px;
+    grid-template-rows: auto;
+    grid-template-areas: "businesspagelogo businesspagelogo businesspagebanner businesspagephoneaddress businesspagephoneaddress" "businesspagetitle businesspagetitle businesspagebanner businesspageuactivity businesspageuactivity"		 "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices" "businesspagefaqs businesspagefaqs businesspagefaqs businesspagefaqs .";
   }
 }
 
@@ -5180,24 +5195,12 @@ header {
   grid-area: businesspageratings;
 }
 
-.address-card {
-  grid-area: businesspageaddress;
-}
-
-.phone-card {
-  grid-area: businesspagephone;
-}
-
-.slider {
-  grid-area: businesspageslider;
+.business-page-banner {
+  grid-area: businesspagebanner;
 }
 
 .businesspage-u-activity {
   grid-area: businesspageuactivity;
-}
-
-.social-links-card {
-  grid-area: businesspagesociallinks;
 }
 
 .about-card {
@@ -5354,6 +5357,22 @@ ol {
 .isFixed,
 .modal-mask {
   position: fixed;
+}
+
+.t-0 {
+  top: 0;
+}
+
+.l-0 {
+  left: 0;
+}
+
+.b-0 {
+  bottom: 0;
+}
+
+.r-0 {
+  right: 0;
 }
 
 .clearfix::after {
@@ -5633,7 +5652,7 @@ nav a,
 }
 
 .business-page .social-links-card a {
-  font-size: 1.75rem;
+  font-size: 1.25rem;
 }
 
 .business-page .card {
