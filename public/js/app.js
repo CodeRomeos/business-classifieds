@@ -48540,7 +48540,7 @@ var staticRenderFns = [
           staticClass: "img-fluid",
           staticStyle: { width: "100%" },
           attrs: {
-            src: "https://lorempixel.com/1024/550/business/?14686",
+            src: "https://lorempixel.com/1024/480/business/?14686",
             alt: ""
           }
         })
