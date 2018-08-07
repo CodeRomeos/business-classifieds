@@ -4573,6 +4573,7 @@ p {
 }
 
 .mb-1,
+.business-page .phone-and-address p,
 .qa .que {
   margin-bottom: 0.25rem !important;
 }
@@ -5003,8 +5004,8 @@ header,
 .business-search-form,
 .hero .how-it-works,
 .business-page,
-.business-page .info-header,
-.grid-col-4 {
+.grid-col-4,
+.grid-col-2 {
   display: grid;
 }
 
@@ -5156,31 +5157,14 @@ header {
 
 .business-page {
   grid-gap: 1rem;
-  grid-template-areas: "businesspagelogo" "businesspagetitle"		 "businesspagephoneaddress"		 "businesspageslider" "businessaboutcard" "highlightscard" "businesspagesociallinks" "businesspageuactivity" "businesspageservices" "businesspagefaqs";
-}
-
-@media (min-width: 768px) {
-  .business-page {
-    grid-template-columns: 280px auto 280px;
-    grid-template-areas: "businesspagelogo businesspageslider businesspageslider" "businesspagetitle businesspagetitle businesspagetitle" "businessaboutcard businessaboutcard businesspagephoneaddress"			 "businessaboutcard businessaboutcard businesspagesociallinks" "businesspageservices businesspageservices businesspageuactivity" "businesspagefaqs businesspagefaqs highlightscard";
-  }
+  grid-template-areas: "businesspagelogo" "businesspagetitle" "businesspagephoneaddress" "businesspageslider" "businessaboutcard" "highlightscard" "businesspagesociallinks" "businesspageuactivity" "businesspageservices" "businesspagefaqs";
 }
 
 @media (min-width: 992px) {
   .business-page {
-    grid-template-columns: 280px auto 400px;
-    grid-template-rows: 300px auto;
-    grid-template-areas: "businesspagelogo businesspageslider businesspagephoneaddress" "businesspagesociallinks businesspagetitle businesspageuactivity" "businessaboutcard businessaboutcard highlightscard"			 "businessaboutcard businessaboutcard highlightscard" "businesspageservices businesspageservices businesspageservices" "businesspagefaqs businesspagefaqs .";
-  }
-}
-
-.business-page .info-header {
-  grid-gap: 1rem;
-}
-
-@media (min-width: 768px) {
-  .business-page .info-header {
-    grid-template-columns: 200px auto;
+    grid-template-columns: 220px 80px auto 80px 300px;
+    grid-template-rows: minmax(250px, 340px) auto;
+    grid-template-areas: "businesspagelogo businesspagelogo businesspageslider businesspageslider businesspagephoneaddress" "businesspagesociallinks businesspagesociallinks businesspagetitle businesspagetitle businesspageuactivity" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices" "businesspagefaqs businesspagefaqs businesspagefaqs businesspagefaqs .";
   }
 }
 
@@ -5238,12 +5222,7 @@ header {
 
 .grid-col-4 {
   grid-gap: 1rem;
-}
-
-@media (min-width: 768px) {
-  .grid-col-4 {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .modal-mask {
@@ -5395,7 +5374,8 @@ html {
 .d-inline-b,
 .btn,
 .listing-search-form .input-container input[type='submit'],
-.business-page .social-links-card a {
+.business-page .social-links-card a,
+.business-page span.icons {
   display: inline-block;
 }
 
@@ -5444,7 +5424,7 @@ body {
 
 .text-center,
 .btn,
-.business-page .info-header {
+.business-page span.icons {
   text-align: center;
 }
 
@@ -5632,18 +5612,18 @@ nav a,
 }
 
 @media (min-width: 768px) {
-  .business-page .info-header {
-    text-align: left;
+  .business-page {
+    padding: 1rem;
   }
 }
 
-.business-page .info-header .logo {
+.business-page .card-logo img {
   margin: auto;
   width: 5rem;
 }
 
 @media (min-width: 768px) {
-  .business-page .info-header .logo {
+  .business-page .card-logo img {
     width: 12rem;
   }
 }
@@ -5654,6 +5634,23 @@ nav a,
 
 .business-page .social-links-card a {
   font-size: 1.75rem;
+}
+
+.business-page .card {
+  font-size: 14px;
+}
+
+.business-page span.icons {
+  width: 1.625rem;
+  height: 1.625rem;
+  line-height: 1.625rem;
+  background: #f3f3f6;
+  border-radius: 50%;
+}
+
+.business-page .grid-col-2 {
+  grid-gap: .25rem;
+  grid-template-columns: 26px 1fr;
 }
 
 .qa .que {

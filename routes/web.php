@@ -23,4 +23,23 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:administrator'
 	Route::get('/', 'Admin\AdminController@dashboard')->name('dashboard');
 });
 
+Route::namespace('Spa')->prefix('spa')->group(function() {
+
+    Route::post('login', 'Auth\LoginController@login');
+    Route::get('logout', 'Auth\LoginController@logout');
+    Route::post('register', 'Auth\RegisterController@register');
+
+    Route::prefix('businesses')->group(function(){
+        Route::get('/', 'BusinessController@index');
+        Route::get('/{businessid}', 'BusinessController@show');
+    });
+
+    Route::get('/user', function () {
+        if(auth()->check())
+            return response()->json(['data'=>['user' => auth()->user()]]);
+
+        return response()->json(['data'=>[]]);
+    });
+});
+
 Route::get('/{any}', 'WelcomeController@welcome')->where('any', '.*');

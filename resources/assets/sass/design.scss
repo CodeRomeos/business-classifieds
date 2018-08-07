@@ -309,18 +309,15 @@ nav {
 }
 
 .business-page{
-	.info-header{
-		@extend .text-center;
-		
-		@include tablet {
-			text-align: left;
-		}
-		.logo {
-			
+    @include tablet {
+        padding: 1rem;
+	}
+	.card-logo {
+		img {
 			margin: auto;
 			width: 5rem;
 			@include tablet {
-				width: 12rem;	
+				width: 12rem;
 			}
 		}
 	}
@@ -339,12 +336,29 @@ nav {
 	}
 	.card {
 		@extend .mb-0;
+		font-size: 14px;
 	}
-	
+	.phone-and-address{
+		p{
+			@extend .mb-1
+		}
+	}
+	span.icons{
+		width: 1.625rem;
+		height: 1.625rem;
+		line-height: 1.625rem;
+		background: $body-bg;
+		@extend .d-inline-b;
+		@extend .text-center;
+		border-radius: 50%;
+	}
+	.grid-col-2{
+		grid-gap: .25rem;
+		grid-template-columns: 26px 1fr;
+	}
 }
 .qa{
 	.que{
-
 		font-weight: bold;
 		@extend .mb-1;
 	}

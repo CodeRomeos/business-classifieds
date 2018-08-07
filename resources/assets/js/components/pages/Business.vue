@@ -1,38 +1,36 @@
 <template>
-    <div class="business-page pt-3" v-if='business'>
-        
-            <div class="card  text-center card-logo">
-                <img src="/images/dummy-logo.svg" alt="" class="img-fluid">
-                <h3 class='h6 mb-0'>{{ business.title }}</h3>
-                <p><span class='fa fa-globe'></span> www.example.com</p>
-            </div>
-            <div class='card card-business-title'>
-                <h1 class="h4 mt-2 mb-1"><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link></h1>
-                <p class="subtitle">Founded on 14 February 2015/ Joined August 2015</p>
+    <div class="business-page" v-if='business'>
 
-                <div class="ratings mt-1">
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="subtitle text-right"> 9,11,432 Ratings & 1,35,957 Review</span>
-                </div>
+        <div class="card text-center card-logo">
+            <img src="/images/dummy-logo.svg" alt="" class="img-fluid">
+            <h1 class="h4 mt-2 mb-1"><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link></h1>
+            <p class="subtitle">Founded on 14 February 2015<br>Joined August 2015</p>
+        </div>
+
+        <div class='card card-business-title'>
+            <div class="ratings mt-1 text-center">
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <br>
+                <span class="subtitle"> 9,11,432 Ratings & 1,35,957 Review<br>
+                <span class="icons icon-eye"></span> 2120 Views  <span class="icons icon-heart"></span> 68 Favorites</span>
             </div>
-        
-        
+        </div>
+
         <div class="card phone-and-address mb-0">
-        <div class="phone-card">
-            <h4><span class='icons icon-phone'></span> {{ business.contacts.join() }}</h4>
-        </div>
-        
-        <div class="address-card">
-            <!-- <h4>How to reach</h4> -->
-            <p><span class='icons icon-phone'></span> {{ business.contacts.join() }}</p>
-            <p><span class='icons icon-location-pin'></span> {{ business.address }}</p>
-            <p><span class='icons icon-envelope'></span> contact@example.com</p>
-            
-        </div>
+            <div class="phone-card">
+                <h4 class="h6"><span class='icons icon-phone'></span> {{ business.contacts.join() }}</h4>
+            </div>
+
+            <div class="address-card">
+                <!-- <h4>How to reach</h4> -->
+                <p><span class='icons icon-location-pin'></span> {{ business.address }}</p>
+                <p><span class='icons icon-envelope'></span> contact@example.com</p>
+                <p class='m-0'><span class='icons icon-globe'></span> www.example.com</p>
+            </div>
         </div>
 
         <div class="slider" style="overflow: hidden">
@@ -40,7 +38,7 @@
         </div>
 
         <div class="card px-5 about-card">
-            <h3 class="my-2">About</h3>
+            <h4 class="my-2">About</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error at quasi tempore nostrum unde, consequuntur atque tempora. Deserunt commodi asperiores unde libero maxime dolores, labore, laudantium eum eos cumque voluptatem dicta ad beatae. Provident nam debitis laborum eveniet animi facere ea harum ad, odit quam.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta eaque ut nemo facere eius itaque praesentium consequuntur aspernatur, accusantium, dicta saepe, blanditiis vero ea! Quidem eveniet deleniti nulla.</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolore unde quaerat necessitatibus, aperiam saepe! Harum, distinctio ut cupiditate non impedit nemo, dolores accusamus quia voluptate et, accusantium explicabo aspernatur.</p>
@@ -58,10 +56,10 @@
 
         <div class="card social-links-card">
             <h4>Connect</h4>
-            <a href="#!" title="Share page"><i class="fa fa-fw fa-twitter"></i></a>            
+            <a href="#!" title="Share page"><i class="fa fa-fw fa-twitter"></i></a>
 
             <a href="#!" title="Rate & review"><i class="fa fa-fw fa-facebook"></i></a>
-            
+
             <a href="#!" title="Save for later"><i class="fa fa-fw fa-google-plus"></i></a>
 
             <a href="#!" title="Report"><i class="fa fa-fw fa-linkedin"></i></a>
@@ -70,29 +68,29 @@
         </div>
 
         <div class="card businesspage-u-activity">
-            <div class="grid-col-4 text-center">
+            <div class="grid-col-4">
                 <div>
-                    <a href="#!" title="Share page"><i class="fa fa-fw fa-2x fa-share-alt"></i></a><br>
-                    Share
+                    <a href="#!" title="Share page"><i class="fa fa-fw fa-2x fa-share-alt"></i> <br>Share</a>
                 </div>
                 <div>
-                    <a href="#!" title="Rate & review"><i class="fa fa-fw fa-2x fa-star"></i></a><br>
-                    Review
+                    <a href="#!" title="Rate & review"><i class="fa fa-fw fa-2x fa-star"></i>
+                    <br>Review</a>
+
                 </div>
                 <div>
-                    <a href="#!" title="Save for later"><i class="fa fa-fw fa-2x fa-bookmark-o"></i></a><br>
-                    Save
+                    <a href="#!" title="Save for later"><i class="fa fa-fw fa-2x fa-bookmark-o"></i>
+                    <br>Save</a>
                 </div>
                 <div>
-                    <a href="#!" title="Report"><i class="fa fa-fw fa-2x fa-exclamation-triangle"></i></a><br>
-                    Report
+                    <a href="#!" title="Report"><i class="fa fa-fw fa-2x fa-exclamation-triangle"></i>
+                    <br>Report</a>
                 </div>
             </div>
         </div>
 
         <div class="card px-5 service-offered">
-            <h3 class="my-2">Services Offered</h3>
-            <div class="grid-col-4">
+            <h4 class="my-2">Services Offered</h4>
+            <div class="-">
                 <div>
                     <div class="mb-2">
                         <div class="card-thumb">
@@ -153,7 +151,7 @@ export default {
 	methods: {
 		fetchBusiness() {
 			var businessId = this.$route.params.businessid
-			axios.get('/api/v1/businesses/' + businessId).then(response => {
+			axios.get('/spa/businesses/' + businessId).then(response => {
 				this.business = response.data.data;
 				document.title = this.business.title;
 			});

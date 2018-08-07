@@ -49,27 +49,19 @@ export default {
 					this.loading = false;
 					this.enable_inputs();
 
-					if(res.data.isAdmin) {
-						 axios.post('/login', this.$data.form)
-							.then((response) => {
-								window.location.href = res.data.redirect;
-							})
-							.catch((error) => {
-								this.loading = false;
-								this.enable_inputs();
-							});
+					if(res.data.redirect && res.data.isAdmin) {
+						window.location.href = res.data.redirect;
                     }
                     else {
-                        this.$store.commit('loginSuccess', res);
+                        this.$store.commit('loginSuccess', res.data);
                     }
-
                     //this.$router.push({path: '/'});
                 })
                 .catch((error) => {
 					this.loading = false;
 					this.enable_inputs();
 					console.log({error});
-                    this.$store.commit('loginFailed', {error});
+                    //this.$store.commit('loginFailed', {error});
                 });
 
 		},

@@ -59,7 +59,7 @@ export default {
 	methods: {
 		fetchBusinesses() {
 			this.loading = true;
-			axios.get('/api/v1/businesses').then(response => {
+			axios.get('/spa/businesses').then(response => {
 				this.loading = false;
 				this.businesses = response.data.data.businesses;
 			});
