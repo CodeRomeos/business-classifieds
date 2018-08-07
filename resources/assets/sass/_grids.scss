@@ -155,67 +155,56 @@ header {
 		"businesspagelogo"
 		"businesspagetitle"
 		"businesspagephoneaddress"
-		"businesspageslider"
+		"businesspagebanner"
 		"businessaboutcard"
-		"highlightscard"
-		"businesspagesociallinks"
+		"highlightscard"		
 		"businesspageuactivity"
 		"businesspageservices"
 		"businesspagefaqs";
 
-	// @include tablet {
-	// 	// grid-template-columns: 1fr minmax(15rem, $mobile-width - 110px);
-	// 	grid-template-columns: 280px auto 280px;
+	@include tablet {
+		// grid-template-columns: 1fr minmax(15rem, $mobile-width - 110px);
+		grid-template-columns: 280px auto 280px;
 
-	// 	grid-template-areas:
-	// 		"businesspagelogo businesspageslider businesspageslider"
-	// 		"businesspagetitle businesspagetitle businesspagephoneaddress"
-	// 		"businessaboutcard businessaboutcard businesspagephoneaddress"
-	// 		"businessaboutcard businessaboutcard businesspagephoneaddress"
-	// 		"businessaboutcard businessaboutcard highlightscard"
-	// 		"businessaboutcard businessaboutcard highlightscard"
-	// 		"businessaboutcard businessaboutcard highlightscard"
-	// 		"businessaboutcard businessaboutcard businesspagesociallinks"
-	// 		"businessaboutcard businessaboutcard businesspageuactivity"
-	// 		"businesspageservices businesspageservices businesspageservices"
-	// 		"businesspagefaqs businesspagefaqs businesspagefaqs";
-	// }
+		grid-template-areas:
+			"businesspagelogo businesspagebanner businesspagebanner"
+			"businesspagetitle businesspagetitle businesspagephoneaddress"			
+			"businessaboutcard businessaboutcard businesspagephoneaddress"
+			"businessaboutcard businessaboutcard highlightscard"
+			"businessaboutcard businessaboutcard highlightscard"
+			"businessaboutcard businessaboutcard highlightscard"
+			"businessaboutcard businessaboutcard highlightscard"
+			"businessaboutcard businessaboutcard businesspageuactivity"
+			"businesspageservices businesspageservices businesspageservices"
+			"businesspagefaqs businesspagefaqs businesspagefaqs";
+	}
 
 	@include desktop {
 		// grid-template-columns: 1fr minmax(15rem, $mobile-width - 110px);
-		grid-template-columns: 220px 80px auto 80px 300px;
-		grid-template-rows: minmax(250px, 340px) auto;
-
+		grid-template-columns: 230px 50px auto 50px 200px;		
+		grid-template-rows: minmax(200px, 250px) auto;
 		grid-template-areas:
-			"businesspagelogo businesspagelogo businesspageslider businesspageslider businesspagephoneaddress"
-			"businesspagesociallinks businesspagesociallinks businesspagetitle businesspagetitle businesspageuactivity"
+			"businesspagebanner businesspagebanner businesspagebanner businesspagephoneaddress businesspagephoneaddress"
+			"businesspagebanner businesspagebanner businesspagebanner businesspageuactivity businesspageuactivity"
+			"businesspagelogo businesspagelogo businesspagetitle highlightscard highlightscard"
+			"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
 			"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
 			"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
 			"businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices"
 			"businesspagefaqs businesspagefaqs businesspagefaqs businesspagefaqs .";
     }
 
-    // @include largescreen {
-
-	// 	grid-template-areas:
-	// 		"businesspagelogo businesspagelogo businesspageslider businesspagephoneaddress businesspagephoneaddress"
-	// 		"businesspagesociallinks businesspagesociallinks businesspagetitle businesspageuactivity businesspageuactivity"
-	// 		"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
-	// 		"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
-	// 		"businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices"
-	// 		"businesspagefaqs businesspagefaqs businesspagefaqs . .";
-    // }
-
-	// .info-header{
-	// 	@extend .d-grid;
-	// 	grid-gap: 1rem;
-
-	// 	@include tablet {
-	// 		grid-template-columns: 200px auto;
-	// 	}
-	// }
-
-
+    @include largescreen {
+		grid-template-columns: 260px 80px auto 80px 260px;
+		grid-template-rows: auto;
+		grid-template-areas:
+		"businesspagelogo businesspagelogo businesspagebanner businesspagephoneaddress businesspagephoneaddress"
+		"businesspagetitle businesspagetitle businesspagebanner businesspageuactivity businesspageuactivity"		
+		"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
+		"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
+		"businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices"
+		"businesspagefaqs businesspagefaqs businesspagefaqs businesspagefaqs .";
+    }
 
 }
 
@@ -230,21 +219,14 @@ header {
 .rating-card {
 	grid-area: businesspageratings;
 }
-.address-card {
-	grid-area: businesspageaddress;
-}
-.phone-card {
-	grid-area: businesspagephone;
-}
-.slider {
-	grid-area: businesspageslider;
+
+.business-page-banner {
+	grid-area: businesspagebanner;
 }
 .businesspage-u-activity {
 	grid-area: businesspageuactivity
 }
-.social-links-card {
-	grid-area: businesspagesociallinks
-}
+
 .about-card {
 	grid-area: businessaboutcard
 }
