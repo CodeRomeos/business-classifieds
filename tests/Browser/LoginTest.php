@@ -20,7 +20,11 @@ class LoginTest extends DuskTestCase
 					->visit('/')
 					->assertSee('Login')
 					->clickLink('Login')
-					->type('email', 'taylor@laravel.com');
+					->type('email', 'advertiser@user.com')
+					->type('password', 'advertiser@123')
+					->click('#login_submit')
+					->assertSee('My Account')
+					->assertSee('Logout');
                     //->waitForText('Claim your listing')
                     //->assertSee('Lorem ipsum dolor sit');
         });

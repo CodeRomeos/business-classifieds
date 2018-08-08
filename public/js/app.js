@@ -49112,14 +49112,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				_this.error = false;
 				_this.loading = false;
 				_this.enable_inputs();
-				window.setTimeout(function () {
 
-					if (res.data.redirect && res.data.isAdmin) {
-						window.location.href = res.data.redirect;
-					} else {
-						_this.$store.commit('loginSuccess', res.data);
-					}
-				}, 1000).bind(_this);
+				if (res.data.redirect && res.data.isAdmin) {
+					window.location.href = res.data.redirect;
+				} else {
+					_this.$store.commit('loginSuccess', res.data);
+				}
 			}).catch(function (error) {
 				_this.success = false;
 				_this.loading = false;

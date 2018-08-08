@@ -52,15 +52,13 @@ export default {
 					this.error = false;
 					this.loading = false;
 					this.enable_inputs();
-					window.setTimeout(() => {
 
-						if(res.data.redirect && res.data.isAdmin) {
-							window.location.href = res.data.redirect;
-						}
-						else {
-							this.$store.commit('loginSuccess', res.data);
-						}
-					}, 1000).bind(this);
+					if(res.data.redirect && res.data.isAdmin) {
+						window.location.href = res.data.redirect;
+					}
+					else {
+						this.$store.commit('loginSuccess', res.data);
+					}
 
                 })
                 .catch((error) => {
