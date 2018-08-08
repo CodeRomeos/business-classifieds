@@ -21,7 +21,7 @@
 			</div>
 		</div>
         <div class="card-footer text-center">
-			<div><a href='#!'><span class='fa fa-bookmark-o'></span></a></div>
+			<bookmark-button :post="business" />
 			<div class=''><a href='#!'><span class='icons icon-share'></span></a></div>
 			<div class=''><router-link class='' :to="{ name: 'business', params: { businessid: business.businessid }}">View</router-link></div>
         </div>
@@ -29,10 +29,14 @@
 </template>
 
 <script>
+import BookmarkButton from './BookmarkButton.vue';
 export default {
 	name: 'business-card',
 	props: [
 		'business'
-	]
+	],
+	components: {
+		BookmarkButton
+	}
 }
 </script>
