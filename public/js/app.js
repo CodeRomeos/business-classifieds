@@ -49194,7 +49194,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "input-field",
-                attrs: { type: "email", id: "login_name" },
+                attrs: { type: "email", name: "email", id: "login_name" },
                 domProps: { value: _vm.form.email },
                 on: {
                   input: function($event) {
@@ -49222,7 +49222,11 @@ var render = function() {
                   }
                 ],
                 staticClass: "input-field",
-                attrs: { type: "password", id: "login_password" },
+                attrs: {
+                  type: "password",
+                  name: "password",
+                  id: "login_password"
+                },
                 domProps: { value: _vm.form.password },
                 on: {
                   input: function($event) {
