@@ -14,7 +14,12 @@ abstract class TestCase extends BaseTestCase
 	public function setUp()
     {
 		parent::setUp();
-		$this->runDatabaseMigrations();
         Artisan::call('db:seed');
+    }
+
+    public function tearDown()
+    {
+        parent::tearDown();
+        //Artisan::call('db:seed');
     }
 }
