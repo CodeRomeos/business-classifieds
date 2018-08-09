@@ -8,11 +8,11 @@
 				<form class='mt-3' @submit.prevent='authenticate'>
 					<div class="input-container mb-3">
 						<label for='email'>Email: </label>
-						<input type='email' v-model="form.email" class='input-field' id='login_name'>
+						<input type='email' name='email' v-model="form.email" class='input-field' id='login_name'>
 					</div>
 					<div class="input-container mb-3">
 						<label for='password'>Password: </label>
-						<input type='password' v-model="form.password" class='input-field' id='login_password'>
+						<input type='password' name='password' v-model="form.password" class='input-field' id='login_password'>
 					</div>
 					<div class="input-container mb-3">
 						<input type='submit' value='Login' class='btn btn-primary' id='login_submit'>
@@ -52,15 +52,13 @@ export default {
 					this.error = false;
 					this.loading = false;
 					this.enable_inputs();
-					window.setTimeout(() => {
 
-						if(res.data.redirect && res.data.isAdmin) {
-							window.location.href = res.data.redirect;
-						}
-						else {
-							this.$store.commit('loginSuccess', res.data);
-						}
-					}, 1000).bind(this);
+					if(res.data.redirect && res.data.isAdmin) {
+						window.location.href = res.data.redirect;
+					}
+					else {
+						this.$store.commit('loginSuccess', res.data);
+					}
 
                 })
                 .catch((error) => {
