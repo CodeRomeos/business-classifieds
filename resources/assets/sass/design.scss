@@ -349,6 +349,10 @@ nav {
 		p{
 			@extend .mb-1
 		}
+		.grid-col-2{
+			grid-gap: .25rem;
+			grid-template-columns: 26px 1fr;
+		}
 	}
 	span.icons{
 		width: 1.625rem;
@@ -359,16 +363,10 @@ nav {
 		@extend .text-center;
 		border-radius: 50%;
 	}
-	.grid-col-2{
-		grid-gap: .25rem;
-		grid-template-columns: 26px 1fr;
-	}
 }
-.qa{
-	.que{
-		font-weight: bold;
-		@extend .mb-1;
-	}
+
+.isBold{
+	font-weight: bold;
 }
 
 .alert {

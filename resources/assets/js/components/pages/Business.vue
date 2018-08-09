@@ -53,7 +53,7 @@
         </div>
 
         <!-- Page desicription -->
-        <div class="card px-5 about-card">
+        <div class="card about-card">
             <h3 class="my-2">About</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error at quasi tempore nostrum unde, consequuntur atque tempora. Deserunt commodi asperiores unde libero maxime dolores, labore, laudantium eum eos cumque voluptatem dicta ad beatae. Provident nam debitis laborum eveniet animi facere ea harum ad, odit quam.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta eaque ut nemo facere eius itaque praesentium consequuntur aspernatur, accusantium, dicta saepe, blanditiis vero ea! Quidem eveniet deleniti nulla.</p>
@@ -95,7 +95,7 @@
         </div>
 
         <!-- Services offered -->
-        <div class="card px-5 service-offered">
+        <div class="card service-offered">
             <h3 class="my-2">Services Offered</h3>
             <div class="">
                 <div v-for="index in 4" :key="index">
@@ -109,14 +109,44 @@
             </div>
         </div>
 
-        <!-- FAQs -->
-        <div class="card px-5 faqs-card">
-            <h4>Questions and Answers</h4>
-            <div class="qa">
-                <p class="que"> Q: Do you deals in car parts?</p>
-                <p class="ans"> A: Yes.  Soluta eaque ut nemo facere eius itaque praesentium consequuntur aspernatur.</p>
+        <div class="grid-col-2 reviews-and-faqs">
+            <!-- Rate & reviews -->
+            <div class="card rate-and-review-card">
+                <h4>Ratings and Reviews</h4>
+                <div class="qa">
+                    <div class="ratings mt-1">
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="subtitle">By John Doe on Jan 15, 2018</span>
+                    </div>
+                    <p class="isBold">One of the best service provider with domain expertise.</p>
+                    <p class="ans">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam beatae quibusdam deleniti quod, rerum ratione quis facilis quam accusantium, magni corrupti laudantium odit dolore eum temporibus a sequi sed nihil. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio at corporis omnis quod quos vel quia fugiat odit. </p>
+                    <div class="ratings mt-1">
+                        <a href="" class="fa fa-thums-up">
+                            <span class="icons icon-like"></span>
+                        </a>
+                        <a href="" class="fa fa-thums-up">
+                            <span class="icons icon-dislike"></span>
+                        </a>
+                    </div>
+                </div>
             </div>
+            <!-- Rate & reviews -->
+
+            <!-- FAQs -->
+            <div class="card faqs-card">
+                <h4>Questions and Answers</h4>
+                <div class="qa">
+                    <p class="isBold"> Q: Do you deals in car parts?</p>
+                    <p class="ans"> A: Yes.  Soluta eaque ut nemo facere eius itaque praesentium consequuntur aspernatur.</p>
+                </div>
+            </div>
+            <!-- FAQs -->
         </div>
+
 
     </div>
 </template>

@@ -4573,8 +4573,7 @@ p {
 }
 
 .mb-1,
-.business-page .phone-and-address p,
-.qa .que {
+.business-page .phone-and-address p {
   margin-bottom: 0.25rem !important;
 }
 
@@ -5157,13 +5156,13 @@ header {
 
 .business-page {
   grid-gap: 1rem;
-  grid-template-areas: "businesspagelogo" "businesspagetitle" "businesspagephoneaddress" "businesspagebanner" "businessaboutcard" "highlightscard"		 "businesspageuactivity" "businesspageservices" "businesspagefaqs";
+  grid-template-areas: "businesspagelogo" "businesspagetitle" "businesspagephoneaddress" "businesspagebanner" "businessaboutcard" "highlightscard" "businesspageuactivity" "businesspageservices" "reviewsandfaqs";
 }
 
 @media (min-width: 768px) {
   .business-page {
     grid-template-columns: 280px auto 280px;
-    grid-template-areas: "businesspagelogo businesspagebanner businesspagebanner" "businesspagetitle businesspagetitle businesspagephoneaddress"			 "businessaboutcard businessaboutcard businesspagephoneaddress" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard businesspageuactivity" "businesspageservices businesspageservices businesspageservices" "businesspagefaqs businesspagefaqs businesspagefaqs";
+    grid-template-areas: "businesspagelogo businesspagebanner businesspagebanner" "businesspagetitle businesspagetitle businesspagephoneaddress" "businessaboutcard businessaboutcard businesspagephoneaddress" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard businesspageuactivity" "businesspageservices businesspageservices businesspageservices" "reviewsandfaqs reviewsandfaqs reviewsandfaqs";
   }
 }
 
@@ -5171,7 +5170,7 @@ header {
   .business-page {
     grid-template-columns: 230px 50px auto 50px 200px;
     grid-template-rows: minmax(200px, 250px) auto;
-    grid-template-areas: "businesspagebanner businesspagebanner businesspagebanner businesspagephoneaddress businesspagephoneaddress" "businesspagebanner businesspagebanner businesspagebanner businesspageuactivity businesspageuactivity" "businesspagelogo businesspagelogo businesspagetitle highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices" "businesspagefaqs businesspagefaqs businesspagefaqs businesspagefaqs .";
+    grid-template-areas: "businesspagebanner businesspagebanner businesspagebanner businesspagephoneaddress businesspagephoneaddress" "businesspagebanner businesspagebanner businesspagebanner businesspageuactivity businesspageuactivity" "businesspagelogo businesspagelogo businesspagetitle highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices" "reviewsandfaqs reviewsandfaqs reviewsandfaqs reviewsandfaqs reviewsandfaqs";
   }
 }
 
@@ -5179,7 +5178,7 @@ header {
   .business-page {
     grid-template-columns: 260px 80px auto 80px 260px;
     grid-template-rows: auto;
-    grid-template-areas: "businesspagelogo businesspagelogo businesspagebanner businesspagephoneaddress businesspagephoneaddress" "businesspagetitle businesspagetitle businesspagebanner businesspageuactivity businesspageuactivity"		 "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices" "businesspagefaqs businesspagefaqs businesspagefaqs businesspagefaqs .";
+    grid-template-areas: "businesspagelogo businesspagelogo businesspagebanner businesspagephoneaddress businesspagephoneaddress" "businesspagetitle businesspagetitle businesspagebanner businesspageuactivity businesspageuactivity" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices" "reviewsandfaqs reviewsandfaqs reviewsandfaqs reviewsandfaqs reviewsandfaqs";
   }
 }
 
@@ -5215,8 +5214,8 @@ header {
   grid-area: businesspageservices;
 }
 
-.faqs-card {
-  grid-area: businesspagefaqs;
+.reviews-and-faqs {
+  grid-area: reviewsandfaqs;
 }
 
 .phone-and-address {
@@ -5226,6 +5225,11 @@ header {
 .grid-col-4 {
   grid-gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-col-2 {
+  grid-gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .modal-mask {
@@ -5659,6 +5663,11 @@ nav a,
   font-size: 14px;
 }
 
+.business-page .phone-and-address .grid-col-2 {
+  grid-gap: .25rem;
+  grid-template-columns: 26px 1fr;
+}
+
 .business-page span.icons {
   width: 1.625rem;
   height: 1.625rem;
@@ -5667,12 +5676,7 @@ nav a,
   border-radius: 50%;
 }
 
-.business-page .grid-col-2 {
-  grid-gap: .25rem;
-  grid-template-columns: 26px 1fr;
-}
-
-.qa .que {
+.isBold {
   font-weight: bold;
 }
 

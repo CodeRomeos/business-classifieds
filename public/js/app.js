@@ -48245,6 +48245,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'business',
@@ -48349,7 +48379,7 @@ var render = function() {
         _vm._v(" "),
         _vm._m(5),
         _vm._v(" "),
-        _c("div", { staticClass: "card px-5 service-offered" }, [
+        _c("div", { staticClass: "card service-offered" }, [
           _c("h3", { staticClass: "my-2" }, [_vm._v("Services Offered")]),
           _vm._v(" "),
           _c(
@@ -48456,7 +48486,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card px-5 about-card" }, [
+    return _c("div", { staticClass: "card about-card" }, [
       _c("h3", { staticClass: "my-2" }, [_vm._v("About")]),
       _vm._v(" "),
       _c("p", [
@@ -48546,18 +48576,62 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card px-5 faqs-card" }, [
-      _c("h4", [_vm._v("Questions and Answers")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "qa" }, [
-        _c("p", { staticClass: "que" }, [
-          _vm._v(" Q: Do you deals in car parts?")
-        ]),
+    return _c("div", { staticClass: "grid-col-2 reviews-and-faqs" }, [
+      _c("div", { staticClass: "card rate-and-review-card" }, [
+        _c("h4", [_vm._v("Ratings and Reviews")]),
         _vm._v(" "),
-        _c("p", { staticClass: "ans" }, [
-          _vm._v(
-            " A: Yes.  Soluta eaque ut nemo facere eius itaque praesentium consequuntur aspernatur."
-          )
+        _c("div", { staticClass: "qa" }, [
+          _c("div", { staticClass: "ratings mt-1" }, [
+            _c("span", { staticClass: "fa fa-star" }),
+            _vm._v(" "),
+            _c("span", { staticClass: "fa fa-star" }),
+            _vm._v(" "),
+            _c("span", { staticClass: "fa fa-star" }),
+            _vm._v(" "),
+            _c("span", { staticClass: "fa fa-star" }),
+            _vm._v(" "),
+            _c("span", { staticClass: "fa fa-star" }),
+            _vm._v(" "),
+            _c("span", { staticClass: "subtitle" }, [
+              _vm._v("By John Doe on Jan 15, 2018")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "isBold" }, [
+            _vm._v("One of the best service provider with domain expertise.")
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "ans" }, [
+            _vm._v(
+              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam beatae quibusdam deleniti quod, rerum ratione quis facilis quam accusantium, magni corrupti laudantium odit dolore eum temporibus a sequi sed nihil. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio at corporis omnis quod quos vel quia fugiat odit. "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "ratings mt-1" }, [
+            _c("a", { staticClass: "fa fa-thums-up", attrs: { href: "" } }, [
+              _c("span", { staticClass: "icons icon-like" })
+            ]),
+            _vm._v(" "),
+            _c("a", { staticClass: "fa fa-thums-up", attrs: { href: "" } }, [
+              _c("span", { staticClass: "icons icon-dislike" })
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card faqs-card" }, [
+        _c("h4", [_vm._v("Questions and Answers")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "qa" }, [
+          _c("p", { staticClass: "isBold" }, [
+            _vm._v(" Q: Do you deals in car parts?")
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "ans" }, [
+            _vm._v(
+              " A: Yes.  Soluta eaque ut nemo facere eius itaque praesentium consequuntur aspernatur."
+            )
+          ])
         ])
       ])
     ])

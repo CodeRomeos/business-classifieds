@@ -157,10 +157,10 @@ header {
 		"businesspagephoneaddress"
 		"businesspagebanner"
 		"businessaboutcard"
-		"highlightscard"		
+		"highlightscard"
 		"businesspageuactivity"
 		"businesspageservices"
-		"businesspagefaqs";
+		"reviewsandfaqs";
 
 	@include tablet {
 		// grid-template-columns: 1fr minmax(15rem, $mobile-width - 110px);
@@ -168,7 +168,7 @@ header {
 
 		grid-template-areas:
 			"businesspagelogo businesspagebanner businesspagebanner"
-			"businesspagetitle businesspagetitle businesspagephoneaddress"			
+			"businesspagetitle businesspagetitle businesspagephoneaddress"
 			"businessaboutcard businessaboutcard businesspagephoneaddress"
 			"businessaboutcard businessaboutcard highlightscard"
 			"businessaboutcard businessaboutcard highlightscard"
@@ -176,12 +176,12 @@ header {
 			"businessaboutcard businessaboutcard highlightscard"
 			"businessaboutcard businessaboutcard businesspageuactivity"
 			"businesspageservices businesspageservices businesspageservices"
-			"businesspagefaqs businesspagefaqs businesspagefaqs";
+			"reviewsandfaqs reviewsandfaqs reviewsandfaqs";
 	}
 
 	@include desktop {
 		// grid-template-columns: 1fr minmax(15rem, $mobile-width - 110px);
-		grid-template-columns: 230px 50px auto 50px 200px;		
+		grid-template-columns: 230px 50px auto 50px 200px;
 		grid-template-rows: minmax(200px, 250px) auto;
 		grid-template-areas:
 			"businesspagebanner businesspagebanner businesspagebanner businesspagephoneaddress businesspagephoneaddress"
@@ -191,7 +191,7 @@ header {
 			"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
 			"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
 			"businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices"
-			"businesspagefaqs businesspagefaqs businesspagefaqs businesspagefaqs .";
+			"reviewsandfaqs reviewsandfaqs reviewsandfaqs reviewsandfaqs reviewsandfaqs";
     }
 
     @include largescreen {
@@ -199,11 +199,11 @@ header {
 		grid-template-rows: auto;
 		grid-template-areas:
 		"businesspagelogo businesspagelogo businesspagebanner businesspagephoneaddress businesspagephoneaddress"
-		"businesspagetitle businesspagetitle businesspagebanner businesspageuactivity businesspageuactivity"		
+		"businesspagetitle businesspagetitle businesspagebanner businesspageuactivity businesspageuactivity"
 		"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
 		"businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard"
 		"businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices"
-		"businesspagefaqs businesspagefaqs businesspagefaqs businesspagefaqs .";
+		"reviewsandfaqs reviewsandfaqs reviewsandfaqs reviewsandfaqs reviewsandfaqs";
     }
 
 }
@@ -239,8 +239,8 @@ header {
 	grid-area: businesspageservices
 }
 
-.faqs-card{
-	grid-area: businesspagefaqs
+.reviews-and-faqs {
+	grid-area: reviewsandfaqs;
 }
 
 .phone-and-address {
@@ -257,4 +257,6 @@ header {
 }
 .grid-col-2{
 	@extend .d-grid;
+	grid-gap: 1rem;
+	grid-template-columns: repeat(2, 1fr);
 }
