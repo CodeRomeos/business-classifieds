@@ -40,6 +40,9 @@ Route::namespace('Spa')->prefix('spa')->group(function() {
 
         return response()->json(['data'=>[]]);
     });
+
+    Route::post('/bookmarks/{business_id}', 'UserController@bookmark')->middleware(['auth', 'role:advertiser']);
+    Route::get('/bookmarks/check/{business_id}', 'UserController@getBookmarkStatus')->middleware(['auth', 'role:advertiser']);
 });
 
 Route::get('/{any}', 'WelcomeController@welcome')->where('any', '.*');

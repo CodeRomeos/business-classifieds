@@ -59,4 +59,8 @@ class User extends Authenticatable
     	return !! ($this->hasRole('subscriber'));
     }
 
+    public function bookmarks()
+    {
+        return $this->belongsToMany('App\Business', 'bookmarks', 'user_id', 'business_id');
+    }
 }

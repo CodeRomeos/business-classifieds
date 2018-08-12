@@ -17,9 +17,4 @@ abstract class TestCase extends BaseTestCase
         Artisan::call('db:seed');
     }
 
-    public function tearDown()
-    {
-        parent::tearDown();
-        //Artisan::call('db:seed');
-    }
 }
