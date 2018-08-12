@@ -11,7 +11,8 @@ export default {
     ],
     data() {
         return {
-            bookmarked: false
+            bookmarked: false,
+            postponeBookmark: false
         }
     },
 	computed: {
@@ -33,17 +34,31 @@ export default {
         }
 
     },
+    watch: {
+        isLoggedIn: function(newValue, oldValue) {
+            if(newValue && this.postponeBookmark === true) {
+                this.postponeBookmark = false;
+                this.postBookmark();
+            }
+        }
+    },
     methods: {
         postBookmark() {
-            axios.post('/spa/bookmarks/' + this.post.id)
-                .then((res) => {
-                    if(res.data.bookmark == true) {
-                        this.bookmarked = true
-                    }
-                    else {
-                        this.bookmarked = false
-                    }
-                })
+            if(!this.isLoggedIn) {
+                this.postponeBookmark = true;
+                this.$store.dispatch('showLoginModal');
+            }
+            else {
+                axios.post('/spa/bookmarks/' + this.post.id)
+                    .then((res) => {
+                        if(res.data.bookmark == true) {
+                            this.bookmarked = true
+                        }
+                        else {
+                            this.bookmarked = false
+                        }
+                    })
+            }
         }
     }
 }
