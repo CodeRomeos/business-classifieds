@@ -47067,7 +47067,8 @@ var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
         currentUser: null,
         isLoggedIn: false,
         auth_error: null,
-        loginModal: false
+        loginModal: false,
+        loginSuccess: null
     },
     getters: {
         welcome: function welcome(state) {
@@ -47075,6 +47076,9 @@ var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
         },
         isLoggedIn: function isLoggedIn(state) {
             return state.isLoggedIn;
+        },
+        loginSuccess: function loginSuccess(state) {
+            return state.loginSuccess;
         },
         currentUser: function currentUser(state) {
             return state.currentUser;
@@ -47098,14 +47102,16 @@ var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
             state.auth_error = null;
             state.isLoggedIn = true;
             state.loginModal = false;
-
+            state.loginSuccess = true;
             state.currentUser = payload.user;
             //localStorage.setItem("user", JSON.stringify(state.currentUser));
         },
         loginFailed: function loginFailed(state, payload) {
+            state.loginSuccess = null;
             //state.auth_error = payload.data.error;
         },
         logout: function logout(state, payload) {
+            state.loginSuccess = null;
             state.isLoggedIn = false;
             state.currentUser = null;
             window.axios.defaults.headers.common['X-CSRF-TOKEN'] = payload.csrfToken;
@@ -47533,56 +47539,69 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'bookmark-button',
-    props: ['post'],
-    data: function data() {
-        return {
-            bookmarked: false,
-            postponeBookmark: false
-        };
-    },
+	name: 'bookmark-button',
+	props: ['post'],
+	data: function data() {
+		return {
+			bookmarked: false,
+			postponeBookmark: false
+		};
+	},
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['isLoggedIn'])),
-    created: function created() {
-        var _this = this;
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['isLoggedIn', 'loginSuccess'])),
+	created: function created() {
+		if (this.isLoggedIn) {
+			this.checkBookmark();
+		}
+	},
 
-        if (this.isLoggedIn) {
-            axios.get('/spa/bookmarks/check/' + this.post.id).then(function (res) {
-                if (res.data.bookmarked == true) {
-                    _this.bookmarked = true;
-                } else {
-                    _this.bookmarked = false;
-                }
-            });
-        }
-    },
+	watch: {
+		isLoggedIn: function isLoggedIn(newValue, oldValue) {
 
-    watch: {
-        isLoggedIn: function isLoggedIn(newValue, oldValue) {
-            if (newValue && this.postponeBookmark === true) {
-                this.postponeBookmark = false;
-                this.postBookmark();
-            }
-        }
-    },
-    methods: {
-        postBookmark: function postBookmark() {
-            var _this2 = this;
+			if (newValue) {
+				this.checkBookmark();
+			}
+			/*
+            if(newValue && this.postponeBookmark === true && this.bookmarked == false) {
+   	this.postponeBookmark = false;
+   	this.postBookmark();
+   }
+   */
+			if (!newValue) {
+				this.bookmarked = false;
+			}
+		},
+		loginSuccess: function loginSuccess(newValue, oldValue) {}
+	},
+	methods: {
+		postBookmark: function postBookmark() {
+			var _this = this;
 
-            if (!this.isLoggedIn) {
-                this.postponeBookmark = true;
-                this.$store.dispatch('showLoginModal');
-            } else {
-                axios.post('/spa/bookmarks/' + this.post.id).then(function (res) {
-                    if (res.data.bookmark == true) {
-                        _this2.bookmarked = true;
-                    } else {
-                        _this2.bookmarked = false;
-                    }
-                });
-            }
-        }
-    }
+			if (!this.isLoggedIn) {
+				this.postponeBookmark = true;
+				this.$store.dispatch('showLoginModal');
+			} else {
+				axios.post('/spa/bookmarks/' + this.post.id).then(function (res) {
+					if (res.data.bookmark == true) {
+						_this.bookmarked = true;
+					} else {
+						_this.bookmarked = false;
+					}
+				});
+			}
+		},
+		checkBookmark: function checkBookmark() {
+			var _this2 = this;
+
+			axios.get('/spa/bookmarks/check/' + this.post.id).then(function (res) {
+				if (res.data.bookmarked == true) {
+					_this2.bookmarked = true;
+				} else {
+					_this2.bookmarked = false;
+				}
+			});
+		}
+	}
 });
 
 /***/ }),

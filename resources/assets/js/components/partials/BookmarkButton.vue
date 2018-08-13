@@ -17,30 +17,36 @@ export default {
     },
 	computed: {
 		...mapGetters([
-			'isLoggedIn'
+			'isLoggedIn',
+			'loginSuccess'
 		])
 	},
     created() {
-        if(this.isLoggedIn) {
-            axios.get('/spa/bookmarks/check/' + this.post.id)
-                .then((res) => {
-                    if(res.data.bookmarked == true) {
-                        this.bookmarked = true
-                    }
-                    else {
-                        this.bookmarked = false
-                    }
-                })
-        }
-
+		if(this.isLoggedIn) {
+			this.checkBookmark()
+		}
     },
     watch: {
         isLoggedIn: function(newValue, oldValue) {
-            if(newValue && this.postponeBookmark === true) {
-                this.postponeBookmark = false;
-                this.postBookmark();
-            }
-        }
+
+			if(newValue) {
+				this.checkBookmark()
+			}
+			/*
+            if(newValue && this.postponeBookmark === true && this.bookmarked == false) {
+				this.postponeBookmark = false;
+				this.postBookmark();
+			}
+			*/
+			if(!newValue) {
+				this.bookmarked = false;
+			}
+
+
+		},
+		loginSuccess: function(newValue, oldValue) {
+
+		}
     },
     methods: {
         postBookmark() {
@@ -59,7 +65,18 @@ export default {
                         }
                     })
             }
-        }
+		},
+		checkBookmark() {
+			axios.get('/spa/bookmarks/check/' + this.post.id)
+				.then((res) => {
+					if(res.data.bookmarked == true) {
+						this.bookmarked = true
+					}
+					else {
+						this.bookmarked = false
+					}
+				})
+		}
     }
 }
 </script>

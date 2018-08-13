@@ -4,7 +4,8 @@ export default {
         currentUser: null,
         isLoggedIn: false,
 		auth_error: null,
-		loginModal: false
+		loginModal: false,
+		loginSuccess: null
     },
     getters: {
         welcome(state) {
@@ -12,7 +13,10 @@ export default {
         },
         isLoggedIn(state) {
             return state.isLoggedIn;
-        },
+		},
+		loginSuccess(state) {
+			return state.loginSuccess;
+		},
         currentUser(state) {
             return state.currentUser;
         },
@@ -35,14 +39,16 @@ export default {
             state.auth_error = null;
             state.isLoggedIn = true;
             state.loginModal = false;
-
+			state.loginSuccess = true;
             state.currentUser = payload.user;
             //localStorage.setItem("user", JSON.stringify(state.currentUser));
         },
         loginFailed(state, payload) {
+			state.loginSuccess = null;
             //state.auth_error = payload.data.error;
         },
         logout(state, payload) {
+			state.loginSuccess = null;
             state.isLoggedIn = false;
             state.currentUser = null;
 			window.axios.defaults.headers.common['X-CSRF-TOKEN'] = payload.csrfToken;
