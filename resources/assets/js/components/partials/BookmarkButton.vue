@@ -18,7 +18,8 @@ export default {
 	computed: {
 		...mapGetters([
 			'isLoggedIn',
-			'loginSuccess'
+			'loginSuccess',
+			'currentUser'
 		])
 	},
     created() {
@@ -29,7 +30,7 @@ export default {
     watch: {
         isLoggedIn: function(newValue, oldValue) {
 
-			if(newValue) {
+			if(newValue && !this.currentUser.is_admin) {
 				this.checkBookmark()
 			}
 			/*
@@ -55,27 +56,31 @@ export default {
                 this.$store.dispatch('showLoginModal');
             }
             else {
-                axios.post('/spa/bookmarks/' + this.post.id)
-                    .then((res) => {
-                        if(res.data.bookmark == true) {
-                            this.bookmarked = true
-                        }
-                        else {
-                            this.bookmarked = false
-                        }
-                    })
+				if(!this.currentUser.is_admin) {
+					axios.post('/spa/bookmarks/' + this.post.id)
+						.then((res) => {
+							if(res.data.bookmark == true) {
+								this.bookmarked = true
+							}
+							else {
+								this.bookmarked = false
+							}
+						})
+				}
             }
 		},
 		checkBookmark() {
-			axios.get('/spa/bookmarks/check/' + this.post.id)
-				.then((res) => {
-					if(res.data.bookmarked == true) {
-						this.bookmarked = true
-					}
-					else {
-						this.bookmarked = false
-					}
-				})
+			if(!this.currentUser.is_admin) {
+				axios.get('/spa/bookmarks/check/' + this.post.id)
+					.then((res) => {
+						if(res.data.bookmarked == true) {
+							this.bookmarked = true
+						}
+						else {
+							this.bookmarked = false
+						}
+					})
+			}
 		}
     }
 }

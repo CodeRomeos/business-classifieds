@@ -34,12 +34,7 @@ Route::namespace('Spa')->prefix('spa')->group(function() {
         Route::get('/{businessid}', 'BusinessController@show');
     });
 
-    Route::get('/user', function () {
-        if(auth()->check())
-            return response()->json(['data'=>['user' => auth()->user()]]);
-
-        return response()->json(['data'=>[]]);
-    });
+    Route::get('/user', 'UserController@getLoggedInUser');
 
     Route::post('/bookmarks/{business_id}', 'UserController@bookmark')->middleware(['auth', 'role:advertiser']);
     Route::get('/bookmarks/check/{business_id}', 'UserController@getBookmarkStatus')->middleware(['auth', 'role:advertiser']);

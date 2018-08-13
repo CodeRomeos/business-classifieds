@@ -5,9 +5,20 @@ namespace App\Http\Controllers\Spa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Spa\Controller;
 use App\Repositories\Businesses;
+use App\Http\Resources\User as UserResource;
 
 class UserController extends Controller
 {
+	public function getLoggedInUser(Request $request)
+	{
+		if($request->user()) {
+
+		}
+            return response()->json(['data'=>['user' => new UserResource($request->user())]]);
+
+        return response()->json(['data'=>[]]);
+	}
+
     public function bookmark(Request $request, Businesses $businesses, $business_id)
     {
         $business = $businesses->findOrFail($business_id);

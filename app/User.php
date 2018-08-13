@@ -18,7 +18,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
 		'role_id', 'name', 'email', 'password', 'about', 'image', 'mobile', 'street', 'pincode', 'city', 'state', 'social_links'
-    ];
+	];
+
+	protected $appends = ['is_admin'];
 
     /**
      * The attributes that should be hidden for arrays.

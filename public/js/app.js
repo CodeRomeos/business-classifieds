@@ -47548,7 +47548,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		};
 	},
 
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['isLoggedIn', 'loginSuccess'])),
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['isLoggedIn', 'loginSuccess', 'currentUser'])),
 	created: function created() {
 		if (this.isLoggedIn) {
 			this.checkBookmark();
@@ -47558,7 +47558,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	watch: {
 		isLoggedIn: function isLoggedIn(newValue, oldValue) {
 
-			if (newValue) {
+			if (newValue && !this.currentUser.is_admin) {
 				this.checkBookmark();
 			}
 			/*
@@ -47581,25 +47581,29 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				this.postponeBookmark = true;
 				this.$store.dispatch('showLoginModal');
 			} else {
-				axios.post('/spa/bookmarks/' + this.post.id).then(function (res) {
-					if (res.data.bookmark == true) {
-						_this.bookmarked = true;
-					} else {
-						_this.bookmarked = false;
-					}
-				});
+				if (!this.currentUser.is_admin) {
+					axios.post('/spa/bookmarks/' + this.post.id).then(function (res) {
+						if (res.data.bookmark == true) {
+							_this.bookmarked = true;
+						} else {
+							_this.bookmarked = false;
+						}
+					});
+				}
 			}
 		},
 		checkBookmark: function checkBookmark() {
 			var _this2 = this;
 
-			axios.get('/spa/bookmarks/check/' + this.post.id).then(function (res) {
-				if (res.data.bookmarked == true) {
-					_this2.bookmarked = true;
-				} else {
-					_this2.bookmarked = false;
-				}
-			});
+			if (!this.currentUser.is_admin) {
+				axios.get('/spa/bookmarks/check/' + this.post.id).then(function (res) {
+					if (res.data.bookmarked == true) {
+						_this2.bookmarked = true;
+					} else {
+						_this2.bookmarked = false;
+					}
+				});
+			}
 		}
 	}
 });

@@ -18,7 +18,8 @@ class User extends JsonResource
             'name' => $this->name,
             'role' => $this->role_name,
             'email' => $this->email,
-            'image' => !empty($this->image) ? $this->image : null,
+			'image' => !empty($this->image) ? $this->image : null,
+			'is_admin' => $this->is_admin,
             'mobile' => $this->mobile
         ];
     }
