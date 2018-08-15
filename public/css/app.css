@@ -4786,7 +4786,8 @@ nav {
   border-right: 3px solid #ddd;
 }
 
-.mx-3 {
+.mx-3,
+#user-account #user-nav a {
   margin-left: 1rem !important;
   margin-right: 1rem !important;
 }
@@ -5683,6 +5684,8 @@ nav a,
 .alert-danger {
   color: red;
 }
+
+/** User Module **/
 
 .fade-enter-active,
 .fade-leave-active {

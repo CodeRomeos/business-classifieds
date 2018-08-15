@@ -2,7 +2,10 @@
     <nav class="navbar clearfix">
 		<router-link to="/listings">Listings</router-link>
 		<a href="javascript:void(0)" v-if="!isLoggedIn" @click="loginModal">Login</a>
-		<a href="javascript:void(0)" v-if="isLoggedIn">My Account</a>
+        <template v-if="isLoggedIn">
+            <a href="/admin" v-if='currentUser.is_admin'>My Account</a>
+            <router-link :to="{ name: 'userAccount'}" v-else>My Account</router-link>
+        </template>
 		<a href="javascript:void(0)" v-if="isLoggedIn" @click="logout">Logout</a>
     </nav>
 </template>
@@ -21,7 +24,8 @@ export default {
 	},
 	computed: {
 		...mapGetters([
-			'isLoggedIn'
+            'isLoggedIn',
+            'currentUser'
 		])
 	},
 	methods: {
@@ -31,6 +35,7 @@ export default {
         logout() {
             logout().then((res) => {
                 this.$store.commit('logout', res.data);
+                this.$router.push('/');
             });
         }
 	}

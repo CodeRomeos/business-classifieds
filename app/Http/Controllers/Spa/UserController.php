@@ -12,9 +12,8 @@ class UserController extends Controller
 	public function getLoggedInUser(Request $request)
 	{
 		if($request->user()) {
-
-		}
             return response()->json(['data'=>['user' => new UserResource($request->user())]]);
+		}
 
         return response()->json(['data'=>[]]);
 	}

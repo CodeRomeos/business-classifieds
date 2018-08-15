@@ -47152,37 +47152,79 @@ var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_pages_Listings___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_pages_Listings__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_pages_Business__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_pages_Business___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_pages_Business__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_User_UserAccount__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_User_UserAccount___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_User_UserAccount__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_User_UserBusiness__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_User_UserBusiness___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_User_UserBusiness__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_User_Bookmarks__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_User_Bookmarks___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_User_Bookmarks__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__store__ = __webpack_require__(51);
 
 // Pages
 
 
 
 
+
+
+
+
+
 var routes = [{
-	path: '/',
-	component: __WEBPACK_IMPORTED_MODULE_1__components_pages_Home___default.a,
-	name: 'home',
-	meta: { title: 'Welcome' }
+    path: '/',
+    component: __WEBPACK_IMPORTED_MODULE_1__components_pages_Home___default.a,
+    name: 'home',
+    meta: { title: 'Welcome' }
 }, {
-	path: '/listings',
-	component: __WEBPACK_IMPORTED_MODULE_2__components_pages_Listings___default.a,
-	name: 'listings',
-	meta: { title: 'All listings' }
+    path: '/listings',
+    component: __WEBPACK_IMPORTED_MODULE_2__components_pages_Listings___default.a,
+    name: 'listings',
+    meta: { title: 'All listings' }
 }, {
-	path: '/listings/:businessid',
-	component: __WEBPACK_IMPORTED_MODULE_3__components_pages_Business___default.a,
-	name: 'business'
+    path: '/listings/:businessid',
+    component: __WEBPACK_IMPORTED_MODULE_3__components_pages_Business___default.a,
+    name: 'business'
+}, {
+    path: '/account',
+    name: 'userAccount',
+    component: __WEBPACK_IMPORTED_MODULE_4__components_User_UserAccount___default.a,
+    meta: { title: 'My Account', requiresAuth: true },
+    children: [{
+        path: 'business',
+        component: __WEBPACK_IMPORTED_MODULE_5__components_User_UserBusiness___default.a,
+        name: 'userBusiness',
+        meta: { title: 'My Business' }
+    }, {
+        path: 'bookmarks',
+        component: __WEBPACK_IMPORTED_MODULE_6__components_User_Bookmarks___default.a,
+        name: 'userBookmarks',
+        meta: { title: 'My Bookmarks' }
+    }]
 }];
 
 var Router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-	routes: routes,
-	mode: 'history'
+    routes: routes,
+    mode: 'history'
 });
 
 Router.beforeEach(function (to, from, next) {
-	document.title = to.meta.title;
-
-	next();
+    document.title = to.meta.title;
+    if (to.matched.some(function (record) {
+        return record.meta.requiresAuth;
+    })) {
+        // this route requires auth, check if logged in
+        // if not, redirect to login page.
+        if (!__WEBPACK_IMPORTED_MODULE_7__store__["a" /* default */].state.isLoggedIn) {
+            next({
+                path: '/'
+                //query: { redirect: to.fullPath }
+            });
+        } else {
+            next();
+        }
+    } else {
+        next(); // make sure to always call next()!
+    }
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Router);
@@ -49009,30 +49051,34 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	mounted: function mounted() {},
-	data: function data() {
-		return {
-			APP_NAME: "Laravel"
-		};
-	},
+  mounted: function mounted() {},
+  data: function data() {
+    return {
+      APP_NAME: "Laravel"
+    };
+  },
 
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['isLoggedIn'])),
-	methods: {
-		loginModal: function loginModal() {
-			this.$store.dispatch('showLoginModal');
-		},
-		logout: function logout() {
-			var _this = this;
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['isLoggedIn', 'currentUser'])),
+  methods: {
+    loginModal: function loginModal() {
+      this.$store.dispatch('showLoginModal');
+    },
+    logout: function logout() {
+      var _this = this;
 
-			Object(__WEBPACK_IMPORTED_MODULE_1__helpers_auth__["c" /* logout */])().then(function (res) {
-				_this.$store.commit('logout', res.data);
-			});
-		}
-	}
+      Object(__WEBPACK_IMPORTED_MODULE_1__helpers_auth__["c" /* logout */])().then(function (res) {
+        _this.$store.commit('logout', res.data);
+        _this.$router.push('/');
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -49061,9 +49107,13 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _vm.isLoggedIn
-        ? _c("a", { attrs: { href: "javascript:void(0)" } }, [
-            _vm._v("My Account")
-          ])
+        ? [
+            _vm.currentUser.is_admin
+              ? _c("a", { attrs: { href: "/admin" } }, [_vm._v("My Account")])
+              : _c("router-link", { attrs: { to: { name: "userAccount" } } }, [
+                  _vm._v("My Account")
+                ])
+          ]
         : _vm._e(),
       _vm._v(" "),
       _vm.isLoggedIn
@@ -49077,7 +49127,7 @@ var render = function() {
           )
         : _vm._e()
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []
@@ -49609,6 +49659,315 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-7a9a8bb2", module.exports)
+  }
+}
+
+/***/ }),
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */,
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(109)
+/* template */
+var __vue_template__ = __webpack_require__(110)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\User\\UserAccount.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4594ec28", Component.options)
+  } else {
+    hotAPI.reload("data-v-4594ec28", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 107 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(111)
+/* template */
+var __vue_template__ = __webpack_require__(112)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\User\\UserBusiness.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0681c0d5", Component.options)
+  } else {
+    hotAPI.reload("data-v-0681c0d5", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(113)
+/* template */
+var __vue_template__ = __webpack_require__(114)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\User\\Bookmarks.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-62845f7a", Component.options)
+  } else {
+    hotAPI.reload("data-v-62845f7a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 109 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(11);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'user-account',
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['isLoggedIn', 'currentUser'])),
+    methods: {}
+});
+
+/***/ }),
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container pt-3", attrs: { id: "user-account" } },
+    [
+      _c(
+        "div",
+        { staticClass: "card", attrs: { id: "user-nav" } },
+        [
+          _c("router-link", { attrs: { to: { name: "userAccount" } } }, [
+            _c("span", { staticClass: "icons icon-home" }),
+            _vm._v(" Dashboard")
+          ]),
+          _vm._v(" "),
+          _c("router-link", { attrs: { to: { name: "userBusiness" } } }, [
+            _c("span", { staticClass: "icons icon-organization" }),
+            _vm._v(" Business")
+          ]),
+          _vm._v(" "),
+          _c("router-link", { attrs: { to: { name: "userBookmarks" } } }, [
+            _c("span", { staticClass: "fa fa-bookmark-o" }),
+            _vm._v(" Bookmarks")
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("router-view")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4594ec28", module.exports)
+  }
+}
+
+/***/ }),
+/* 111 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "user-business"
+});
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card" }, [_vm._v("\n    User business\n")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0681c0d5", module.exports)
+  }
+}
+
+/***/ }),
+/* 113 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "user-bookmarks"
+});
+
+/***/ }),
+/* 114 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card" }, [_vm._v("\n    User bookmarks\n")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-62845f7a", module.exports)
   }
 }
 

@@ -369,10 +369,15 @@ nav {
 	font-weight: bold;
 }
 
-.alert {
-
-}
-
 .alert-danger {
 	color: red;
+}
+
+/** User Module **/
+#user-account {
+    #user-nav {
+        a {
+            @extend .mx-3
+        }
+    }
 }
