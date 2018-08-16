@@ -47624,7 +47624,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				this.$store.dispatch('showLoginModal');
 			} else {
 				if (!this.currentUser.is_admin) {
-					axios.post('/spa/bookmarks/' + this.post.id).then(function (res) {
+					axios.post('/spa/user/bookmarks/' + this.post.id).then(function (res) {
 						if (res.data.bookmark == true) {
 							_this.bookmarked = true;
 						} else {
@@ -47638,7 +47638,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			var _this2 = this;
 
 			if (!this.currentUser.is_admin) {
-				axios.get('/spa/bookmarks/check/' + this.post.id).then(function (res) {
+				axios.get('/spa/user/bookmarks/check/' + this.post.id).then(function (res) {
 					if (res.data.bookmarked == true) {
 						_this2.bookmarked = true;
 					} else {
@@ -49136,7 +49136,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "user-bookmarks"
+	name: "bookmarks",
+	data: function data() {
+		return {
+			bookmarks: []
+		};
+	},
+	created: function created() {
+		this.fetchBookmarks();
+	},
+
+	methods: {
+		fetchBookmarks: function fetchBookmarks() {
+			axios.get('/spa/user/bookmarks').then(function (response) {
+				console.log(response);
+			});
+		}
+	}
 });
 
 /***/ }),

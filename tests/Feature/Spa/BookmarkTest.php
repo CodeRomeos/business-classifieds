@@ -33,14 +33,14 @@ class BookmarkTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->post('/spa/bookmarks/'.$business->id);
+            ->post('/spa/user/bookmarks/'.$business->id);
 
         $response
             ->assertStatus(200)
             ->assertJson(['bookmark' => true]);
 
         $response = $this->actingAs($user)
-            ->post('/spa/bookmarks/'.$business->id);
+            ->post('/spa/user/bookmarks/'.$business->id);
 
         $response
             ->assertStatus(200)

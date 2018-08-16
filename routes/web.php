@@ -34,10 +34,15 @@ Route::namespace('Spa')->prefix('spa')->group(function() {
         Route::get('/{businessid}', 'BusinessController@show');
     });
 
-    Route::get('/user', 'UserController@getLoggedInUser');
+	Route::prefix('user')->group(function() {
+		Route::prefix('bookmarks')->middleware(['auth', 'role:advertiser'])->group(function() {
+			Route::get('/check/{business_id}', 'UserController@getBookmarkStatus');
+			Route::post('/{business_id}', 'UserController@bookmark');
+			Route::post('/', 'UserController@bookmarks');
+		});
 
-    Route::post('/bookmarks/{business_id}', 'UserController@bookmark')->middleware(['auth', 'role:advertiser']);
-    Route::get('/bookmarks/check/{business_id}', 'UserController@getBookmarkStatus')->middleware(['auth', 'role:advertiser']);
+		Route::get('/', 'UserController@getLoggedInUser');
+	});
 });
 
 Route::get('/{any}', 'WelcomeController@welcome')->where('any', '.*');

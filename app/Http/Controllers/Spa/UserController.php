@@ -44,5 +44,12 @@ class UserController extends Controller
         }
 
         return $this->respond(['bookmarked' => false]);
-    }
+	}
+
+	public function bookmarks(Request $request)
+	{
+		$bookmarks = $request->user()->bookmarks();
+
+        return $this->respond(['data' => $bookmarks]);
+	}
 }

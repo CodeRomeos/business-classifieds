@@ -57,7 +57,7 @@ export default {
             }
             else {
 				if(!this.currentUser.is_admin) {
-					axios.post('/spa/bookmarks/' + this.post.id)
+					axios.post('/spa/user/bookmarks/' + this.post.id)
 						.then((res) => {
 							if(res.data.bookmark == true) {
 								this.bookmarked = true
@@ -71,7 +71,7 @@ export default {
 		},
 		checkBookmark() {
 			if(!this.currentUser.is_admin) {
-				axios.get('/spa/bookmarks/check/' + this.post.id)
+				axios.get('/spa/user/bookmarks/check/' + this.post.id)
 					.then((res) => {
 						if(res.data.bookmarked == true) {
 							this.bookmarked = true

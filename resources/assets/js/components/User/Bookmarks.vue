@@ -6,7 +6,23 @@
 
 <script>
 export default {
-    name: "user-bookmarks"
+	name: "bookmarks",
+	data() {
+		return {
+			bookmarks: []
+		}
+	},
+	created() {
+		this.fetchBookmarks()
+	},
+	methods: {
+		fetchBookmarks() {
+			axios.get('/spa/user/bookmarks')
+				.then((response) => {
+					console.log(response);
+				})
+		}
+	}
 }
 </script>
 
