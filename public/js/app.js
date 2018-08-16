@@ -47215,7 +47215,6 @@ Router.beforeEach(function (to, from, next) {
         // this route requires auth, check if logged in
         // if not, redirect to login page.
         if (!__WEBPACK_IMPORTED_MODULE_7__store__["a" /* default */].getters.isLoggedIn) {
-
             next({
                 path: '/'
                 //query: { redirect: to.fullPath }
@@ -48977,7 +48976,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("router-view", { attrs: { name: "fade" } })
+      _c("router-view")
     ],
     1
   )

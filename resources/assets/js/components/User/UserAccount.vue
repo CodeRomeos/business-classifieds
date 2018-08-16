@@ -5,7 +5,7 @@
             <router-link :to="{ name: 'userBusiness'}"><span class='icons icon-organization'></span> Business</router-link>
             <router-link :to="{ name: 'userBookmarks'}"><span class='fa fa-bookmark-o'></span> Bookmarks</router-link>
         </div>
-        <router-view name='fade'></router-view>
+        <router-view></router-view>
     </div>
 </template>
 
