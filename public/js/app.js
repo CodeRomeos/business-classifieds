@@ -49138,6 +49138,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "bookmarks",
@@ -49170,6 +49171,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card" }, [
+    _c("h4", { staticClass: "h5" }, [_vm._v("My Bookmarks")]),
+    _vm._v(" "),
     _c(
       "table",
       _vm._l(_vm.businesses, function(business, index) {

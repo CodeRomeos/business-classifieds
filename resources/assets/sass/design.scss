@@ -67,7 +67,7 @@ body {
 .container {
 	margin: auto;
 	max-width: $largescreen-width;
-	@extend .px-4;
+	@extend .px-3;
 }
 
 .text-white {
@@ -108,6 +108,10 @@ a {
 
     &:hover{
         color: #4d545d;
+    }
+
+    &.router-link-exact-active {
+        color: #2196f3
     }
 }
 
@@ -373,11 +377,33 @@ nav {
 	color: red;
 }
 
+table {
+    width: 100%;
+    td {
+        @extend .px-3;
+        @extend .py-2;
+    }
+
+    tr {
+        &:nth-child(odd) {
+            background: #eee;
+        }
+    }
+
+    a {
+        color: #2196F3
+    }
+}
+
 /** User Module **/
 #user-account {
     #user-nav {
         a {
-            @extend .mx-3
+            @extend .mr-3;
+            &:last-child {
+                @extend .mr-0;
+            }
+            display: inline-block;
         }
     }
 }
