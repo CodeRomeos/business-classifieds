@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Spa\Controller;
 use App\Repositories\Businesses;
 use App\Http\Resources\User as UserResource;
+use App\Http\Resources\Business as BusinessResource;
 
 class UserController extends Controller
 {
@@ -48,8 +49,8 @@ class UserController extends Controller
 
 	public function bookmarks(Request $request)
 	{
-		$bookmarks = $request->user()->bookmarks();
+		$businesses = $request->user()->bookmarks()->get();
 
-        return $this->respond(['data' => $bookmarks]);
+        return $this->respond(['data' => BusinessResource::collection($businesses)]);
 	}
 }

@@ -38,7 +38,7 @@ Route::namespace('Spa')->prefix('spa')->group(function() {
 		Route::prefix('bookmarks')->middleware(['auth', 'role:advertiser'])->group(function() {
 			Route::get('/check/{business_id}', 'UserController@getBookmarkStatus');
 			Route::post('/{business_id}', 'UserController@bookmark');
-			Route::post('/', 'UserController@bookmarks');
+			Route::get('/', 'UserController@bookmarks');
 		});
 
 		Route::get('/', 'UserController@getLoggedInUser');

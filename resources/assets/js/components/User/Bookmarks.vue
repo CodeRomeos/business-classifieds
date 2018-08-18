@@ -1,6 +1,10 @@
 <template>
     <div class='card'>
-        User bookmarks
+        <table>
+            <tr v-for="(business, index) in businesses" :key='index'>
+                <td><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link></td>
+            </tr>
+        </table>
     </div>
 </template>
 
@@ -9,7 +13,7 @@ export default {
 	name: "bookmarks",
 	data() {
 		return {
-			bookmarks: []
+			businesses: []
 		}
 	},
 	created() {
@@ -19,7 +23,7 @@ export default {
 		fetchBookmarks() {
 			axios.get('/spa/user/bookmarks')
 				.then((response) => {
-					console.log(response);
+					this.businesses = response.data.data
 				})
 		}
 	}

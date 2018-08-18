@@ -49134,12 +49134,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "bookmarks",
 	data: function data() {
 		return {
-			bookmarks: []
+			businesses: []
 		};
 	},
 	created: function created() {
@@ -49148,8 +49152,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 	methods: {
 		fetchBookmarks: function fetchBookmarks() {
+			var _this = this;
+
 			axios.get('/spa/user/bookmarks').then(function (response) {
-				console.log(response);
+				_this.businesses = response.data.data;
 			});
 		}
 	}
@@ -49163,7 +49169,33 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [_vm._v("\n    User bookmarks\n")])
+  return _c("div", { staticClass: "card" }, [
+    _c(
+      "table",
+      _vm._l(_vm.businesses, function(business, index) {
+        return _c("tr", { key: index }, [
+          _c(
+            "td",
+            [
+              _c(
+                "router-link",
+                {
+                  attrs: {
+                    to: {
+                      name: "business",
+                      params: { businessid: business.businessid }
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(business.title))]
+              )
+            ],
+            1
+          )
+        ])
+      })
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
