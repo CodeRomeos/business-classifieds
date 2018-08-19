@@ -4468,6 +4468,8 @@ th {
 }
 
 .p-0,
+ul,
+ol,
 .business-search-form .btn {
   padding: 0rem !important;
 }
@@ -5471,6 +5473,16 @@ a:hover {
 
 a.router-link-exact-active {
   color: #2196f3;
+}
+
+.list .list-item {
+  background: #FFF;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #f3f3f6;
+}
+
+.list .list-item:last-child {
+  border: none;
 }
 
 .input-field {

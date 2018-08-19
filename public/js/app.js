@@ -47214,7 +47214,7 @@ Router.beforeEach(function (to, from, next) {
     })) {
         // this route requires auth, check if logged in
         // if not, redirect to login page.
-        if (!__WEBPACK_IMPORTED_MODULE_7__store__["a" /* default */].getters.isLoggedIn) {
+        if (!__WEBPACK_IMPORTED_MODULE_7__store__["a" /* default */].state.isLoggedIn) {
             next({
                 path: '/'
                 //query: { redirect: to.fullPath }
@@ -49170,32 +49170,32 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [
+  return _c("div", { staticClass: "user-bookmarks" }, [
     _c("h4", { staticClass: "h5" }, [_vm._v("My Bookmarks")]),
     _vm._v(" "),
     _c(
-      "table",
+      "ul",
+      { staticClass: "list" },
       _vm._l(_vm.businesses, function(business, index) {
-        return _c("tr", { key: index }, [
-          _c(
-            "td",
-            [
-              _c(
-                "router-link",
-                {
-                  attrs: {
-                    to: {
-                      name: "business",
-                      params: { businessid: business.businessid }
-                    }
+        return _c(
+          "li",
+          { key: index, staticClass: "list-item" },
+          [
+            _c(
+              "router-link",
+              {
+                attrs: {
+                  to: {
+                    name: "business",
+                    params: { businessid: business.businessid }
                   }
-                },
-                [_vm._v(_vm._s(business.title))]
-              )
-            ],
-            1
-          )
-        ])
+                }
+              },
+              [_vm._v(_vm._s(business.title))]
+            )
+          ],
+          1
+        )
       })
     )
   ])

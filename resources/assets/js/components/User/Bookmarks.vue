@@ -1,11 +1,11 @@
 <template>
-    <div class='card'>
+    <div class='user-bookmarks'>
         <h4 class='h5'>My Bookmarks</h4>
-        <table>
-            <tr v-for="(business, index) in businesses" :key='index'>
-                <td><router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link></td>
-            </tr>
-        </table>
+        <ul class='list'>
+            <li class='list-item' v-for="(business, index) in businesses" :key='index'>
+                <router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link>
+            </li>
+        </ul>
     </div>
 </template>
 
