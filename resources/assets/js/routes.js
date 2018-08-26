@@ -8,6 +8,7 @@ import UserAccount from './components/User/UserAccount'
 import UserBusiness from './components/User/UserBusiness'
 import Bookmarks from './components/User/Bookmarks'
 import store from './store'
+import {getAuthUser} from './helpers/auth'
 
 let routes = [
 	{
@@ -60,6 +61,26 @@ Router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
         // this route requires auth, check if logged in
         // if not, redirect to login page.
+
+        getAuthUser().then(res => {
+            if(res.data.user) {
+                next()
+            }
+            else {
+                next({
+                    path: '/',
+                    //query: { redirect: to.fullPath }
+                })
+            }
+
+        }).catch(error => {
+
+            next({
+                path: '/',
+                //query: { redirect: to.fullPath }
+            })
+        })
+        /*
         if (!store.state.isLoggedIn) {
             next({
                 path: '/',
@@ -69,6 +90,7 @@ Router.beforeEach((to, from, next) => {
         else {
             next()
         }
+        */
     }
     else {
         next() // make sure to always call next()!

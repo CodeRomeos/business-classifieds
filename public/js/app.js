@@ -47159,8 +47159,10 @@ var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_User_Bookmarks__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_User_Bookmarks___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_User_Bookmarks__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__store__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__helpers_auth__ = __webpack_require__(38);
 
 // Pages
+
 
 
 
@@ -47214,14 +47216,34 @@ Router.beforeEach(function (to, from, next) {
     })) {
         // this route requires auth, check if logged in
         // if not, redirect to login page.
-        if (!__WEBPACK_IMPORTED_MODULE_7__store__["a" /* default */].state.isLoggedIn) {
+
+        Object(__WEBPACK_IMPORTED_MODULE_8__helpers_auth__["a" /* getAuthUser */])().then(function (res) {
+            if (res.data.user) {
+                next();
+            } else {
+                next({
+                    path: '/'
+                    //query: { redirect: to.fullPath }
+                });
+            }
+        }).catch(function (error) {
+
             next({
                 path: '/'
                 //query: { redirect: to.fullPath }
             });
-        } else {
-            next();
+        });
+        /*
+        if (!store.state.isLoggedIn) {
+            next({
+                path: '/',
+                //query: { redirect: to.fullPath }
+            })
         }
+        else {
+            next()
+        }
+        */
     } else {
         next(); // make sure to always call next()!
     }
