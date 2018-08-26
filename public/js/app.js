@@ -48933,6 +48933,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -48954,31 +48958,32 @@ var render = function() {
     "div",
     { staticClass: "container pt-3", attrs: { id: "user-account" } },
     [
-      _c(
-        "div",
-        { staticClass: "card", attrs: { id: "user-nav" } },
-        [
-          _c("router-link", { attrs: { to: { name: "userAccount" } } }, [
-            _c("span", { staticClass: "icons icon-home" }),
-            _vm._v(" Dashboard")
-          ]),
-          _vm._v(" "),
-          _c("router-link", { attrs: { to: { name: "userBusiness" } } }, [
-            _c("span", { staticClass: "icons icon-organization" }),
-            _vm._v(" Business")
-          ]),
-          _vm._v(" "),
-          _c("router-link", { attrs: { to: { name: "userBookmarks" } } }, [
-            _c("span", { staticClass: "fa fa-bookmark-o" }),
-            _vm._v(" Bookmarks")
-          ])
-        ],
-        1
-      ),
+      _c("div", { attrs: { id: "user-nav" } }, [
+        _c(
+          "div",
+          { staticClass: "card" },
+          [
+            _c("router-link", { attrs: { to: { name: "userAccount" } } }, [
+              _c("span", { staticClass: "icons icon-home" }),
+              _vm._v(" Dashboard")
+            ]),
+            _vm._v(" "),
+            _c("router-link", { attrs: { to: { name: "userBusiness" } } }, [
+              _c("span", { staticClass: "icons icon-organization" }),
+              _vm._v(" Business")
+            ]),
+            _vm._v(" "),
+            _c("router-link", { attrs: { to: { name: "userBookmarks" } } }, [
+              _c("span", { staticClass: "fa fa-bookmark-o" }),
+              _vm._v(" Bookmarks")
+            ])
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
-      _c("router-view")
-    ],
-    1
+      _c("div", { attrs: { id: "user-main" } }, [_c("router-view")], 1)
+    ]
   )
 }
 var staticRenderFns = []

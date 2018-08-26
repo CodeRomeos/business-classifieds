@@ -260,3 +260,26 @@ header {
 	grid-gap: 1rem;
 	grid-template-columns: repeat(2, 1fr);
 }
+
+#user-account {
+    @extend .d-grid;
+    grid-template-areas:
+        "usernav"
+        "usermain";
+    grid-gap: 1rem;
+
+    @include desktop {
+        grid-template-columns: 300px auto;
+        grid-template-areas:
+            "usernav usermain"
+    }
+
+}
+
+#user-nav {
+    grid-area: usernav
+}
+
+#user-main {
+    grid-area: usermain
+}

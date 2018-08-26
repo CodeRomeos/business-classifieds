@@ -5011,7 +5011,8 @@ header,
 .hero .how-it-works,
 .business-page,
 .grid-col-4,
-.grid-col-2 {
+.grid-col-2,
+#user-account {
   display: grid;
 }
 
@@ -5237,6 +5238,26 @@ header {
 .grid-col-2 {
   grid-gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
+}
+
+#user-account {
+  grid-template-areas: "usernav" "usermain";
+  grid-gap: 1rem;
+}
+
+@media (min-width: 992px) {
+  #user-account {
+    grid-template-columns: 300px auto;
+    grid-template-areas: "usernav usermain";
+  }
+}
+
+#user-nav {
+  grid-area: usernav;
+}
+
+#user-main {
+  grid-area: usermain;
 }
 
 .modal-mask {
@@ -5721,6 +5742,12 @@ table a {
 
 #user-account #user-nav a {
   display: inline-block;
+}
+
+@media (min-width: 992px) {
+  #user-account #user-nav a {
+    display: block;
+  }
 }
 
 .fade-enter-active,
