@@ -424,5 +424,9 @@ table {
                 display: block;
             }
         }
+
+        .card {
+            @extend .m-0
+        }
     }
 }

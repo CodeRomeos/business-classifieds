@@ -33,18 +33,13 @@
 
 header {
 	@extend .d-grid;
-	// grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr 1fr;
 	grid-template-areas:
 		"navbarbrand nav"
 		"headermid headermid";
 	align-items: center;
 
-	@include mobile {
-		grid-template-columns: 1fr 1fr;
-		grid-template-areas:
-			"navbarbrand nav"
-			"headermid";
-	}
+
 
 	@include tablet {
 		grid-template-columns: 20px 300px auto 300px 20px;

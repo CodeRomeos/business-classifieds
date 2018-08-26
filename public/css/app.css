@@ -4463,7 +4463,8 @@ th {
 }
 
 .m-0,
-.business-page h4 {
+.business-page h4,
+#user-account #user-nav .card {
   margin: 0rem !important;
 }
 
@@ -5044,17 +5045,11 @@ header,
 }
 
 header {
+  grid-template-columns: 1fr 1fr;
   grid-template-areas: "navbarbrand nav" "headermid headermid";
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-@media (min-width: 576px) {
-  header {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "navbarbrand nav" "headermid";
-  }
 }
 
 @media (min-width: 768px) {
