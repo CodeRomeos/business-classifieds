@@ -418,6 +418,7 @@ table {
                 @extend .mr-0;
             }
             display: inline-block;
+            @extend .p-2
         }
     }
 }

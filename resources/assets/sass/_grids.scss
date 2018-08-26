@@ -47,7 +47,7 @@ header {
 	}
 
 	@include tablet {
-		grid-template-columns: 20px 250px auto 250px 20px;
+		grid-template-columns: 20px 300px auto 300px 20px;
 		grid-template-areas:
             ". navbarbrand headermid nav .";
 	}

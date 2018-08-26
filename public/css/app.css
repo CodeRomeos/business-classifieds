@@ -4644,7 +4644,8 @@ nav a,
 .navbar-brand,
 .header-mid,
 nav,
-.how-it-works li {
+.how-it-works li,
+#user-account #user-nav a {
   padding: 0.5rem !important;
 }
 
@@ -5057,7 +5058,7 @@ header {
 
 @media (min-width: 768px) {
   header {
-    grid-template-columns: 20px 250px auto 250px 20px;
+    grid-template-columns: 20px 300px auto 300px 20px;
     grid-template-areas: ". navbarbrand headermid nav .";
   }
 }
