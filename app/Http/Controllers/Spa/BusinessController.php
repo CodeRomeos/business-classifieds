@@ -13,7 +13,7 @@ class BusinessController extends Controller
     public function index(Request $request, Businesses $repo)
     {
         $data = [];
-		$limit = $request->has('limit') ? $request->get('limit') : 50;
+		$limit = $request->has('limit') ? $request->get('limit') : 8;
         $businesses =  $repo->approvedAndActive()->orderBy('title');
 
         // ... more request checks

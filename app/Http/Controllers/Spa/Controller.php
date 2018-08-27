@@ -92,7 +92,10 @@ class Controller extends BaseController
 			'pagination' => [
 				'count' => $paginatedCollection->count(),
 				'total' => $paginatedCollection->total(),
-				'perPage' => $paginatedCollection->perPage(),
+                'perPage' => $paginatedCollection->perPage(),
+                'hasMorePages' => $paginatedCollection->hasMorePages(),
+                'nextPageUrl' => $paginatedCollection->nextPageUrl(),
+                'previousPageUrl' => $paginatedCollection->previousPageUrl(),
 				'currentPage' => $paginatedCollection->currentPage()
 			]
 		]);

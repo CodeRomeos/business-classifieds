@@ -5358,6 +5358,12 @@ ol {
   list-style-type: none;
 }
 
+button[disabled],
+html input[disabled] {
+  background: #e4e4e4;
+  color: #847a7a;
+}
+
 .text-lowercase {
   text-transform: lowercase !important;
 }

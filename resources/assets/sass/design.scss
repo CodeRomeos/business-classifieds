@@ -27,6 +27,12 @@ ul,ol {
     @extend .p-0
 }
 
+button[disabled], html input[disabled] {
+    background: #e4e4e4;
+    color: #847a7a
+}
+
+
 
 // Transformation
 .text-lowercase  { text-transform: lowercase !important; }
