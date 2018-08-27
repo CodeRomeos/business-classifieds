@@ -34,7 +34,7 @@
         <div class='business-cards container my-3' v-else>
 			<business-card v-for="(business, index) in businesses" :key="index" :business="business"></business-card>
 		</div>
-        <pagination v-if='!loading' :pagedata='pagination' @fetchNext='fetchBusinesses(pagination.nextPageUrl)' @fetchPrevious='fetchBusinesses(pagination.previousPageUrl)'></pagination>
+        <pagination class='container' v-if='!loading' :pagedata='pagination' @fetchNext='fetchBusinesses(pagination.nextPageUrl)' @fetchPrevious='fetchBusinesses(pagination.previousPageUrl)'></pagination>
 	</div>
 </template>
 

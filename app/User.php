@@ -63,6 +63,6 @@ class User extends Authenticatable
 
     public function bookmarks()
     {
-        return $this->belongsToMany('App\Business', 'bookmarks', 'user_id', 'business_id');
+        return $this->belongsToMany('App\Business', 'bookmarks', 'user_id', 'business_id')->withTimestamps();
     }
 }

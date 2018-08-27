@@ -48005,7 +48005,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn",
+            staticClass: "btn btn-primary",
             attrs: { disabled: !_vm.pagedata.previousPageUrl },
             on: {
               click: function($event) {
@@ -48013,13 +48013,13 @@ var render = function() {
               }
             }
           },
-          [_vm._v("Previous")]
+          [_c("span", { staticClass: "icon icon-arrow-left" })]
         ),
         _vm._v(" "),
         _c(
           "button",
           {
-            staticClass: "btn",
+            staticClass: "btn btn-primary",
             attrs: { disabled: !_vm.pagedata.nextPageUrl },
             on: {
               click: function($event) {
@@ -48027,7 +48027,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("Next")]
+          [_c("span", { staticClass: "icon icon-arrow-right" })]
         )
       ])
     : _vm._e()
@@ -48073,6 +48073,7 @@ var render = function() {
       _vm._v(" "),
       !_vm.loading
         ? _c("pagination", {
+            staticClass: "container",
             attrs: { pagedata: _vm.pagination },
             on: {
               fetchNext: function($event) {

@@ -32,7 +32,13 @@ button[disabled], html input[disabled] {
     color: #847a7a
 }
 
+.pull-left {
+    float: left;
+}
 
+.pull-right {
+    float: right;
+}
 
 // Transformation
 .text-lowercase  { text-transform: lowercase !important; }
@@ -81,6 +87,10 @@ body {
 
 .text-white {
     color: #FFF !important
+}
+
+.text-secondary {
+    color: #6c757d !important
 }
 
 .bg-transparent {
