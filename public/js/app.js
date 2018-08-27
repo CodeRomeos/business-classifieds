@@ -47156,12 +47156,15 @@ var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_User_UserAccount___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_User_UserAccount__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_User_UserBusiness__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_User_UserBusiness___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_User_UserBusiness__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_User_Bookmarks__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_User_Bookmarks___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_User_Bookmarks__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__store__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__helpers_auth__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_User_UserForm__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_User_UserForm___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_User_UserForm__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_User_Bookmarks__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_User_Bookmarks___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_User_Bookmarks__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__store__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__helpers_auth__ = __webpack_require__(13);
 
 // Pages
+
 
 
 
@@ -47198,9 +47201,14 @@ var routes = [{
         meta: { title: 'My Business' }
     }, {
         path: 'bookmarks',
-        component: __WEBPACK_IMPORTED_MODULE_6__components_User_Bookmarks___default.a,
+        component: __WEBPACK_IMPORTED_MODULE_7__components_User_Bookmarks___default.a,
         name: 'userBookmarks',
         meta: { title: 'My Bookmarks' }
+    }, {
+        path: 'user',
+        component: __WEBPACK_IMPORTED_MODULE_6__components_User_UserForm___default.a,
+        name: 'userForm',
+        meta: { title: 'Account' }
     }]
 }];
 
@@ -47217,7 +47225,7 @@ Router.beforeEach(function (to, from, next) {
         // this route requires auth, check if logged in
         // if not, redirect to login page.
 
-        Object(__WEBPACK_IMPORTED_MODULE_8__helpers_auth__["a" /* getAuthUser */])().then(function (res) {
+        Object(__WEBPACK_IMPORTED_MODULE_9__helpers_auth__["a" /* getAuthUser */])().then(function (res) {
             if (res.data.user) {
                 next();
             } else {
@@ -49122,6 +49130,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -49149,18 +49158,23 @@ var render = function() {
           { staticClass: "card" },
           [
             _c("router-link", { attrs: { to: { name: "userAccount" } } }, [
-              _c("span", { staticClass: "icons icon-home" }),
+              _c("span", { staticClass: "fa fa-fw fa-dashboard" }),
               _vm._v(" Dashboard")
             ]),
             _vm._v(" "),
             _c("router-link", { attrs: { to: { name: "userBusiness" } } }, [
-              _c("span", { staticClass: "icons icon-organization" }),
+              _c("span", { staticClass: "fa fa-fw fa-building-o" }),
               _vm._v(" Business")
             ]),
             _vm._v(" "),
             _c("router-link", { attrs: { to: { name: "userBookmarks" } } }, [
-              _c("span", { staticClass: "fa fa-bookmark-o" }),
+              _c("span", { staticClass: "fa fa-fw fa-bookmark-o" }),
               _vm._v(" Bookmarks")
+            ]),
+            _vm._v(" "),
+            _c("router-link", { attrs: { to: { name: "userForm" } } }, [
+              _c("span", { staticClass: "fa fa-fw fa-user-o" }),
+              _vm._v(" Account")
             ])
           ],
           1
@@ -50222,6 +50236,104 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-7a9a8bb2", module.exports)
+  }
+}
+
+/***/ }),
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */,
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(119)
+/* template */
+var __vue_template__ = __webpack_require__(120)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\User\\UserForm.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8af89b4e", Component.options)
+  } else {
+    hotAPI.reload("data-v-8af89b4e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 119 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'user-form'
+});
+
+/***/ }),
+/* 120 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card" }, [_vm._v("User Form")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8af89b4e", module.exports)
   }
 }
 

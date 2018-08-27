@@ -6,6 +6,7 @@ import Business from './components/pages/Business'
 
 import UserAccount from './components/User/UserAccount'
 import UserBusiness from './components/User/UserBusiness'
+import UserForm from './components/User/UserForm'
 import Bookmarks from './components/User/Bookmarks'
 import store from './store'
 import {getAuthUser} from './helpers/auth'
@@ -45,6 +46,12 @@ let routes = [
                 component: Bookmarks,
                 name: 'userBookmarks',
                 meta: {title: 'My Bookmarks'}
+            },
+            {
+                path: 'user',
+                component: UserForm,
+                name: 'userForm',
+                meta: {title: 'Account'}
             }
         ]
     }
