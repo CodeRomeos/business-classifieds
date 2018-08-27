@@ -436,3 +436,11 @@ table {
         }
     }
 }
+
+.businesspage-u-activity {
+    display: flex;
+    align-items: center;
+    .fa {
+        font-size: 1.8rem
+    }
+}

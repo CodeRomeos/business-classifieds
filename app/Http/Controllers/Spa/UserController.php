@@ -51,10 +51,9 @@ class UserController extends Controller
 	{
 		$businesses = $request->user()->bookmarks()->paginate(10);
 
-
         return $this->respondWithPagination([
-            'data'=>BusinessResource::collection($businesses),
-        ], $businesses);
+                'data' => BusinessResource::collection($businesses),
+            ], $businesses);
 
 	}
 }

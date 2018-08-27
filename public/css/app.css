@@ -5226,6 +5226,7 @@ header {
 }
 
 .grid-col-4 {
+  width: 100%;
   grid-gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
 }
@@ -5749,6 +5750,19 @@ table a {
   #user-account #user-nav a {
     display: block;
   }
+}
+
+.businesspage-u-activity {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.businesspage-u-activity .fa {
+  font-size: 1.8rem;
 }
 
 .fade-enter-active,

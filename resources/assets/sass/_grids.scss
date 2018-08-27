@@ -242,7 +242,8 @@ header {
 	grid-area: businesspagephoneaddress
 }
 
-.grid-col-4{
+.grid-col-4 {
+    width: 100%;
 	@extend .d-grid;
 	grid-gap: 1rem;
 	grid-template-columns: repeat(4, 1fr);

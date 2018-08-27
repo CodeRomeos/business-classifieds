@@ -48506,6 +48506,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__partials_BookmarkButton_vue__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__partials_BookmarkButton_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__partials_BookmarkButton_vue__);
 //
 //
 //
@@ -48660,10 +48662,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'business',
 	mounted: function mounted() {
 		this.fetchBusiness();
+	},
+
+	components: {
+		BookmarkButton: __WEBPACK_IMPORTED_MODULE_0__partials_BookmarkButton_vue___default.a
 	},
 	data: function data() {
 		return {
@@ -48759,9 +48766,26 @@ var render = function() {
         _vm._v(" "),
         _vm._m(3),
         _vm._v(" "),
-        _vm._m(4),
+        _c("div", { staticClass: "card businesspage-u-activity" }, [
+          _c("div", { staticClass: "grid-col-4 text-center" }, [
+            _vm._m(4),
+            _vm._v(" "),
+            _vm._m(5),
+            _vm._v(" "),
+            _c(
+              "div",
+              [
+                _c("bookmark-button", { attrs: { post: _vm.business } }),
+                _vm._v("\n                Save\n            ")
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _vm._m(6)
+          ])
+        ]),
         _vm._v(" "),
-        _vm._m(5),
+        _vm._m(7),
         _vm._v(" "),
         _c("div", { staticClass: "card service-offered" }, [
           _c("h3", { staticClass: "my-2" }, [_vm._v("Services Offered")]),
@@ -48804,7 +48828,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _vm._m(6)
+        _vm._m(8)
       ])
     : _vm._e()
 }
@@ -48902,40 +48926,36 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card businesspage-u-activity" }, [
-      _c("div", { staticClass: "grid-col-4 text-center" }, [
-        _c("div", [
-          _c("a", { attrs: { href: "#!", title: "Share page" } }, [
-            _c("i", { staticClass: "fa fa-fw fa-2x fa-share-alt" })
-          ]),
-          _c("br"),
-          _vm._v("\n                Share\n            ")
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("a", { attrs: { href: "#!", title: "Rate & review" } }, [
-            _c("i", { staticClass: "fa fa-fw fa-2x fa-star" })
-          ]),
-          _c("br"),
-          _vm._v("\n                Review\n            ")
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("a", { attrs: { href: "#!", title: "Save for later" } }, [
-            _c("i", { staticClass: "fa fa-fw fa-2x fa-bookmark-o" })
-          ]),
-          _c("br"),
-          _vm._v("\n                Save\n            ")
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("a", { attrs: { href: "#!", title: "Report" } }, [
-            _c("i", { staticClass: "fa fa-fw fa-2x fa-exclamation-triangle" })
-          ]),
-          _c("br"),
-          _vm._v("\n                Report\n            ")
-        ])
-      ])
+    return _c("div", [
+      _c("a", { attrs: { href: "#!", title: "Share page" } }, [
+        _c("i", { staticClass: "fa fa-fw fa-share-alt" })
+      ]),
+      _c("br"),
+      _vm._v("\n                Share\n            ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("a", { attrs: { href: "#!", title: "Rate & review" } }, [
+        _c("i", { staticClass: "fa fa-fw fa-star" })
+      ]),
+      _c("br"),
+      _vm._v("\n                Review\n            ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("a", { attrs: { href: "#!", title: "Report" } }, [
+        _c("i", { staticClass: "fa fa-fw fa-exclamation-triangle" })
+      ]),
+      _c("br"),
+      _vm._v("\n                Report\n            ")
     ])
   },
   function() {

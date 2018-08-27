@@ -65,19 +65,19 @@
         <div class="card businesspage-u-activity">
             <div class="grid-col-4 text-center">
                 <div>
-                    <a href="#!" title="Share page"><i class="fa fa-fw fa-2x fa-share-alt"></i></a><br>
+                    <a href="#!" title="Share page"><i class="fa fa-fw fa-share-alt"></i></a><br>
                     Share
                 </div>
                 <div>
-                    <a href="#!" title="Rate & review"><i class="fa fa-fw fa-2x fa-star"></i></a><br>
+                    <a href="#!" title="Rate & review"><i class="fa fa-fw fa-star"></i></a><br>
                     Review
                 </div>
                 <div>
-                    <a href="#!" title="Save for later"><i class="fa fa-fw fa-2x fa-bookmark-o"></i></a><br>
+                    <bookmark-button :post="business" />
                     Save
                 </div>
                 <div>
-                    <a href="#!" title="Report"><i class="fa fa-fw fa-2x fa-exclamation-triangle"></i></a><br>
+                    <a href="#!" title="Report"><i class="fa fa-fw fa-exclamation-triangle"></i></a><br>
                     Report
                 </div>
             </div>
@@ -152,11 +152,15 @@
 </template>
 
 <script>
+import BookmarkButton from '../partials/BookmarkButton.vue';
 export default {
 	name: 'business',
 	mounted() {
 		this.fetchBusiness();
 	},
+    components: {
+        BookmarkButton
+    },
 	data() {
 		return {
 			business: null
