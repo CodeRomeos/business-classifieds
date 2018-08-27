@@ -6,25 +6,35 @@
                 <router-link :to="{ name: 'business', params: { businessid: business.businessid }}">{{ business.title }}</router-link>
             </li>
         </ul>
+        <pagination :pagedata='pagination' @fetchNext='fetchBookmarks(pagination.nextPageUrl)' @fetchPrevious='fetchBookmarks(pagination.previousPageUrl)'></pagination>
     </div>
 </template>
 
 <script>
+import Pagination from '../partials/Pagination.vue';
 export default {
 	name: "bookmarks",
 	data() {
 		return {
-			businesses: []
+			businesses: [],
+            pagination: {}
 		}
 	},
 	created() {
 		this.fetchBookmarks()
 	},
+    components: {
+        Pagination
+    },
 	methods: {
-		fetchBookmarks() {
-			axios.get('/spa/user/bookmarks')
+		fetchBookmarks(url) {
+            if(!url){
+                url = '/spa/user/bookmarks';
+            }
+			axios.get(url)
 				.then((response) => {
-					this.businesses = response.data.data
+					this.businesses = response.data.data;
+                    this.pagination = response.data.pagination;
 				})
 		}
 	}

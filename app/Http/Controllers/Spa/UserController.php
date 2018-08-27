@@ -49,8 +49,12 @@ class UserController extends Controller
 
 	public function bookmarks(Request $request)
 	{
-		$businesses = $request->user()->bookmarks()->get();
+		$businesses = $request->user()->bookmarks()->paginate(10);
 
-        return $this->respond(['data' => BusinessResource::collection($businesses)]);
+
+        return $this->respondWithPagination([
+            'data'=>BusinessResource::collection($businesses),
+        ], $businesses);
+
 	}
 }
