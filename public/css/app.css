@@ -5540,6 +5540,7 @@ main {
 
 footer {
   grid-area: footer;
+  background: #272532;
 }
 
 .navbar-brand {
@@ -5561,6 +5562,7 @@ nav {
 nav a,
 .header-mid a {
   font-size: 1rem;
+  display: inline-block;
 }
 
 .header-mid {

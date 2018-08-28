@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 43);
+/******/ 	return __webpack_require__(__webpack_require__.s = 45);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -43187,16 +43187,18 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* 40 */,
 /* 41 */,
 /* 42 */,
-/* 43 */
+/* 43 */,
+/* 44 */,
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(44);
-__webpack_require__(48);
-module.exports = __webpack_require__(49);
+__webpack_require__(46);
+__webpack_require__(50);
+module.exports = __webpack_require__(51);
 
 
 /***/ }),
-/* 44 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -43205,9 +43207,9 @@ module.exports = __webpack_require__(49);
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-__webpack_require__(45);
-__webpack_require__(14);
 __webpack_require__(47);
+__webpack_require__(14);
+__webpack_require__(49);
 
 window.Vue = __webpack_require__(36);
 
@@ -43216,7 +43218,7 @@ var app = new Vue({
 });
 
 /***/ }),
-/* 45 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -43225,7 +43227,7 @@ var app = new Vue({
   * Licensed under MIT (https://coreui.io)
   */
 (function (global, factory) {
-   true ? factory(exports, __webpack_require__(5), __webpack_require__(46)) :
+   true ? factory(exports, __webpack_require__(5), __webpack_require__(48)) :
   typeof define === 'function' && define.amd ? define(['exports', 'jquery', 'perfect-scrollbar'], factory) :
   (factory((global.coreui = {}),global.jQuery,global.PerfectScrollbar));
 }(this, (function (exports,$,PerfectScrollbar) { 'use strict';
@@ -43997,7 +43999,7 @@ var app = new Vue({
 
 
 /***/ }),
-/* 46 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45321,7 +45323,7 @@ PerfectScrollbar.prototype.removePsClasses = function removePsClasses () {
 
 
 /***/ }),
-/* 47 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -49271,13 +49273,13 @@ PerfectScrollbar.prototype.removePsClasses = function removePsClasses () {
 
 
 /***/ }),
-/* 48 */
+/* 50 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 49 */
+/* 51 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

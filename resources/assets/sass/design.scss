@@ -170,6 +170,7 @@ main {
 
 footer {
 	grid-area: footer;
+	background: rgb(39, 37, 50);
 }
 
 .navbar-brand {
@@ -192,7 +193,8 @@ nav {
 nav a,
 .header-mid a {
     font-size: 1rem;
-    @extend .p-2;
+	@extend .p-2;
+	display: inline-block;
 }
 
 .header-mid {
