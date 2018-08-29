@@ -14,6 +14,7 @@ h6, .h6 { font-size: $h6-font-size; }
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-family: $heading-font;
+	@extend .mt-0;
 }
 
 h1, h2, h3,
@@ -455,4 +456,10 @@ table {
     .fa {
         font-size: 1.8rem
     }
+}
+
+#user-main {
+	> .card {
+		@extend .mb-0
+	}
 }

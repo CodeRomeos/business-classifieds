@@ -49150,7 +49150,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container pt-3", attrs: { id: "user-account" } },
+    { staticClass: "container pt-3 mb-3", attrs: { id: "user-account" } },
     [
       _c("div", { attrs: { id: "user-nav" } }, [
         _c(

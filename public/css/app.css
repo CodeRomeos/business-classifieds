@@ -4480,6 +4480,18 @@ ol,
 }
 
 .mt-0,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
 p {
   margin-top: 0rem !important;
 }
@@ -4494,7 +4506,8 @@ p {
 
 .mb-0,
 .card .card-title,
-.business-page .card {
+.business-page .card,
+#user-main > .card {
   margin-bottom: 0rem !important;
 }
 

@@ -1,5 +1,5 @@
 <template>
-    <div id='user-account' class='container pt-3'>
+    <div id='user-account' class='container pt-3 mb-3'>
         <div id='user-nav'>
             <div class="card">
                 <router-link :to="{ name: 'userAccount'}"><span class='fa fa-fw fa-dashboard'></span> Dashboard</router-link>
