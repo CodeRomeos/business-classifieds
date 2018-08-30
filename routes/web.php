@@ -41,6 +41,10 @@ Route::namespace('Spa')->prefix('spa')->group(function() {
 			Route::get('/', 'UserController@bookmarks');
 		});
 
+		Route::prefix('business')->middleware(['auth', 'role:advertiser'])->group(function() {
+			Route::get('/', 'UserBusinessController@show');
+		});
+
 		Route::get('/', 'UserController@getLoggedInUser');
 	});
 });

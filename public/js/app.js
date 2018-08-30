@@ -49254,9 +49254,47 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "user-business"
+	name: "user-business",
+	created: function created() {
+		this.fetchbusiness();
+	},
+	data: function data() {
+		return {
+			business: {},
+			notCreated: false
+		};
+	},
+
+	methods: {
+		fetchbusiness: function fetchbusiness() {
+			var _this = this;
+
+			axios.get('/spa/user/business').then(function (response) {
+				if (response.data.notCreated) {
+					_this.notCreated = true;
+				} else {
+					_this.business = response.data.business;
+				}
+			}).catch(function (error) {});
+		},
+		postBusinessForm: function postBusinessForm() {
+			var url = '/spa/user/business/update';
+			if (this.notCreated) {
+				var url = '/spa/user/business/create';
+			}
+
+			axios.post(url).then(function (response) {
+				console.log(response);
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}
 });
 
 /***/ }),
@@ -49267,7 +49305,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [_vm._v("\n    User business\n")])
+  return _c("div", { staticClass: "card" }, [
+    _c("p", [_vm._v("Create your free business page.")]),
+    _vm._v(" "),
+    _c("form", {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.postBusinessForm($event)
+        }
+      }
+    })
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

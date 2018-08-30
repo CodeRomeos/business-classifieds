@@ -14,17 +14,7 @@ class BookmarkTest extends TestCase
 
     public function test_user_business_bookmark_action()
     {
-        $role = Role::byName('advertiser')->first();
-        $user_data = [
-            'name' => $this->faker->name,
-            'role_id' => $role->id,
-            'email' => $this->faker->unique()->safeEmail,
-            'password' => Hash::make('123'),
-            'verification_code' => sha1(time() . str_random(10))
-        ];
-
-        $user = factory(\App\User::class)->create($user_data);
-        $this->assertTrue(!$user->isAdmin);
+        $user = $this->createAdvertiser();
 
         $business = factory(\App\Business::class)->create([
 			'businessid' => '65454',
@@ -51,17 +41,7 @@ class BookmarkTest extends TestCase
 
     public function test_user_bookmarks_list()
     {
-        $role = Role::byName('advertiser')->first();
-        $user_data = [
-            'name' => $this->faker->name,
-            'role_id' => $role->id,
-            'email' => $this->faker->unique()->safeEmail,
-            'password' => Hash::make('123'),
-            'verification_code' => sha1(time() . str_random(10))
-        ];
-
-        $user = factory(\App\User::class)->create($user_data);
-        $this->assertTrue(!$user->isAdmin);
+        $user = $this->createAdvertiser();
 
         $business1 = factory(\App\Business::class)->create([
 			'businessid' => '65454',
