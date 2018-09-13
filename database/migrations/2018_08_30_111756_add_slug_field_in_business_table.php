@@ -14,7 +14,8 @@ class AddSlugFieldInBusinessTable extends Migration
     public function up()
     {
         Schema::table('businesses', function (Blueprint $table) {
-            //
+            $table->string('slug')->after('title')->unique();
+            $table->dropColumn('');
         });
     }
 
