@@ -21,6 +21,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:administrator'])->group(function() {
 	Route::get('/', 'Admin\AdminController@dashboard')->name('dashboard');
+
+	Route::prefix('businesses')->name('businesses.')->group(function() {
+
+	});
 });
 
 Route::namespace('Spa')->prefix('spa')->group(function() {

@@ -12395,7 +12395,7 @@ module.exports = Cancel;
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(global) {/**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
- * @version 1.14.3
+ * @version 1.14.5
  * @license
  * Copyright (c) 2016 Federico Zivolo and contributors
  *
@@ -12492,7 +12492,8 @@ function getStyleComputedProperty(element, property) {
     return [];
   }
   // NOTE: 1 DOM access here
-  var css = getComputedStyle(element, null);
+  var window = element.ownerDocument.defaultView;
+  var css = window.getComputedStyle(element, null);
   return property ? css[property] : css;
 }
 
@@ -12580,7 +12581,7 @@ function getOffsetParent(element) {
   var noOffsetParent = isIE(10) ? document.body : null;
 
   // NOTE: 1 DOM access here
-  var offsetParent = element.offsetParent;
+  var offsetParent = element.offsetParent || null;
   // Skip hidden elements which don't have an offsetParent
   while (offsetParent === noOffsetParent && element.nextElementSibling) {
     offsetParent = (element = element.nextElementSibling).offsetParent;
@@ -12592,9 +12593,9 @@ function getOffsetParent(element) {
     return element ? element.ownerDocument.documentElement : document.documentElement;
   }
 
-  // .offsetParent will return the closest TD or TABLE in case
+  // .offsetParent will return the closest TH, TD or TABLE in case
   // no offsetParent is present, I hate this job...
-  if (['TD', 'TABLE'].indexOf(offsetParent.nodeName) !== -1 && getStyleComputedProperty(offsetParent, 'position') === 'static') {
+  if (['TH', 'TD', 'TABLE'].indexOf(offsetParent.nodeName) !== -1 && getStyleComputedProperty(offsetParent, 'position') === 'static') {
     return getOffsetParent(offsetParent);
   }
 
@@ -12732,10 +12733,10 @@ function getBordersSize(styles, axis) {
 }
 
 function getSize(axis, body, html, computedStyle) {
-  return Math.max(body['offset' + axis], body['scroll' + axis], html['client' + axis], html['offset' + axis], html['scroll' + axis], isIE(10) ? html['offset' + axis] + computedStyle['margin' + (axis === 'Height' ? 'Top' : 'Left')] + computedStyle['margin' + (axis === 'Height' ? 'Bottom' : 'Right')] : 0);
+  return Math.max(body['offset' + axis], body['scroll' + axis], html['client' + axis], html['offset' + axis], html['scroll' + axis], isIE(10) ? parseInt(html['offset' + axis]) + parseInt(computedStyle['margin' + (axis === 'Height' ? 'Top' : 'Left')]) + parseInt(computedStyle['margin' + (axis === 'Height' ? 'Bottom' : 'Right')]) : 0);
 }
 
-function getWindowSizes() {
+function getWindowSizes(document) {
   var body = document.body;
   var html = document.documentElement;
   var computedStyle = isIE(10) && getComputedStyle(html);
@@ -12852,7 +12853,7 @@ function getBoundingClientRect(element) {
   };
 
   // subtract scrollbar size from sizes
-  var sizes = element.nodeName === 'HTML' ? getWindowSizes() : {};
+  var sizes = element.nodeName === 'HTML' ? getWindowSizes(element.ownerDocument) : {};
   var width = sizes.width || element.clientWidth || result.right - result.left;
   var height = sizes.height || element.clientHeight || result.bottom - result.top;
 
@@ -12887,7 +12888,7 @@ function getOffsetRectRelativeToArbitraryNode(children, parent) {
   var borderLeftWidth = parseFloat(styles.borderLeftWidth, 10);
 
   // In cases where the parent is fixed, we must ignore negative scroll in offset calc
-  if (fixedPosition && parent.nodeName === 'HTML') {
+  if (fixedPosition && isHTML) {
     parentRect.top = Math.max(parentRect.top, 0);
     parentRect.left = Math.max(parentRect.left, 0);
   }
@@ -13025,7 +13026,7 @@ function getBoundaries(popper, reference, padding, boundariesElement) {
 
     // In case of HTML, we need a different computation
     if (boundariesNode.nodeName === 'HTML' && !isFixed(offsetParent)) {
-      var _getWindowSizes = getWindowSizes(),
+      var _getWindowSizes = getWindowSizes(popper.ownerDocument),
           height = _getWindowSizes.height,
           width = _getWindowSizes.width;
 
@@ -13040,10 +13041,12 @@ function getBoundaries(popper, reference, padding, boundariesElement) {
   }
 
   // Add paddings
-  boundaries.left += padding;
-  boundaries.top += padding;
-  boundaries.right -= padding;
-  boundaries.bottom -= padding;
+  padding = padding || 0;
+  var isPaddingNumber = typeof padding === 'number';
+  boundaries.left += isPaddingNumber ? padding : padding.left || 0;
+  boundaries.top += isPaddingNumber ? padding : padding.top || 0;
+  boundaries.right -= isPaddingNumber ? padding : padding.right || 0;
+  boundaries.bottom -= isPaddingNumber ? padding : padding.bottom || 0;
 
   return boundaries;
 }
@@ -13140,7 +13143,8 @@ function getReferenceOffsets(state, popper, reference) {
  * @returns {Object} object containing width and height properties
  */
 function getOuterSizes(element) {
-  var styles = getComputedStyle(element);
+  var window = element.ownerDocument.defaultView;
+  var styles = window.getComputedStyle(element);
   var x = parseFloat(styles.marginTop) + parseFloat(styles.marginBottom);
   var y = parseFloat(styles.marginLeft) + parseFloat(styles.marginRight);
   var result = {
@@ -13368,7 +13372,7 @@ function getSupportedPropertyName(property) {
 }
 
 /**
- * Destroy the popper
+ * Destroys the popper.
  * @method
  * @memberof Popper
  */
@@ -13475,7 +13479,7 @@ function removeEventListeners(reference, state) {
 
 /**
  * It will remove resize/scroll events and won't recalculate popper position
- * when they are triggered. It also won't trigger onUpdate callback anymore,
+ * when they are triggered. It also won't trigger `onUpdate` callback anymore,
  * unless you call `update` method manually.
  * @method
  * @memberof Popper
@@ -13652,12 +13656,22 @@ function computeStyle(data, options) {
   var left = void 0,
       top = void 0;
   if (sideA === 'bottom') {
-    top = -offsetParentRect.height + offsets.bottom;
+    // when offsetParent is <html> the positioning is relative to the bottom of the screen (excluding the scrollbar)
+    // and not the bottom of the html element
+    if (offsetParent.nodeName === 'HTML') {
+      top = -offsetParent.clientHeight + offsets.bottom;
+    } else {
+      top = -offsetParentRect.height + offsets.bottom;
+    }
   } else {
     top = offsets.top;
   }
   if (sideB === 'right') {
-    left = -offsetParentRect.width + offsets.right;
+    if (offsetParent.nodeName === 'HTML') {
+      left = -offsetParent.clientWidth + offsets.right;
+    } else {
+      left = -offsetParentRect.width + offsets.right;
+    }
   } else {
     left = offsets.left;
   }
@@ -13766,7 +13780,7 @@ function arrow(data, options) {
 
   //
   // extends keepTogether behavior making sure the popper and its
-  // reference have enough pixels in conjuction
+  // reference have enough pixels in conjunction
   //
 
   // top/left side
@@ -13836,7 +13850,7 @@ function getOppositeVariation(variation) {
  * - `top-end` (on top of reference, right aligned)
  * - `right-start` (on right of reference, top aligned)
  * - `bottom` (on bottom, centered)
- * - `auto-right` (on the side with more space available, alignment depends by placement)
+ * - `auto-end` (on the side with more space available, alignment depends by placement)
  *
  * @static
  * @type {Array}
@@ -14378,7 +14392,7 @@ var modifiers = {
    * The `offset` modifier can shift your popper on both its axis.
    *
    * It accepts the following units:
-   * - `px` or unitless, interpreted as pixels
+   * - `px` or unit-less, interpreted as pixels
    * - `%` or `%r`, percentage relative to the length of the reference element
    * - `%p`, percentage relative to the length of the popper element
    * - `vw`, CSS viewport width unit
@@ -14386,7 +14400,7 @@ var modifiers = {
    *
    * For length is intended the main axis relative to the placement of the popper.<br />
    * This means that if the placement is `top` or `bottom`, the length will be the
-   * `width`. In case of `left` or `right`, it will be the height.
+   * `width`. In case of `left` or `right`, it will be the `height`.
    *
    * You can provide a single value (as `Number` or `String`), or a pair of values
    * as `String` divided by a comma or one (or more) white spaces.<br />
@@ -14407,7 +14421,7 @@ var modifiers = {
    * ```
    * > **NB**: If you desire to apply offsets to your poppers in a way that may make them overlap
    * > with their reference element, unfortunately, you will have to disable the `flip` modifier.
-   * > More on this [reading this issue](https://github.com/FezVrasta/popper.js/issues/373)
+   * > You can read more on this at this [issue](https://github.com/FezVrasta/popper.js/issues/373).
    *
    * @memberof modifiers
    * @inner
@@ -14428,7 +14442,7 @@ var modifiers = {
   /**
    * Modifier used to prevent the popper from being positioned outside the boundary.
    *
-   * An scenario exists where the reference itself is not within the boundaries.<br />
+   * A scenario exists where the reference itself is not within the boundaries.<br />
    * We can say it has "escaped the boundaries" — or just "escaped".<br />
    * In this case we need to decide whether the popper should either:
    *
@@ -14458,23 +14472,23 @@ var modifiers = {
     /**
      * @prop {number} padding=5
      * Amount of pixel used to define a minimum distance between the boundaries
-     * and the popper this makes sure the popper has always a little padding
+     * and the popper. This makes sure the popper always has a little padding
      * between the edges of its container
      */
     padding: 5,
     /**
      * @prop {String|HTMLElement} boundariesElement='scrollParent'
-     * Boundaries used by the modifier, can be `scrollParent`, `window`,
+     * Boundaries used by the modifier. Can be `scrollParent`, `window`,
      * `viewport` or any DOM element.
      */
     boundariesElement: 'scrollParent'
   },
 
   /**
-   * Modifier used to make sure the reference and its popper stay near eachothers
-   * without leaving any gap between the two. Expecially useful when the arrow is
-   * enabled and you want to assure it to point to its reference element.
-   * It cares only about the first axis, you can still have poppers with margin
+   * Modifier used to make sure the reference and its popper stay near each other
+   * without leaving any gap between the two. Especially useful when the arrow is
+   * enabled and you want to ensure that it points to its reference element.
+   * It cares only about the first axis. You can still have poppers with margin
    * between the popper and its reference element.
    * @memberof modifiers
    * @inner
@@ -14492,7 +14506,7 @@ var modifiers = {
    * This modifier is used to move the `arrowElement` of the popper to make
    * sure it is positioned between the reference element and its popper element.
    * It will read the outer size of the `arrowElement` node to detect how many
-   * pixels of conjuction are needed.
+   * pixels of conjunction are needed.
    *
    * It has no effect if no `arrowElement` is provided.
    * @memberof modifiers
@@ -14531,7 +14545,7 @@ var modifiers = {
      * @prop {String|Array} behavior='flip'
      * The behavior used to change the popper's placement. It can be one of
      * `flip`, `clockwise`, `counterclockwise` or an array with a list of valid
-     * placements (with optional variations).
+     * placements (with optional variations)
      */
     behavior: 'flip',
     /**
@@ -14541,9 +14555,9 @@ var modifiers = {
     padding: 5,
     /**
      * @prop {String|HTMLElement} boundariesElement='viewport'
-     * The element which will define the boundaries of the popper position,
-     * the popper will never be placed outside of the defined boundaries
-     * (except if keepTogether is enabled)
+     * The element which will define the boundaries of the popper position.
+     * The popper will never be placed outside of the defined boundaries
+     * (except if `keepTogether` is enabled)
      */
     boundariesElement: 'viewport'
   },
@@ -14607,8 +14621,8 @@ var modifiers = {
     fn: computeStyle,
     /**
      * @prop {Boolean} gpuAcceleration=true
-     * If true, it uses the CSS 3d transformation to position the popper.
-     * Otherwise, it will use the `top` and `left` properties.
+     * If true, it uses the CSS 3D transformation to position the popper.
+     * Otherwise, it will use the `top` and `left` properties
      */
     gpuAcceleration: true,
     /**
@@ -14635,7 +14649,7 @@ var modifiers = {
    * Note that if you disable this modifier, you must make sure the popper element
    * has its position set to `absolute` before Popper.js can do its work!
    *
-   * Just disable this modifier and define you own to achieve the desired effect.
+   * Just disable this modifier and define your own to achieve the desired effect.
    *
    * @memberof modifiers
    * @inner
@@ -14652,27 +14666,27 @@ var modifiers = {
     /**
      * @deprecated since version 1.10.0, the property moved to `computeStyle` modifier
      * @prop {Boolean} gpuAcceleration=true
-     * If true, it uses the CSS 3d transformation to position the popper.
-     * Otherwise, it will use the `top` and `left` properties.
+     * If true, it uses the CSS 3D transformation to position the popper.
+     * Otherwise, it will use the `top` and `left` properties
      */
     gpuAcceleration: undefined
   }
 };
 
 /**
- * The `dataObject` is an object containing all the informations used by Popper.js
- * this object get passed to modifiers and to the `onCreate` and `onUpdate` callbacks.
+ * The `dataObject` is an object containing all the information used by Popper.js.
+ * This object is passed to modifiers and to the `onCreate` and `onUpdate` callbacks.
  * @name dataObject
  * @property {Object} data.instance The Popper.js instance
  * @property {String} data.placement Placement applied to popper
  * @property {String} data.originalPlacement Placement originally defined on init
  * @property {Boolean} data.flipped True if popper has been flipped by flip modifier
- * @property {Boolean} data.hide True if the reference element is out of boundaries, useful to know when to hide the popper.
+ * @property {Boolean} data.hide True if the reference element is out of boundaries, useful to know when to hide the popper
  * @property {HTMLElement} data.arrowElement Node used as arrow by arrow modifier
- * @property {Object} data.styles Any CSS property defined here will be applied to the popper, it expects the JavaScript nomenclature (eg. `marginBottom`)
- * @property {Object} data.arrowStyles Any CSS property defined here will be applied to the popper arrow, it expects the JavaScript nomenclature (eg. `marginBottom`)
+ * @property {Object} data.styles Any CSS property defined here will be applied to the popper. It expects the JavaScript nomenclature (eg. `marginBottom`)
+ * @property {Object} data.arrowStyles Any CSS property defined here will be applied to the popper arrow. It expects the JavaScript nomenclature (eg. `marginBottom`)
  * @property {Object} data.boundaries Offsets of the popper boundaries
- * @property {Object} data.offsets The measurements of popper, reference and arrow elements.
+ * @property {Object} data.offsets The measurements of popper, reference and arrow elements
  * @property {Object} data.offsets.popper `top`, `left`, `width`, `height` values
  * @property {Object} data.offsets.reference `top`, `left`, `width`, `height` values
  * @property {Object} data.offsets.arrow] `top` and `left` offsets, only one of them will be different from 0
@@ -14680,9 +14694,9 @@ var modifiers = {
 
 /**
  * Default options provided to Popper.js constructor.<br />
- * These can be overriden using the `options` argument of Popper.js.<br />
- * To override an option, simply pass as 3rd argument an object with the same
- * structure of this object, example:
+ * These can be overridden using the `options` argument of Popper.js.<br />
+ * To override an option, simply pass an object with the same
+ * structure of the `options` object, as the 3rd argument. For example:
  * ```
  * new Popper(ref, pop, {
  *   modifiers: {
@@ -14696,7 +14710,7 @@ var modifiers = {
  */
 var Defaults = {
   /**
-   * Popper's placement
+   * Popper's placement.
    * @prop {Popper.placements} placement='bottom'
    */
   placement: 'bottom',
@@ -14708,7 +14722,7 @@ var Defaults = {
   positionFixed: false,
 
   /**
-   * Whether events (resize, scroll) are initially enabled
+   * Whether events (resize, scroll) are initially enabled.
    * @prop {Boolean} eventsEnabled=true
    */
   eventsEnabled: true,
@@ -14722,17 +14736,17 @@ var Defaults = {
 
   /**
    * Callback called when the popper is created.<br />
-   * By default, is set to no-op.<br />
+   * By default, it is set to no-op.<br />
    * Access Popper.js instance with `data.instance`.
    * @prop {onCreate}
    */
   onCreate: function onCreate() {},
 
   /**
-   * Callback called when the popper is updated, this callback is not called
+   * Callback called when the popper is updated. This callback is not called
    * on the initialization/creation of the popper, but only on subsequent
    * updates.<br />
-   * By default, is set to no-op.<br />
+   * By default, it is set to no-op.<br />
    * Access Popper.js instance with `data.instance`.
    * @prop {onUpdate}
    */
@@ -14740,7 +14754,7 @@ var Defaults = {
 
   /**
    * List of modifiers used to modify the offsets before they are applied to the popper.
-   * They provide most of the functionalities of Popper.js
+   * They provide most of the functionalities of Popper.js.
    * @prop {modifiers}
    */
   modifiers: modifiers
@@ -14760,10 +14774,10 @@ var Defaults = {
 // Methods
 var Popper = function () {
   /**
-   * Create a new Popper.js instance
+   * Creates a new Popper.js instance.
    * @class Popper
    * @param {HTMLElement|referenceObject} reference - The reference element used to position the popper
-   * @param {HTMLElement} popper - The HTML element used as popper.
+   * @param {HTMLElement} popper - The HTML element used as the popper
    * @param {Object} options - Your custom options to override the ones defined in [Defaults](#defaults)
    * @return {Object} instance - The generated Popper.js instance
    */
@@ -14859,7 +14873,7 @@ var Popper = function () {
     }
 
     /**
-     * Schedule an update, it will run on the next UI update available
+     * Schedules an update. It will run on the next UI update available.
      * @method scheduleUpdate
      * @memberof Popper
      */
@@ -14896,7 +14910,7 @@ var Popper = function () {
  * new Popper(referenceObject, popperNode);
  * ```
  *
- * NB: This feature isn't supported in Internet Explorer 10
+ * NB: This feature isn't supported in Internet Explorer 10.
  * @name referenceObject
  * @property {Function} data.getBoundingClientRect
  * A function that returns a set of coordinates compatible with the native `getBoundingClientRect` method.
@@ -14967,7 +14981,6 @@ function logout() {
 
 
 window._ = __webpack_require__(15);
-window.Popper = __webpack_require__(12).default;
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -14976,7 +14989,10 @@ window.Popper = __webpack_require__(12).default;
  */
 
 try {
+  window.Popper = __webpack_require__(12).default;
   window.$ = window.jQuery = __webpack_require__(5);
+
+  //require('bootstrap');
 } catch (e) {}
 
 /**
@@ -15038,7 +15054,7 @@ if (token) {
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.10';
+  var VERSION = '4.17.11';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -15302,7 +15318,7 @@ if (token) {
   var reHasUnicode = RegExp('[' + rsZWJ + rsAstralRange  + rsComboRange + rsVarRange + ']');
 
   /** Used to detect strings that need a more robust regexp to match words. */
-  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
+  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
 
   /** Used to assign default `context` object properties. */
   var contextProps = [
@@ -16248,20 +16264,6 @@ if (token) {
       }
     }
     return result;
-  }
-
-  /**
-   * Gets the value at `key`, unless `key` is "__proto__".
-   *
-   * @private
-   * @param {Object} object The object to query.
-   * @param {string} key The key of the property to get.
-   * @returns {*} Returns the property value.
-   */
-  function safeGet(object, key) {
-    return key == '__proto__'
-      ? undefined
-      : object[key];
   }
 
   /**
@@ -18721,7 +18723,7 @@ if (token) {
           if (isArguments(objValue)) {
             newValue = toPlainObject(objValue);
           }
-          else if (!isObject(objValue) || (srcIndex && isFunction(objValue))) {
+          else if (!isObject(objValue) || isFunction(objValue)) {
             newValue = initCloneObject(srcValue);
           }
         }
@@ -21642,6 +21644,22 @@ if (token) {
         array[length] = isIndex(index, arrLength) ? oldArray[index] : undefined;
       }
       return array;
+    }
+
+    /**
+     * Gets the value at `key`, unless `key` is "__proto__".
+     *
+     * @private
+     * @param {Object} object The object to query.
+     * @param {string} key The key of the property to get.
+     * @returns {*} Returns the property value.
+     */
+    function safeGet(object, key) {
+      if (key == '__proto__') {
+        return;
+      }
+
+      return object[key];
     }
 
     /**
@@ -33055,7 +33073,7 @@ module.exports = function spread(callback) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
- * Vue.js v2.5.16
+ * Vue.js v2.5.17
  * (c) 2014-2018 Evan You
  * Released under the MIT License.
  */
@@ -38144,7 +38162,7 @@ Object.defineProperty(Vue, 'FunctionalRenderContext', {
   value: FunctionalRenderContext
 });
 
-Vue.version = '2.5.16';
+Vue.version = '2.5.17';
 
 /*  */
 
@@ -47018,7 +47036,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\Businesses.vue"
+Component.options.__file = "resources/js/components/Businesses.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -47027,9 +47045,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4276a025", Component.options)
+    hotAPI.createRecord("data-v-21fda219", Component.options)
   } else {
-    hotAPI.reload("data-v-4276a025", Component.options)
+    hotAPI.reload("data-v-21fda219", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -47065,7 +47083,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\partials\\BookmarkButton.vue"
+Component.options.__file = "resources/js/components/partials/BookmarkButton.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -47074,9 +47092,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-58a39a2b", Component.options)
+    hotAPI.createRecord("data-v-2ab735ca", Component.options)
   } else {
-    hotAPI.reload("data-v-58a39a2b", Component.options)
+    hotAPI.reload("data-v-2ab735ca", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -47112,7 +47130,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\partials\\Pagination.vue"
+Component.options.__file = "resources/js/components/partials/Pagination.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -47121,9 +47139,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1ea4be3d", Component.options)
+    hotAPI.createRecord("data-v-1add015c", Component.options)
   } else {
-    hotAPI.reload("data-v-1ea4be3d", Component.options)
+    hotAPI.reload("data-v-1add015c", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -47159,7 +47177,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\partials\\Modal.vue"
+Component.options.__file = "resources/js/components/partials/Modal.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -47168,9 +47186,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7c57a2da", Component.options)
+    hotAPI.createRecord("data-v-6afba85b", Component.options)
   } else {
-    hotAPI.reload("data-v-7c57a2da", Component.options)
+    hotAPI.reload("data-v-6afba85b", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -47379,7 +47397,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\pages\\Home.vue"
+Component.options.__file = "resources/js/components/pages/Home.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -47388,9 +47406,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-48a9bda4", Component.options)
+    hotAPI.createRecord("data-v-a9aac016", Component.options)
   } else {
-    hotAPI.reload("data-v-48a9bda4", Component.options)
+    hotAPI.reload("data-v-a9aac016", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -47583,7 +47601,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\partials\\BusinessCard.vue"
+Component.options.__file = "resources/js/components/partials/BusinessCard.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -47592,9 +47610,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-607aa3d3", Component.options)
+    hotAPI.createRecord("data-v-2fae9b32", Component.options)
   } else {
-    hotAPI.reload("data-v-607aa3d3", Component.options)
+    hotAPI.reload("data-v-2fae9b32", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -47772,7 +47790,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-58a39a2b", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-2ab735ca", module.exports)
   }
 }
 
@@ -47893,7 +47911,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-607aa3d3", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-2fae9b32", module.exports)
   }
 }
 
@@ -47923,7 +47941,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\partials\\Sidebar.vue"
+Component.options.__file = "resources/js/components/partials/Sidebar.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -47932,9 +47950,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6dd312c9", Component.options)
+    hotAPI.createRecord("data-v-438bbc0a", Component.options)
   } else {
-    hotAPI.reload("data-v-6dd312c9", Component.options)
+    hotAPI.reload("data-v-438bbc0a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -47977,7 +47995,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6dd312c9", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-438bbc0a", module.exports)
   }
 }
 
@@ -48046,7 +48064,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1ea4be3d", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-1add015c", module.exports)
   }
 }
 
@@ -48151,7 +48169,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4276a025", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-21fda219", module.exports)
   }
 }
 
@@ -48181,7 +48199,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\partials\\CtaBanner.vue"
+Component.options.__file = "resources/js/components/partials/CtaBanner.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -48190,9 +48208,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6db270ee", Component.options)
+    hotAPI.createRecord("data-v-135a248a", Component.options)
   } else {
-    hotAPI.reload("data-v-6db270ee", Component.options)
+    hotAPI.reload("data-v-135a248a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48261,7 +48279,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6db270ee", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-135a248a", module.exports)
   }
 }
 
@@ -48361,7 +48379,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-48a9bda4", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-a9aac016", module.exports)
   }
 }
 
@@ -48391,7 +48409,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\pages\\Listings.vue"
+Component.options.__file = "resources/js/components/pages/Listings.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -48400,9 +48418,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1f8c073e", Component.options)
+    hotAPI.createRecord("data-v-1210ca85", Component.options)
   } else {
-    hotAPI.reload("data-v-1f8c073e", Component.options)
+    hotAPI.reload("data-v-1210ca85", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48458,7 +48476,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1f8c073e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-1210ca85", module.exports)
   }
 }
 
@@ -48488,7 +48506,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\pages\\Business.vue"
+Component.options.__file = "resources/js/components/pages/Business.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -48497,9 +48515,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a3a9bfe2", Component.options)
+    hotAPI.createRecord("data-v-bea03954", Component.options)
   } else {
-    hotAPI.reload("data-v-a3a9bfe2", Component.options)
+    hotAPI.reload("data-v-bea03954", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -49055,7 +49073,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-a3a9bfe2", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-bea03954", module.exports)
   }
 }
 
@@ -49085,7 +49103,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\User\\UserAccount.vue"
+Component.options.__file = "resources/js/components/User/UserAccount.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -49094,9 +49112,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4594ec28", Component.options)
+    hotAPI.createRecord("data-v-6238b22e", Component.options)
   } else {
-    hotAPI.reload("data-v-4594ec28", Component.options)
+    hotAPI.reload("data-v-6238b22e", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -49191,7 +49209,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4594ec28", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6238b22e", module.exports)
   }
 }
 
@@ -49221,7 +49239,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\User\\UserBusiness.vue"
+Component.options.__file = "resources/js/components/User/UserBusiness.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -49230,9 +49248,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0681c0d5", Component.options)
+    hotAPI.createRecord("data-v-b1eb4398", Component.options)
   } else {
-    hotAPI.reload("data-v-0681c0d5", Component.options)
+    hotAPI.reload("data-v-b1eb4398", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -49324,7 +49342,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0681c0d5", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-b1eb4398", module.exports)
   }
 }
 
@@ -49354,7 +49372,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\User\\UserForm.vue"
+Component.options.__file = "resources/js/components/User/UserForm.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -49363,9 +49381,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8af89b4e", Component.options)
+    hotAPI.createRecord("data-v-25105190", Component.options)
   } else {
-    hotAPI.reload("data-v-8af89b4e", Component.options)
+    hotAPI.reload("data-v-25105190", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -49413,7 +49431,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-8af89b4e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-25105190", module.exports)
   }
 }
 
@@ -49443,7 +49461,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\User\\Bookmarks.vue"
+Component.options.__file = "resources/js/components/User/Bookmarks.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -49452,9 +49470,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-62845f7a", Component.options)
+    hotAPI.createRecord("data-v-0b637178", Component.options)
   } else {
-    hotAPI.reload("data-v-62845f7a", Component.options)
+    hotAPI.reload("data-v-0b637178", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -49577,7 +49595,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-62845f7a", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-0b637178", module.exports)
   }
 }
 
@@ -49607,7 +49625,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\TheApp.vue"
+Component.options.__file = "resources/js/components/TheApp.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -49616,9 +49634,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7a9a8bb2", Component.options)
+    hotAPI.createRecord("data-v-d15e53ca", Component.options)
   } else {
-    hotAPI.reload("data-v-7a9a8bb2", Component.options)
+    hotAPI.reload("data-v-d15e53ca", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -49677,7 +49695,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     name: 'the-app',
     data: function data() {
         return {
-            APP_NAME: "Laravel"
+            APP_NAME: Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).MIX_APP_NAME
         };
     },
     created: function created() {
@@ -49726,7 +49744,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\partials\\Navbar.vue"
+Component.options.__file = "resources/js/components/partials/Navbar.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -49735,9 +49753,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5abbb533", Component.options)
+    hotAPI.createRecord("data-v-40985fd2", Component.options)
   } else {
-    hotAPI.reload("data-v-5abbb533", Component.options)
+    hotAPI.reload("data-v-40985fd2", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -49776,7 +49794,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   mounted: function mounted() {},
   data: function data() {
     return {
-      APP_NAME: "Laravel"
+      APP_NAME: Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).MIX_APP_NAME
     };
   },
 
@@ -49851,7 +49869,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5abbb533", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-40985fd2", module.exports)
   }
 }
 
@@ -49928,7 +49946,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7c57a2da", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6afba85b", module.exports)
   }
 }
 
@@ -49958,7 +49976,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\auth\\LoginModal.vue"
+Component.options.__file = "resources/js/components/auth/LoginModal.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -49967,9 +49985,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-25449991", Component.options)
+    hotAPI.createRecord("data-v-6bc302b0", Component.options)
   } else {
-    hotAPI.reload("data-v-25449991", Component.options)
+    hotAPI.reload("data-v-6bc302b0", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -50047,7 +50065,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\auth\\Login.vue"
+Component.options.__file = "resources/js/components/auth/Login.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -50056,9 +50074,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5383a42c", Component.options)
+    hotAPI.createRecord("data-v-4221c3ad", Component.options)
   } else {
-    hotAPI.reload("data-v-5383a42c", Component.options)
+    hotAPI.reload("data-v-4221c3ad", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -50285,7 +50303,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5383a42c", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-4221c3ad", module.exports)
   }
 }
 
@@ -50314,7 +50332,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-25449991", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6bc302b0", module.exports)
   }
 }
 
@@ -50373,7 +50391,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7a9a8bb2", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-d15e53ca", module.exports)
   }
 }
 

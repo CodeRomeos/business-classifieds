@@ -15,7 +15,7 @@ class CheckIfBlocked
      */
     public function handle($request, Closure $next)
     {
-	 	if($request->user()->isBlocked)
+        if($request->user()->isBlocked)
 	 	{
 	 		return redirect(route('user-blocked'));
 	 	}
