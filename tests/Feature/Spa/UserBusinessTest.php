@@ -31,6 +31,10 @@ class UserBusinessTest extends TestCase
 
 	public function test_create_business()
 	{
-		$user = $this->createAdvertiser();
+        $user = $this->createAdvertiser();
+
+        $business = [];
+        $response = $this->actingAs($user)
+                        ->post('/spa/user/business/create', []);
 	}
 }
