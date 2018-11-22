@@ -33,6 +33,7 @@
             <img src='/images/loader.gif'>
         </div>
         <div class='business-cards container my-3' v-else>
+			<span v-show="businesses.length == 0">No result found!</span>
 			<business-card v-for="(business, index) in businesses" :key="index" :business="business"></business-card>
 		</div>
         <pagination class='container' v-if='!loading' :pagedata='pagination' @fetchNext='fetchBusinesses(pagination.nextPageUrl)' @fetchPrevious='fetchBusinesses(pagination.previousPageUrl)'></pagination>

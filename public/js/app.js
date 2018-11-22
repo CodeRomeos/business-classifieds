@@ -47535,6 +47535,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -48221,12 +48222,30 @@ var render = function() {
         : _c(
             "div",
             { staticClass: "business-cards container my-3" },
-            _vm._l(_vm.businesses, function(business, index) {
-              return _c("business-card", {
-                key: index,
-                attrs: { business: business }
+            [
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.businesses.length == 0,
+                      expression: "businesses.length == 0"
+                    }
+                  ]
+                },
+                [_vm._v("No result found!")]
+              ),
+              _vm._v(" "),
+              _vm._l(_vm.businesses, function(business, index) {
+                return _c("business-card", {
+                  key: index,
+                  attrs: { business: business }
+                })
               })
-            })
+            ],
+            2
           ),
       _vm._v(" "),
       !_vm.loading
