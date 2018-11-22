@@ -19,11 +19,11 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:administrator'])->group(function() {
-	Route::get('/', 'Admin\AdminController@dashboard')->name('dashboard');
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth', 'role:administrator'])->group(function() {
+	Route::get('/', 'AdminController@dashboard')->name('dashboard');
 
 	Route::prefix('businesses')->name('businesses.')->group(function() {
-
+		Route::get('/{type?}', 'BusinessController@index')->name('index');
 	});
 });
 

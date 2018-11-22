@@ -101,6 +101,7 @@ body {
 .bg-primary {
 	background-color: $bg-primary;
 	background-image: url(/images/bg-1.PNG);
+	background-attachment: fixed;
 }
 
 .bg-white {

@@ -5483,6 +5483,7 @@ body {
 .btn-primary {
   background-color: #3f51b5;
   background-image: url(/images/bg-1.PNG);
+  background-attachment: fixed;
 }
 
 .bg-white,
