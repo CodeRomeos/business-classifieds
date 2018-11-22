@@ -34,6 +34,7 @@ Route::namespace('Spa')->prefix('spa')->group(function() {
     Route::post('register', 'Auth\RegisterController@register');
 
     Route::prefix('businesses')->group(function(){
+        Route::get('/cities', 'BusinessController@cities');
         Route::get('/', 'BusinessController@index');
         Route::get('/{businessid}', 'BusinessController@show');
     });

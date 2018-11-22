@@ -12,7 +12,7 @@
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
             </div>
-			<p class='subtitle'>Tour operator in Delhi</p>
+			<p class='subtitle'>City - {{ business.city }}</p>
 			<div class="card-text">
 				<p>Phone: {{ business.contacts.join() }}</p>
 				<p> Address: {{ business.address }}</p>

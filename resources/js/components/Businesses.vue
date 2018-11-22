@@ -11,21 +11,22 @@
 				<div class='h2 text-white'><strong>Lorem ipsum dolor sit.</strong></div>
 				<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, eveniet consectetur. Dolorum!</p>
 
+				<form @submit.prevent="fetchBusinesses()">
 				<div class="business-search-form mt-5 text-dark">
 					<div class="input-container">
-						<select name="" id="" class="input-field">
-							<option value="">Search for ...</option>
+						<input type='text' class="input-field" value="" v-model="searchParams.keyword" placeholder="Search for...">
+					</div>
+					<div class="input-container">
+						<select name="" id="" class="input-field" v-model="searchParams.city" aria-placeholder="City">
+							<option value="">Select city...</option>
+							<option :value="city" v-for='(city, index) in cities' :key="index">{{ city }}</option>
 						</select>
 					</div>
 					<div class="input-container">
-						<select name="" id="" class="input-field">
-							<option value="">City</option>
-						</select>
-					</div>
-					<div class="input-container">
-						<button class="btn btn-primary btn-block"><i class='icon-magnifier icons'></i> Search</button>
+						<button type='submit' class="btn btn-primary btn-block"><i class='icon-magnifier icons'></i> Search</button>
 					</div>
 				</div>
+				</form>
 			</div>
 		</section>
         <div class='text-center' v-if='loading'>
@@ -46,6 +47,7 @@ import Pagination from './partials/Pagination.vue';
 export default {
 	name: 'businesses',
 	created() {
+		this.fetchCities();
 		this.fetchBusinesses();
 	},
 	components: {
@@ -57,7 +59,12 @@ export default {
 		return {
 			loading: false,
             businesses: [],
-            pagination: {}
+			pagination: {},
+			searchParams: {
+				keyword: "",
+				city: ""
+			},
+			cities: []
 		}
 	},
 	methods: {
@@ -67,10 +74,17 @@ export default {
                 url = '/spa/businesses';
             }
 			this.loading = true;
-			axios.get(url).then(response => {
+			var params = this.searchParams;
+
+			axios.get(url, {params: params}).then(response => {
 				this.loading = false;
 				this.businesses = response.data.data.businesses;
 				this.pagination = response.data.pagination;
+			});
+		},
+		fetchCities() {
+			axios.get('/spa/businesses/cities').then(response => {
+				this.cities = response.data.data.cities;
 			});
 		}
 	}

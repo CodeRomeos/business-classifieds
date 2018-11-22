@@ -47534,6 +47534,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -47542,6 +47543,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'businesses',
 	created: function created() {
+		this.fetchCities();
 		this.fetchBusinesses();
 	},
 
@@ -47554,7 +47556,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			loading: false,
 			businesses: [],
-			pagination: {}
+			pagination: {},
+			searchParams: {
+				keyword: "",
+				city: ""
+			},
+			cities: []
 		};
 	},
 
@@ -47566,10 +47573,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				url = '/spa/businesses';
 			}
 			this.loading = true;
-			axios.get(url).then(function (response) {
+			var params = this.searchParams;
+
+			axios.get(url, { params: params }).then(function (response) {
 				_this.loading = false;
 				_this.businesses = response.data.data.businesses;
 				_this.pagination = response.data.pagination;
+			});
+		},
+		fetchCities: function fetchCities() {
+			var _this2 = this;
+
+			axios.get('/spa/businesses/cities').then(function (response) {
+				_this2.cities = response.data.data.cities;
 			});
 		}
 	}
@@ -47833,7 +47849,9 @@ var render = function() {
     _c("div", { staticClass: "card-body" }, [
       _vm._m(0),
       _vm._v(" "),
-      _c("p", { staticClass: "subtitle" }, [_vm._v("Tour operator in Delhi")]),
+      _c("p", { staticClass: "subtitle" }, [
+        _vm._v("City - " + _vm._s(_vm.business.city))
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-text" }, [
         _c("p", [_vm._v("Phone: " + _vm._s(_vm.business.contacts.join()))]),
@@ -48080,7 +48098,121 @@ var render = function() {
     "div",
     { staticClass: "businesses" },
     [
-      _vm._m(0),
+      _c("section", { staticClass: "bg-primary py-3" }, [
+        _c("div", { staticClass: "container text-white text-center py-3" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, eveniet consectetur. Dolorum!"
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  _vm.fetchBusinesses()
+                }
+              }
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "business-search-form mt-5 text-dark" },
+                [
+                  _c("div", { staticClass: "input-container" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.searchParams.keyword,
+                          expression: "searchParams.keyword"
+                        }
+                      ],
+                      staticClass: "input-field",
+                      attrs: {
+                        type: "text",
+                        value: "",
+                        placeholder: "Search for..."
+                      },
+                      domProps: { value: _vm.searchParams.keyword },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.searchParams,
+                            "keyword",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-container" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.searchParams.city,
+                            expression: "searchParams.city"
+                          }
+                        ],
+                        staticClass: "input-field",
+                        attrs: { name: "", id: "", "aria-placeholder": "City" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.searchParams,
+                              "city",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Select city...")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.cities, function(city, index) {
+                          return _c(
+                            "option",
+                            { key: index, domProps: { value: city } },
+                            [_vm._v(_vm._s(city))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(1)
+                ]
+              )
+            ]
+          )
+        ])
+      ]),
       _vm._v(" "),
       _vm.loading
         ? _c("div", { staticClass: "text-center" }, [
@@ -48120,47 +48252,20 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "bg-primary py-3" }, [
-      _c("div", { staticClass: "container text-white text-center py-3" }, [
-        _c("div", { staticClass: "h2 text-white" }, [
-          _c("strong", [_vm._v("Lorem ipsum dolor sit.")])
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, eveniet consectetur. Dolorum!"
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "business-search-form mt-5 text-dark" }, [
-          _c("div", { staticClass: "input-container" }, [
-            _c(
-              "select",
-              { staticClass: "input-field", attrs: { name: "", id: "" } },
-              [
-                _c("option", { attrs: { value: "" } }, [
-                  _vm._v("Search for ...")
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "input-container" }, [
-            _c(
-              "select",
-              { staticClass: "input-field", attrs: { name: "", id: "" } },
-              [_c("option", { attrs: { value: "" } }, [_vm._v("City")])]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "input-container" }, [
-            _c("button", { staticClass: "btn btn-primary btn-block" }, [
-              _c("i", { staticClass: "icon-magnifier icons" }),
-              _vm._v(" Search")
-            ])
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "h2 text-white" }, [
+      _c("strong", [_vm._v("Lorem ipsum dolor sit.")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-container" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary btn-block", attrs: { type: "submit" } },
+        [_c("i", { staticClass: "icon-magnifier icons" }), _vm._v(" Search")]
+      )
     ])
   }
 ]
