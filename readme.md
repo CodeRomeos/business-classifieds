@@ -22,6 +22,15 @@
 - modify, block or delete user
 - Browse users, lisitings, inactive or active listings
 
+## How to install
+
+```
+git clone https://github.com/CodeRomeos/business-classifieds.git
+composer install
+edit your .env to setup your database
+php artisan migrate
+```
+
 ## [Demo](http://classifieds.demopixels.com)
 
 ## Request Features
