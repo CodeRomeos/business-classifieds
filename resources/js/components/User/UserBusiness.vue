@@ -1,7 +1,26 @@
 <template>
     <div class='card'>
+		<h3 class='my-0'>My Business Page</h3>
         <p>Create your free business page.</p>
 		<form @submit.prevent="postBusinessForm">
+			<div class="grid-col-1-2">
+				<label for="">Name</label>
+				<div class="input-container">
+					<input type='text' class="input-field" value="">
+				</div>
+				<label for="">Name</label>
+				<div class="input-container">
+					<input type='text' class="input-field" value="">
+				</div>
+				<label for="">Name</label>
+				<div class="input-container">
+					<input type='text' class="input-field" value="">
+				</div>
+				<label for="">Name</label>
+				<div class="input-container">
+					<input type='text' class="input-field" value="">
+				</div>
+			</div>
 
 		</form>
     </div>
@@ -52,3 +71,8 @@ export default {
 }
 </script>
 
+<style scoped>
+form {
+	max-width: 500px;
+}
+</style>
