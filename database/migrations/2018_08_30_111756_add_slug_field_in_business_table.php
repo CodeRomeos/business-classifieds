@@ -15,7 +15,6 @@ class AddSlugFieldInBusinessTable extends Migration
     {
         Schema::table('businesses', function (Blueprint $table) {
             $table->string('slug')->after('title')->unique();
-            $table->dropColumn('');
         });
     }
 
@@ -27,7 +26,7 @@ class AddSlugFieldInBusinessTable extends Migration
     public function down()
     {
         Schema::table('businesses', function (Blueprint $table) {
-            //
+            $table->dropColumn('slug');
         });
     }
 }
