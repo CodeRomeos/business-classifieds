@@ -2,23 +2,31 @@
     <div class='card'>
 		<h3 class='my-0'>My Business Page</h3>
         <p>Create your free business page.</p>
-		<form @submit.prevent="postBusinessForm">
+		<form @submit.prevent="postBusinessForm" class='mt-4'>
 			<div class="grid-col-1-2">
-				<label for="">Name</label>
+				<label for="">Title</label>
 				<div class="input-container">
-					<input type='text' class="input-field" value="">
+					<input type='text' class="input-field" value="" v-model="business.title">
 				</div>
-				<label for="">Name</label>
+				<label for="">Body</label>
 				<div class="input-container">
-					<input type='text' class="input-field" value="">
+					<input type='text' class="input-field" value="" v-model="business.body">
 				</div>
-				<label for="">Name</label>
+				<label for="">Contacts</label>
 				<div class="input-container">
-					<input type='text' class="input-field" value="">
+					<input type='text' class="input-field" value="" v-model="business.contacts">
 				</div>
-				<label for="">Name</label>
+				<label for="">City</label>
 				<div class="input-container">
-					<input type='text' class="input-field" value="">
+					<input type='text' class="input-field" value="" v-model="business.city">
+				</div>
+				<label for="">Address</label>
+				<div class="input-container">
+					<input type='text' class="input-field" value="" v-model="business.address">
+				</div>
+				<label for="">Emails</label>
+				<div class="input-container">
+					<input type='text' class="input-field" value="" v-model="business.emails">
 				</div>
 			</div>
 

@@ -49805,6 +49805,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "user-business",
@@ -49861,6 +49869,7 @@ var render = function() {
     _c(
       "form",
       {
+        staticClass: "mt-4",
         on: {
           submit: function($event) {
             $event.preventDefault()
@@ -49868,54 +49877,169 @@ var render = function() {
           }
         }
       },
-      [_vm._m(0)]
+      [
+        _c("div", { staticClass: "grid-col-1-2" }, [
+          _c("label", { attrs: { for: "" } }, [_vm._v("Title")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-container" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.business.title,
+                  expression: "business.title"
+                }
+              ],
+              staticClass: "input-field",
+              attrs: { type: "text", value: "" },
+              domProps: { value: _vm.business.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.business, "title", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "" } }, [_vm._v("Body")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-container" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.business.body,
+                  expression: "business.body"
+                }
+              ],
+              staticClass: "input-field",
+              attrs: { type: "text", value: "" },
+              domProps: { value: _vm.business.body },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.business, "body", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "" } }, [_vm._v("Contacts")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-container" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.business.contacts,
+                  expression: "business.contacts"
+                }
+              ],
+              staticClass: "input-field",
+              attrs: { type: "text", value: "" },
+              domProps: { value: _vm.business.contacts },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.business, "contacts", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "" } }, [_vm._v("City")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-container" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.business.city,
+                  expression: "business.city"
+                }
+              ],
+              staticClass: "input-field",
+              attrs: { type: "text", value: "" },
+              domProps: { value: _vm.business.city },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.business, "city", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "" } }, [_vm._v("Address")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-container" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.business.address,
+                  expression: "business.address"
+                }
+              ],
+              staticClass: "input-field",
+              attrs: { type: "text", value: "" },
+              domProps: { value: _vm.business.address },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.business, "address", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "" } }, [_vm._v("Emails")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-container" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.business.emails,
+                  expression: "business.emails"
+                }
+              ],
+              staticClass: "input-field",
+              attrs: { type: "text", value: "" },
+              domProps: { value: _vm.business.emails },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.business, "emails", $event.target.value)
+                }
+              }
+            })
+          ])
+        ])
+      ]
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "grid-col-1-2" }, [
-      _c("label", { attrs: { for: "" } }, [_vm._v("Name")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-container" }, [
-        _c("input", {
-          staticClass: "input-field",
-          attrs: { type: "text", value: "" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("label", { attrs: { for: "" } }, [_vm._v("Name")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-container" }, [
-        _c("input", {
-          staticClass: "input-field",
-          attrs: { type: "text", value: "" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("label", { attrs: { for: "" } }, [_vm._v("Name")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-container" }, [
-        _c("input", {
-          staticClass: "input-field",
-          attrs: { type: "text", value: "" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("label", { attrs: { for: "" } }, [_vm._v("Name")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-container" }, [
-        _c("input", {
-          staticClass: "input-field",
-          attrs: { type: "text", value: "" }
-        })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
