@@ -4,7 +4,7 @@
             <div class="card">
                 <router-link :to="{ name: 'userAccount'}"><span class='fa fa-fw fa-dashboard'></span> Dashboard</router-link>
                 <router-link :to="{ name: 'userBusiness'}"><span class='fa fa-fw fa-building-o'></span> Business</router-link>
-                <router-link :to="{ name: 'userBookmarks'}"><span class='fa fa-fw fa-bookmark-o'></span> Bookmarks</router-link>
+                <router-link :to="{ name: 'userBookmarks'}"><span class='fa fa-fw fa-bookmark'></span> Bookmarks</router-link>
                 <router-link :to="{ name: 'userForm'}"><span class='fa fa-fw fa-user-o'></span> Account</router-link>
             </div>
         </div>

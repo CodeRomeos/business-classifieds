@@ -49392,7 +49392,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("router-link", { attrs: { to: { name: "userBookmarks" } } }, [
-              _c("span", { staticClass: "fa fa-fw fa-bookmark-o" }),
+              _c("span", { staticClass: "fa fa-fw fa-bookmark" }),
               _vm._v(" Bookmarks")
             ]),
             _vm._v(" "),
@@ -49812,7 +49812,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "user-business",
@@ -49861,10 +49860,8 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [
-    _c("h3", { staticClass: "my-0" }, [_vm._v("My Business Page")]),
-    _vm._v(" "),
-    _c("p", [_vm._v("Create your free business page.")]),
+  return _c("div", { staticClass: "card", attrs: { id: "user-business" } }, [
+    _vm._m(0),
     _vm._v(" "),
     _c(
       "form",
@@ -50039,7 +50036,17 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "page-heading" }, [
+      _vm._v("My Business Page "),
+      _c("small", [_vm._v("Create your free business page.")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -50247,9 +50254,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "user-bookmarks" },
+    { staticClass: "user-bookmarks card" },
     [
-      _c("h4", { staticClass: "h5" }, [_vm._v("My Bookmarks")]),
+      _c("h3", { staticClass: "page-heading" }, [_vm._v("My Bookmarks")]),
       _vm._v(" "),
       _c(
         "ul",

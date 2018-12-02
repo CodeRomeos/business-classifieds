@@ -14,7 +14,11 @@ h6, .h6 { font-size: $h6-font-size; }
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-family: $heading-font;
-	@extend .mt-0;
+    @extend .mt-0;
+    small {
+        color: $color-secondary;
+        font-size: 70%
+    }
 }
 
 h1, h2, h3,
@@ -141,6 +145,11 @@ p {
 	@extend .mb-2;
 }
 
+.page-heading {
+    border-bottom: 1px solid #ddd;
+    @extend .pb-2
+}
+
 .list {
     .list-item {
         background: #FFF;
@@ -235,6 +244,11 @@ nav {
     }
     .card-footer {
 		@extend .border-t-1;
+    }
+    .list {
+        .list-item {
+            @extend .px-0;
+        }
     }
 }
 .btn {

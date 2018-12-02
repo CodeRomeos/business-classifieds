@@ -4549,7 +4549,8 @@ p {
   margin-right: 0rem !important;
 }
 
-.px-0 {
+.px-0,
+.card .list .list-item {
   padding-left: 0rem !important;
   padding-right: 0rem !important;
 }
@@ -4686,7 +4687,8 @@ p,
   margin-bottom: 0.5rem !important;
 }
 
-.pb-2 {
+.pb-2,
+.page-heading {
   padding-bottom: 0.5rem !important;
 }
 
@@ -5361,6 +5363,22 @@ h6,
   font-family: "Raleway", sans-serif;
 }
 
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small,
+.h1 small,
+.h2 small,
+.h3 small,
+.h4 small,
+.h5 small,
+.h6 small {
+  color: #999;
+  font-size: 70%;
+}
+
 h1,
 h2,
 h3,
@@ -5530,6 +5548,10 @@ a:hover {
 
 a.router-link-exact-active {
   color: #2196f3;
+}
+
+.page-heading {
+  border-bottom: 1px solid #ddd;
 }
 
 .list .list-item {
