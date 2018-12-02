@@ -47,6 +47,8 @@ Route::namespace('Spa')->prefix('spa')->group(function() {
 		});
 
 		Route::prefix('business')->middleware(['auth', 'role:advertiser'])->group(function() {
+			Route::post('/create', 'UserBusinessController@create');
+			Route::post('/update', 'UserBusinessController@update');
 			Route::get('/', 'UserBusinessController@show');
 		});
 

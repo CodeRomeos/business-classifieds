@@ -49777,6 +49777,11 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
 //
 //
 //
@@ -49843,7 +49848,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				var url = '/spa/user/business/create';
 			}
 
-			axios.post(url).then(function (response) {
+			var params = _defineProperty({
+				title: this.business.title,
+				body: this.business.body,
+				contacts: this.business.contacts,
+				emails: this.business.emails,
+				address: this.business.address
+			}, 'emails', this.business.emails);
+
+			axios.post(url, { params: params }).then(function (response) {
 				console.log(response);
 			}).catch(function (error) {
 				console.log(error);
@@ -50030,7 +50043,9 @@ var render = function() {
                 }
               }
             })
-          ])
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
         ])
       ]
     )
@@ -50044,6 +50059,18 @@ var staticRenderFns = [
     return _c("h3", { staticClass: "page-heading" }, [
       _vm._v("My Business Page "),
       _c("small", [_vm._v("Create your free business page.")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-container" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Submit")]
+      )
     ])
   }
 ]

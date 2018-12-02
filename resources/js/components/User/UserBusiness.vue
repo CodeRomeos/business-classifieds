@@ -27,6 +27,9 @@
                 <div class="input-container">
                     <input type='text' class="input-field" value="" v-model="business.emails">
                 </div>
+                <div class="input-container">
+                    <button type='submit' class='btn btn-primary'>Submit</button>
+                </div>
             </div>
 
         </form>
@@ -64,9 +67,18 @@ export default {
 			var url = '/spa/user/business/update'
 			if(this.notCreated) {
 				var url = '/spa/user/business/create'
-			}
+            }
 
-			axios.post(url)
+            var params = {
+                title: this.business.title,
+                body: this.business.body,
+                contacts: this.business.contacts,
+                emails: this.business.emails,
+                address: this.business.address,
+                emails: this.business.emails
+            }
+
+			axios.post(url, {params: params})
 				.then(response => {
 					console.log(response);
 				})

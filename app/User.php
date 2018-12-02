@@ -29,7 +29,16 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token',
-	];
+    ];
+
+    protected $casts = [
+        'is_super_admin' => 'boolean'
+    ];
+
+    public function business()
+    {
+        return $this->hasOne('App\Business');
+    }
 
 	public function role()
     {
