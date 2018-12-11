@@ -5255,7 +5255,13 @@ header {
 
 .grid-col-1-2 {
   grid-gap: 1rem;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .grid-col-1-2 {
+    grid-template-columns: 1fr 2fr;
+  }
 }
 
 #user-account {

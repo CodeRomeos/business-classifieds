@@ -262,7 +262,10 @@ header {
 .grid-col-1-2 {
 	@extend .d-grid;
 	grid-gap: 1rem;
-	grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr;
+    @include tablet {
+        grid-template-columns: 1fr 2fr;
+    }
 }
 
 #user-account {
