@@ -9,11 +9,15 @@
                 </div>
                 <label for="">Body</label>
                 <div class="input-container">
-                    <input type='text' class="input-field" value="" v-model="business.body">
+					<textarea class='input-field' v-model="business.body" rows='4'></textarea>
                 </div>
                 <label for="">Contacts</label>
                 <div class="input-container">
-                    <input type='text' class="input-field" value="" v-model="business.contacts">
+					<div class='input-btn-group mb-1' v-for="(contact, index) in business.contacts" :key="index">
+                    	<input type='text' class="input-field" value="" v-model="business.contacts[index]">
+						<button type='button' class='btn btn-danger' @click="business.contacts.splice(index, 1)"><span class='fa fa-times'></span></button>
+					</div>
+					<button type='button' class='btn' @click="business.contacts.push('')"><span class='fa fa-plus'></span></button>
                 </div>
                 <label for="">City</label>
                 <div class="input-container">
@@ -25,10 +29,19 @@
                 </div>
                 <label for="">Emails</label>
                 <div class="input-container">
-                    <input type='text' class="input-field" value="" v-model="business.emails">
+					<div class="input-btn-group mb-1" v-for="(email, index) in business.emails" :key="index">
+                    	<input type='text' class="input-field" value="" v-model="business.emails[index]">
+						<button type='button' class='btn btn-danger' @click="business.emails.splice(index, 1)"><span class='fa fa-times'></span></button>
+					</div>
+					<button type='button' class='btn' @click="business.emails.push('')"><span class='fa fa-plus'></span></button>
                 </div>
+				<div></div>
                 <div class="input-container">
-                    <button type='submit' class='btn btn-primary'>Submit</button>
+                    <button type='submit' class='btn btn-primary' :disabled='updating'>
+						<span class='fa fa-save fa-fw'></span> Submit
+					</button>
+					<span v-if='updating'><span class='fa fa-spinner fa-spin'></span></span>
+					<span v-if='message'>{{ message }}</span>
                 </div>
             </div>
 
@@ -45,7 +58,9 @@ export default {
 	data() {
 		return {
 			business: {},
-			notCreated: false
+			notCreated: false,
+			updating: false,
+			message: null
 		}
 	},
 	methods: {
@@ -57,6 +72,8 @@ export default {
 					}
 					else {
 						this.business = response.data.business
+						this.business.contacts = JSON.parse(this.business.contacts);
+						this.business.emails = JSON.parse(this.business.emails);
 					}
 				})
 				.catch(error => {
@@ -64,7 +81,8 @@ export default {
 				});
 		},
 		postBusinessForm() {
-			var url = '/spa/user/business/update'
+			this.updating = true;
+			var url = '/spa/user/business/' + this.business.id + '/update'
 			if(this.notCreated) {
 				var url = '/spa/user/business/create'
             }
@@ -73,16 +91,20 @@ export default {
                 title: this.business.title,
                 body: this.business.body,
                 contacts: this.business.contacts,
+                city: this.business.city,
                 emails: this.business.emails,
                 address: this.business.address,
                 emails: this.business.emails
             }
 
-			axios.post(url, {params: params})
+			axios.post(url, params)
 				.then(response => {
-					console.log(response);
+					this.updating = false;
+					this.business = response.data.business;
+					this.message = 'Updated successfully!'
 				})
 				.catch(error => {
+					this.updating = false;
 					console.log(error);
 				})
 		}

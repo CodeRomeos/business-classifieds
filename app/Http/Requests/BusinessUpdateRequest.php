@@ -14,7 +14,8 @@ class BusinessUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user()->can('create', Business::class);
+		$business = Business::find($this->route('id'));
+        return $business && $this->user()->can('update', $business);
     }
 
     /**

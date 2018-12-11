@@ -196,3 +196,10 @@ function url_from_base($url)
 
 	return $url;
 }
+
+function exclude_null(Array $arr)
+{
+	return array_filter($arr, function($el) {
+		return !empty($el);
+	});
+}

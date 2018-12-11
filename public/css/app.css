@@ -5490,7 +5490,8 @@ body {
   max-width: 1350px;
 }
 
-.text-white {
+.text-white,
+.btn-danger {
   color: #FFF !important;
 }
 
@@ -5568,6 +5569,12 @@ a.router-link-exact-active {
   width: 100%;
   border: 0;
   border-bottom: 1px solid #ddd;
+}
+
+.input-btn-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 header {
@@ -5658,6 +5665,16 @@ nav a,
 
 .btn-primary {
   color: #FFF;
+}
+
+.btn-danger {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+.btn-danger:hover {
+  background-color: #c9302c;
+  border-color: #ac2925;
 }
 
 .btn-sm {

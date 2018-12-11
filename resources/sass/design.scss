@@ -168,6 +168,10 @@ p {
 	border-bottom: 1px solid #ddd;
 }
 
+.input-btn-group {
+	display: flex
+}
+
 header {
 	grid-area: header;
 	background: $bg-white;
@@ -269,6 +273,16 @@ nav {
 	// background: $bg-primary;
 	@extend .bg-primary;
     color: #FFF;
+}
+
+.btn-danger {
+	@extend .text-white;
+    background-color: #d9534f;
+	border-color: #d43f3a;
+	&:hover {
+    	background-color: #c9302c;
+    	border-color: #ac2925;
+	}
 }
 
 .btn-sm{

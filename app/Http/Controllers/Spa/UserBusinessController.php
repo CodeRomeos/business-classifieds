@@ -5,9 +5,18 @@ namespace App\Http\Controllers\Spa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Spa\Controller;
 use App\Http\Requests\BusinessCreateRequest;
+use App\Http\Requests\BusinessUpdateRequest;
+use App\Repositories\Businesses;
 
 class UserBusinessController extends Controller
 {
+	protected $repo;
+
+	public function __construct(Businesses $repo)
+	{
+		$this->repo = $repo;
+	}
+
     public function show(Request $request)
 	{
 		if(!$request->user()->business)
@@ -20,14 +29,19 @@ class UserBusinessController extends Controller
 
     public function create(BusinessCreateRequest $request)
     {
-        $business = $request->user()->businesses()->create($request->all());
+        $business = $request->user()->business()->create($request->all());
         dd($business);
     }
 
-    public function update(Request $request)
+    public function update(BusinessUpdateRequest $request, $id)
     {
-        dd($request->all());
-        $business = $request->user()->businesses()->update($request->all());
-        dd($business);
+		$business = $request->user()->business()->find($id);
+		$result = $this->repo->update($business, $request->all());
+		if($result['updated'])
+		{
+			return $this->respond(['success' => true, 'update' => true, 'message' => 'Updated successfully!', 'business' => $result['business']]);
+		}
+
+		return $this->setResponseCode(422)->respondWithError(['success' => 'false', 'update' => 'false', 'message' => 'Something went wrong. Please try again']);
     }
 }

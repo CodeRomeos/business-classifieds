@@ -17,4 +17,13 @@ class Businesses extends Repository
 	{
 		return $this->model->where('is_active', true)->whereNotNull('approved_at');
 	}
+
+	public function update($model, $data)
+	{
+		$data['contacts'] = exclude_null($data['contacts']);
+		$data['emails'] = exclude_null($data['emails']);
+		$result['updated'] = $model->update($data);
+		$result['business'] = $model;
+		return $result;
+	}
 }
