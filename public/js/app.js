@@ -49841,10 +49841,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 			business: {},
 			notCreated: false,
 			updating: false,
-			message: null
+			updateMessage: null
 		};
 	},
 
+	watch: {
+		updateMessage: function updateMessage() {
+			setTimeout(function () {
+				this.updateMessage = null;
+			}.bind(this), 3000);
+		}
+	},
 	methods: {
 		fetchbusiness: function fetchbusiness() {
 			var _this = this;
@@ -49880,7 +49887,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 			axios.post(url, params).then(function (response) {
 				_this2.updating = false;
 				_this2.business = response.data.business;
-				_this2.message = 'Updated successfully!';
+				_this2.updateMessage = 'Updated successfully!';
 			}).catch(function (error) {
 				_this2.updating = false;
 				console.log(error);
@@ -50180,7 +50187,9 @@ var render = function() {
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _vm.message ? _c("span", [_vm._v(_vm._s(_vm.message))]) : _vm._e()
+            _vm.updateMessage && !_vm.updating
+              ? _c("span", [_vm._v(_vm._s(_vm.updateMessage))])
+              : _vm._e()
           ])
         ])
       ]

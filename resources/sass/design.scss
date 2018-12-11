@@ -262,7 +262,10 @@ nav {
     vertical-align: middle;
     user-select: none;
     border: none;
-    padding: 0.4rem 0.6rem;
+	padding: 0.4rem 0.6rem;
+	&:hover {
+		background: #c7c7c7;
+	}
 }
 
 .btn-block {
@@ -272,7 +275,10 @@ nav {
 .btn-primary {
 	// background: $bg-primary;
 	@extend .bg-primary;
-    color: #FFF;
+	color: #FFF;
+	&:hover {
+		background: #384ec1;
+	}
 }
 
 .btn-danger {

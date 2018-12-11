@@ -41,7 +41,7 @@
 						<span class='fa fa-save fa-fw'></span> Submit
 					</button>
 					<span v-if='updating'><span class='fa fa-spinner fa-spin'></span></span>
-					<span v-if='message'>{{ message }}</span>
+					<span v-if='updateMessage && !updating'>{{ updateMessage }}</span>
                 </div>
             </div>
 
@@ -60,7 +60,14 @@ export default {
 			business: {},
 			notCreated: false,
 			updating: false,
-			message: null
+			updateMessage: null
+		}
+	},
+	watch: {
+		updateMessage() {
+			setTimeout(function() {
+				this.updateMessage = null;
+			}.bind(this), 3000)
 		}
 	},
 	methods: {
@@ -101,7 +108,7 @@ export default {
 				.then(response => {
 					this.updating = false;
 					this.business = response.data.business;
-					this.message = 'Updated successfully!'
+					this.updateMessage = 'Updated successfully!'
 				})
 				.catch(error => {
 					this.updating = false;
