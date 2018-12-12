@@ -264,7 +264,7 @@ nav {
     border: none;
 	padding: 0.4rem 0.6rem;
 	&:hover {
-		background: #c7c7c7;
+		background-color: #c7c7c7;
 	}
 }
 
@@ -277,12 +277,13 @@ nav {
 	@extend .bg-primary;
 	color: #FFF;
 	&:hover {
-		background: #384ec1;
+		background-color: #384ec1;
 	}
 }
 
 .btn-danger {
 	@extend .text-white;
+	@extend .bg-primary;
     background-color: #d9534f;
 	border-color: #d43f3a;
 	&:hover {
