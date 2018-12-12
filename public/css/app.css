@@ -4653,7 +4653,6 @@ header {
 }
 
 .p-2,
-.input-field,
 nav a,
 .header-mid a,
 .navbar-brand,
@@ -4736,6 +4735,7 @@ p,
 }
 
 .py-2,
+.input-field,
 table td {
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
