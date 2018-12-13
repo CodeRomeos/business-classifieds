@@ -150,6 +150,14 @@ p {
     @extend .pb-2
 }
 
+.is-invalid {
+	border-color: red !important
+}
+
+.invalid-feedback {
+	color: red;
+}
+
 .list {
     .list-item {
         background: #FFF;

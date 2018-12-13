@@ -49830,6 +49830,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "user-business",
@@ -49841,7 +49842,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 			business: {},
 			notCreated: false,
 			updating: false,
-			updateMessage: null
+			updateMessage: null,
+			errors: {}
 		};
 	},
 
@@ -49890,7 +49892,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 				_this2.updateMessage = 'Updated successfully!';
 			}).catch(function (error) {
 				_this2.updating = false;
-				console.log(error);
+				//console.log(error.request);
+				_this2.errors = error.response.data.errors;
 			});
 		}
 	}
@@ -50056,6 +50059,7 @@ var render = function() {
                 }
               ],
               staticClass: "input-field",
+              class: { "is-invalid": _vm.errors.city },
               attrs: { type: "text", value: "" },
               domProps: { value: _vm.business.city },
               on: {
@@ -50066,7 +50070,13 @@ var render = function() {
                   _vm.$set(_vm.business, "city", $event.target.value)
                 }
               }
-            })
+            }),
+            _vm._v(" "),
+            _vm.errors.city
+              ? _c("span", { staticClass: "invalid-feedback" }, [
+                  _vm._v(_vm._s(_vm.errors.city[0]))
+                ])
+              : _vm._e()
           ]),
           _vm._v(" "),
           _c("label", { attrs: { for: "" } }, [_vm._v("Address")]),

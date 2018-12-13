@@ -21,7 +21,8 @@
                 </div>
                 <label for="">City</label>
                 <div class="input-container">
-                    <input type='text' class="input-field" value="" v-model="business.city">
+                    <input type='text' class="input-field" :class="{ 'is-invalid': errors.city}" value="" v-model="business.city">
+					<span v-if="errors.city" class='invalid-feedback'>{{ errors.city[0] }}</span>
                 </div>
                 <label for="">Address</label>
                 <div class="input-container">
@@ -60,7 +61,8 @@ export default {
 			business: {},
 			notCreated: false,
 			updating: false,
-			updateMessage: null
+			updateMessage: null,
+			errors: {}
 		}
 	},
 	watch: {
@@ -112,7 +114,8 @@ export default {
 				})
 				.catch(error => {
 					this.updating = false;
-					console.log(error);
+					//console.log(error.request);
+					this.errors = error.response.data.errors
 				})
 		}
 	}

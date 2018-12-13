@@ -5562,6 +5562,14 @@ a.router-link-exact-active {
   border-bottom: 1px solid #ddd;
 }
 
+.is-invalid {
+  border-color: red !important;
+}
+
+.invalid-feedback {
+  color: red;
+}
+
 .list .list-item {
   background: #FFF;
   padding: 0.5rem 1rem;
