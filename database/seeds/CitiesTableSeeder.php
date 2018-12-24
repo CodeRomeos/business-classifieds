@@ -22,7 +22,7 @@ class CitiesTableSeeder extends Seeder
 			$state = State::create(['country_id' => $India->id, 'code' => $state_code, 'name' => $state_arr['state']]);
 			$cities = $state_arr['cities'];
 			$cities = array_map(function($city){
-				return ['name' => $city];
+				return ['name' => $city, 'slug' => str_slug($city)];
 			}, $cities);
 			$state->cities()->createMany($cities);
 		}

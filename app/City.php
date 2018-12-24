@@ -10,4 +10,9 @@ class City extends Model
 	{
 		return $this->belongsTo('App\State');
 	}
+
+	public function businesses()
+	{
+		return $this->belongsToMany('App\Business', 'business_city');
+	}
 }

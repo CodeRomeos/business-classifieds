@@ -21,6 +21,11 @@ class Business extends Model
     	return $this->belongsTo('App\User');
 	}
 
+	public function cities()
+	{
+		return $this->belongsToMany('App\City', 'business_city');
+	}
+
     public function getContactsParsedAttribute()
     {
         return is_array($this->contacts) ? $this->contacts : (array) json_decode($this->contacts);

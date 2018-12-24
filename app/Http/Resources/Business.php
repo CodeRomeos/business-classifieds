@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\City as CityResource;
 
 class Business extends JsonResource
 {
@@ -22,7 +23,7 @@ class Business extends JsonResource
             // 'image' => asset($this->image),
             'image' => $this->image,
             'contacts' => $this->contactsParsed,
-            'city' => $this->city,
+            'city' => CityResource::collection($this->cities),
             'address' => $this->address,
             'emails' => $this->emailsParsed
         ];
