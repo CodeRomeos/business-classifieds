@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Country;
+use App\State;
 use App\City;
 
 class CitiesTableSeeder extends Seeder
@@ -12,44 +14,17 @@ class CitiesTableSeeder extends Seeder
      */
     public function run()
     {
-        $indian_states = array (
-			'AN' => 'Andaman & Nicobar',
-			'AP' => 'Andhra Pradesh',
-			'AR' => 'Arunachal Pradesh',
-			'AS' => 'Assam',
-			'BR' => 'Bihar',
-			'CH' => 'Chandigarh',
-			'CT' => 'Chhattisgarh',
-			'DN' => 'Dadra and Nagar Haveli',
-			'DD' => 'Daman & Diu',
-			'DL' => 'Delhi',
-			'GA' => 'Goa',
-			'GJ' => 'Gujarat',
-			'HR' => 'Haryana',
-			'HP' => 'Himachal Pradesh',
-			'JK' => 'Jammu & Kashmir',
-			'JH' => 'Jharkhand',
-			'KA' => 'Karnataka',
-			'KL' => 'Kerala',
-			'LD' => 'Lakshadweep',
-			'MP' => 'Madhya Pradesh',
-			'MH' => 'Maharashtra',
-			'MN' => 'Manipur',
-			'ML' => 'Meghalaya',
-			'MZ' => 'Mizoram',
-			'NL' => 'Nagaland',
-			'OR' => 'Odisha',
-			'PY' => 'Puducherry',
-			'PB' => 'Punjab',
-			'RJ' => 'Rajasthan',
-			'SK' => 'Sikkim',
-			'TN' => 'Tamil Nadu',
-			'TS' => 'Telangana',
-			'TR' => 'Tripura',
-			'UK' => 'Uttarakhand',
-			'UP' => 'Uttar Pradesh',
-			'WB' => 'West Bengal',
-			);
+		$India = Country::create(['code' => 'IND', 'name' => 'India']);
 
+		$indian_states = indian_states_and_cites();
+		foreach($indian_states as $state_code => $state_arr)
+		{
+			$state = State::create(['country_id' => $India->id, 'code' => $state_code, 'name' => $state_arr['state']]);
+			$cities = $state_arr['cities'];
+			$cities = array_map(function($city){
+				return ['name' => $city];
+			}, $cities);
+			$state->cities()->createMany($cities);
+		}
     }
 }
