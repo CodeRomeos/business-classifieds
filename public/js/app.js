@@ -47759,6 +47759,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -47932,12 +47937,23 @@ var render = function() {
     _c("div", { staticClass: "card-body" }, [
       _vm._m(0),
       _vm._v(" "),
-      _c("p", { staticClass: "subtitle" }, [
-        _vm._v("Cities - " + _vm._s(_vm.business.cities))
-      ]),
+      _c(
+        "p",
+        { staticClass: "subtitle" },
+        [
+          _vm._v("Cities -\n\t\t\t\t"),
+          _vm._l(_vm.business.cities, function(city, index) {
+            return [
+              _vm._v("\n\t\t\t\t\t" + _vm._s(city.name)),
+              index < _vm.business.cities.length - 1 ? [_vm._v(", ")] : _vm._e()
+            ]
+          })
+        ],
+        2
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "card-text" }, [
-        _c("p", [_vm._v("Phone: " + _vm._s(_vm.business.contacts.join()))]),
+        _c("p", [_vm._v("Phone: " + _vm._s(_vm.business.contacts.join(", ")))]),
         _vm._v(" "),
         _c("p", [_vm._v("Address: " + _vm._s(_vm.business.address))]),
         _vm._v(" "),

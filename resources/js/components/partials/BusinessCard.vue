@@ -12,9 +12,14 @@
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
             </div>
-			<p class='subtitle'>Cities - {{ business.cities }}</p>
+			<p class='subtitle'>Cities -
+				<template v-for="(city, index) in business.cities" v-key="index">
+					{{ city.name }}<template v-if="index < business.cities.length - 1">, </template>
+				</template>
+
+			</p>
 			<div class="card-text">
-				<p>Phone: {{ business.contacts.join() }}</p>
+				<p>Phone: {{ business.contacts.join(', ') }}</p>
 				<p>Address: {{ business.address }}</p>
 				<p>Hours: Open ⋅ Closes 7PM</p>
 				<br>
