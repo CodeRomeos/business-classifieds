@@ -12,10 +12,10 @@
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
             </div>
-			<p class='subtitle'>City - {{ business.city }}</p>
+			<p class='subtitle'>Cities - {{ business.cities }}</p>
 			<div class="card-text">
 				<p>Phone: {{ business.contacts.join() }}</p>
-				<p> Address: {{ business.address }}</p>
+				<p>Address: {{ business.address }}</p>
 				<p>Hours: Open ⋅ Closes 7PM</p>
 				<br>
 			</div>

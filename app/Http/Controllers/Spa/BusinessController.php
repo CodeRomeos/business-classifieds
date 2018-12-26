@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Spa\Controller;
 
 use App\Repositories\Businesses;
+use App\Repositories\Cities;
 use App\Http\Resources\Business as BusinessResource;
 
 class BusinessController extends Controller
@@ -23,8 +24,10 @@ class BusinessController extends Controller
 
 		if($request->has('city') && !empty($request->city))
 		{
-			$city = $request->get('city');
-			$businesses = $businesses->where('city', $city);
+			$city_slug = $request->get('city');
+			$businesses = $businesses->whereHas('cities', function($q) use($city_slug) {
+				return $q->where('slug', $city_slug);
+			});
 		}
 
         // ... more request checks
@@ -44,9 +47,9 @@ class BusinessController extends Controller
 		return $this->respond(['data' => new BusinessResource($business)]);
 	}
 
-	public function cities(Request $request, Businesses $repo)
+	public function cities(Request $request, Cities $cityRepo)
 	{
-		$cities =  $repo->approvedAndActive()->orderBy('city')->distinct('city')->pluck('city');
+		$cities =  $cityRepo->all()->get()->pluck('name', 'slug');
 
 		return $this->respond(['data' => compact('cities')]);
 	}

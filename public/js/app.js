@@ -47933,13 +47933,13 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("p", { staticClass: "subtitle" }, [
-        _vm._v("City - " + _vm._s(_vm.business.city))
+        _vm._v("Cities - " + _vm._s(_vm.business.cities))
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-text" }, [
         _c("p", [_vm._v("Phone: " + _vm._s(_vm.business.contacts.join()))]),
         _vm._v(" "),
-        _c("p", [_vm._v(" Address: " + _vm._s(_vm.business.address))]),
+        _c("p", [_vm._v("Address: " + _vm._s(_vm.business.address))]),
         _vm._v(" "),
         _c("p", [_vm._v("Hours: Open ⋅ Closes 7PM")]),
         _vm._v(" "),

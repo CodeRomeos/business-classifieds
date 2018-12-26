@@ -23,7 +23,7 @@ class Business extends JsonResource
             // 'image' => asset($this->image),
             'image' => $this->image,
             'contacts' => $this->contactsParsed,
-            'city' => CityResource::collection($this->cities),
+            'cities' => CityResource::collection($this->cities),
             'address' => $this->address,
             'emails' => $this->emailsParsed
         ];
