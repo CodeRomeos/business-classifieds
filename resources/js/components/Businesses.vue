@@ -17,10 +17,7 @@
 						<input type='text' class="input-field" value="" v-model="searchParams.keyword" placeholder="Search for...">
 					</div>
 					<div class="input-container">
-						<select name="" id="" class="input-field select2" v-model="searchParams.city" aria-placeholder="City">
-							<option value="">Select city...</option>
-							<option :value="city" v-for='(city, index) in cities' :key="index">{{ city }}</option>
-						</select>
+						<v-select class="input-field" :options="cities" v-model="searchParams.city"></v-select>
 					</div>
 					<div class="input-container">
 						<button type='submit' class="btn btn-primary btn-block"><i class='icon-magnifier icons'></i> Search</button>
@@ -45,6 +42,7 @@ import { mapGetters } from 'vuex';
 import BusinessCard from './partials/BusinessCard';
 import Sidebar from './partials/Sidebar';
 import Pagination from './partials/Pagination';
+import vSelect from 'vue-select';
 
 export default {
 	name: 'businesses',
@@ -54,7 +52,8 @@ export default {
 	components: {
 		BusinessCard,
         Sidebar,
-		Pagination
+		Pagination,
+		'v-select': vSelect
 	},
 	data() {
 		return {

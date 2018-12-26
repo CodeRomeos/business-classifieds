@@ -27,6 +27,7 @@
         "@coreui/coreui": "^2.1.1",
         "normalize.scss": "^0.1.0",
         "perfect-scrollbar": "^1.4.0",
-        "simple-line-icons": "^2.4.1"
+        "simple-line-icons": "^2.4.1",
+        "vue-select": "^2.5.1"
     }
 }
