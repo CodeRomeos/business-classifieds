@@ -23,7 +23,7 @@ class Business extends Model
 
 	public function cities()
 	{
-		return $this->belongsToMany('App\City', 'business_city');
+		return $this->belongsToMany('App\City', 'business_city')->withTimestamps();
 	}
 
     public function getContactsParsedAttribute()

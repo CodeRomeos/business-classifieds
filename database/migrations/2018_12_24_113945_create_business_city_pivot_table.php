@@ -30,6 +30,6 @@ class CreateBusinessCityPivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('business_city_pivot');
+        Schema::dropIfExists('business_city');
     }
 }

@@ -13,6 +13,6 @@ class City extends Model
 
 	public function businesses()
 	{
-		return $this->belongsToMany('App\Business', 'business_city');
+		return $this->belongsToMany('App\Business', 'business_city')->withTimestamps();
 	}
 }
