@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
-    public function stete()
+	protected $appends = ['city_and_state_name'];
+
+    public function state()
 	{
 		return $this->belongsTo('App\State');
 	}
@@ -14,5 +16,10 @@ class City extends Model
 	public function businesses()
 	{
 		return $this->belongsToMany('App\Business', 'business_city')->withTimestamps();
+	}
+
+	public function getCityAndStateNameAttribute()
+	{
+		return $this->name . ', ' . $this->state->name;
 	}
 }

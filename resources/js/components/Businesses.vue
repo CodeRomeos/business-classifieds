@@ -12,12 +12,12 @@
 				<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, eveniet consectetur. Dolorum!</p>
 
 				<form @submit.prevent="fetchBusinesses()">
-				<div class="business-search-form mt-5 text-dark">
+				<div class="business-search-form mt-5 text-dark text-left">
 					<div class="input-container">
 						<input type='text' class="input-field" value="" v-model="searchParams.keyword" placeholder="Search for...">
 					</div>
 					<div class="input-container">
-						<select name="" id="" class="input-field" v-model="searchParams.city" aria-placeholder="City">
+						<select name="" id="" class="input-field select2" v-model="searchParams.city" aria-placeholder="City">
 							<option value="">Select city...</option>
 							<option :value="city" v-for='(city, index) in cities' :key="index">{{ city }}</option>
 						</select>

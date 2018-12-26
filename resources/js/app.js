@@ -19,3 +19,7 @@ const app = new Vue({
     router,
     store
 });
+
+$('document').ready(function() {
+	$('.select2').select2();
+});

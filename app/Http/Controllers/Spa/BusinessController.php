@@ -49,7 +49,7 @@ class BusinessController extends Controller
 
 	public function cities(Request $request, Cities $cityRepo)
 	{
-		$cities =  $cityRepo->all()->get()->pluck('name', 'slug');
+		$cities =  $cityRepo->all()->with('state')->get()->pluck('city_and_state_name', 'slug');
 
 		return $this->respond(['data' => compact('cities')]);
 	}
