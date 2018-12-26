@@ -5,7 +5,8 @@ export default {
         isLoggedIn: false,
 		auth_error: null,
 		loginModal: false,
-		loginSuccess: null
+		loginSuccess: null,
+		cities: []
     },
     getters: {
         welcome(state) {
@@ -25,6 +26,9 @@ export default {
 		},
 		loginModal(state) {
 			return state.loginModal;
+		},
+		cities(state) {
+			return state.cities;
 		}
     },
     mutations: {
@@ -58,8 +62,10 @@ export default {
 		},
 		showLoginModal(state) {
 			state.loginModal = true;
+		},
+		loadCities(state, cities) {
+			state.cities = cities;
 		}
-
     },
 
     actions: {
@@ -74,6 +80,12 @@ export default {
 		},
 		hideLoginModal(context) {
 			context.commit('hideLoginModal');
+		},
+		loadCities(context) {
+			axios.get('/spa/businesses/cities').then(response => {
+				context.commit('loadCities', response.data.data.cities);
+			});
+
 		}
     }
 }

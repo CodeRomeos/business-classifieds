@@ -46938,7 +46938,8 @@ if (inBrowser && window.Vue) {
         isLoggedIn: false,
         auth_error: null,
         loginModal: false,
-        loginSuccess: null
+        loginSuccess: null,
+        cities: []
     },
     getters: {
         welcome: function welcome(state) {
@@ -46958,6 +46959,9 @@ if (inBrowser && window.Vue) {
         },
         loginModal: function loginModal(state) {
             return state.loginModal;
+        },
+        cities: function cities(state) {
+            return state.cities;
         }
     },
     mutations: {
@@ -46991,6 +46995,9 @@ if (inBrowser && window.Vue) {
         },
         showLoginModal: function showLoginModal(state) {
             state.loginModal = true;
+        },
+        loadCities: function loadCities(state, cities) {
+            state.cities = cities;
         }
     },
 
@@ -47006,6 +47013,11 @@ if (inBrowser && window.Vue) {
         },
         hideLoginModal: function hideLoginModal(context) {
             context.commit('hideLoginModal');
+        },
+        loadCities: function loadCities(context) {
+            axios.get('/spa/businesses/cities').then(function (response) {
+                context.commit('loadCities', response.data.data.cities);
+            });
         }
     }
 });
@@ -47570,12 +47582,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__partials_BusinessCard__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__partials_BusinessCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__partials_BusinessCard__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_Sidebar_vue__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_Sidebar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__partials_Sidebar_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__partials_Pagination_vue__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__partials_Pagination_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__partials_Pagination_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_BusinessCard__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_BusinessCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__partials_BusinessCard__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__partials_Sidebar__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__partials_Sidebar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__partials_Sidebar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__partials_Pagination__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__partials_Pagination___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__partials_Pagination__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -47618,6 +47633,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
@@ -47626,14 +47642,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'businesses',
 	created: function created() {
-		this.fetchCities();
 		this.fetchBusinesses();
 	},
 
 	components: {
-		BusinessCard: __WEBPACK_IMPORTED_MODULE_0__partials_BusinessCard___default.a,
-		Sidebar: __WEBPACK_IMPORTED_MODULE_1__partials_Sidebar_vue___default.a,
-		Pagination: __WEBPACK_IMPORTED_MODULE_2__partials_Pagination_vue___default.a
+		BusinessCard: __WEBPACK_IMPORTED_MODULE_1__partials_BusinessCard___default.a,
+		Sidebar: __WEBPACK_IMPORTED_MODULE_2__partials_Sidebar___default.a,
+		Pagination: __WEBPACK_IMPORTED_MODULE_3__partials_Pagination___default.a
 	},
 	data: function data() {
 		return {
@@ -47643,11 +47658,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			searchParams: {
 				keyword: "",
 				city: ""
-			},
-			cities: []
+			}
 		};
 	},
 
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['cities'])),
 	methods: {
 		fetchBusinesses: function fetchBusinesses(url) {
 			var _this = this;
@@ -47662,13 +47677,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				_this.loading = false;
 				_this.businesses = response.data.data.businesses;
 				_this.pagination = response.data.pagination;
-			});
-		},
-		fetchCities: function fetchCities() {
-			var _this2 = this;
-
-			axios.get('/spa/businesses/cities').then(function (response) {
-				_this2.cities = response.data.data.cities;
 			});
 		}
 	}
@@ -50602,6 +50610,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 _this.$store.commit('setCurrentUser', res.data);
             }
         });
+        this.$store.dispatch('loadCities');
     },
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])([]), {

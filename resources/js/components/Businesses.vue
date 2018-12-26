@@ -41,20 +41,20 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import BusinessCard from './partials/BusinessCard';
-import Sidebar from './partials/Sidebar.vue';
-import Pagination from './partials/Pagination.vue';
+import Sidebar from './partials/Sidebar';
+import Pagination from './partials/Pagination';
 
 export default {
 	name: 'businesses',
 	created() {
-		this.fetchCities();
 		this.fetchBusinesses();
 	},
 	components: {
 		BusinessCard,
         Sidebar,
-        Pagination
+		Pagination
 	},
 	data() {
 		return {
@@ -64,9 +64,13 @@ export default {
 			searchParams: {
 				keyword: "",
 				city: ""
-			},
-			cities: []
+			}
 		}
+	},
+	computed: {
+		...mapGetters([
+			'cities'
+		])
 	},
 	methods: {
 		fetchBusinesses(url) {
@@ -81,11 +85,6 @@ export default {
 				this.loading = false;
 				this.businesses = response.data.data.businesses;
 				this.pagination = response.data.pagination;
-			});
-		},
-		fetchCities() {
-			axios.get('/spa/businesses/cities').then(response => {
-				this.cities = response.data.data.cities;
 			});
 		}
 	}

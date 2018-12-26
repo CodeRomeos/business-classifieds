@@ -31,7 +31,7 @@ export default {
     name: 'the-app',
     data() {
         return {
-            APP_NAME: process.env.MIX_APP_NAME
+			APP_NAME: process.env.MIX_APP_NAME
         }
     },
     created() {
@@ -39,7 +39,8 @@ export default {
             if('user' in res.data) {
                 this.$store.commit('setCurrentUser', res.data);
             }
-        });
+		});
+		this.$store.dispatch('loadCities');
     },
 	computed: {
         ...mapGetters([
@@ -53,6 +54,6 @@ export default {
 		Navbar,
 		Modal,
 		LoginModal
-    }
+	}
 }
 </script>
