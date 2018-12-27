@@ -17,7 +17,7 @@
 						<input type='text' class="input-field" value="" v-model="searchParams.keyword" placeholder="Search for...">
 					</div>
 					<div class="input-container">
-						<v-select class="input-field" :options="cities" v-model="searchParams.city"></v-select>
+						<select2 class="input-field" :options="cities" v-model="searchParams.city"></select2>
 					</div>
 					<div class="input-container">
 						<button type='submit' class="btn btn-primary btn-block"><i class='icon-magnifier icons'></i> Search</button>
@@ -42,7 +42,7 @@ import { mapGetters } from 'vuex';
 import BusinessCard from './partials/BusinessCard';
 import Sidebar from './partials/Sidebar';
 import Pagination from './partials/Pagination';
-import vSelect from 'vue-select';
+import Select2 from './partials/Select2';
 
 export default {
 	name: 'businesses',
@@ -53,7 +53,7 @@ export default {
 		BusinessCard,
         Sidebar,
 		Pagination,
-		'v-select': vSelect
+		Select2
 	},
 	data() {
 		return {
