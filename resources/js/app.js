@@ -20,6 +20,6 @@ const app = new Vue({
     store
 });
 
-$('document').ready(function() {
-	$('.select2').select2();
-});
+// $('document').ready(function() {
+// 	$('.select2').select2();
+// });

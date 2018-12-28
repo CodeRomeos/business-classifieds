@@ -17,7 +17,10 @@
 						<input type='text' class="input-field" value="" v-model="searchParams.keyword" placeholder="Search for...">
 					</div>
 					<div class="input-container">
-						<select2 class="input-field" :options="cities" v-model="searchParams.city"></select2>
+						<select2 class="input-field" :options="cities" v-model="searchParams.city">
+							<option value=''>Select city</option>
+							<option v-for='(city, index) in cities' :key='index' :value='city.slug'>{{ city.city_and_state_name }}</option>
+						</select2>
 					</div>
 					<div class="input-container">
 						<button type='submit' class="btn btn-primary btn-block"><i class='icon-magnifier icons'></i> Search</button>

@@ -11,7 +11,7 @@ export default {
 	mounted() {
 		var vm = this
 		$(this.$el)
-			.select2({ data: this.options })
+			.select2()
 			.val(this.value)
 			.trigger('change')
 			.on('change', function() {
@@ -23,9 +23,6 @@ export default {
 			$(this.$el)
 				.val(value)
 				.trigger('change')
-		},
-		options: function(options) {
-			$(this.$el).empty().select2({ data: options })
 		}
 	},
 	destroyed() {
