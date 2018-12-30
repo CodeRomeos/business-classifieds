@@ -7,13 +7,14 @@
 <script>
 export default {
 	name: 'select2',
-	props: ['options', 'value'],
+	props: ['options', 'value', 'placeholder'],
 	mounted() {
 		var vm = this
 		$(this.$el)
-			.select2()
-			.val(this.value)
-			.trigger('change')
+			.select2({
+                placeholder: this.placeholder,
+                allowClear: true
+            })
 			.on('change', function() {
 				vm.$emit('input', this.value)
 			})

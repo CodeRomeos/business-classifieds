@@ -5172,7 +5172,8 @@ p {
   margin-left: 0rem !important;
 }
 
-.pl-0 {
+.pl-0,
+.select2-container--default .select2-selection--single .select2-selection__rendered {
   padding-left: 0rem !important;
 }
 
@@ -5385,6 +5386,7 @@ p,
 
 .py-2,
 .input-field,
+.select2-container--default .select2-selection--single,
 table td {
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
@@ -6127,7 +6129,7 @@ html {
 
 .d-inline-b,
 .btn,
-.listing-search-form .input-container input[type='submit'],
+.listing-search-form .input-container input[type="submit"],
 .business-page .social-links-card a,
 .business-page span.icons {
   display: inline-block;
@@ -6147,7 +6149,7 @@ body {
 
 .text-white,
 .btn-danger {
-  color: #FFF !important;
+  color: #fff !important;
 }
 
 .text-secondary {
@@ -6224,7 +6226,7 @@ a.router-link-exact-active {
 }
 
 .list .list-item {
-  background: #FFF;
+  background: #fff;
   padding: 0.5rem 1rem;
   border-bottom: 1px solid #f3f3f6;
 }
@@ -6233,7 +6235,8 @@ a.router-link-exact-active {
   border: none;
 }
 
-.input-field {
+.input-field,
+.select2-container--default .select2-selection--single {
   width: 100%;
   border: 0;
   border-bottom: 1px solid #ddd;
@@ -6243,6 +6246,27 @@ a.router-link-exact-active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: inherit;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 34px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered .select2-selection__placeholder {
+  color: #757575;
+}
+
+.select2-container--default .select2-dropdown {
+  border-bottom-color: #ddd;
+}
+
+.select2-container--default .select2-dropdown .select2-results__option {
+  font-size: 14px;
+  color: #333;
 }
 
 header {
@@ -6336,7 +6360,7 @@ nav a,
 }
 
 .btn-primary {
-  color: #FFF;
+  color: #fff;
 }
 
 .btn-primary:hover {
@@ -6362,8 +6386,8 @@ nav a,
 }
 
 .bg-grad {
-  background-image: -webkit-gradient(linear, left top, right top, from(#4CB8C4), color-stop(51%, #3CD3AD), to(#4CB8C4));
-  background-image: linear-gradient(to right, #4CB8C4 0%, #3CD3AD 51%, #4CB8C4 100%);
+  background-image: -webkit-gradient(linear, left top, right top, from(#4cb8c4), color-stop(51%, #3cd3ad), to(#4cb8c4));
+  background-image: linear-gradient(to right, #4cb8c4 0%, #3cd3ad 51%, #4cb8c4 100%);
 }
 
 .img-fluid {
@@ -6374,20 +6398,17 @@ nav a,
 .listing-search-form .form {
   background: #f3f3f6;
   background: #f3f3f6;
-  /*
-			background: #f6f6f7;
+  /* background: #f6f6f7;
 			-webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
-			box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
-
-		*/
+			box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08); */
 }
 
-.listing-search-form .input-container input[type='submit'] {
+.listing-search-form .input-container input[type="submit"] {
   color: #fff;
 }
 
 .sidebar {
-  background: #FFF;
+  background: #fff;
 }
 
 .ratings .fa-star {
@@ -6404,7 +6425,9 @@ nav a,
 }
 
 .business-search-form .btn,
-.business-search-form .input-field {
+.business-search-form .input-field,
+.business-search-form .select2-container--default .select2-selection--single,
+.select2-container--default .business-search-form .select2-selection--single {
   height: 50px;
   line-height: 50px;
 }
@@ -6458,7 +6481,7 @@ nav a,
 }
 
 .business-page .phone-and-address .grid-col-2 {
-  grid-gap: .25rem;
+  grid-gap: 0.25rem;
   grid-template-columns: 26px 1fr;
 }
 
@@ -6487,10 +6510,10 @@ table tr:nth-child(odd) {
 }
 
 table a {
-  color: #2196F3;
+  color: #2196f3;
 }
 
-/** User Module **/
+/* * User Module * */
 
 #user-account #user-nav a {
   display: inline-block;

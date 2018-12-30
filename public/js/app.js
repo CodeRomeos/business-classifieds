@@ -54284,10 +54284,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'select2',
-	props: ['options', 'value'],
+	props: ['options', 'value', 'placeholder'],
 	mounted: function mounted() {
 		var vm = this;
-		$(this.$el).select2().val(this.value).trigger('change').on('change', function () {
+		$(this.$el).select2({
+			placeholder: this.placeholder,
+			allowClear: true
+		}).on('change', function () {
 			vm.$emit('input', this.value);
 		});
 	},
@@ -54401,7 +54404,10 @@ var render = function() {
                         "select2",
                         {
                           staticClass: "input-field",
-                          attrs: { options: _vm.cities },
+                          attrs: {
+                            options: _vm.cities,
+                            placeholder: "Select City"
+                          },
                           model: {
                             value: _vm.searchParams.city,
                             callback: function($$v) {
@@ -54411,9 +54417,7 @@ var render = function() {
                           }
                         },
                         [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Select city")
-                          ]),
+                          _c("option"),
                           _vm._v(" "),
                           _vm._l(_vm.cities, function(city, index) {
                             return _c(

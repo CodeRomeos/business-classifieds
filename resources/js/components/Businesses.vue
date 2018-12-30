@@ -17,8 +17,8 @@
 						<input type='text' class="input-field" value="" v-model="searchParams.keyword" placeholder="Search for...">
 					</div>
 					<div class="input-container">
-						<select2 class="input-field" :options="cities" v-model="searchParams.city">
-							<option value=''>Select city</option>
+						<select2 class="input-field" :options="cities" v-model="searchParams.city" placeholder='Select City'>
+                            <option></option>
 							<option v-for='(city, index) in cities' :key='index' :value='city.slug'>{{ city.city_and_state_name }}</option>
 						</select2>
 					</div>
