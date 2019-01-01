@@ -7,7 +7,11 @@
 <script>
 export default {
 	name: 'select2',
-	props: ['options', 'value', 'placeholder'],
+	props: {
+        options: { default: '' },
+        value: { default: '' },
+        placeholder: { default: '' }
+    },
 	mounted() {
 		var vm = this
 		$(this.$el)
@@ -16,14 +20,13 @@ export default {
                 allowClear: true
             })
 			.on('change', function() {
-				vm.$emit('input', this.value)
+				vm.$emit('input', $(this).val())
 			})
 	},
 	watch: {
 		value: function(value) {
-			$(this.$el)
-				.val(value)
-				.trigger('change')
+            if ([...value].sort().join(",") !== [...$(this.$el).val()].sort().join(","))
+                $(this.$el).val(value).trigger('change');
 		}
 	},
 	destroyed() {

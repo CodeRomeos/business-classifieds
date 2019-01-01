@@ -5,12 +5,16 @@ namespace App\Repositories;
 use App\Business;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use App\Repositories\Cities;
 
 class Businesses extends Repository
 {
-	public function __construct(Business $model)
+    public $cityRepo;
+
+	public function __construct(Business $model, Cities $cityRepo)
 	{
-		parent::__construct($model);
+        parent::__construct($model);
+        $this->cityRepo = $cityRepo;
 	}
 
 	public function approvedAndActive()
@@ -23,7 +27,12 @@ class Businesses extends Repository
 		$data['contacts'] = exclude_null($data['contacts']);
 		$data['emails'] = exclude_null($data['emails']);
 		$result['updated'] = $model->update($data);
-		$result['business'] = $model;
+        $result['business'] = $model;
+        if(isset($data['cities']) && !empty($data['cities']) && is_array($data['cities']))
+        {
+            $cityIds = $this->cityRepo->model()->whereIn('slug', $data['cities'])->pluck('id');
+            $model->cities()->sync($cityIds);
+        }
 		return $result;
 	}
 }

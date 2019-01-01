@@ -28,7 +28,6 @@ class BusinessUpdateRequest extends FormRequest
         return [
             'title' => 'required',
             'body' => 'required',
-            'city' => 'required',
             'address' => 'required'
         ];
     }

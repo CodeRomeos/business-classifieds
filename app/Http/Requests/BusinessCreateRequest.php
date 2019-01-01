@@ -28,7 +28,6 @@ class BusinessCreateRequest extends FormRequest
             'title' => 'required',
             'body' => 'required',
             'contacts' => 'required',
-            'city' => 'required',
             'address' => 'required',
             'emails' => 'required'
         ];

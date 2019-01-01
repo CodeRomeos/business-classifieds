@@ -22,7 +22,7 @@
                 <label for="">Cities</label>
                 <div class="input-container">
                     <!-- <input type='text' class="input-field" :class="{ 'is-invalid': errors.city}" value="" v-model="business.city"> -->
-                    <select2 class='input-field' multiple placeholder='Select City'>
+                    <select2 class='input-field' multiple v-model='businessCities' :value='businessCities'>
 						<option v-for='(city, index) in cities' :key='index' :value='city.slug'>{{ city.city_and_state_name }}</option>
                     </select2>
 					<span v-if="errors.city" class='invalid-feedback'>{{ errors.city[0] }}</span>
@@ -69,6 +69,7 @@ export default {
 	data() {
 		return {
 			business: {},
+            businessCities: [],
 			notCreated: false,
 			updating: false,
 			updateMessage: null,
@@ -95,9 +96,16 @@ export default {
 						this.notCreated = true
 					}
 					else {
-						this.business = response.data.business
+                        this.business = response.data.business;
+
+                        // this.business.cities.forEach(city => {
+
+                        //     this.businessCities.push(city.slug);
+                        // });
+                        // this.businessCities.join();
+
 						this.business.contacts = JSON.parse(this.business.contacts);
-						this.business.emails = JSON.parse(this.business.emails);
+                        this.business.emails = JSON.parse(this.business.emails);
 					}
 				})
 				.catch(error => {
@@ -115,7 +123,7 @@ export default {
                 title: this.business.title,
                 body: this.business.body,
                 contacts: this.business.contacts,
-                city: this.business.city,
+                cities: this.businessCities,
                 emails: this.business.emails,
                 address: this.business.address,
                 emails: this.business.emails
