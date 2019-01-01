@@ -55922,6 +55922,11 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_Select2__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_Select2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__partials_Select2__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 //
@@ -55976,9 +55981,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "user-business",
+	components: {
+		Select2: __WEBPACK_IMPORTED_MODULE_1__partials_Select2___default.a
+	},
+
 	created: function created() {
 		this.fetchbusiness();
 	},
@@ -55992,6 +56007,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 		};
 	},
 
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['cities'])),
 	watch: {
 		updateMessage: function updateMessage() {
 			setTimeout(function () {
@@ -56191,38 +56207,36 @@ var render = function() {
             2
           ),
           _vm._v(" "),
-          _c("label", { attrs: { for: "" } }, [_vm._v("City")]),
+          _c("label", { attrs: { for: "" } }, [_vm._v("Cities")]),
           _vm._v(" "),
-          _c("div", { staticClass: "input-container" }, [
-            _c("input", {
-              directives: [
+          _c(
+            "div",
+            { staticClass: "input-container" },
+            [
+              _c(
+                "select2",
                 {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.business.city,
-                  expression: "business.city"
-                }
-              ],
-              staticClass: "input-field",
-              class: { "is-invalid": _vm.errors.city },
-              attrs: { type: "text", value: "" },
-              domProps: { value: _vm.business.city },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.business, "city", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _vm.errors.city
-              ? _c("span", { staticClass: "invalid-feedback" }, [
-                  _vm._v(_vm._s(_vm.errors.city[0]))
-                ])
-              : _vm._e()
-          ]),
+                  staticClass: "input-field",
+                  attrs: { multiple: "", placeholder: "Select City" }
+                },
+                _vm._l(_vm.cities, function(city, index) {
+                  return _c(
+                    "option",
+                    { key: index, domProps: { value: city.slug } },
+                    [_vm._v(_vm._s(city.city_and_state_name))]
+                  )
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _vm.errors.city
+                ? _c("span", { staticClass: "invalid-feedback" }, [
+                    _vm._v(_vm._s(_vm.errors.city[0]))
+                  ])
+                : _vm._e()
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("label", { attrs: { for: "" } }, [_vm._v("Address")]),
           _vm._v(" "),

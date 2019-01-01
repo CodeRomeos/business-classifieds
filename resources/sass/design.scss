@@ -262,7 +262,31 @@ p {
             color: #333
         }
     }
+
+    .select2-selection--multiple {
+        border: 0;
+        border-bottom: 1px solid #ddd;
+        border-radius: 0px;
+        cursor: text;
+    }
+    .select2-container--focus {
+        .select2-selection--multiple {
+            border: 1px solid #2196f3
+
+        }
+    }
 }
+
+input[type=text],
+textarea,
+select {
+    &:focus {
+        border: 1px solid #2196f3
+    }
+}
+
+
+
 
 header {
     grid-area: header;

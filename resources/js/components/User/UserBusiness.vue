@@ -19,9 +19,12 @@
 					</div>
 					<button type='button' class='btn' @click="business.contacts.push('')"><span class='fa fa-plus'></span></button>
                 </div>
-                <label for="">City</label>
+                <label for="">Cities</label>
                 <div class="input-container">
-                    <input type='text' class="input-field" :class="{ 'is-invalid': errors.city}" value="" v-model="business.city">
+                    <!-- <input type='text' class="input-field" :class="{ 'is-invalid': errors.city}" value="" v-model="business.city"> -->
+                    <select2 class='input-field' multiple placeholder='Select City'>
+						<option v-for='(city, index) in cities' :key='index' :value='city.slug'>{{ city.city_and_state_name }}</option>
+                    </select2>
 					<span v-if="errors.city" class='invalid-feedback'>{{ errors.city[0] }}</span>
                 </div>
                 <label for="">Address</label>
@@ -51,8 +54,15 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import Select2 from '../partials/Select2'
+
 export default {
 	name: "user-business",
+    components: {
+        Select2
+    },
+
 	created() {
 		this.fetchbusiness()
 	},
@@ -65,6 +75,11 @@ export default {
 			errors: {}
 		}
 	},
+    computed: {
+        ...mapGetters([
+            'cities'
+        ])
+    },
 	watch: {
 		updateMessage() {
 			setTimeout(function() {
