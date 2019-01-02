@@ -87,8 +87,10 @@ export default {
 				this.updateMessage = null;
 			}.bind(this), 3000)
 		},
-		business() {
-
+		business(business) {
+			business.cities.forEach(city => {
+				this.businessCities.push(city.slug);
+			});
 		}
 	},
 	methods: {
@@ -101,10 +103,6 @@ export default {
 					}
 					else {
 						this.business = response.data.business
-
-						response.data.business.cities.forEach(city => {
-							this.businessCities.push(city.slug);
-						});
 						this.loadingForm = true;
 					}
 				})

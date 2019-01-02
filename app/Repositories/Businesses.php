@@ -28,7 +28,7 @@ class Businesses extends Repository
 		$data['emails'] = exclude_null($data['emails']);
 		$result['updated'] = $model->update($data);
         $result['business'] = $model;
-        if(isset($data['cities']) && !empty($data['cities']) && is_array($data['cities']))
+        if(isset($data['cities']) && is_array($data['cities']))
         {
             $cityIds = $this->cityRepo->model()->whereIn('slug', $data['cities'])->pluck('id');
             $model->cities()->sync($cityIds);

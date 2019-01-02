@@ -56035,28 +56035,30 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 				this.updateMessage = null;
 			}.bind(this), 3000);
 		},
-		business: function business() {}
+		business: function business(_business) {
+			var _this = this;
+
+			_business.cities.forEach(function (city) {
+				_this.businessCities.push(city.slug);
+			});
+		}
 	},
 	methods: {
 		fetchbusiness: function fetchbusiness() {
-			var _this = this;
+			var _this2 = this;
 
 			this.loadingForm = false;
 			axios.get('/spa/user/business').then(function (response) {
 				if (response.data.notCreated) {
-					_this.notCreated = true;
+					_this2.notCreated = true;
 				} else {
-					_this.business = response.data.business;
-
-					response.data.business.cities.forEach(function (city) {
-						_this.businessCities.push(city.slug);
-					});
-					_this.loadingForm = true;
+					_this2.business = response.data.business;
+					_this2.loadingForm = true;
 				}
 			}).catch(function (error) {});
 		},
 		postBusinessForm: function postBusinessForm() {
-			var _this2 = this;
+			var _this3 = this;
 
 			this.updating = true;
 			var url = '/spa/user/business/' + this.business.id + '/update';
@@ -56074,13 +56076,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 			}, 'emails', this.business.emails);
 
 			axios.post(url, params).then(function (response) {
-				_this2.updating = false;
-				_this2.business = response.data.business;
-				_this2.updateMessage = 'Updated successfully!';
+				_this3.updating = false;
+				_this3.business = response.data.business;
+				_this3.updateMessage = 'Updated successfully!';
 			}).catch(function (error) {
-				_this2.updating = false;
+				_this3.updating = false;
 				//console.log(error.request);
-				_this2.errors = error.response.data.errors;
+				_this3.errors = error.response.data.errors;
 			});
 		}
 	}
