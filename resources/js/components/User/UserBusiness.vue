@@ -1,7 +1,7 @@
 <template>
     <div id='user-business' class='card'>
         <h3 class='page-heading'>My Business Page <small>Create your free business page.</small></h3>
-        <form @submit.prevent="postBusinessForm" class='mt-4'>
+        <form @submit.prevent="postBusinessForm" class='mt-4' v-if='loadingForm'>
             <div class="grid-col-1-2">
                 <label for="">Title</label>
                 <div class="input-container">
@@ -22,10 +22,9 @@
                 <label for="">Cities</label>
                 <div class="input-container">
                     <!-- <input type='text' class="input-field" :class="{ 'is-invalid': errors.city}" value="" v-model="business.city"> -->
-                    <select2 class='input-field' multiple v-model='businessCities' :value='businessCities'>
+                    <select2 class='input-field' multiple v-model='businessCities'>
 						<option v-for='(city, index) in cities' :key='index' :value='city.slug'>{{ city.city_and_state_name }}</option>
                     </select2>
-					<span v-if="errors.city" class='invalid-feedback'>{{ errors.city[0] }}</span>
                 </div>
                 <label for="">Address</label>
                 <div class="input-container">
@@ -73,7 +72,8 @@ export default {
 			notCreated: false,
 			updating: false,
 			updateMessage: null,
-			errors: {}
+			errors: {},
+			loadingForm: false
 		}
 	},
     computed: {
@@ -86,26 +86,26 @@ export default {
 			setTimeout(function() {
 				this.updateMessage = null;
 			}.bind(this), 3000)
+		},
+		business() {
+
 		}
 	},
 	methods: {
 		fetchbusiness() {
+			this.loadingForm = false;
 			axios.get('/spa/user/business')
 				.then(response => {
 					if(response.data.notCreated) {
 						this.notCreated = true
 					}
 					else {
-                        this.business = response.data.business;
+						this.business = response.data.business
 
-                        // this.business.cities.forEach(city => {
-
-                        //     this.businessCities.push(city.slug);
-                        // });
-                        // this.businessCities.join();
-
-						this.business.contacts = JSON.parse(this.business.contacts);
-                        this.business.emails = JSON.parse(this.business.emails);
+						response.data.business.cities.forEach(city => {
+							this.businessCities.push(city.slug);
+						});
+						this.loadingForm = true;
 					}
 				})
 				.catch(error => {

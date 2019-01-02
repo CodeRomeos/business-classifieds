@@ -14,19 +14,35 @@ export default {
     },
 	mounted() {
 		var vm = this
-		$(this.$el)
+
+		var select = $(this.$el)
+		select
 			.select2({
-                placeholder: this.placeholder,
+				placeholder: this.placeholder,
                 allowClear: true
-            })
+		 	})
+			.val(this.value)
+			.trigger('change')
 			.on('change', function() {
-				vm.$emit('input', $(this).val())
-			})
+				vm.$emit('input', select.val())
+			});
+
+	},
+	beforeUpdate() {
+		this.$nextTick(function() {
+			this.triggerValueChange(this.value);
+		});
 	},
 	watch: {
 		value: function(value) {
-            if ([...value].sort().join(",") !== [...$(this.$el).val()].sort().join(","))
+			this.triggerValueChange(value)
+		}
+	},
+	methods: {
+		triggerValueChange(value) {
+			if ([...value].sort().join(",") !== [...$(this.$el).val()].sort().join(",")){
                 $(this.$el).val(value).trigger('change');
+			}
 		}
 	},
 	destroyed() {
