@@ -20,12 +20,14 @@ class CreateBusinessesTable extends Migration
             $table->string('title');
             $table->longText('body')->nullable()->default(null);
             $table->string('image')->nullable();
-            $table->longText('contacts')->nullable()->default(null);
+			$table->longText('contacts')->nullable()->default(null);
+			$table->longText('highlights')->nullable()->default(null);
             $table->longText('urls')->nullable()->default(null);
             $table->longText('address')->nullable()->default(null);
             $table->longText('emails')->nullable()->default(null);
             $table->boolean('is_active', 1)->nullable()->default(null);
-            $table->timestamp('approved_at')->nullable()->default(null);
+			$table->timestamp('approved_at')->nullable()->default(null);
+			$table->softDeletes();
             $table->timestamps();
         });
     }

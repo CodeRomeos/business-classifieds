@@ -5,12 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class State extends Model
+class Product extends Model
 {
 	use SoftDeletes;
 
-    public function cities()
+	public function business()
 	{
-		return $this->hasMany('App\City');
+		return $this->belongsTo('App\Business');
 	}
 }

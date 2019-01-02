@@ -15,7 +15,9 @@ class BusinessController extends Controller
     {
         $data = [];
         $limit = $request->has('limit') ? $request->get('limit') : 8;
-        $businesses =  $repo->approvedAndActive()->orderBy('title');
+
+		$businesses =  $repo->approvedAndActive()->with('cities', 'products', 'services')->orderBy('title');
+
         if ($request->has('keyword') && !empty($request->keyword)) {
             $keyword = $request->get('keyword');
             $businesses = $businesses->where('title', 'LIKE', "%". $keyword . "%");
