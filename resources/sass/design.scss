@@ -269,19 +269,45 @@ p {
         border-radius: 0px;
         cursor: text;
     }
-    .select2-container--focus {
-        .select2-selection--multiple {
-            border: 1px solid #2196f3
+    // .select2-container--focus {
+    //     .select2-selection--multiple {
+    //         border: 1px solid #2196f3 !important
+    //     }
+	// }
+	.select2-selection--multiple {
+		border: 1px solid transparent;
+		border-bottom: 1px solid #ddd;
 
-        }
-    }
+		.select2-selection__choice {
+			@extend .border-0;
+			border-radius: 0;
+			@extend .px-2;
+			@extend .py-1;
+			background-color: #e0f7c7 !important;
+		}
+		.select2-selection__choice__remove {
+			@extend .mr-1
+		}
+	}
+}
+
+.outline-design {
+	outline-color: rgb(77, 144, 254);
+	outline-style: auto;
+	outline-width: 5px;
+	outline-offset: -2px;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+	border: 1px solid transparent;
+	@extend .outline-design
 }
 
 input[type=text],
 textarea,
 select {
     &:focus {
-        border: 1px solid #2196f3
+		@extend .outline-design
     }
 }
 
