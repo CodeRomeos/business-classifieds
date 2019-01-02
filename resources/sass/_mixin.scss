@@ -6,6 +6,12 @@
     }
 }
 
+@for $i from 11 through 40 {
+    .fs-#{$i} {
+        font-size: #{$i}px;
+    }
+}
+
 // Transitions
 @mixin transition( $property: all, $duration: 0.4s, $ttf: ease-out) {
     -webkit-transition: $property $duration $ttf;

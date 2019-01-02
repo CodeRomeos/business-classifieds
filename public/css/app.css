@@ -104,11 +104,19 @@
   float: right;
 }
 
-.pull-left {
+.pull-left,
+#userBusinessServices .serviceProductInputCard,
+#userBusinessProducts .serviceProductInputCard,
+#userBusinessServices .btn-bigAddMore,
+#userBusinessProducts .btn-bigAddMore {
   float: left;
 }
 
-.fa.pull-left {
+.fa.pull-left,
+#userBusinessServices .fa.serviceProductInputCard,
+#userBusinessProducts .fa.serviceProductInputCard,
+#userBusinessServices .fa.btn-bigAddMore,
+#userBusinessProducts .fa.btn-bigAddMore {
   margin-right: .3em;
 }
 
@@ -5111,6 +5119,127 @@ th {
   padding: 0;
 }
 
+.fs-11 {
+  font-size: 11px;
+}
+
+.fs-12 {
+  font-size: 12px;
+}
+
+.fs-13 {
+  font-size: 13px;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.fs-15 {
+  font-size: 15px;
+}
+
+.fs-16 {
+  font-size: 16px;
+}
+
+.fs-17 {
+  font-size: 17px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.fs-19 {
+  font-size: 19px;
+}
+
+.fs-20 {
+  font-size: 20px;
+}
+
+.fs-21 {
+  font-size: 21px;
+}
+
+.fs-22 {
+  font-size: 22px;
+}
+
+.fs-23 {
+  font-size: 23px;
+}
+
+.fs-24 {
+  font-size: 24px;
+}
+
+.fs-25 {
+  font-size: 25px;
+}
+
+.fs-26 {
+  font-size: 26px;
+}
+
+.fs-27 {
+  font-size: 27px;
+}
+
+.fs-28 {
+  font-size: 28px;
+}
+
+.fs-29 {
+  font-size: 29px;
+}
+
+.fs-30 {
+  font-size: 30px;
+}
+
+.fs-31 {
+  font-size: 31px;
+}
+
+.fs-32 {
+  font-size: 32px;
+}
+
+.fs-33 {
+  font-size: 33px;
+}
+
+.fs-34 {
+  font-size: 34px;
+}
+
+.fs-35,
+.btn-bigAddMore {
+  font-size: 35px;
+}
+
+.fs-36 {
+  font-size: 36px;
+}
+
+.fs-37 {
+  font-size: 37px;
+}
+
+.fs-38 {
+  font-size: 38px;
+}
+
+.fs-39 {
+  font-size: 39px;
+}
+
+.fs-40 {
+  font-size: 40px;
+}
+
 .m-0,
 .business-page h4,
 #user-account #user-nav .card {
@@ -5335,7 +5464,9 @@ nav,
 
 .mb-2,
 p,
-.business-page h4 {
+.business-page h4,
+#userBusinessServices .serviceProductInputCard,
+#userBusinessProducts .serviceProductInputCard {
   margin-bottom: 0.5rem !important;
 }
 
@@ -5360,7 +5491,9 @@ p,
   border-left: 2px solid #ddd;
 }
 
-.mr-2 {
+.mr-2,
+#userBusinessServices .serviceProductInputCard,
+#userBusinessProducts .serviceProductInputCard {
   margin-right: 0.5rem !important;
 }
 
@@ -5391,6 +5524,7 @@ p,
 .py-2,
 .input-field,
 .select2-container--default .select2-selection--single,
+.btn-bigAddMore,
 table td {
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
@@ -5551,6 +5685,7 @@ table td {
 }
 
 .px-4,
+.btn-bigAddMore,
 .sidebar {
   padding-left: 1.5rem !important;
   padding-right: 1.5rem !important;
@@ -6064,7 +6199,11 @@ html input[disabled] {
   color: #847a7a;
 }
 
-.pull-left {
+.pull-left,
+#userBusinessServices .serviceProductInputCard,
+#userBusinessProducts .serviceProductInputCard,
+#userBusinessServices .btn-bigAddMore,
+#userBusinessProducts .btn-bigAddMore {
   float: left;
 }
 
@@ -6116,7 +6255,9 @@ html input[disabled] {
   right: 0;
 }
 
-.clearfix::after {
+.clearfix::after,
+#userBusinessServices::after,
+#userBusinessProducts::after {
   display: block;
   clear: both;
   content: "";
@@ -6175,7 +6316,8 @@ body {
 
 .bg-white,
 .modal-container,
-.hero {
+.hero,
+.btn-bigAddMore {
   background-color: #FFF !important;
 }
 
@@ -6426,6 +6568,11 @@ nav a,
   background-image: linear-gradient(to right, #4cb8c4 0%, #3cd3ad 51%, #4cb8c4 100%);
 }
 
+.btn-bigAddMore {
+  border: 3px dashed #ddd;
+  color: #aaa;
+}
+
 .img-fluid {
   max-width: 100%;
   height: auto;
@@ -6572,6 +6719,15 @@ table a {
 
 .businesspage-u-activity .fa {
   font-size: 1.8rem;
+}
+
+.serviceProductInputCard {
+  border: 1px solid red;
+}
+
+#userBusinessServices .serviceProductInputCard,
+#userBusinessProducts .serviceProductInputCard {
+  width: 200px;
 }
 
 .fade-enter-active,

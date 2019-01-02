@@ -447,6 +447,16 @@ nav {
         #4cb8c4 100%
     );
 }
+
+.btn-bigAddMore {
+    @extend .px-4;
+    @extend .py-2;
+    @extend .bg-white;
+    @extend .fs-35;
+    border: 3px dashed #ddd;
+    color: #aaa
+}
+
 // .btn-md{
 // @include button-size( 5px, 15px, .8rem, 1.5, 0, white)
 // }
@@ -619,5 +629,23 @@ table {
 #user-main {
     > .card {
         @extend .mb-0;
+    }
+}
+
+.serviceProductInputCard {
+    border: 1px solid red
+}
+
+#userBusinessServices,
+#userBusinessProducts {
+    @extend .clearfix;
+    .serviceProductInputCard {
+        @extend .pull-left;
+        @extend .mr-2;
+        @extend .mb-2;
+        width: 200px
+    }
+    .btn-bigAddMore {
+        @extend .pull-left;
     }
 }

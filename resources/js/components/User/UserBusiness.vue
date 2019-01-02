@@ -1,7 +1,7 @@
 <template>
     <div id='user-business' class='card'>
         <h3 class='page-heading'>My Business Page <small>Create your free business page.</small></h3>
-        <form @submit.prevent="postBusinessForm" class='mt-4' v-if='loadingForm'>
+        <form @submit.prevent="postBusinessForm" class='my-4' v-if='loadingForm'>
             <div class="grid-col-1-2">
                 <label for="">Title</label>
                 <div class="input-container">
@@ -47,19 +47,29 @@
 					<span v-if='updateMessage && !updating'>{{ updateMessage }}</span>
                 </div>
             </div>
-
         </form>
+
+        <user-business-services :services='business.services'>
+            <h4 class="h4">Services</h4>
+        </user-business-services>
+        <user-business-products :products='business.products'>
+            <h4 class="h4">Products</h4>
+        </user-business-products>
     </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import Select2 from '../partials/Select2'
+import UserBusinessServices from './BusinessServices'
+import UserBusinessProducts from './BusinessProducts'
 
 export default {
 	name: "user-business",
     components: {
-        Select2
+        Select2,
+        UserBusinessServices,
+        UserBusinessProducts
     },
 
 	created() {
