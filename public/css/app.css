@@ -9,7 +9,7 @@
  * -------------------------- */
 
 @font-face {
-  font-family: 'FontAwesome';
+  font-family: "FontAwesome";
   src: url(/fonts/vendor/font-awesome/fontawesome-webfont.eot?674f50d287a8c48dc19ba404d20fe713);
   src: url(/fonts/vendor/font-awesome/fontawesome-webfont.eot?674f50d287a8c48dc19ba404d20fe713) format("embedded-opentype"), url(/fonts/vendor/font-awesome/fontawesome-webfont.woff2?af7ae505a9eed503f8b8e6982036873e) format("woff2"), url(/fonts/vendor/font-awesome/fontawesome-webfont.woff?fee66e712a8a08eef5805a46892932ad) format("woff"), url(/fonts/vendor/font-awesome/fontawesome-webfont.ttf?b06871f281fee6b241d60582ae9369b9) format("truetype"), url(/fonts/vendor/font-awesome/fontawesome-webfont.svg?912ec66d7572ff821749319396470bde) format("svg");
   font-weight: normal;
@@ -28,7 +28,7 @@
 /* makes the font 33% larger relative to the icon container */
 
 .fa-lg {
-  font-size: 1.33333333em;
+  font-size: 1.3333333333em;
   line-height: 0.75em;
   vertical-align: -15%;
 }
@@ -50,13 +50,13 @@
 }
 
 .fa-fw {
-  width: 1.28571429em;
+  width: 1.2857142857em;
   text-align: center;
 }
 
 .fa-ul {
   padding-left: 0;
-  margin-left: 2.14285714em;
+  margin-left: 2.1428571429em;
   list-style-type: none;
 }
 
@@ -66,20 +66,20 @@
 
 .fa-li {
   position: absolute;
-  left: -2.14285714em;
-  width: 2.14285714em;
-  top: 0.14285714em;
+  left: -2.1428571429em;
+  width: 2.1428571429em;
+  top: 0.1428571429em;
   text-align: center;
 }
 
 .fa-li.fa-lg {
-  left: -1.85714286em;
+  left: -1.8571428571em;
 }
 
 .fa-border {
-  padding: .2em .25em .15em;
+  padding: 0.2em 0.25em 0.15em;
   border: solid 0.08em #eee;
-  border-radius: .1em;
+  border-radius: 0.1em;
 }
 
 .fa-pull-left {
@@ -91,11 +91,11 @@
 }
 
 .fa.fa-pull-left {
-  margin-right: .3em;
+  margin-right: 0.3em;
 }
 
 .fa.fa-pull-right {
-  margin-left: .3em;
+  margin-left: 0.3em;
 }
 
 /* Deprecated as of 4.4.0 */
@@ -105,23 +105,23 @@
 }
 
 .pull-left,
-#userBusinessServices .serviceProductInputCard,
-#userBusinessProducts .serviceProductInputCard,
 #userBusinessServices .btn-bigAddMore,
-#userBusinessProducts .btn-bigAddMore {
+#userBusinessProducts .btn-bigAddMore,
+#userBusinessServices .serviceProductInputCard,
+#userBusinessProducts .serviceProductInputCard {
   float: left;
 }
 
 .fa.pull-left,
-#userBusinessServices .fa.serviceProductInputCard,
-#userBusinessProducts .fa.serviceProductInputCard,
 #userBusinessServices .fa.btn-bigAddMore,
-#userBusinessProducts .fa.btn-bigAddMore {
-  margin-right: .3em;
+#userBusinessProducts .fa.btn-bigAddMore,
+#userBusinessServices .fa.serviceProductInputCard,
+#userBusinessProducts .fa.serviceProductInputCard {
+  margin-right: 0.3em;
 }
 
 .fa.pull-right {
-  margin-left: .3em;
+  margin-left: 0.3em;
 }
 
 .fa-spin {
@@ -4027,8 +4027,7 @@
 }
 
 .select2-container {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   display: inline-block;
   margin: 0;
   position: relative;
@@ -4036,8 +4035,7 @@
 }
 
 .select2-container .select2-selection--single {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   cursor: pointer;
   display: block;
   height: 28px;
@@ -4060,14 +4058,13 @@
   position: relative;
 }
 
-.select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered {
+.select2-container[dir=rtl] .select2-selection--single .select2-selection__rendered {
   padding-right: 8px;
   padding-left: 20px;
 }
 
 .select2-container .select2-selection--multiple {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   cursor: pointer;
   display: block;
   min-height: 32px;
@@ -4090,8 +4087,7 @@
 }
 
 .select2-container .select2-search--inline .select2-search__field {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border: none;
   font-size: 100%;
   margin-top: 5px;
@@ -4106,8 +4102,7 @@
   background-color: white;
   border: 1px solid #aaa;
   border-radius: 4px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   display: block;
   position: absolute;
   left: -100000px;
@@ -4161,8 +4156,7 @@
 .select2-search--dropdown .select2-search__field {
   padding: 4px;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .select2-search--dropdown .select2-search__field::-webkit-search-cancel-button {
@@ -4246,11 +4240,11 @@
   width: 0;
 }
 
-.select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__clear {
+.select2-container--default[dir=rtl] .select2-selection--single .select2-selection__clear {
   float: left;
 }
 
-.select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__arrow {
+.select2-container--default[dir=rtl] .select2-selection--single .select2-selection__arrow {
   left: 1px;
   right: auto;
 }
@@ -4277,8 +4271,7 @@
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__rendered {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   list-style: none;
   margin: 0;
   padding: 0 5px;
@@ -4326,18 +4319,18 @@
   color: #333;
 }
 
-.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice,
-.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__placeholder,
-.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-search--inline {
+.select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__choice,
+.select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__placeholder,
+.select2-container--default[dir=rtl] .select2-selection--multiple .select2-search--inline {
   float: right;
 }
 
-.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice {
+.select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__choice {
   margin-left: 5px;
   margin-right: auto;
 }
 
-.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice__remove {
+.select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__choice__remove {
   margin-left: 2px;
   margin-right: auto;
 }
@@ -4376,8 +4369,7 @@
   background: transparent;
   border: none;
   outline: 0;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   -webkit-appearance: textfield;
 }
 
@@ -4447,10 +4439,9 @@
   border: 1px solid #aaa;
   border-radius: 4px;
   outline: 0;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, white), to(#eeeeee));
   background-image: linear-gradient(to bottom, white 50%, #eeeeee 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFEEEEEE', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFFFF", endColorstr="#FFEEEEEE", GradientType=0);
 }
 
 .select2-container--classic .select2-selection--single:focus {
@@ -4484,10 +4475,9 @@
   top: 1px;
   right: 1px;
   width: 20px;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #eeeeee), to(#cccccc));
   background-image: linear-gradient(to bottom, #eeeeee 50%, #cccccc 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEEEEEE', endColorstr='#FFCCCCCC', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FFEEEEEE", endColorstr="#FFCCCCCC", GradientType=0);
 }
 
 .select2-container--classic .select2-selection--single .select2-selection__arrow b {
@@ -4503,11 +4493,11 @@
   width: 0;
 }
 
-.select2-container--classic[dir="rtl"] .select2-selection--single .select2-selection__clear {
+.select2-container--classic[dir=rtl] .select2-selection--single .select2-selection__clear {
   float: left;
 }
 
-.select2-container--classic[dir="rtl"] .select2-selection--single .select2-selection__arrow {
+.select2-container--classic[dir=rtl] .select2-selection--single .select2-selection__arrow {
   border: none;
   border-right: 1px solid #aaa;
   border-radius: 0;
@@ -4535,20 +4525,18 @@
   border-top: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(white), color-stop(50%, #eeeeee));
   background-image: linear-gradient(to bottom, white 0%, #eeeeee 50%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFEEEEEE', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFFFF", endColorstr="#FFEEEEEE", GradientType=0);
 }
 
 .select2-container--classic.select2-container--open.select2-container--below .select2-selection--single {
   border-bottom: none;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #eeeeee), to(white));
   background-image: linear-gradient(to bottom, #eeeeee 50%, white 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEEEEEE', endColorstr='#FFFFFFFF', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FFEEEEEE", endColorstr="#FFFFFFFF", GradientType=0);
 }
 
 .select2-container--classic .select2-selection--multiple {
@@ -4596,13 +4584,13 @@
   color: #555;
 }
 
-.select2-container--classic[dir="rtl"] .select2-selection--multiple .select2-selection__choice {
+.select2-container--classic[dir=rtl] .select2-selection--multiple .select2-selection__choice {
   float: right;
   margin-left: 5px;
   margin-right: auto;
 }
 
-.select2-container--classic[dir="rtl"] .select2-selection--multiple .select2-selection__choice__remove {
+.select2-container--classic[dir=rtl] .select2-selection--multiple .select2-selection__choice__remove {
   margin-left: 2px;
   margin-right: auto;
 }
@@ -4630,8 +4618,7 @@
 
 .select2-container--classic .select2-search--inline .select2-search__field {
   outline: 0;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 .select2-container--classic .select2-dropdown {
@@ -4891,8 +4878,7 @@ figure {
  */
 
 hr {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
   height: 0;
 }
 
@@ -4973,9 +4959,9 @@ select {
  */
 
 button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+html input[type=button],
+input[type=reset],
+input[type=submit] {
   -webkit-appearance: button;
   /* 2 */
   cursor: pointer;
@@ -5018,10 +5004,9 @@ input {
  * 2. Remove excess padding in IE 8/9/10.
  */
 
-input[type="checkbox"],
-input[type="radio"] {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+input[type=checkbox],
+input[type=radio] {
+  box-sizing: border-box;
   /* 1 */
   padding: 0;
   /* 2 */
@@ -5033,8 +5018,8 @@ input[type="radio"] {
  * decrement button to change from `default` to `text`.
  */
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -5044,10 +5029,9 @@ input[type="number"]::-webkit-outer-spin-button {
  *    (include `-moz` to future-proof).
  */
 
-input[type="search"] {
+input[type=search] {
   -webkit-appearance: textfield;
   /* 1 */
-  -webkit-box-sizing: content-box;
   /* 2 */
   box-sizing: content-box;
 }
@@ -5058,8 +5042,8 @@ input[type="search"] {
  * padding (and `textfield` appearance).
  */
 
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -5241,15 +5225,15 @@ th {
 }
 
 .m-0,
-.business-page h4,
-#user-account #user-nav .card {
+#user-account #user-nav .card,
+.business-page h4 {
   margin: 0rem !important;
 }
 
 .p-0,
+.business-search-form .btn,
 ul,
-ol,
-.business-search-form .btn {
+ol {
   padding: 0rem !important;
 }
 
@@ -5259,6 +5243,7 @@ ol,
 }
 
 .mt-0,
+p,
 h1,
 h2,
 h3,
@@ -5270,8 +5255,7 @@ h6,
 .h3,
 .h4,
 .h5,
-.h6,
-p {
+.h6 {
   margin-top: 0rem !important;
 }
 
@@ -5284,9 +5268,9 @@ p {
 }
 
 .mb-0,
-.card .card-title,
+#user-main > .card,
 .business-page .card,
-#user-main > .card {
+.card .card-title {
   margin-bottom: 0rem !important;
 }
 
@@ -5435,13 +5419,13 @@ header {
 }
 
 .p-2,
-nav a,
-.header-mid a,
+#user-account #user-nav a,
+.how-it-works li,
 .navbar-brand,
 .header-mid,
 nav,
-.how-it-works li,
-#user-account #user-nav a {
+nav a,
+.header-mid a {
   padding: 0.5rem !important;
 }
 
@@ -5463,10 +5447,10 @@ nav,
 }
 
 .mb-2,
-p,
-.business-page h4,
 #userBusinessServices .serviceProductInputCard,
-#userBusinessProducts .serviceProductInputCard {
+#userBusinessProducts .serviceProductInputCard,
+.business-page h4,
+p {
   margin-bottom: 0.5rem !important;
 }
 
@@ -5522,10 +5506,10 @@ p,
 }
 
 .py-2,
-.input-field,
-.select2-container--default .select2-selection--single,
+table td,
 .btn-bigAddMore,
-table td {
+.input-field,
+.select2-container--default .select2-selection--single {
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
 }
@@ -5535,10 +5519,10 @@ table td {
 }
 
 .p-3,
-.modal-wrapper,
-.card,
+.business-search-form,
 .listing-search-form .form,
-.business-search-form {
+.card,
+.modal-wrapper {
   padding: 1rem !important;
 }
 
@@ -5603,8 +5587,8 @@ nav {
 }
 
 .px-3,
-.container,
-table td {
+table td,
+.container {
   padding-left: 1rem !important;
   padding-right: 1rem !important;
 }
@@ -5685,8 +5669,8 @@ table td {
 }
 
 .px-4,
-.btn-bigAddMore,
-.sidebar {
+.sidebar,
+.btn-bigAddMore {
   padding-left: 1.5rem !important;
   padding-right: 1.5rem !important;
 }
@@ -5806,31 +5790,31 @@ table td {
 }
 
 .d-grid,
-.app-grid,
-.homepage-container,
-header,
-.listing-search-form form,
-.business-card,
-.business-card .card-footer,
-.business-cards,
-.business-search-form,
-.hero .how-it-works,
-.business-page,
-.grid-col-4,
-.grid-col-2,
+#user-account,
 .grid-col-1-2,
-#user-account {
+.grid-col-2,
+.grid-col-4,
+.business-page,
+.hero .how-it-works,
+.business-search-form,
+.business-cards,
+.business-card .card-footer,
+.business-card,
+.listing-search-form form,
+header,
+.homepage-container,
+.app-grid {
   display: grid;
 }
 
 .app-grid {
-  grid-template-areas: "header" "main" "footer";
+  grid-template-areas: "header" "main" "footer";
 }
 
 @media (min-width: 576px) {
   .app-grid {
     grid-template-columns: 10px 250px auto 250px 10px;
-    grid-template-areas: "header header header header header" "main main main main main" "footer footer footer footer footer";
+    grid-template-areas: "header header header header header" "main main main main main" "footer footer footer footer footer";
   }
 }
 
@@ -5847,15 +5831,13 @@ header,
 }
 
 .homepage-container {
-  grid-template-areas: "content" "hero";
+  grid-template-areas: "content" "hero";
 }
 
 header {
   grid-template-columns: 1fr 1fr;
-  grid-template-areas: "navbarbrand nav" "headermid headermid";
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  grid-template-areas: "navbarbrand nav" "headermid headermid";
+  align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -5879,13 +5861,13 @@ header {
 
 @media (min-width: 576px) {
   .listing-search-form form {
-    grid-template-columns: 1.20fr 1.20fr 0.6fr;
+    grid-template-columns: 1.2fr 1.2fr 0.6fr;
   }
 }
 
 @media (min-width: 768px) {
   .listing-search-form form {
-    grid-template-columns: 1.20fr 1.20fr 0.6fr;
+    grid-template-columns: 1.2fr 1.2fr 0.6fr;
   }
 }
 
@@ -5908,17 +5890,17 @@ header {
 
 .businesses {
   /*
-	@extend .d-grid;
-	grid-template-areas:
-	"sidebar"
-	"businesscards";
-	grid-gap: 8px;
-
-	@include desktop {
-		grid-template-columns: 300px auto;
-		grid-template-areas:
-		"sidebar businesscards"
-	}*/
+  	@extend .d-grid;
+  	grid-template-areas:
+  	"sidebar"
+  	"businesscards";
+  	grid-gap: 8px;
+  
+  	@include desktop {
+  		grid-template-columns: 300px auto;
+  		grid-template-areas:
+  		"sidebar businesscards"
+  	}*/
 }
 
 .business-cards {
@@ -5966,13 +5948,13 @@ header {
 
 .business-page {
   grid-gap: 1rem;
-  grid-template-areas: "businesspagelogo" "businesspagetitle" "businesspagephoneaddress" "businesspagebanner" "businessaboutcard" "highlightscard" "businesspageuactivity" "businesspageservices" "reviewsandfaqs";
+  grid-template-areas: "businesspagelogo" "businesspagetitle" "businesspagephoneaddress" "businesspagebanner" "businessaboutcard" "highlightscard" "businesspageuactivity" "businesspageservices" "reviewsandfaqs";
 }
 
 @media (min-width: 768px) {
   .business-page {
     grid-template-columns: 280px auto 280px;
-    grid-template-areas: "businesspagelogo businesspagebanner businesspagebanner" "businesspagetitle businesspagetitle businesspagephoneaddress" "businessaboutcard businessaboutcard businesspagephoneaddress" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard businesspageuactivity" "businesspageservices businesspageservices businesspageservices" "reviewsandfaqs reviewsandfaqs reviewsandfaqs";
+    grid-template-areas: "businesspagelogo businesspagebanner businesspagebanner" "businesspagetitle businesspagetitle businesspagephoneaddress" "businessaboutcard businessaboutcard businesspagephoneaddress" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard highlightscard" "businessaboutcard businessaboutcard businesspageuactivity" "businesspageservices businesspageservices businesspageservices" "reviewsandfaqs reviewsandfaqs reviewsandfaqs";
   }
 }
 
@@ -5980,7 +5962,7 @@ header {
   .business-page {
     grid-template-columns: 230px 50px auto 50px 200px;
     grid-template-rows: minmax(200px, 250px) auto;
-    grid-template-areas: "businesspagebanner businesspagebanner businesspagebanner businesspagephoneaddress businesspagephoneaddress" "businesspagebanner businesspagebanner businesspagebanner businesspageuactivity businesspageuactivity" "businesspagelogo businesspagelogo businesspagetitle highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices" "reviewsandfaqs reviewsandfaqs reviewsandfaqs reviewsandfaqs reviewsandfaqs";
+    grid-template-areas: "businesspagebanner businesspagebanner businesspagebanner businesspagephoneaddress businesspagephoneaddress" "businesspagebanner businesspagebanner businesspagebanner businesspageuactivity businesspageuactivity" "businesspagelogo businesspagelogo businesspagetitle highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices" "reviewsandfaqs reviewsandfaqs reviewsandfaqs reviewsandfaqs reviewsandfaqs";
   }
 }
 
@@ -5988,7 +5970,7 @@ header {
   .business-page {
     grid-template-columns: 260px 80px auto 80px 260px;
     grid-template-rows: auto;
-    grid-template-areas: "businesspagelogo businesspagelogo businesspagebanner businesspagephoneaddress businesspagephoneaddress" "businesspagetitle businesspagetitle businesspagebanner businesspageuactivity businesspageuactivity" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices" "reviewsandfaqs reviewsandfaqs reviewsandfaqs reviewsandfaqs reviewsandfaqs";
+    grid-template-areas: "businesspagelogo businesspagelogo businesspagebanner businesspagephoneaddress businesspagephoneaddress" "businesspagetitle businesspagetitle businesspagebanner businesspageuactivity businesspageuactivity" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businessaboutcard businessaboutcard businessaboutcard highlightscard highlightscard" "businesspageservices businesspageservices businesspageservices businesspageservices businesspageservices" "reviewsandfaqs reviewsandfaqs reviewsandfaqs reviewsandfaqs reviewsandfaqs";
   }
 }
 
@@ -6055,7 +6037,7 @@ header {
 }
 
 #user-account {
-  grid-template-areas: "usernav" "usermain";
+  grid-template-areas: "usernav" "usermain";
   grid-gap: 1rem;
 }
 
@@ -6082,8 +6064,7 @@ header {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: table;
-  -webkit-transition: opacity .3s ease;
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .modal-wrapper {
@@ -6094,9 +6075,7 @@ header {
 .modal-container {
   margin: 0px auto;
   max-width: 576px;
-  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-  -webkit-transition: all 0.4s ease-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.4s ease-out;
 }
 
@@ -6110,8 +6089,7 @@ header {
 *,
 *::before,
 *::after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 h1,
@@ -6200,10 +6178,10 @@ html input[disabled] {
 }
 
 .pull-left,
-#userBusinessServices .serviceProductInputCard,
-#userBusinessProducts .serviceProductInputCard,
 #userBusinessServices .btn-bigAddMore,
-#userBusinessProducts .btn-bigAddMore {
+#userBusinessProducts .btn-bigAddMore,
+#userBusinessServices .serviceProductInputCard,
+#userBusinessProducts .serviceProductInputCard {
   float: left;
 }
 
@@ -6224,8 +6202,8 @@ html input[disabled] {
 }
 
 .isRelative,
-.modal-container,
-.listing-search-form .input-container {
+.listing-search-form .input-container,
+.modal-container {
   position: relative;
 }
 
@@ -6273,10 +6251,10 @@ html {
 }
 
 .d-inline-b,
-.btn,
-.listing-search-form .input-container input[type="submit"],
+.business-page span.icons,
 .business-page .social-links-card a,
-.business-page span.icons {
+.listing-search-form .input-container input[type=submit],
+.btn {
   display: inline-block;
 }
 
@@ -6307,17 +6285,17 @@ body {
 }
 
 .bg-primary,
-.btn-primary,
-.btn-danger {
+.btn-danger,
+.btn-primary {
   background-color: #3f51b5;
   background-image: url(/images/bg-1.PNG);
   background-attachment: fixed;
 }
 
 .bg-white,
-.modal-container,
+.btn-bigAddMore,
 .hero,
-.btn-bigAddMore {
+.modal-container {
   background-color: #FFF !important;
 }
 
@@ -6332,8 +6310,8 @@ body {
 }
 
 .text-center,
-.btn,
-.business-page span.icons {
+.business-page span.icons,
+.btn {
   text-align: center;
 }
 
@@ -6389,8 +6367,6 @@ a.router-link-exact-active {
 }
 
 .input-btn-group {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -6433,10 +6409,10 @@ a.router-link-exact-active {
 }
 
 .outline-design,
-.select2-container--default.select2-container--focus .select2-selection--multiple,
 input[type=text]:focus,
 textarea:focus,
-select:focus {
+select:focus,
+.select2-container--default.select2-container--focus .select2-selection--multiple {
   outline-color: #4d90fe;
   outline-style: auto;
   outline-width: 5px;
@@ -6564,7 +6540,6 @@ nav a,
 }
 
 .bg-grad {
-  background-image: -webkit-gradient(linear, left top, right top, from(#4cb8c4), color-stop(51%, #3cd3ad), to(#4cb8c4));
   background-image: linear-gradient(to right, #4cb8c4 0%, #3cd3ad 51%, #4cb8c4 100%);
 }
 
@@ -6582,11 +6557,11 @@ nav a,
   background: #f3f3f6;
   background: #f3f3f6;
   /* background: #f6f6f7;
-			-webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
-			box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08); */
+  -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08); */
 }
 
-.listing-search-form .input-container input[type="submit"] {
+.listing-search-form .input-container input[type=submit] {
   color: #fff;
 }
 
@@ -6630,8 +6605,7 @@ nav a,
 }
 
 .business-card .card-footer {
-  -ms-flex-line-pack: center;
-      align-content: center;
+  align-content: center;
 }
 
 @media (min-width: 768px) {
@@ -6709,12 +6683,8 @@ table a {
 }
 
 .businesspage-u-activity {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .businesspage-u-activity .fa {
@@ -6732,8 +6702,7 @@ table a {
 
 .fade-enter-active,
 .fade-leave-active {
-  -webkit-transition: opacity .2s;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 }
 
 .fade-enter,
@@ -6742,12 +6711,10 @@ table a {
 }
 
 .slide-fade-enter-active {
-  -webkit-transition: all .4s ease;
-  transition: all .4s ease;
+  transition: all 0.4s ease;
 }
 
 .slide-fade-leave-active {
-  -webkit-transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
   transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
@@ -6759,12 +6726,12 @@ table a {
 }
 
 bounce-enter-active {
-  -webkit-animation: bounce-in .5s;
-          animation: bounce-in .5s;
+  -webkit-animation: bounce-in 0.5s;
+          animation: bounce-in 0.5s;
 }
 
 .bounce-leave-active {
-  animation: bounce-in .5s reverse;
+  animation: bounce-in 0.5s reverse;
 }
 
 @-webkit-keyframes bounce-in {

@@ -1,6 +1,6 @@
 {
-    "/js/app.js": "/js/app.js",
     "/console/js/console-app.js": "/console/js/console-app.js",
     "/console/css/console-app.css": "/console/css/console-app.css",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/js/app.js": "/js/app.js"
 }
