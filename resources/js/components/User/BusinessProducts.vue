@@ -1,8 +1,12 @@
 <template>
     <div id="userBusinessProducts">
         <slot></slot>
-        <service-product-input-card v-for='(product, index) in products' :key='index' :model='product'></service-product-input-card>
-        <button type='button' @click='products.push({})' class='btn btn-bigAddMore'>+</button>
+        <div class="grid-col-4">
+            <service-product-input-card :business="business" model-type='product' v-for='(product, index) in products' :key='index' :model='product'></service-product-input-card>
+            <div>
+                <button type='button' @click='products.push({ image: "", name: "", description: ""})' class='btn btn-bigAddMore'>+</button>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -11,10 +15,13 @@ import ServiceProductInputCard from './ServiceProductInputCard.vue';
 
 export default {
     name: 'user-business-products',
+    props: {
+        business: { required: true },
+        products: null
+    },
     data() {
         return {
-            business: {},
-            products: []
+
         }
     },
     components: {

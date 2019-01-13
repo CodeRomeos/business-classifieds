@@ -640,12 +640,22 @@ table {
 #userBusinessProducts {
     @extend .clearfix;
     .serviceProductInputCard {
-        @extend .pull-left;
-        @extend .mr-2;
-        @extend .mb-2;
-        width: 200px
+        // @extend .pull-left;
+        // @extend .mr-2;
+        // @extend .mb-2;
+        // width: 200px
     }
     .btn-bigAddMore {
-        @extend .pull-left;
+        // @extend .pull-left;
+    }
+}
+
+.imagePreview {
+    position: relative;
+
+    .image-controls {
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
     }
 }

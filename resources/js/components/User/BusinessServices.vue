@@ -1,8 +1,12 @@
 <template>
     <div id="userBusinessServices" class='clearfix'>
         <slot></slot>
-        <service-product-input-card v-for='(service, index) in services' :key='index' :model='service'></service-product-input-card>
-        <button type='button' @click='services.push({})' class='btn btn-bigAddMore'>+</button>
+        <div class="grid-col-4">
+            <service-product-input-card :business="business" model-type="service" v-for='(service, index) in services' :key='index' :model='service'></service-product-input-card>
+            <div>
+                <button type='button' @click='services.push({ image: "", name: "", description: ""})' class='btn btn-bigAddMore'>+</button>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -12,21 +16,20 @@ import ServiceProductInputCard from './ServiceProductInputCard.vue';
 export default {
 
     name: 'user-business-services',
+    props: {
+        business: { required: true },
+        services: null
+    },
     data() {
         return {
-            business: {},
-            services: []
+
         }
     },
     components: {
         ServiceProductInputCard
     },
     methods: {
-        submit() {
-            const formData = new FormData()
-            formData.append('myFile', this.selectedFile, this.selectedFile.name)
-            axios.post('my-domain.com/file-upload', formData)
-        }
+
     }
 }
 </script>

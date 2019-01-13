@@ -2013,14 +2013,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'user-business-products',
+  props: {
+    business: {
+      required: true
+    },
+    products: null
+  },
   data: function data() {
-    return {
-      business: {},
-      products: []
-    };
+    return {};
   },
   components: {
     ServiceProductInputCard: _ServiceProductInputCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -2047,25 +2054,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'user-business-services',
+  props: {
+    business: {
+      required: true
+    },
+    services: null
+  },
   data: function data() {
-    return {
-      business: {},
-      services: []
-    };
+    return {};
   },
   components: {
     ServiceProductInputCard: _ServiceProductInputCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  methods: {
-    submit: function submit() {
-      var formData = new FormData();
-      formData.append('myFile', this.selectedFile, this.selectedFile.name);
-      axios.post('my-domain.com/file-upload', formData);
-    }
-  }
+  methods: {}
 });
 
 /***/ }),
@@ -2101,19 +2109,62 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'service-product-input-card',
-  props: ['model'],
+  props: {
+    model: {
+      required: true
+    },
+    modelType: {
+      required: true,
+      validator: function validator(value) {
+        return ['service', 'product'].indexOf(value) !== -1;
+      }
+    },
+    business: {
+      required: true
+    }
+  },
   data: function data() {
     return {
       image: null,
       imageUrl: null
     };
   },
+  computed: {
+    actionUrl: function actionUrl() {
+      var url = '/spa/user/business/' + this.business.id + '/' + this.modelType;
+
+      if (this.model.hasOwnProperty('id')) {
+        return url + '/' + this.model.id + '/update';
+      } else {
+        return url + '/create';
+      }
+    }
+  },
   methods: {
-    onFileChange: function onFileChange() {
+    onFileChange: function onFileChange(event) {
       this.image = event.target.files[0];
       this.imageUrl = URL.createObjectURL(this.image);
+    },
+    save: function save() {
+      var formData = new FormData();
+      formData.append('image', this.image);
+      formData.append('name', this.model.name);
+      formData.append('description', this.model.description);
+      axios.post(this.actionUrl, formData).then(function (response) {
+        console.log(response.data);
+      });
     }
   }
 });
@@ -40617,25 +40668,38 @@ var render = function() {
     [
       _vm._t("default"),
       _vm._v(" "),
-      _vm._l(_vm.products, function(product, index) {
-        return _c("service-product-input-card", {
-          key: index,
-          attrs: { model: product }
-        })
-      }),
-      _vm._v(" "),
       _c(
-        "button",
-        {
-          staticClass: "btn btn-bigAddMore",
-          attrs: { type: "button" },
-          on: {
-            click: function($event) {
-              _vm.products.push({})
-            }
-          }
-        },
-        [_vm._v("+")]
+        "div",
+        { staticClass: "grid-col-4" },
+        [
+          _vm._l(_vm.products, function(product, index) {
+            return _c("service-product-input-card", {
+              key: index,
+              attrs: {
+                business: _vm.business,
+                "model-type": "product",
+                model: product
+              }
+            })
+          }),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-bigAddMore",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    _vm.products.push({ image: "", name: "", description: "" })
+                  }
+                }
+              },
+              [_vm._v("+")]
+            )
+          ])
+        ],
+        2
       )
     ],
     2
@@ -40669,25 +40733,38 @@ var render = function() {
     [
       _vm._t("default"),
       _vm._v(" "),
-      _vm._l(_vm.services, function(service, index) {
-        return _c("service-product-input-card", {
-          key: index,
-          attrs: { model: service }
-        })
-      }),
-      _vm._v(" "),
       _c(
-        "button",
-        {
-          staticClass: "btn btn-bigAddMore",
-          attrs: { type: "button" },
-          on: {
-            click: function($event) {
-              _vm.services.push({})
-            }
-          }
-        },
-        [_vm._v("+")]
+        "div",
+        { staticClass: "grid-col-4" },
+        [
+          _vm._l(_vm.services, function(service, index) {
+            return _c("service-product-input-card", {
+              key: index,
+              attrs: {
+                business: _vm.business,
+                "model-type": "service",
+                model: service
+              }
+            })
+          }),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-bigAddMore",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    _vm.services.push({ image: "", name: "", description: "" })
+                  }
+                }
+              },
+              [_vm._v("+")]
+            )
+          ])
+        ],
+        2
       )
     ],
     2
@@ -40719,10 +40796,11 @@ var render = function() {
     _c(
       "form",
       {
+        attrs: { enctype: "multipart/form-data" },
         on: {
           submit: function($event) {
             $event.preventDefault()
-            return _vm.submit($event)
+            return _vm.save($event)
           }
         }
       },
@@ -40739,7 +40817,30 @@ var render = function() {
                   })
                 ])
               ])
-            : _c("img", { attrs: { src: _vm.imageUrl } })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.image
+            ? _c("div", [
+                _c("img", { attrs: { src: _vm.imageUrl } }),
+                _vm._v(" "),
+                _c("div", { staticClass: "image-controls" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-sm btn-danger",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.image = null
+                          _vm.imageUrl = null
+                        }
+                      }
+                    },
+                    [_c("span", { staticClass: "fa fa-times" })]
+                  )
+                ])
+              ])
+            : _vm._e()
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "input-container" }, [
@@ -40788,12 +40889,27 @@ var render = function() {
               }
             }
           })
-        ])
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
       ]
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-container" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_c("span", { staticClass: "fa fa-save" }), _vm._v(" Save")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -41178,13 +41294,13 @@ var render = function() {
       _vm._v(" "),
       _c(
         "user-business-services",
-        { attrs: { services: _vm.business.services } },
+        { attrs: { business: _vm.business, services: _vm.business.services } },
         [_c("h4", { staticClass: "h4" }, [_vm._v("Services")])]
       ),
       _vm._v(" "),
       _c(
         "user-business-products",
-        { attrs: { products: _vm.business.products } },
+        { attrs: { business: _vm.business, products: _vm.business.products } },
         [_c("h4", { staticClass: "h4" }, [_vm._v("Products")])]
       )
     ],
@@ -59114,7 +59230,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! F:\wamp\www\business-classifieds.local\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\xampp\htdocs\business-classifieds\resources\js\app.js */"./resources/js/app.js");
 
 
 /***/ })

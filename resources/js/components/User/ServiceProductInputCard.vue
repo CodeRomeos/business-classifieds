@@ -1,6 +1,6 @@
 <template>
     <div class="serviceProductInputCard">
-        <form @submit.prevent="submit">
+        <form @submit.prevent="save" enctype="multipart/form-data">
             <div class="imagePreview">
                 <div class="input-container" v-if='!image'>
                     <label class='btn btn-bigAddMore'>
@@ -8,13 +8,23 @@
                         <input type="file" @change="onFileChange">
                     </label>
                 </div>
-                <img v-else :src='imageUrl'>
+                <div v-if='image'>
+                    <img :src='imageUrl'>
+                    <div class="image-controls">
+                        <button type='button' class='btn btn-sm btn-danger' @click='image = null; imageUrl = null'>
+                            <span class='fa fa-times'></span>
+                        </button>
+                    </div>
+                </div>
             </div>
             <div class="input-container">
                 <input type='text' class="input-field" value="" v-model="model.name" placeholder="Name">
             </div>
             <div class="input-container">
                 <textarea class='input-field' v-model="model.description" rows='4' placeholder="Description"></textarea>
+            </div>
+            <div class="input-container">
+                <button type='submit' class='btn btn-primary'><span class='fa fa-save'></span> Save</button>
             </div>
         </form>
     </div>
@@ -23,19 +33,46 @@
 <script>
 export default {
     name: 'service-product-input-card',
-    props: [
-        'model'
-    ],
+    props: {
+        model: { required: true },
+        modelType: {
+            required: true,
+            validator: function(value) {
+                return ['service', 'product'].indexOf(value) !== -1
+            }
+        },
+        business: { required: true }
+    },
     data() {
         return {
             image: null,
             imageUrl: null
         }
     },
+    computed: {
+        actionUrl() {
+            var url = '/spa/user/business/' + this.business.id + '/' + this.modelType
+            if(this.model.hasOwnProperty('id')) {
+                return  url + '/' + this.model.id + '/update'
+            } else {
+                return  url + '/create'
+            }
+        }
+    },
     methods: {
-        onFileChange() {
-            this.image = event.target.files[0];
-            this.imageUrl = URL.createObjectURL(this.image);
+        onFileChange(event) {
+            this.image = event.target.files[0]
+            this.imageUrl = URL.createObjectURL(this.image)
+        },
+        save() {
+            const formData = new FormData()
+            formData.append('image', this.image)
+            formData.append('name', this.model.name)
+            formData.append('description', this.model.description)
+            axios.post(this.actionUrl, formData)
+                .then(response => {
+                    console.log(response.data)
+                })
         }
     }
 }

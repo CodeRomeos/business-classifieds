@@ -45,4 +45,9 @@ class UserBusinessController extends Controller
 
 		return $this->setResponseCode(422)->respondWithError(['success' => 'false', 'update' => 'false', 'message' => 'Something went wrong. Please try again']);
     }
+
+    public function createService(Request $request, $businessId)
+    {
+        dd($request->all());
+    }
 }

@@ -104,19 +104,11 @@
   float: right;
 }
 
-.pull-left,
-#userBusinessServices .btn-bigAddMore,
-#userBusinessProducts .btn-bigAddMore,
-#userBusinessServices .serviceProductInputCard,
-#userBusinessProducts .serviceProductInputCard {
+.pull-left {
   float: left;
 }
 
-.fa.pull-left,
-#userBusinessServices .fa.btn-bigAddMore,
-#userBusinessProducts .fa.btn-bigAddMore,
-#userBusinessServices .fa.serviceProductInputCard,
-#userBusinessProducts .fa.serviceProductInputCard {
+.fa.pull-left {
   margin-right: 0.3em;
 }
 
@@ -5447,8 +5439,6 @@ nav a,
 }
 
 .mb-2,
-#userBusinessServices .serviceProductInputCard,
-#userBusinessProducts .serviceProductInputCard,
 .business-page h4,
 p {
   margin-bottom: 0.5rem !important;
@@ -5475,9 +5465,7 @@ p {
   border-left: 2px solid #ddd;
 }
 
-.mr-2,
-#userBusinessServices .serviceProductInputCard,
-#userBusinessProducts .serviceProductInputCard {
+.mr-2 {
   margin-right: 0.5rem !important;
 }
 
@@ -6177,11 +6165,7 @@ html input[disabled] {
   color: #847a7a;
 }
 
-.pull-left,
-#userBusinessServices .btn-bigAddMore,
-#userBusinessProducts .btn-bigAddMore,
-#userBusinessServices .serviceProductInputCard,
-#userBusinessProducts .serviceProductInputCard {
+.pull-left {
   float: left;
 }
 
@@ -6695,9 +6679,14 @@ table a {
   border: 1px solid red;
 }
 
-#userBusinessServices .serviceProductInputCard,
-#userBusinessProducts .serviceProductInputCard {
-  width: 200px;
+.imagePreview {
+  position: relative;
+}
+
+.imagePreview .image-controls {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
 }
 
 .fade-enter-active,

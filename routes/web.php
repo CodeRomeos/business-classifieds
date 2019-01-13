@@ -50,7 +50,14 @@ Route::namespace('Spa')->prefix('spa')->group(function() {
 
 		Route::prefix('business')->middleware(['auth', 'role:advertiser'])->group(function() {
 			Route::post('/create', 'UserBusinessController@create');
-			Route::post('/{id}/update', 'UserBusinessController@update');
+            Route::post('/{id}/update', 'UserBusinessController@update');
+
+            Route::post('/{businessId}/service/create', 'UserBusinessController@createService');
+            Route::post('/{businessId}/product/create', 'UserBusinessController@createProduct');
+
+            Route::post('/{businessId}/service/{serviceId}/update', 'UserBusinessController@updateService');
+            Route::post('/{businessId}/product/{productId}/update', 'UserBusinessController@updateProduct');
+
 			Route::get('/', 'UserBusinessController@show');
 		});
 

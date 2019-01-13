@@ -49,10 +49,10 @@
             </div>
         </form>
 
-        <user-business-services :services='business.services'>
+        <user-business-services :business='business' :services='business.services'>
             <h4 class="h4">Services</h4>
         </user-business-services>
-        <user-business-products :products='business.products'>
+        <user-business-products :business='business' :products='business.products'>
             <h4 class="h4">Products</h4>
         </user-business-products>
     </div>
