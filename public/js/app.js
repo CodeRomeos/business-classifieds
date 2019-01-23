@@ -2119,6 +2119,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'service-product-input-card',
   props: {
@@ -2138,8 +2141,18 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       image: null,
-      imageUrl: null
+      imageUrl: null,
+      saving: false
     };
+  },
+  watch: {
+    saving: function saving(value) {
+      if (value == true) {
+        setTimeout(function () {
+          this.value = false;
+        }.bind(this), 3000);
+      }
+    }
   },
   computed: {
     actionUrl: function actionUrl() {
@@ -2158,11 +2171,15 @@ __webpack_require__.r(__webpack_exports__);
       this.imageUrl = URL.createObjectURL(this.image);
     },
     save: function save() {
+      var _this = this;
+
+      this.saving = true;
       var formData = new FormData();
       formData.append('image', this.image);
       formData.append('name', this.model.name);
       formData.append('description', this.model.description);
       axios.post(this.actionUrl, formData).then(function (response) {
+        _this.saving = false;
         console.log(response.data);
       });
     }
@@ -40891,25 +40908,26 @@ var render = function() {
           })
         ]),
         _vm._v(" "),
-        _vm._m(0)
+        _c("div", { staticClass: "input-container" }, [
+          _c(
+            "button",
+            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+            [
+              _vm.saving
+                ? [
+                    _c("i", { staticClass: "fa fa-spinner fa-spin" }),
+                    _vm._v(" Saving")
+                  ]
+                : [_c("span", { staticClass: "fa fa-save" }), _vm._v(" Save")]
+            ],
+            2
+          )
+        ])
       ]
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-container" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_c("span", { staticClass: "fa fa-save" }), _vm._v(" Save")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -59230,7 +59248,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\xampp\htdocs\business-classifieds\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! F:\wamp\www\business-classifieds.local\resources\js\app.js */"./resources/js/app.js");
 
 
 /***/ })

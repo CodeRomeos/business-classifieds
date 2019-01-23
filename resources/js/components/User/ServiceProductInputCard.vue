@@ -24,7 +24,10 @@
                 <textarea class='input-field' v-model="model.description" rows='4' placeholder="Description"></textarea>
             </div>
             <div class="input-container">
-                <button type='submit' class='btn btn-primary'><span class='fa fa-save'></span> Save</button>
+                <button type='submit' class='btn btn-primary'>
+					<template v-if='saving'><i class='fa fa-spinner fa-spin'></i> Saving</template>
+					<template v-else><span class='fa fa-save'></span> Save</template>
+				</button>
             </div>
         </form>
     </div>
@@ -46,9 +49,19 @@ export default {
     data() {
         return {
             image: null,
-            imageUrl: null
+			imageUrl: null,
+			saving: false
         }
-    },
+	},
+	watch: {
+		saving(value) {
+			if(value == true) {
+				setTimeout(function() {
+					this.value = false
+				}.bind(this), 3000)
+			}
+		}
+	},
     computed: {
         actionUrl() {
             var url = '/spa/user/business/' + this.business.id + '/' + this.modelType
@@ -65,12 +78,14 @@ export default {
             this.imageUrl = URL.createObjectURL(this.image)
         },
         save() {
+			this.saving = true;
             const formData = new FormData()
             formData.append('image', this.image)
             formData.append('name', this.model.name)
             formData.append('description', this.model.description)
             axios.post(this.actionUrl, formData)
                 .then(response => {
+					this.saving = false;
                     console.log(response.data)
                 })
         }
