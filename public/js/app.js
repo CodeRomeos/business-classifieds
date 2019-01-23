@@ -2149,7 +2149,7 @@ __webpack_require__.r(__webpack_exports__);
     saving: function saving(value) {
       if (value == true) {
         setTimeout(function () {
-          this.value = false;
+          this.saving = false;
         }.bind(this), 3000);
       }
     }
@@ -2181,6 +2181,8 @@ __webpack_require__.r(__webpack_exports__);
       axios.post(this.actionUrl, formData).then(function (response) {
         _this.saving = false;
         console.log(response.data);
+      }).finally(function () {
+        _this.saving = false;
       });
     }
   }

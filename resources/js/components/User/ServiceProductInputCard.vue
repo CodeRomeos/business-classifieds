@@ -57,7 +57,7 @@ export default {
 		saving(value) {
 			if(value == true) {
 				setTimeout(function() {
-					this.value = false
+					this.saving = false
 				}.bind(this), 3000)
 			}
 		}
@@ -87,7 +87,9 @@ export default {
                 .then(response => {
 					this.saving = false;
                     console.log(response.data)
-                })
+                }).finally(() => {
+					this.saving = false;
+				})
         }
     }
 }

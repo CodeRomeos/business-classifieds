@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Spa\Controller;
 use App\Http\Requests\BusinessCreateRequest;
 use App\Http\Requests\BusinessUpdateRequest;
+use App\Http\Requests\ServiceCreateRequest;
 use App\Repositories\Businesses;
 use App\Http\Resources\Business as BusinessResource;
 
@@ -46,7 +47,7 @@ class UserBusinessController extends Controller
 		return $this->setResponseCode(422)->respondWithError(['success' => 'false', 'update' => 'false', 'message' => 'Something went wrong. Please try again']);
     }
 
-    public function createService(Request $request, $businessId)
+    public function createService(ServiceCreateRequest $request, $businessId)
     {
         dd($request->all());
     }
