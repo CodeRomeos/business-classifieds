@@ -8,6 +8,7 @@ use App\Http\Requests\BusinessCreateRequest;
 use App\Http\Requests\BusinessUpdateRequest;
 use App\Http\Requests\ServiceCreateRequest;
 use App\Repositories\Businesses;
+use App\Repositories\Services;
 use App\Http\Resources\Business as BusinessResource;
 
 class UserBusinessController extends Controller
@@ -47,8 +48,8 @@ class UserBusinessController extends Controller
 		return $this->setResponseCode(422)->respondWithError(['success' => 'false', 'update' => 'false', 'message' => 'Something went wrong. Please try again']);
     }
 
-    public function createService(ServiceCreateRequest $request, $businessId)
+    public function createService(ServiceCreateRequest $request, Services $serviceRepo, $businessId)
     {
-        dd($request->all());
+		dd($serviceRepo->create($request));
     }
 }

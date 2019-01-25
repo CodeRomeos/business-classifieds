@@ -72,6 +72,7 @@ abstract class Repository
 				$prefix = '';
 			}
 
+			/*
 			if($this->model instanceof \App\Post)
                 $folder = 'posts';
             if($this->model instanceof \App\Business)
@@ -80,6 +81,13 @@ abstract class Repository
 				$folder = 'user';
 			else
 				$folder = null;
+			*/
+
+			$folder = null;
+			if($this->model) {
+				$folder = str_slug(strtolower(str_plural(get_model_class_name($this->model))));
+			}
+
 			if($image = uploadImage($imageFile, $prefix, $folder))
 			{
 				$data['image'] = $image;
