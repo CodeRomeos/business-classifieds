@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Service;
+use App\Business;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ServiceCreateRequest extends FormRequest
@@ -14,7 +15,8 @@ class ServiceCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user()->can('create', Service::class);
+		$business = Business::find($this->route('businessId'));
+        return ($business && $this->user()->can('update', $business) && $this->user()->can('create', Service::class));
     }
 
     /**
