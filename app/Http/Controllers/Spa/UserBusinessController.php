@@ -10,6 +10,7 @@ use App\Http\Requests\ServiceCreateRequest;
 use App\Repositories\Businesses;
 use App\Repositories\Services;
 use App\Http\Resources\Business as BusinessResource;
+use App\Http\Resources\Service as ServiceResource;
 
 class UserBusinessController extends Controller
 {
@@ -50,6 +51,11 @@ class UserBusinessController extends Controller
 
     public function createService(ServiceCreateRequest $request, Services $serviceRepo, $businessId)
     {
-		dd($serviceRepo->create($request));
+		$service = $serviceRepo->createByCurrentUser($request);
+
+		if($service)
+		{
+			return $this->respond(['success' => true, 'create' => true, 'message' => 'Service created successfully', 'service' => new ServiceResource($service)]);
+		}
     }
 }

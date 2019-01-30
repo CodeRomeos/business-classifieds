@@ -28,30 +28,30 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth', 
 	});
 });
 
-Route::namespace('Spa')->prefix('spa')->group(function() {
+Route::namespace('Spa')->prefix('spa')->name('spa.')->group(function() {
 
     Route::post('login', 'Auth\LoginController@login');
     Route::get('logout', 'Auth\LoginController@logout');
     Route::post('register', 'Auth\RegisterController@register');
 
-    Route::prefix('businesses')->group(function(){
+    Route::prefix('businesses')->name('businesses.')->group(function(){
         Route::get('/cities', 'BusinessController@cities');
         Route::get('/', 'BusinessController@index');
         Route::get('/{businessid}', 'BusinessController@show');
     });
 
-	Route::prefix('user')->group(function() {
+	Route::prefix('user')->name('user.')->group(function() {
 		Route::prefix('bookmarks')->middleware(['auth', 'role:advertiser'])->group(function() {
 			Route::get('/check/{business_id}', 'UserController@getBookmarkStatus');
 			Route::post('/{business_id}', 'UserController@bookmark');
 			Route::get('/', 'UserController@bookmarks');
 		});
 
-		Route::prefix('business')->middleware(['auth', 'role:advertiser'])->group(function() {
+		Route::prefix('business')->name('business.')->middleware(['auth', 'role:advertiser'])->group(function() {
 			Route::post('/create', 'UserBusinessController@create');
             Route::post('/{id}/update', 'UserBusinessController@update');
 
-            Route::post('/{businessId}/service/create', 'UserBusinessController@createService');
+            Route::post('/{businessId}/service/create', 'UserBusinessController@createService')->name('createService');
             Route::post('/{businessId}/product/create', 'UserBusinessController@createProduct');
 
             Route::post('/{businessId}/service/{serviceId}/update', 'UserBusinessController@updateService');
