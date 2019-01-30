@@ -32,15 +32,15 @@ class ListingTest extends TestCase
 
         $response
 			->assertStatus(200)
-			// ->assertJsonFragment([
-			// 	'data' => [
-			// 		'businesses' => [
-			// 			['businessid' => '65454', 'title' => 'First Business', 'body' => 'First Body'],
-			// 			['businessid' => '654554', 'title' => 'Second Business', 'body' => 'Second Body']
-			// 		]
-			// 	],
-			// 	'pagination' => ['count' => 2, 'total' => 2, 'perPage' => 50, 'currentPage' => 1]
-			// ])
+			->assertJson([
+				'data' => [
+					'businesses' => [
+						['businessid' => '65454', 'title' => 'First Business', 'body' => 'First Body'],
+						['businessid' => '654554', 'title' => 'Second Business', 'body' => 'Second Body']
+					]
+				],
+				'pagination' => ['count' => 2, 'total' => 2, 'perPage' => 8, 'currentPage' => 1]
+			])
 			->assertSeeInOrder([
 				$business1->businessid,
 				$business2->businessid,
