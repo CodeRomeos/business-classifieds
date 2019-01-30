@@ -45,7 +45,10 @@ class UserBusinessTest extends TestCase
 		$user = $this->createAdvertiser();
 		$business = factory(Business::class)->create(['user_id' => $user->id]);
 
-		$image = UploadedFile::fake()->image('image.jpg');
+        //$image = UploadedFile::fake()->image('image.jpg');
+
+        $image = new UploadedFile(public_path('images') . '/banner1.jpg', 'test-image.jpg');
+        //Storage::disk('public/storage/uploads/images/services')->assertExists($image);
 
 		$response = $this->actingAs($user)
 						->json('POST', route('spa.user.business.createService', ['businessId' => $business->id]), [
