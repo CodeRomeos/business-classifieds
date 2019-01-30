@@ -73,8 +73,8 @@ class BookmarkTest extends TestCase
             ->get('/spa/user/bookmarks')
             ->assertStatus(200)
             ->assertJsonStructure(['data' => [
-                ['id', 'businessid', 'title', 'body', 'image', 'contacts', 'city', 'address', 'emails'],
-                ['id', 'businessid', 'title', 'body', 'image', 'contacts', 'city', 'address', 'emails']
+                ['id', 'businessid', 'title', 'body', 'image', 'contacts', 'cities', 'address', 'emails'],
+                ['id', 'businessid', 'title', 'body', 'image', 'contacts', 'cities', 'address', 'emails']
             ]]);
     }
 }

@@ -16,13 +16,13 @@ class ListingTest extends TestCase
      */
     public function test_business_listings_data()
     {
-		factory(Business::class)->create([
+		$business1 = factory(Business::class)->create([
 			'businessid' => '65454',
             'title' => 'First Business',
             'body' => 'First Body'
 		]);
 
-		factory(Business::class)->create([
+		$business2 = factory(Business::class)->create([
 			'businessid' => '654554',
             'title' => 'Second Business',
             'body' => 'Second Body'
@@ -32,14 +32,18 @@ class ListingTest extends TestCase
 
         $response
 			->assertStatus(200)
-			->assertJson([
-				'data' => [
-					'businesses' => [
-						['businessid' => '65454', 'title' => 'First Business', 'body' => 'First Body'],
-						['businessid' => '654554', 'title' => 'Second Business', 'body' => 'Second Body']
-					]
-				],
-				'pagination' => ['count' => 2, 'total' => 2, 'perPage' => 50, 'currentPage' => 1]
+			// ->assertJsonFragment([
+			// 	'data' => [
+			// 		'businesses' => [
+			// 			['businessid' => '65454', 'title' => 'First Business', 'body' => 'First Body'],
+			// 			['businessid' => '654554', 'title' => 'Second Business', 'body' => 'Second Body']
+			// 		]
+			// 	],
+			// 	'pagination' => ['count' => 2, 'total' => 2, 'perPage' => 50, 'currentPage' => 1]
+			// ])
+			->assertSeeInOrder([
+				$business1->businessid,
+				$business2->businessid,
 			])
             ->assertJsonStructure([
 				'data' => ['businesses'],

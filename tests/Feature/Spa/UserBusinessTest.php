@@ -29,7 +29,7 @@ class UserBusinessTest extends TestCase
 			->assertJson(['notCreated' => 'Business not created!']);
 	}
 
-	public function test_create_business()
+	public function create_business()
 	{
         $user = $this->createAdvertiser();
 
