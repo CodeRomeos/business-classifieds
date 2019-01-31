@@ -47,7 +47,7 @@ class UserBusinessTest extends TestCase
 
         //$image = UploadedFile::fake()->image('image.jpg');
 
-        $image = new UploadedFile(public_path('images') . '/banner1.jpg', 'test-image.jpg');
+        //$image = new UploadedFile(public_path('images') . '/banner1.jpg', 'test-image.jpg');
         //Storage::disk('public/storage/uploads/images/services')->assertExists($image);
 
 		$response = $this->actingAs($user)
@@ -59,8 +59,7 @@ class UserBusinessTest extends TestCase
 		$response = $this->actingAs($user)
 						->post(route('spa.user.business.createService', ['businessId' => $business->id]), [
 							'name' => 'Test',
-							'description' => 'Test description',
-							'image' => $image
+							'description' => 'Test description'
 						])
 						->assertStatus(200);
 	}
