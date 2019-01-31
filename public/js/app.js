@@ -2159,6 +2159,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     model: function model() {
       this.image = this.model.image;
+      this.imageUrl = this.model.imageUrl;
     }
   },
   computed: {
@@ -2190,7 +2191,6 @@ __webpack_require__.r(__webpack_exports__);
 
         if (response.data.successs) {
           _this.model = response.data[_this.modelType];
-          _this.image = _this.model.image;
         }
       }).finally(function () {
         _this.saving = false;

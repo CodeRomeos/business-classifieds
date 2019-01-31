@@ -67,6 +67,7 @@ export default {
 		},
         model() {
             this.image = this.model.image
+            this.imageUrl = this.model.imageUrl
         }
 	},
     computed: {
@@ -95,7 +96,6 @@ export default {
 					this.saving = false;
                     if(response.data.successs) {
                         this.model = response.data[this.modelType]
-                        this.image = this.model.image
                     }
                 }).finally(() => {
 					this.saving = false;

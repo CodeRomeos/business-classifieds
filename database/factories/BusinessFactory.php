@@ -21,6 +21,14 @@ $factory->define(App\Business::class, function (Faker $faker) use($cities) {
     ];
 });
 
+$factory->state(App\Business::class, 'services', function ($faker) {
+    return [];
+});
+
+$factory->afterCreatingState(App\Business::class, 'services', function($business, $faker) {
+    $business->services()->save(factory(App\Service::class)->create());
+});
+
 $factory->afterCreating(App\Business::class, function($business, $faker) use($cities) {
 	$business->cities()->attach([array_random($cities)['id'], array_random($cities)['id']]);
 });

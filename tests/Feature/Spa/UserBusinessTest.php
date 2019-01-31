@@ -62,5 +62,15 @@ class UserBusinessTest extends TestCase
 							'description' => 'Test description'
 						])
 						->assertStatus(200);
-	}
+    }
+
+    public function test_user_business_service_update()
+    {
+        $user = $this->createAdvertiser();
+        $business = factory(Business::class)->states(['services'])->create(['user_id' => $user->id]);
+        $service = $business->services->first();
+
+        $response = $this->actingAs($user)
+                    ->post(route('spa.user.business.updateService'), ['businessId' => $business->id, 'serviceId' => $service->id]);
+    }
 }
