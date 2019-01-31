@@ -2138,6 +2138,10 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
+  mounted: function mounted() {
+    this.image = this.model.image;
+    this.imageUrl = this.model.image;
+  },
   data: function data() {
     return {
       image: null,
@@ -2152,6 +2156,9 @@ __webpack_require__.r(__webpack_exports__);
           this.saving = false;
         }.bind(this), 3000);
       }
+    },
+    model: function model() {
+      this.image = this.model.image;
     }
   },
   computed: {
@@ -2180,7 +2187,11 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('description', this.model.description);
       axios.post(this.actionUrl, formData).then(function (response) {
         _this.saving = false;
-        console.log(response.data);
+
+        if (response.data.successs) {
+          _this.model = response.data[_this.modelType];
+          _this.image = _this.model.image;
+        }
       }).finally(function () {
         _this.saving = false;
       });
@@ -59250,7 +59261,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! F:\wamp\www\business-classifieds.local\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\xampp\htdocs\business-classifieds\resources\js\app.js */"./resources/js/app.js");
 
 
 /***/ })

@@ -46,6 +46,10 @@ export default {
         },
         business: { required: true }
     },
+    mounted() {
+        this.image = this.model.image
+        this.imageUrl = this.model.image
+    },
     data() {
         return {
             image: null,
@@ -60,7 +64,10 @@ export default {
 					this.saving = false
 				}.bind(this), 3000)
 			}
-		}
+		},
+        model() {
+            this.image = this.model.image
+        }
 	},
     computed: {
         actionUrl() {
@@ -86,7 +93,10 @@ export default {
             axios.post(this.actionUrl, formData)
                 .then(response => {
 					this.saving = false;
-                    console.log(response.data)
+                    if(response.data.successs) {
+                        this.model = response.data[this.modelType]
+                        this.image = this.model.image
+                    }
                 }).finally(() => {
 					this.saving = false;
 				})
