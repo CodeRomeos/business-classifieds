@@ -26,7 +26,7 @@ $factory->state(App\Business::class, 'services', function ($faker) {
 });
 
 $factory->afterCreatingState(App\Business::class, 'services', function($business, $faker) {
-    $business->services()->save(factory(App\Service::class)->create());
+    $business->services()->save(factory(App\Service::class)->make());
 });
 
 $factory->afterCreating(App\Business::class, function($business, $faker) use($cities) {
