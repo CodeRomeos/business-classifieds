@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Service;
+use App\Business;
 
 class ServiceUpdateRequest extends FormRequest
 {
@@ -13,7 +15,12 @@ class ServiceUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+		$business = Business::find($this->route('businessId'));
+		$service = null;
+		if($business) {
+			$service = $business->services()->find($this->route('serviceId'));
+		}
+        return ($business && $this->user()->can('update', $business) && $service);
     }
 
     /**
@@ -24,7 +31,7 @@ class ServiceUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required'
         ];
     }
 }

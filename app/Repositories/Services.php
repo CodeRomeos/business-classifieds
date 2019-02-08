@@ -13,7 +13,15 @@ class Services extends Repository
 		parent::__construct($model);
 	}
 
-	public function createByCurrentUser($request)
+	public function createByCurrentUser(Request $request)
+	{
+		$data = $request->only('name', 'image', 'description');
+		$data = $this->uploadIfImageInputExist($data);
+		$service = $request->user()->business->services()->create($data);
+		return $service;
+	}
+
+	public function updateByCurrentUser(Request $request)
 	{
 		$data = $request->only('name', 'image', 'description');
 		$data = $this->uploadIfImageInputExist($data);

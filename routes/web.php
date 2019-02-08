@@ -54,7 +54,7 @@ Route::namespace('Spa')->prefix('spa')->name('spa.')->group(function() {
             Route::post('/{businessId}/service/create', 'UserBusinessController@createService')->name('createService');
             Route::post('/{businessId}/product/create', 'UserBusinessController@createProduct');
 
-            Route::post('/{businessId}/service/{serviceId}/update', 'UserBusinessController@updateService');
+            Route::post('/{businessId}/service/{serviceId}/update', 'UserBusinessController@updateService')->name('updateService');
             Route::post('/{businessId}/product/{productId}/update', 'UserBusinessController@updateProduct');
 
 			Route::get('/', 'UserBusinessController@show');

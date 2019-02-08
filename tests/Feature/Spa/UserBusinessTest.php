@@ -69,8 +69,14 @@ class UserBusinessTest extends TestCase
         $user = $this->createAdvertiser();
         $business = factory(Business::class)->states(['services'])->create(['user_id' => $user->id]);
         $service = $business->services->first();
-
+		$input = ['name' => 'Service Test'];
         $response = $this->actingAs($user)
-                    ->post(route('spa.user.business.updateService'), ['businessId' => $business->id, 'serviceId' => $service->id]);
+					->post(route('spa.user.business.updateService', ['businessId' => $business->id, 'serviceId' => $service->id]), $input)
+					->assertJson([
+						'data' => [
+							'success' => true
+						]
+					])
+					->assertStatus(200);
     }
 }

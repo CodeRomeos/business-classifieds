@@ -7,6 +7,7 @@ use App\Http\Controllers\Spa\Controller;
 use App\Http\Requests\BusinessCreateRequest;
 use App\Http\Requests\BusinessUpdateRequest;
 use App\Http\Requests\ServiceCreateRequest;
+use App\Http\Requests\ServiceUpdateRequest;
 use App\Repositories\Businesses;
 use App\Repositories\Services;
 use App\Http\Resources\Business as BusinessResource;
@@ -57,5 +58,15 @@ class UserBusinessController extends Controller
 		{
 			return $this->respond(['success' => true, 'create' => true, 'message' => 'Service created successfully', 'service' => new ServiceResource($service)]);
 		}
-    }
+	}
+
+	public function updateService(ServiceUpdateRequest $request, Services $serviceRepo, $businessId, $serviceId)
+	{
+		$service = $serviceRepo->find($serviceId);
+
+		if($service)
+		{
+			$service = $serviceRepo->updateByCurrentUser($request);
+		}
+	}
 }
