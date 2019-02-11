@@ -2139,14 +2139,14 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.image = this.model.image;
     this.imageUrl = this.model.image;
   },
   data: function data() {
     return {
-      image: null,
+      imageFile: null,
       imageUrl: null,
-      saving: false
+      saving: false,
+      removeImage: false
     };
   },
   watch: {
@@ -2158,8 +2158,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     model: function model() {
-      this.image = this.model.image;
-      this.imageUrl = this.model.imageUrl;
+      this.imageUrl = this.model.image;
     }
   },
   computed: {
@@ -2175,15 +2174,27 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onFileChange: function onFileChange(event) {
-      this.image = event.target.files[0];
-      this.imageUrl = URL.createObjectURL(this.image);
+      this.imageFile = event.target.files[0];
+      this.imageUrl = URL.createObjectURL(this.imageFile);
+      this.removeImage = false;
     },
     save: function save() {
       var _this = this;
 
       this.saving = true;
       var formData = new FormData();
-      formData.append('image', this.image);
+      var image = this.model.image ? this.model.image : "";
+
+      if (this.imageFile) {
+        image = this.imageFile;
+      }
+
+      if (this.removeImage) {
+        image = "";
+        formData.append('remove_image', true);
+      }
+
+      formData.append('image', image);
       formData.append('name', this.model.name);
       formData.append('description', this.model.description);
       axios.post(this.actionUrl, formData).then(function (response) {
@@ -40836,7 +40847,7 @@ var render = function() {
       },
       [
         _c("div", { staticClass: "imagePreview" }, [
-          !_vm.image
+          !_vm.imageFile && !_vm.imageUrl
             ? _c("div", { staticClass: "input-container" }, [
                 _c("label", { staticClass: "btn btn-bigAddMore" }, [
                   _c("span", { staticClass: "fa fa-image" }),
@@ -40849,10 +40860,20 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.image
+          _c("img", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.imageUrl,
+                expression: "imageUrl"
+              }
+            ],
+            attrs: { src: _vm.imageUrl }
+          }),
+          _vm._v(" "),
+          _vm.imageFile || _vm.imageUrl
             ? _c("div", [
-                _c("img", { attrs: { src: _vm.imageUrl } }),
-                _vm._v(" "),
                 _c("div", { staticClass: "image-controls" }, [
                   _c(
                     "button",
@@ -40861,8 +40882,9 @@ var render = function() {
                       attrs: { type: "button" },
                       on: {
                         click: function($event) {
-                          _vm.image = null
-                          _vm.imageUrl = null
+                          _vm.imageFile = ""
+                          _vm.imageUrl = ""
+                          _vm.removeImage = true
                         }
                       }
                     },

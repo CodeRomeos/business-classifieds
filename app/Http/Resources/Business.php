@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\City as CityResource;
+use App\Http\Resources\Service as ServiceResource;
 
 class Business extends JsonResource
 {
@@ -28,7 +29,7 @@ class Business extends JsonResource
             'address' => $this->address,
 			'emails' => $this->emailsParsed,
 			'products' => $this->products,
-			'services' => $this->services
+			'services' => $this->services ? ServiceResource::collection($this->services) : []
         ];
     }
 }

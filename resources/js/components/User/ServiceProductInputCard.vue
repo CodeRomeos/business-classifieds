@@ -2,16 +2,16 @@
     <div class="serviceProductInputCard">
         <form @submit.prevent="save" enctype="multipart/form-data">
             <div class="imagePreview">
-                <div class="input-container" v-if='!image'>
+                <div class="input-container" v-if='!imageFile && !imageUrl'>
                     <label class='btn btn-bigAddMore'>
                         <span class='fa fa-image'></span>
                         <input type="file" @change="onFileChange">
                     </label>
                 </div>
-                <div v-if='image'>
-                    <img :src='imageUrl'>
+                <img :src='imageUrl' v-show='imageUrl'>
+                <div v-if='imageFile || imageUrl'>
                     <div class="image-controls">
-                        <button type='button' class='btn btn-sm btn-danger' @click='image = null; imageUrl = null'>
+                        <button type='button' class='btn btn-sm btn-danger' @click='imageFile = ""; imageUrl = ""; removeImage = true'>
                             <span class='fa fa-times'></span>
                         </button>
                     </div>
@@ -47,14 +47,14 @@ export default {
         business: { required: true }
     },
     mounted() {
-        this.image = this.model.image
         this.imageUrl = this.model.image
     },
     data() {
         return {
-            image: null,
+            imageFile: null,
 			imageUrl: null,
-			saving: false
+			saving: false,
+			removeImage: false
         }
 	},
 	watch: {
@@ -66,8 +66,7 @@ export default {
 			}
 		},
         model() {
-            this.image = this.model.image
-            this.imageUrl = this.model.imageUrl
+            this.imageUrl = this.model.image
         }
 	},
     computed: {
@@ -82,13 +81,25 @@ export default {
     },
     methods: {
         onFileChange(event) {
-            this.image = event.target.files[0]
-            this.imageUrl = URL.createObjectURL(this.image)
+            this.imageFile = event.target.files[0]
+			this.imageUrl = URL.createObjectURL(this.imageFile)
+			this.removeImage = false
         },
         save() {
-			this.saving = true;
+			this.saving = true
             const formData = new FormData()
-            formData.append('image', this.image)
+			var image = this.model.image ? this.model.image : ""
+
+			if(this.imageFile) {
+				image = this.imageFile
+			}
+
+			if(this.removeImage) {
+				image = ""
+				formData.append('remove_image', true)
+			}
+
+            formData.append('image', image)
             formData.append('name', this.model.name)
             formData.append('description', this.model.description)
             axios.post(this.actionUrl, formData)

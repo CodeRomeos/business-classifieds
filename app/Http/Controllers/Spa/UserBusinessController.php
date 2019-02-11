@@ -62,11 +62,15 @@ class UserBusinessController extends Controller
 
 	public function updateService(ServiceUpdateRequest $request, Services $serviceRepo, $businessId, $serviceId)
 	{
-		$service = $serviceRepo->find($serviceId);
+		$service = $request->user()->business->services()->find($serviceId);
 
 		if($service)
 		{
-			$service = $serviceRepo->updateByCurrentUser($request);
+			$service = $serviceRepo->updateByCurrentUser($request, $service);
+
+			return $this->respond(['success' => true, 'update' => true, 'message' => 'Service updated successfully', 'service' => new ServiceResource($service)]);
 		}
+
+		return $this->respondNotFound('Service not found!');
 	}
 }

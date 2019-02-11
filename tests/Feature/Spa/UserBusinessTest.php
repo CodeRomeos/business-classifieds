@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Resources\Service as ServiceResource;
 
 use App\Business;
 
@@ -70,11 +71,20 @@ class UserBusinessTest extends TestCase
         $business = factory(Business::class)->states(['services'])->create(['user_id' => $user->id]);
         $service = $business->services->first();
 		$input = ['name' => 'Service Test'];
+		$service = $service->fill($input);
         $response = $this->actingAs($user)
 					->post(route('spa.user.business.updateService', ['businessId' => $business->id, 'serviceId' => $service->id]), $input)
 					->assertJson([
-						'data' => [
-							'success' => true
+						'success' => true,
+						'update' => true,
+						'message' => 'Service updated successfully',
+						'service' => [
+							'id' => $service->id,
+							'business_id' => $service->business_id,
+							'name' => $service->name,
+							'description' => $service->description,
+							'image' => $service->image,
+							'created_at' => $service->created_at ? $service->created_at->toDateTimeString() : ''
 						]
 					])
 					->assertStatus(200);

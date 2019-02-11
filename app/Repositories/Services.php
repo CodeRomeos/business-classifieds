@@ -21,11 +21,11 @@ class Services extends Repository
 		return $service;
 	}
 
-	public function updateByCurrentUser(Request $request)
+	public function updateByCurrentUser(Request $request, Service $service)
 	{
 		$data = $request->only('name', 'image', 'description');
-		$data = $this->uploadIfImageInputExist($data);
-		$service = $request->user()->business->services()->create($data);
+		$service = $this->update($service, $data);
+
 		return $service;
 	}
 }
