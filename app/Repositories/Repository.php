@@ -105,7 +105,7 @@ abstract class Repository
 
 	public function update($model, $data)
 	{
-		if(isset($data['remove_image']) && $data['remove_image'] == 1)
+		if(isset($data['remove_image']) && $data['remove_image'])
 		{
 			$model = $this->removeImage($model);
 		}

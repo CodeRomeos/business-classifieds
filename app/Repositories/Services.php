@@ -23,7 +23,7 @@ class Services extends Repository
 
 	public function updateByCurrentUser(Request $request, Service $service)
 	{
-		$data = $request->only('name', 'image', 'description');
+		$data = $request->except('token');
 		$service = $this->update($service, $data);
 
 		return $service;
