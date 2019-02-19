@@ -2163,11 +2163,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    onFileChange: function onFileChange(event) {
-      this.imageFile = event.target.files[0];
-      this.imageUrl = URL.createObjectURL(this.imageFile);
-      this.removeImage = false;
-    },
     save: function save() {
       var _this = this;
 

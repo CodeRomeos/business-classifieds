@@ -71,11 +71,6 @@ export default {
         }
     },
     methods: {
-        onFileChange(event) {
-            this.imageFile = event.target.files[0]
-			this.imageUrl = URL.createObjectURL(this.imageFile)
-			this.removeImage = false
-        },
         save() {
 			this.saving = true
             const formData = new FormData()
