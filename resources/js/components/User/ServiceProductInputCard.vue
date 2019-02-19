@@ -1,22 +1,7 @@
 <template>
     <div class="serviceProductInputCard">
         <form @submit.prevent="save" enctype="multipart/form-data">
-            <div class="imagePreview">
-                <div class="input-container" v-if='!imageFile && !imageUrl'>
-                    <label class='btn btn-bigAddMore'>
-                        <span class='fa fa-image'></span>
-                        <input type="file" @change="onFileChange">
-                    </label>
-                </div>
-                <img :src='imageUrl' v-show='imageUrl'>
-                <div v-if='imageFile || imageUrl'>
-                    <div class="image-controls">
-                        <button type='button' class='btn btn-sm btn-danger' @click='imageFile = ""; imageUrl = ""; removeImage = true'>
-                            <span class='fa fa-times'></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
+			<image-input :src='imageUrl' @imageFileChange='imageFile = $event' @imageUrlChange='imageUrl = $event' @imageRemoved='removeImage = $event'></image-input>
             <div class="input-container">
                 <input type='text' class="input-field" value="" v-model="model.name" placeholder="Name">
             </div>
@@ -34,8 +19,14 @@
 </template>
 
 <script>
+
+import ImageInput from '../partials/ImageInput'
+
 export default {
-    name: 'service-product-input-card',
+	name: 'service-product-input-card',
+	components: {
+		ImageInput
+	},
     props: {
         model: { required: true },
         modelType: {
@@ -116,7 +107,7 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss'>
 
 .btn-bigAddMore {
     width: 100%;
