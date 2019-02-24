@@ -40,8 +40,12 @@ class UserBusinessController extends Controller
 
     public function update(BusinessUpdateRequest $request, $id)
     {
-		$business = $request->user()->business()->find($id);
-		$result = $this->repo->update($business, $request->all());
+        $business = $request->user()->business()->find($id);
+        $data = $request->all();
+        $data['contacts'] = json_decode($data['contacts']);
+        $data['emails'] = json_decode($data['emails']);
+
+		$result = $this->repo->update($business, $data);
 		if($result['updated'])
 		{
 			return $this->respond(['success' => true, 'update' => true, 'message' => 'Updated successfully!', 'business' => new BusinessResource($result['business'])]);

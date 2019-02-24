@@ -1,11 +1,15 @@
 <template>
     <div id='user-business' class='card'>
         <h3 class='page-heading'>My Business Page <small>Create your free business page.</small></h3>
-        <form @submit.prevent="postBusinessForm" class='my-4' v-if='loadingForm'>
+        <form @submit.prevent="postBusinessForm" class='my-4' enctype="multipart/form-data">
             <div class="grid-col-1-2">
                 <label for="">Title</label>
                 <div class="input-container">
                     <input type='text' class="input-field" value="" v-model="business.title">
+                </div>
+                <label for="">Image</label>
+                <div class="input-container">
+                    <image-input :src='imageUrl' @imageFileChange='imageFile = $event' @imageUrlChange='imageUrl = $event' @imageRemoved='removeImage = $event'></image-input>
                 </div>
                 <label for="">Body</label>
                 <div class="input-container">
@@ -63,18 +67,20 @@ import { mapGetters } from 'vuex';
 import Select2 from '../partials/Select2'
 import UserBusinessServices from './BusinessServices'
 import UserBusinessProducts from './BusinessProducts'
+import ImageInput from '../partials/ImageInput'
 
 export default {
 	name: "user-business",
     components: {
         Select2,
         UserBusinessServices,
-        UserBusinessProducts
+        UserBusinessProducts,
+        ImageInput
     },
 
-	created() {
+	mounted() {
 		this.fetchbusiness()
-	},
+    },
 	data() {
 		return {
 			business: {},
@@ -83,7 +89,10 @@ export default {
 			updating: false,
 			updateMessage: null,
 			errors: {},
-			loadingForm: false
+            loadingForm: false,
+            imageFile: null,
+			imageUrl: null,
+			removeImage: false
 		}
 	},
     computed: {
@@ -98,9 +107,10 @@ export default {
 			}.bind(this), 3000)
 		},
 		business(business) {
+            this.imageUrl = this.business.image
 			business.cities.forEach(city => {
 				this.businessCities.push(city.slug);
-			});
+            });
 		}
 	},
 	methods: {
@@ -112,8 +122,8 @@ export default {
 						this.notCreated = true
 					}
 					else {
-						this.business = response.data.business
-						this.loadingForm = true;
+                        this.loadingForm = true;
+                        this.business = response.data.business
 					}
 				})
 				.catch(error => {
@@ -127,17 +137,38 @@ export default {
 				var url = '/spa/user/business/create'
             }
 
-            var params = {
-                title: this.business.title,
-                body: this.business.body,
-                contacts: this.business.contacts,
-                cities: this.businessCities,
-                emails: this.business.emails,
-                address: this.business.address,
-                emails: this.business.emails
-            }
+            const formData = new FormData()
+			var image = this.business.image ? this.business.image : ""
 
-			axios.post(url, params)
+			if(this.imageFile) {
+				image = this.imageFile
+			}
+
+			if(this.removeImage) {
+				image = ""
+				formData.append('remove_image', true)
+			}
+
+            formData.append('image', image)
+            formData.append('title', this.business.title)
+            formData.append('body', this.business.body)
+            formData.append('contacts', JSON.stringify(this.business.contacts))
+            formData.append('cities', this.businessCities)
+            formData.append('emails', JSON.stringify(this.business.emails))
+            formData.append('address', this.business.address)
+
+
+            // var params = {
+            //     title: this.business.title,
+            //     body: this.business.body,
+            //     contacts: this.business.contacts,
+            //     cities: this.businessCities,
+            //     emails: this.business.emails,
+            //     address: this.business.address,
+            //     emails: this.business.emails
+            // }
+
+			axios.post(url, formData)
 				.then(response => {
 					this.updating = false;
 					this.business = response.data.business;

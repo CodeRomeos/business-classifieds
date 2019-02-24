@@ -41,8 +41,8 @@ export default {
         }
 	},
 	watch: {
-		src() {
-			this.imageUrl = this.src
+		src(src) {
+            this.imageUrl = src
 		},
 		imageFile() {
 			this.$emit('imageFileChange', this.imageFile)

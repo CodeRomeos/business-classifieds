@@ -2249,6 +2249,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _partials_Select2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../partials/Select2 */ "./resources/js/components/partials/Select2.vue");
 /* harmony import */ var _BusinessServices__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BusinessServices */ "./resources/js/components/User/BusinessServices.vue");
 /* harmony import */ var _BusinessProducts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BusinessProducts */ "./resources/js/components/User/BusinessProducts.vue");
+/* harmony import */ var _partials_ImageInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../partials/ImageInput */ "./resources/js/components/partials/ImageInput.vue");
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2313,6 +2314,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+
 
 
 
@@ -2322,9 +2328,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   components: {
     Select2: _partials_Select2__WEBPACK_IMPORTED_MODULE_1__["default"],
     UserBusinessServices: _BusinessServices__WEBPACK_IMPORTED_MODULE_2__["default"],
-    UserBusinessProducts: _BusinessProducts__WEBPACK_IMPORTED_MODULE_3__["default"]
+    UserBusinessProducts: _BusinessProducts__WEBPACK_IMPORTED_MODULE_3__["default"],
+    ImageInput: _partials_ImageInput__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
-  created: function created() {
+  mounted: function mounted() {
     this.fetchbusiness();
   },
   data: function data() {
@@ -2335,7 +2342,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       updating: false,
       updateMessage: null,
       errors: {},
-      loadingForm: false
+      loadingForm: false,
+      imageFile: null,
+      imageUrl: null,
+      removeImage: false
     };
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['cities'])),
@@ -2347,6 +2357,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     business: function business(_business) {
       var _this = this;
+
+      this.imageUrl = this.business.image;
 
       _business.cities.forEach(function (city) {
         _this.businessCities.push(city.slug);
@@ -2362,8 +2374,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         if (response.data.notCreated) {
           _this2.notCreated = true;
         } else {
-          _this2.business = response.data.business;
           _this2.loadingForm = true;
+          _this2.business = response.data.business;
         }
       }).catch(function (error) {});
     },
@@ -2377,16 +2389,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         var url = '/spa/user/business/create';
       }
 
-      var params = _defineProperty({
-        title: this.business.title,
-        body: this.business.body,
-        contacts: this.business.contacts,
-        cities: this.businessCities,
-        emails: this.business.emails,
-        address: this.business.address
-      }, "emails", this.business.emails);
+      var formData = new FormData();
+      var image = this.business.image ? this.business.image : "";
 
-      axios.post(url, params).then(function (response) {
+      if (this.imageFile) {
+        image = this.imageFile;
+      }
+
+      if (this.removeImage) {
+        image = "";
+        formData.append('remove_image', true);
+      }
+
+      formData.append('image', image);
+      formData.append('title', this.business.title);
+      formData.append('body', this.business.body);
+      formData.append('contacts', JSON.stringify(this.business.contacts));
+      formData.append('cities', this.businessCities);
+      formData.append('emails', JSON.stringify(this.business.emails));
+      formData.append('address', this.business.address); // var params = {
+      //     title: this.business.title,
+      //     body: this.business.body,
+      //     contacts: this.business.contacts,
+      //     cities: this.businessCities,
+      //     emails: this.business.emails,
+      //     address: this.business.address,
+      //     emails: this.business.emails
+      // }
+
+      axios.post(url, formData).then(function (response) {
         _this3.updating = false;
         _this3.business = response.data.business;
         _this3.updateMessage = 'Updated successfully!';
@@ -3071,8 +3102,8 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   watch: {
-    src: function src() {
-      this.imageUrl = this.src;
+    src: function src(_src) {
+      this.imageUrl = _src;
     },
     imageFile: function imageFile() {
       this.$emit('imageFileChange', this.imageFile);
@@ -41082,301 +41113,324 @@ var render = function() {
     [
       _vm._m(0),
       _vm._v(" "),
-      _vm.loadingForm
-        ? _c(
-            "form",
-            {
-              staticClass: "my-4",
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  return _vm.postBusinessForm($event)
+      _c(
+        "form",
+        {
+          staticClass: "my-4",
+          attrs: { enctype: "multipart/form-data" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.postBusinessForm($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "grid-col-1-2" }, [
+            _c("label", { attrs: { for: "" } }, [_vm._v("Title")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-container" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.business.title,
+                    expression: "business.title"
+                  }
+                ],
+                staticClass: "input-field",
+                attrs: { type: "text", value: "" },
+                domProps: { value: _vm.business.title },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.business, "title", $event.target.value)
+                  }
                 }
-              }
-            },
-            [
-              _c("div", { staticClass: "grid-col-1-2" }, [
-                _c("label", { attrs: { for: "" } }, [_vm._v("Title")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "input-container" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.business.title,
-                        expression: "business.title"
-                      }
-                    ],
-                    staticClass: "input-field",
-                    attrs: { type: "text", value: "" },
-                    domProps: { value: _vm.business.title },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.business, "title", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "" } }, [_vm._v("Body")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "input-container" }, [
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.business.body,
-                        expression: "business.body"
-                      }
-                    ],
-                    staticClass: "input-field",
-                    attrs: { rows: "4" },
-                    domProps: { value: _vm.business.body },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.business, "body", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "" } }, [_vm._v("Contacts")]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "input-container" },
-                  [
-                    _vm._l(_vm.business.contacts, function(contact, index) {
-                      return _c(
-                        "div",
-                        { key: index, staticClass: "input-btn-group mb-1" },
-                        [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.business.contacts[index],
-                                expression: "business.contacts[index]"
-                              }
-                            ],
-                            staticClass: "input-field",
-                            attrs: { type: "text", value: "" },
-                            domProps: { value: _vm.business.contacts[index] },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.business.contacts,
-                                  index,
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-danger",
-                              attrs: { type: "button" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.business.contacts.splice(index, 1)
-                                }
-                              }
-                            },
-                            [_c("span", { staticClass: "fa fa-times" })]
-                          )
-                        ]
-                      )
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.business.contacts.push("")
-                          }
-                        }
-                      },
-                      [_c("span", { staticClass: "fa fa-plus" })]
-                    )
-                  ],
-                  2
-                ),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "" } }, [_vm._v("Cities")]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "input-container" },
-                  [
-                    _c(
-                      "select2",
-                      {
-                        staticClass: "input-field",
-                        attrs: { multiple: "" },
-                        model: {
-                          value: _vm.businessCities,
-                          callback: function($$v) {
-                            _vm.businessCities = $$v
-                          },
-                          expression: "businessCities"
-                        }
-                      },
-                      _vm._l(_vm.cities, function(city, index) {
-                        return _c(
-                          "option",
-                          { key: index, domProps: { value: city.slug } },
-                          [_vm._v(_vm._s(city.city_and_state_name))]
-                        )
-                      }),
-                      0
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "" } }, [_vm._v("Address")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "input-container" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.business.address,
-                        expression: "business.address"
-                      }
-                    ],
-                    staticClass: "input-field",
-                    attrs: { type: "text", value: "" },
-                    domProps: { value: _vm.business.address },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.business, "address", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "" } }, [_vm._v("Emails")]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "input-container" },
-                  [
-                    _vm._l(_vm.business.emails, function(email, index) {
-                      return _c(
-                        "div",
-                        { key: index, staticClass: "input-btn-group mb-1" },
-                        [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.business.emails[index],
-                                expression: "business.emails[index]"
-                              }
-                            ],
-                            staticClass: "input-field",
-                            attrs: { type: "text", value: "" },
-                            domProps: { value: _vm.business.emails[index] },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.business.emails,
-                                  index,
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-danger",
-                              attrs: { type: "button" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.business.emails.splice(index, 1)
-                                }
-                              }
-                            },
-                            [_c("span", { staticClass: "fa fa-times" })]
-                          )
-                        ]
-                      )
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.business.emails.push("")
-                          }
-                        }
-                      },
-                      [_c("span", { staticClass: "fa fa-plus" })]
-                    )
-                  ],
-                  2
-                ),
-                _vm._v(" "),
-                _c("div"),
-                _vm._v(" "),
-                _c("div", { staticClass: "input-container" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary",
-                      attrs: { type: "submit", disabled: _vm.updating }
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "" } }, [_vm._v("Image")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "input-container" },
+              [
+                _c("image-input", {
+                  attrs: { src: _vm.imageUrl },
+                  on: {
+                    imageFileChange: function($event) {
+                      _vm.imageFile = $event
                     },
+                    imageUrlChange: function($event) {
+                      _vm.imageUrl = $event
+                    },
+                    imageRemoved: function($event) {
+                      _vm.removeImage = $event
+                    }
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "" } }, [_vm._v("Body")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-container" }, [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.business.body,
+                    expression: "business.body"
+                  }
+                ],
+                staticClass: "input-field",
+                attrs: { rows: "4" },
+                domProps: { value: _vm.business.body },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.business, "body", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "" } }, [_vm._v("Contacts")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "input-container" },
+              [
+                _vm._l(_vm.business.contacts, function(contact, index) {
+                  return _c(
+                    "div",
+                    { key: index, staticClass: "input-btn-group mb-1" },
                     [
-                      _c("span", { staticClass: "fa fa-save fa-fw" }),
-                      _vm._v(" Submit\n\t\t\t\t\t")
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.business.contacts[index],
+                            expression: "business.contacts[index]"
+                          }
+                        ],
+                        staticClass: "input-field",
+                        attrs: { type: "text", value: "" },
+                        domProps: { value: _vm.business.contacts[index] },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.business.contacts,
+                              index,
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.business.contacts.splice(index, 1)
+                            }
+                          }
+                        },
+                        [_c("span", { staticClass: "fa fa-times" })]
+                      )
                     ]
-                  ),
-                  _vm._v(" "),
-                  _vm.updating
-                    ? _c("span", [
-                        _c("span", { staticClass: "fa fa-spinner fa-spin" })
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.updateMessage && !_vm.updating
-                    ? _c("span", [_vm._v(_vm._s(_vm.updateMessage))])
-                    : _vm._e()
-                ])
-              ])
-            ]
-          )
-        : _vm._e(),
+                  )
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.business.contacts.push("")
+                      }
+                    }
+                  },
+                  [_c("span", { staticClass: "fa fa-plus" })]
+                )
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "" } }, [_vm._v("Cities")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "input-container" },
+              [
+                _c(
+                  "select2",
+                  {
+                    staticClass: "input-field",
+                    attrs: { multiple: "" },
+                    model: {
+                      value: _vm.businessCities,
+                      callback: function($$v) {
+                        _vm.businessCities = $$v
+                      },
+                      expression: "businessCities"
+                    }
+                  },
+                  _vm._l(_vm.cities, function(city, index) {
+                    return _c(
+                      "option",
+                      { key: index, domProps: { value: city.slug } },
+                      [_vm._v(_vm._s(city.city_and_state_name))]
+                    )
+                  }),
+                  0
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "" } }, [_vm._v("Address")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-container" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.business.address,
+                    expression: "business.address"
+                  }
+                ],
+                staticClass: "input-field",
+                attrs: { type: "text", value: "" },
+                domProps: { value: _vm.business.address },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.business, "address", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "" } }, [_vm._v("Emails")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "input-container" },
+              [
+                _vm._l(_vm.business.emails, function(email, index) {
+                  return _c(
+                    "div",
+                    { key: index, staticClass: "input-btn-group mb-1" },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.business.emails[index],
+                            expression: "business.emails[index]"
+                          }
+                        ],
+                        staticClass: "input-field",
+                        attrs: { type: "text", value: "" },
+                        domProps: { value: _vm.business.emails[index] },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.business.emails,
+                              index,
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.business.emails.splice(index, 1)
+                            }
+                          }
+                        },
+                        [_c("span", { staticClass: "fa fa-times" })]
+                      )
+                    ]
+                  )
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.business.emails.push("")
+                      }
+                    }
+                  },
+                  [_c("span", { staticClass: "fa fa-plus" })]
+                )
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c("div"),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-container" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "submit", disabled: _vm.updating }
+                },
+                [
+                  _c("span", { staticClass: "fa fa-save fa-fw" }),
+                  _vm._v(" Submit\n\t\t\t\t\t")
+                ]
+              ),
+              _vm._v(" "),
+              _vm.updating
+                ? _c("span", [
+                    _c("span", { staticClass: "fa fa-spinner fa-spin" })
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.updateMessage && !_vm.updating
+                ? _c("span", [_vm._v(_vm._s(_vm.updateMessage))])
+                : _vm._e()
+            ])
+          ])
+        ]
+      ),
       _vm._v(" "),
       _c(
         "user-business-services",

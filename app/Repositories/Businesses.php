@@ -25,9 +25,13 @@ class Businesses extends Repository
 	public function update($model, $data)
 	{
 		$data['contacts'] = exclude_null($data['contacts']);
-		$data['emails'] = exclude_null($data['emails']);
-		$result['updated'] = $model->update($data);
+        $data['emails'] = exclude_null($data['emails']);
+
+        $model = parent::update($model, $data);
+
+		$result['updated'] = !! ($model);
         $result['business'] = $model;
+
         if(isset($data['cities']) && is_array($data['cities']))
         {
             $cityIds = $this->cityRepo->model()->whereIn('slug', $data['cities'])->pluck('id');
