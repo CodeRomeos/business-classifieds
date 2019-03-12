@@ -635,15 +635,15 @@ table {
 #userBusinessServices,
 #userBusinessProducts {
     @extend .clearfix;
-    .serviceProductInputCard {
+    // .serviceProductInputCard {
         // @extend .pull-left;
         // @extend .mr-2;
         // @extend .mb-2;
         // width: 200px
-    }
-    .btn-bigAddMore {
+    // }
+    // .btn-bigAddMore {
         // @extend .pull-left;
-    }
+    // }
 }
 
 .imagePreview {
@@ -653,5 +653,12 @@ table {
         position: absolute;
         bottom: 2px;
         right: 2px;
+    }
+}
+
+.login .card {
+    @extend .bg-transparent;
+    .card-title, label {
+        @extend .text-white;
     }
 }
