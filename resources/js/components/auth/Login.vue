@@ -1,6 +1,6 @@
 <template>
-    <div class="login">
-		<div class="card">
+    <div class="login bg-primary">
+		<div class="card p-5">
 			<div class="card-body">
 				<h3 class="card-title">Login<span v-if='loading'><small> <span class='fa fa-refresh fa-spin'></span></small></span></h3>
 				<div class='alert alert-danger' v-if='error'>Wrong email or password</div>
@@ -14,8 +14,8 @@
 						<label for='password'>Password: </label>
 						<input type='password' name='password' v-model="form.password" class='input-field' id='login_password'>
 					</div>
-					<div class="input-container mb-3">
-						<input type='submit' value='Login' class='btn btn-primary' id='login_submit'>
+					<div class="input-container mb-3 clearfix">
+						<input type='submit' value='Login' class='btn btn-success pull-right' id='login_submit'>
 					</div>
 				</form>
 			</div>
