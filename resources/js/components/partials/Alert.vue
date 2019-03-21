@@ -47,6 +47,7 @@ export default {
     bottom: 10px;
     right: 10px;
     max-width: 380px;
+    z-index: 9999;
     .alert {
         box-shadow: 2px 2px 4px #aaa;
         color: #FFF;
