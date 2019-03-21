@@ -18,6 +18,7 @@
 		<footer class="footer">
 			footer
 		</footer>
+        <alert />
     </div>
 </template>
 
@@ -27,6 +28,8 @@ import { getAuthUser } from '../helpers/auth';
 import Navbar from './partials/Navbar.vue';
 import Modal from './partials/Modal.vue';
 import LoginModal from './auth/LoginModal.vue';
+import Alert from './partials/Alert'
+
 export default {
     name: 'the-app',
     data() {
@@ -53,7 +56,8 @@ export default {
     components: {
 		Navbar,
 		Modal,
-		LoginModal
+		LoginModal,
+        Alert
 	}
 }
 </script>

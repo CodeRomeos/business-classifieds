@@ -172,7 +172,8 @@ export default {
 				.then(response => {
 					this.updating = false;
 					this.business = response.data.business;
-					this.updateMessage = 'Updated successfully!'
+                    this.updateMessage = 'Updated successfully!'
+                    this.$store.commit('alert', { message: 'Updated successfully!', type: 'success' })
 				})
 				.catch(error => {
 					this.updating = false;

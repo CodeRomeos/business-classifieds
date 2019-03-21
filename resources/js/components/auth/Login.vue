@@ -57,7 +57,8 @@ export default {
 						window.location.href = res.data.redirect;
 					}
 					else {
-						this.$store.commit('loginSuccess', res.data);
+                        this.$store.commit('loginSuccess', res.data);
+                        this.$store.commit('alert', { message: 'Login successful!', type: 'success' })
 					}
 
                 })
@@ -67,6 +68,7 @@ export default {
 					this.error = true;
 					this.enable_inputs();
                     this.$store.commit('loginFailed', {error});
+                    this.$store.commit('alert', { message: 'Login failed!', type: 'danger' })
                 });
 
 		},

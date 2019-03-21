@@ -6,7 +6,11 @@ export default {
 		auth_error: null,
 		loginModal: false,
 		loginSuccess: null,
-		cities: []
+        cities: [],
+        alert: {
+            message: null,
+            type: null
+        }
     },
     getters: {
         welcome(state) {
@@ -29,7 +33,10 @@ export default {
 		},
 		cities(state) {
 			return state.cities;
-		}
+        },
+        alert(state) {
+            return state.alert;
+        }
     },
     mutations: {
         login(state) {
@@ -65,7 +72,11 @@ export default {
 		},
 		loadCities(state, cities) {
 			state.cities = cities;
-		}
+        },
+        alert(state, data) {
+            state.alert.message = data.message
+            state.alert.type = data.type
+        }
     },
 
     actions: {
@@ -86,6 +97,9 @@ export default {
 				context.commit('loadCities', response.data.data.cities);
 			});
 
-		}
+        },
+        clearAlert(context) {
+            context.commit('alert', { message: '', type: '' })
+        }
     }
 }
