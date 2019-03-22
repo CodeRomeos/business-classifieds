@@ -2932,21 +2932,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'alert',
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['alert'])),
+  name: "alert",
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["alert"])),
   methods: {
     clear: function clear() {
-      this.$store.dispatch('clearAlert');
+      this.$store.dispatch("clearAlert");
     }
   },
   watch: {
     alert: {
       handler: function handler(val) {
-        setTimeout(function () {
-          this.clear();
-        }.bind(this), 3500);
+        if (val) {
+          setTimeout(function () {
+            this.clear();
+          }.bind(this), 3000);
+        }
       },
       deep: true
     }
@@ -2973,17 +2979,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'bookmark-button',
-  props: ['post'],
+  name: "bookmark-button",
+  props: ["post"],
   data: function data() {
     return {
       bookmarked: false,
       postponeBookmark: false
     };
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['isLoggedIn', 'loginSuccess', 'currentUser'])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["isLoggedIn", "loginSuccess", "currentUser"])),
   created: function created() {
     if (this.isLoggedIn) {
       this.checkBookmark();
@@ -3014,14 +3024,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       if (!this.isLoggedIn) {
         this.postponeBookmark = true;
-        this.$store.dispatch('showLoginModal');
+        this.$store.dispatch("showLoginModal");
       } else {
         if (!this.currentUser.is_admin) {
-          axios.post('/spa/user/bookmarks/' + this.post.id).then(function (res) {
+          axios.post("/spa/user/bookmarks/" + this.post.id).then(function (res) {
             if (res.data.bookmark == true) {
               _this.bookmarked = true;
+
+              _this.$store.commit("alert", {
+                message: "Saved to bookmarks.",
+                type: "success"
+              });
             } else {
               _this.bookmarked = false;
+
+              _this.$store.commit("alert", {
+                message: "Removed from bookmarks.",
+                type: "success"
+              });
             }
           });
         }
@@ -3031,7 +3051,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this2 = this;
 
       if (!this.currentUser.is_admin) {
-        axios.get('/spa/user/bookmarks/check/' + this.post.id).then(function (res) {
+        axios.get("/spa/user/bookmarks/check/" + this.post.id).then(function (res) {
           if (res.data.bookmarked == true) {
             _this2.bookmarked = true;
           } else {
@@ -3431,7 +3451,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".alert-box[data-v-db0770ec] {\n  position: fixed;\n  bottom: 10px;\n  right: 10px;\n  max-width: 380px;\n  z-index: 9999;\n}\n.alert-box .alert[data-v-db0770ec] {\n  box-shadow: 2px 2px 4px #aaa;\n  color: #FFF;\n  padding: 10px;\n}\n.alert-box .alert.alert-danger[data-v-db0770ec] {\n  background: #ff4c4c;\n}\n.alert-box .alert.alert-success[data-v-db0770ec] {\n  background: #80b741;\n}\n.alert-box .alert .alert-body[data-v-db0770ec] {\n  display: flex;\n  align-items: flex-start;\n}\n.alert-box .alert .alert-body .alert-message[data-v-db0770ec] {\n  padding-right: 10px;\n}\n.alert-box .alert .alert-body .btn-close[data-v-db0770ec] {\n  background-color: transparent;\n  display: inline-block;\n  padding: 5px;\n  line-height: 100%;\n}\n.alert-box .alert .alert-body .btn-close[data-v-db0770ec]:hover {\n  background-color: transparent;\n}", ""]);
+exports.push([module.i, ".alert-box[data-v-db0770ec] {\n  position: fixed;\n  bottom: 10px;\n  right: 10px;\n  max-width: 380px;\n  z-index: 9999;\n}\n.alert-box .alert[data-v-db0770ec] {\n  box-shadow: 2px 2px 4px #aaa;\n  color: #fff;\n  padding: 10px;\n}\n.alert-box .alert.alert-danger[data-v-db0770ec] {\n  background: #ff4c4c;\n}\n.alert-box .alert.alert-success[data-v-db0770ec] {\n  background: #80b741;\n}\n.alert-box .alert .alert-body[data-v-db0770ec] {\n  display: flex;\n  align-items: flex-start;\n}\n.alert-box .alert .alert-body .alert-message[data-v-db0770ec] {\n  padding-right: 10px;\n}\n.alert-box .alert .alert-body .btn-close[data-v-db0770ec] {\n  background-color: transparent;\n  display: inline-block;\n  padding: 5px;\n  line-height: 100%;\n}\n.alert-box .alert .alert-body .btn-close[data-v-db0770ec]:hover {\n  background-color: transparent;\n}", ""]);
 
 // exports
 
@@ -42308,11 +42328,7 @@ var render = function() {
               [
                 _c("div", { staticClass: "alert-body" }, [
                   _c("div", { staticClass: "alert-message" }, [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.alert.message) +
-                        "\n                "
-                    )
+                    _vm._v(_vm._s(_vm.alert.message))
                   ]),
                   _vm._v(" "),
                   _c(
