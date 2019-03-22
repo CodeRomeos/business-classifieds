@@ -38,7 +38,12 @@ class Business extends Model
 	public function products()
 	{
 		return $this->hasMany('App\Product');
-	}
+    }
+
+    public function keywords()
+    {
+        return $this->morphToMany('App\Keyword', 'keywordable');
+    }
 
     public function getContactsParsedAttribute()
     {

@@ -1,15 +1,13 @@
 <template>
     <transition name="modal">
-    <div class="modal-mask">
-		<div class="modal-wrapper">
-			<div class="modal-container">
-				<div class="card">
-					<button class="btn btn-close" @click="close"><span class='fa fa-times'></span></button>
-					<slot></slot>
+			<div class="modal-mask">
+				<div class="modal-wrapper">
+					<div class="modal-container">
+						<button class="btn btn-close text-white" @click="close"><span class='fa fa-times'></span></button>
+						<slot></slot>
+					</div>
 				</div>
 			</div>
-		</div>
-    </div>
   	</transition>
 </template>
 

@@ -36,6 +36,7 @@ export default {
             logout().then((res) => {
                 this.$store.commit('logout', res.data);
                 this.$router.push('/');
+                this.$store.commit('alert', { message: 'You are logged out successfully.', type: 'success' })
             });
         }
 	}

@@ -6255,6 +6255,8 @@ body {
 }
 
 .text-white,
+.login .card .card-title,
+.login .card label,
 .btn-danger {
   color: #fff !important;
 }
@@ -6264,6 +6266,7 @@ body {
 }
 
 .bg-transparent,
+.login .card,
 .modal-container .btn-close {
   background-color: transparent;
 }
