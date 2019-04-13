@@ -1,7 +1,7 @@
 <template>
     <div id='user-business' class='card'>
         <h3 class='page-heading'>My Business Page <small>Create your free business page.</small></h3>
-        <form @submit.prevent="postBusinessForm" class='my-4' enctype="multipart/form-data">
+        <form @submit.prevent="postBusinessForm" class='grid-col-2 my-4' enctype="multipart/form-data">
             <div class="grid-col-1-2">
                 <label for="">Title</label>
                 <div class="input-container">
@@ -49,6 +49,13 @@
 					</button>
 					<span v-if='updating'><span class='fa fa-spinner fa-spin'></span></span>
 					<span v-if='updateMessage && !updating'>{{ updateMessage }}</span>
+                </div>
+            </div>
+            <div>
+                <label for="">Keywords</label>
+                <div class="input-container">
+                    <!-- <input type='text' class="input-field" :class="{ 'is-invalid': errors.city}" value="" v-model="business.city"> -->
+                    <select2 class='input-field' multiple></select2>
                 </div>
             </div>
         </form>
@@ -184,9 +191,3 @@ export default {
 	}
 }
 </script>
-
-<style scoped>
-form {
-	max-width: 500px;
-}
-</style>
