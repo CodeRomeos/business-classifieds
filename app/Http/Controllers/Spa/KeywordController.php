@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Spa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Spa\Controller;
 use App\Repositories\Keywords;
+use App\Http\Resources\Keyword as KeywordResource;
 
 class KeywordController extends Controller
 {
@@ -17,9 +18,9 @@ class KeywordController extends Controller
 
     public function index(Request $request)
     {
-        $keywords =  $this->repo->all()->get()->toArray();
+        $keywords =  $this->repo->all()->get();
 
-        return $this->respond(compact('keywords'));
+        return $this->respond(['keywords' => KeywordResource::collection($keywords)]);
     }
 
     public function test(Request $request)

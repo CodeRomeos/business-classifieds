@@ -44,6 +44,8 @@ class UserBusinessController extends Controller
         $data = $request->all();
         $data['contacts'] = json_decode($data['contacts']);
         $data['emails'] = json_decode($data['emails']);
+        $data['cities'] = json_decode($data['cities']);
+        $data['keywords'] = json_decode($data['keywords']);
 
 		$result = $this->repo->update($business, $data);
 		if($result['updated'])

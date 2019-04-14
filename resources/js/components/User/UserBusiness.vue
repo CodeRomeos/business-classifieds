@@ -175,11 +175,10 @@ export default {
             formData.append('title', this.business.title)
             formData.append('body', this.business.body)
             formData.append('contacts', JSON.stringify(this.business.contacts))
-            formData.append('cities', this.businessCities)
+            formData.append('cities', JSON.stringify(this.businessCities))
             formData.append('emails', JSON.stringify(this.business.emails))
             formData.append('address', this.business.address)
-            formData.append('keywords', this.businessKeywords)
-
+            formData.append('keywords', JSON.stringify(this.businessKeywords))
 
             // var params = {
             //     title: this.business.title,
