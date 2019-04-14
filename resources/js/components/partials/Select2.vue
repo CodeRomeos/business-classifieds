@@ -10,7 +10,8 @@ export default {
 	props: {
         options: { default: '' },
         value: { default: '' },
-        placeholder: { default: '' }
+        placeholder: { default: '' },
+        tags: false
     },
 	mounted() {
 		var vm = this
@@ -19,7 +20,8 @@ export default {
 		select
 			.select2({
 				placeholder: this.placeholder,
-                allowClear: true
+                allowClear: true,
+                tags: this.tags
 		 	})
 			.val(this.value)
 			.trigger('change')

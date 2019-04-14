@@ -55,7 +55,7 @@
                 <label for="">Keywords</label>
                 <div class="input-container">
                     <!-- <input type='text' class="input-field" :class="{ 'is-invalid': errors.city}" value="" v-model="business.city"> -->
-                    <select2 class='input-field' multiple></select2>
+                    <select2 class='input-field' tags='true' multiple></select2>
                 </div>
             </div>
         </form>

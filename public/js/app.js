@@ -3370,14 +3370,16 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     },
     placeholder: {
       default: ''
-    }
+    },
+    tags: false
   },
   mounted: function mounted() {
     var vm = this;
     var select = $(this.$el);
     select.select2({
       placeholder: this.placeholder,
-      allowClear: true
+      allowClear: true,
+      tags: this.tags
     }).val(this.value).trigger('change').on('change', function () {
       vm.$emit('input', select.val());
     });
@@ -41553,7 +41555,7 @@ var render = function() {
               [
                 _c("select2", {
                   staticClass: "input-field",
-                  attrs: { multiple: "" }
+                  attrs: { tags: "true", multiple: "" }
                 })
               ],
               1
