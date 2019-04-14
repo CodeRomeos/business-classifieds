@@ -6,15 +6,18 @@ use App\Business;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use App\Repositories\Cities;
+use App\Repositories\Keywords;
 
 class Businesses extends Repository
 {
     public $cityRepo;
+    public $keywordRepo;
 
-	public function __construct(Business $model, Cities $cityRepo)
+	public function __construct(Business $model, Cities $cityRepo, Keywords $keywordRepo)
 	{
         parent::__construct($model);
         $this->cityRepo = $cityRepo;
+        $this->keywordRepo = $keywordRepo;
 	}
 
 	public function approvedAndActive()
@@ -37,6 +40,13 @@ class Businesses extends Repository
             $cityIds = $this->cityRepo->model()->whereIn('slug', $data['cities'])->pluck('id');
             $model->cities()->sync($cityIds);
         }
+
+        if(isset($data['keywords']) && is_array($data['keywords']))
+        {
+            $keywordIds = $this->keywordRepo->findOrCreate($data['keywords'])->pluck('id');
+            $model->keywords()->sync($keywordIds);
+        }
+
 		return $result;
 	}
 }

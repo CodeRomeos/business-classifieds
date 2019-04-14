@@ -2329,6 +2329,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -2343,12 +2344,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     ImageInput: _partials_ImageInput__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   mounted: function mounted() {
+    this.fetchKeywords();
     this.fetchbusiness();
   },
   data: function data() {
     return {
       business: {},
+      keywords: [],
       businessCities: [],
+      businessKeywords: [],
       notCreated: false,
       updating: false,
       updateMessage: null,
@@ -2374,24 +2378,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _business.cities.forEach(function (city) {
         _this.businessCities.push(city.slug);
       });
+
+      _business.keywords.forEach(function (keyword) {
+        _this.businessKeywords.push(keyword.slug);
+      });
     }
   },
   methods: {
-    fetchbusiness: function fetchbusiness() {
+    fetchKeywords: function fetchKeywords() {
       var _this2 = this;
+
+      axios.get('/spa/keywords').then(function (response) {
+        _this2.keywords = response.data.keywords;
+      });
+    },
+    fetchbusiness: function fetchbusiness() {
+      var _this3 = this;
 
       this.loadingForm = false;
       axios.get('/spa/user/business').then(function (response) {
         if (response.data.notCreated) {
-          _this2.notCreated = true;
+          _this3.notCreated = true;
         } else {
-          _this2.loadingForm = true;
-          _this2.business = response.data.business;
+          _this3.loadingForm = true;
+          _this3.business = response.data.business;
         }
       }).catch(function (error) {});
     },
     postBusinessForm: function postBusinessForm() {
-      var _this3 = this;
+      var _this4 = this;
 
       this.updating = true;
       var url = '/spa/user/business/' + this.business.id + '/update';
@@ -2418,7 +2433,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append('contacts', JSON.stringify(this.business.contacts));
       formData.append('cities', this.businessCities);
       formData.append('emails', JSON.stringify(this.business.emails));
-      formData.append('address', this.business.address); // var params = {
+      formData.append('address', this.business.address);
+      formData.append('keywords', this.businessKeywords); // var params = {
       //     title: this.business.title,
       //     body: this.business.body,
       //     contacts: this.business.contacts,
@@ -2429,18 +2445,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // }
 
       axios.post(url, formData).then(function (response) {
-        _this3.updating = false;
-        _this3.business = response.data.business;
-        _this3.updateMessage = 'Updated successfully!';
+        _this4.updating = false;
+        _this4.business = response.data.business;
+        _this4.updateMessage = 'Updated successfully!';
 
-        _this3.$store.commit('alert', {
+        _this4.$store.commit('alert', {
           message: 'Updated successfully!',
           type: 'success'
         });
       }).catch(function (error) {
-        _this3.updating = false; //console.log(error.request);
+        _this4.updating = false; //console.log(error.request);
 
-        _this3.errors = error.response.data.errors;
+        _this4.errors = error.response.data.errors;
       });
     }
   }
@@ -41553,10 +41569,28 @@ var render = function() {
               "div",
               { staticClass: "input-container" },
               [
-                _c("select2", {
-                  staticClass: "input-field",
-                  attrs: { tags: "true", multiple: "" }
-                })
+                _c(
+                  "select2",
+                  {
+                    staticClass: "input-field",
+                    attrs: { tags: "true", multiple: "" },
+                    model: {
+                      value: _vm.businessKeywords,
+                      callback: function($$v) {
+                        _vm.businessKeywords = $$v
+                      },
+                      expression: "businessKeywords"
+                    }
+                  },
+                  _vm._l(_vm.keywords, function(keyword, index) {
+                    return _c(
+                      "option",
+                      { key: index, domProps: { value: keyword.slug } },
+                      [_vm._v(_vm._s(keyword.title))]
+                    )
+                  }),
+                  0
+                )
               ],
               1
             )

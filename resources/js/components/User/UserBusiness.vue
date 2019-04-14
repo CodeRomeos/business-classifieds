@@ -54,8 +54,9 @@
             <div>
                 <label for="">Keywords</label>
                 <div class="input-container">
-                    <!-- <input type='text' class="input-field" :class="{ 'is-invalid': errors.city}" value="" v-model="business.city"> -->
-                    <select2 class='input-field' tags='true' multiple></select2>
+                    <select2 class='input-field' tags='true' multiple v-model='businessKeywords'>
+						<option v-for='(keyword, index) in keywords' :key='index' :value='keyword.slug'>{{ keyword.title }}</option>
+                    </select2>
                 </div>
             </div>
         </form>
@@ -86,12 +87,15 @@ export default {
     },
 
 	mounted() {
-		this.fetchbusiness()
+        this.fetchKeywords()
+        this.fetchbusiness()
     },
 	data() {
 		return {
-			business: {},
+            business: {},
+            keywords: [],
             businessCities: [],
+            businessKeywords: [],
 			notCreated: false,
 			updating: false,
 			updateMessage: null,
@@ -118,9 +122,20 @@ export default {
 			business.cities.forEach(city => {
 				this.businessCities.push(city.slug);
             });
+
+            business.keywords.forEach(keyword => {
+				this.businessKeywords.push(keyword.slug);
+            });
+
 		}
 	},
 	methods: {
+        fetchKeywords() {
+            axios.get('/spa/keywords')
+                .then(response => {
+                    this.keywords = response.data.keywords
+                })
+        },
 		fetchbusiness() {
 			this.loadingForm = false;
 			axios.get('/spa/user/business')
@@ -163,6 +178,7 @@ export default {
             formData.append('cities', this.businessCities)
             formData.append('emails', JSON.stringify(this.business.emails))
             formData.append('address', this.business.address)
+            formData.append('keywords', this.businessKeywords)
 
 
             // var params = {

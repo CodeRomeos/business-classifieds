@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\City as CityResource;
+use App\Http\Resources\Keyword as KeywordResource;
 use App\Http\Resources\Service as ServiceResource;
 
 class Business extends JsonResource
@@ -26,6 +27,7 @@ class Business extends JsonResource
             'contacts' => $this->contactsParsed,
             'highlights' => $this->highlightsParsed,
             'cities' => $this->cities ? CityResource::collection($this->cities) : [],
+            'keywords' => $this->keywords ? KeywordResource::collection($this->keywords) : [],
             'address' => $this->address,
 			'emails' => $this->emailsParsed,
 			'products' => $this->products,

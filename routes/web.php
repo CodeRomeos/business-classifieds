@@ -1,5 +1,7 @@
 <?php
 
+Route::get('test', 'Spa\KeywordController@test');
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +27,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth', 
 	Route::get('/', 'AdminController@dashboard')->name('dashboard');
 
 	Route::prefix('businesses')->name('businesses.')->group(function() {
-		Route::get('/{type?}', 'BusinessController@index')->name('index');
+		//Route::get('/{type?}', 'BusinessController@index')->name('index');
 	});
 });
 
@@ -34,6 +36,8 @@ Route::namespace('Spa')->prefix('spa')->name('spa.')->group(function() {
     Route::post('login', 'Auth\LoginController@login');
     Route::get('logout', 'Auth\LoginController@logout');
     Route::post('register', 'Auth\RegisterController@register');
+
+    Route::get('/keywords', 'KeywordController@index');
 
     Route::prefix('businesses')->name('businesses.')->group(function(){
         Route::get('/cities', 'BusinessController@cities');
