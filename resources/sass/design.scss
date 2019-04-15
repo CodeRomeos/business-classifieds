@@ -213,6 +213,9 @@ p {
 
 .is-invalid {
     border-color: red !important;
+    .input-field {
+        border-color: red
+    }
 }
 
 .invalid-feedback {

@@ -4,20 +4,25 @@
         <form @submit.prevent="postBusinessForm" class='grid-col-2 my-4' enctype="multipart/form-data">
             <div class="grid-col-1-2">
                 <label for="">Title</label>
-                <div class="input-container">
+                <div class="input-container" :class="{'is-invalid': errors.title}">
                     <input type='text' class="input-field" value="" v-model="business.title">
+                    <div class="invalid-feedback" v-if="errors.title">{{ errors.title[0] }}</div>
                 </div>
+
                 <label for="">URL/Slug</label>
-                <div class="input-container">
+                <div class="input-container" :class="{'is-invalid': errors.slug}">
                     <input type='text' class="input-field" value="" v-model="business.slug">
+                    <div class="invalid-feedback" v-if="errors.slug">{{ errors.slug[0] }}</div>
                 </div>
                 <label for="">Image</label>
-                <div class="input-container">
+                <div class="input-container" :class="{'is-invalid': errors.image}">
                     <image-input :src='imageUrl' @imageFileChange='imageFile = $event' @imageUrlChange='imageUrl = $event' @imageRemoved='removeImage = $event'></image-input>
+                    <div class="invalid-feedback" v-if="errors.image">{{ errors.image[0] }}</div>
                 </div>
                 <label for="">Body</label>
-                <div class="input-container">
+                <div class="input-container" :class="{'is-invalid': errors.body}">
 					<textarea class='input-field' v-model="business.body" rows='4'></textarea>
+                    <div class="invalid-feedback" v-if="errors.body">{{ errors.body[0] }}</div>
                 </div>
                 <label for="">Contacts</label>
                 <div class="input-container">
@@ -222,6 +227,7 @@ export default {
 				.catch(error => {
 					this.saving = false;
 					//console.log(error.request);
+					this.saveMessage = error.response.data.message
 					this.errors = error.response.data.errors
 				})
 		}

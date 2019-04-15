@@ -2337,6 +2337,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -2477,6 +2482,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }).catch(function (error) {
         _this4.saving = false; //console.log(error.request);
 
+        _this4.saveMessage = error.response.data.message;
         _this4.errors = error.response.data.errors;
       });
     }
@@ -41282,61 +41288,90 @@ var render = function() {
           _c("div", { staticClass: "grid-col-1-2" }, [
             _c("label", { attrs: { for: "" } }, [_vm._v("Title")]),
             _vm._v(" "),
-            _c("div", { staticClass: "input-container" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.business.title,
-                    expression: "business.title"
-                  }
-                ],
-                staticClass: "input-field",
-                attrs: { type: "text", value: "" },
-                domProps: { value: _vm.business.title },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+            _c(
+              "div",
+              {
+                staticClass: "input-container",
+                class: { "is-invalid": _vm.errors.title }
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.business.title,
+                      expression: "business.title"
                     }
-                    _vm.$set(_vm.business, "title", $event.target.value)
+                  ],
+                  staticClass: "input-field",
+                  attrs: { type: "text", value: "" },
+                  domProps: { value: _vm.business.title },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.business, "title", $event.target.value)
+                    }
                   }
-                }
-              })
-            ]),
+                }),
+                _vm._v(" "),
+                _vm.errors.title
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(_vm._s(_vm.errors.title[0]))
+                    ])
+                  : _vm._e()
+              ]
+            ),
             _vm._v(" "),
             _c("label", { attrs: { for: "" } }, [_vm._v("URL/Slug")]),
             _vm._v(" "),
-            _c("div", { staticClass: "input-container" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.business.slug,
-                    expression: "business.slug"
-                  }
-                ],
-                staticClass: "input-field",
-                attrs: { type: "text", value: "" },
-                domProps: { value: _vm.business.slug },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+            _c(
+              "div",
+              {
+                staticClass: "input-container",
+                class: { "is-invalid": _vm.errors.slug }
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.business.slug,
+                      expression: "business.slug"
                     }
-                    _vm.$set(_vm.business, "slug", $event.target.value)
+                  ],
+                  staticClass: "input-field",
+                  attrs: { type: "text", value: "" },
+                  domProps: { value: _vm.business.slug },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.business, "slug", $event.target.value)
+                    }
                   }
-                }
-              })
-            ]),
+                }),
+                _vm._v(" "),
+                _vm.errors.slug
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(_vm._s(_vm.errors.slug[0]))
+                    ])
+                  : _vm._e()
+              ]
+            ),
             _vm._v(" "),
             _c("label", { attrs: { for: "" } }, [_vm._v("Image")]),
             _vm._v(" "),
             _c(
               "div",
-              { staticClass: "input-container" },
+              {
+                staticClass: "input-container",
+                class: { "is-invalid": _vm.errors.image }
+              },
               [
                 _c("image-input", {
                   attrs: { src: _vm.imageUrl },
@@ -41351,36 +41386,55 @@ var render = function() {
                       _vm.removeImage = $event
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.errors.image
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(_vm._s(_vm.errors.image[0]))
+                    ])
+                  : _vm._e()
               ],
               1
             ),
             _vm._v(" "),
             _c("label", { attrs: { for: "" } }, [_vm._v("Body")]),
             _vm._v(" "),
-            _c("div", { staticClass: "input-container" }, [
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.business.body,
-                    expression: "business.body"
-                  }
-                ],
-                staticClass: "input-field",
-                attrs: { rows: "4" },
-                domProps: { value: _vm.business.body },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+            _c(
+              "div",
+              {
+                staticClass: "input-container",
+                class: { "is-invalid": _vm.errors.body }
+              },
+              [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.business.body,
+                      expression: "business.body"
                     }
-                    _vm.$set(_vm.business, "body", $event.target.value)
+                  ],
+                  staticClass: "input-field",
+                  attrs: { rows: "4" },
+                  domProps: { value: _vm.business.body },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.business, "body", $event.target.value)
+                    }
                   }
-                }
-              })
-            ]),
+                }),
+                _vm._v(" "),
+                _vm.errors.body
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(_vm._s(_vm.errors.body[0]))
+                    ])
+                  : _vm._e()
+              ]
+            ),
             _vm._v(" "),
             _c("label", { attrs: { for: "" } }, [_vm._v("Contacts")]),
             _vm._v(" "),

@@ -6332,6 +6332,12 @@ a.router-link-exact-active {
   border-color: red !important;
 }
 
+.is-invalid .input-field,
+.is-invalid .select2-container--default .select2-selection--single,
+.select2-container--default .is-invalid .select2-selection--single {
+  border-color: red;
+}
+
 .invalid-feedback {
   color: red;
 }
