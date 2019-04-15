@@ -20,7 +20,9 @@ class BusinessController extends Controller
 
         if ($request->has('keyword') && !empty($request->keyword)) {
             $keyword = $request->get('keyword');
-            $businesses = $businesses->where('title', 'LIKE', "%". $keyword . "%");
+            $businesses = $businesses->whereHas('keywords', function($q) use($keyword) {
+                return $q->where('slug', 'LIKE', "%$keyword%");
+            })->orWhere('title', 'LIKE', "%$keyword%")->orWhere('body', 'LIKE', "%$keyword%");
         }
         if ($request->has('city') && !empty($request->city)) {
             $city_slug = $request->get('city');
