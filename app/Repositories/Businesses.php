@@ -23,6 +23,32 @@ class Businesses extends Repository
 	public function approvedAndActive()
 	{
 		return $this->model->where('is_active', true)->whereNotNull('approved_at');
+    }
+
+    public function create($data)
+	{
+
+        $data['contacts'] = !empty($data['contacts']) ? exclude_null($data['contacts']) : [];
+        $data['emails'] = !empty($data['emails']) ? exclude_null($data['emails']) : [];
+
+        $model = parent::create($data);
+
+		$result['created'] = !! ($model);
+        $result['business'] = $model;
+
+        if(isset($data['cities']) && is_array($data['cities']))
+        {
+            $cityIds = $this->cityRepo->model()->whereIn('slug', $data['cities'])->pluck('id');
+            $model->cities()->sync($cityIds);
+        }
+
+        if(isset($data['keywords']) && is_array($data['keywords']))
+        {
+            $keywordIds = $this->keywordRepo->findOrCreate($data['keywords'])->pluck('id');
+            $model->keywords()->sync($keywordIds);
+        }
+
+		return $result;
 	}
 
 	public function update($model, $data)

@@ -27,6 +27,7 @@ class BusinessUpdateRequest extends FormRequest
     {
         return [
             'title' => 'required',
+            'slug' => 'required|unique:businesses,slug,'.$this->route('id'),
             'body' => 'required',
             'address' => 'required'
         ];

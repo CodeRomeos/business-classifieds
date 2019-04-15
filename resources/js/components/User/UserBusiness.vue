@@ -7,6 +7,10 @@
                 <div class="input-container">
                     <input type='text' class="input-field" value="" v-model="business.title">
                 </div>
+                <label for="">URL/Slug</label>
+                <div class="input-container">
+                    <input type='text' class="input-field" value="" v-model="business.slug">
+                </div>
                 <label for="">Image</label>
                 <div class="input-container">
                     <image-input :src='imageUrl' @imageFileChange='imageFile = $event' @imageUrlChange='imageUrl = $event' @imageRemoved='removeImage = $event'></image-input>
@@ -92,7 +96,16 @@ export default {
     },
 	data() {
 		return {
-            business: {},
+            business: {
+                'title': '',
+                'slug': '',
+                'image': '',
+                'body': '',
+                'contacts': [],
+                'cities': [],
+                'address': '',
+                'emails': []
+            },
             keywords: [],
             businessCities: [],
             businessKeywords: [],
@@ -119,13 +132,18 @@ export default {
 		},
 		business(business) {
             this.imageUrl = this.business.image
-			business.cities.forEach(city => {
-				this.businessCities.push(city.slug);
-            });
 
-            business.keywords.forEach(keyword => {
-				this.businessKeywords.push(keyword.slug);
-            });
+            if(business.cities) {
+                business.cities.forEach(city => {
+                    this.businessCities.push(city.slug);
+                });
+            }
+
+            if(business.keywords) {
+                business.keywords.forEach(keyword => {
+                    this.businessKeywords.push(keyword.slug);
+                });
+            }
 
 		}
 	},
@@ -173,6 +191,7 @@ export default {
 
             formData.append('image', image)
             formData.append('title', this.business.title)
+            formData.append('slug', this.business.slug)
             formData.append('body', this.business.body)
             formData.append('contacts', JSON.stringify(this.business.contacts))
             formData.append('cities', JSON.stringify(this.businessCities))

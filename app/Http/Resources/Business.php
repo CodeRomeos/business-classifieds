@@ -21,6 +21,7 @@ class Business extends JsonResource
             'id' => $this->id,
             'businessid' => $this->businessid,
             'title' => $this->title,
+            'slug' => $this->slug,
             'body' => $this->body,
             // 'image' => asset($this->image),
             'image' => $this->image,

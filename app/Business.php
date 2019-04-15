@@ -9,7 +9,7 @@ class Business extends Model
 {
 	use SoftDeletes;
 
-    protected $fillable = ['businessid', 'user_id', 'title', 'body', 'image', 'contacts', 'city', 'urls', 'address', 'emails'];
+    protected $fillable = ['businessid', 'user_id', 'title', 'slug', 'body', 'image', 'contacts', 'city', 'urls', 'address', 'emails'];
 
     protected $casts = [
         'emails' => 'array',

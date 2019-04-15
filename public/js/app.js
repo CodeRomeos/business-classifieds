@@ -2330,6 +2330,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2349,7 +2353,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      business: {},
+      business: {
+        'title': '',
+        'slug': '',
+        'image': '',
+        'body': '',
+        'contacts': [],
+        'cities': [],
+        'address': '',
+        'emails': []
+      },
       keywords: [],
       businessCities: [],
       businessKeywords: [],
@@ -2375,13 +2388,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.imageUrl = this.business.image;
 
-      _business.cities.forEach(function (city) {
-        _this.businessCities.push(city.slug);
-      });
+      if (_business.cities) {
+        _business.cities.forEach(function (city) {
+          _this.businessCities.push(city.slug);
+        });
+      }
 
-      _business.keywords.forEach(function (keyword) {
-        _this.businessKeywords.push(keyword.slug);
-      });
+      if (_business.keywords) {
+        _business.keywords.forEach(function (keyword) {
+          _this.businessKeywords.push(keyword.slug);
+        });
+      }
     }
   },
   methods: {
@@ -2429,6 +2446,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       formData.append('image', image);
       formData.append('title', this.business.title);
+      formData.append('slug', this.business.slug);
       formData.append('body', this.business.body);
       formData.append('contacts', JSON.stringify(this.business.contacts));
       formData.append('cities', JSON.stringify(this.businessCities));
@@ -41280,6 +41298,32 @@ var render = function() {
                       return
                     }
                     _vm.$set(_vm.business, "title", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "" } }, [_vm._v("URL/Slug")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-container" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.business.slug,
+                    expression: "business.slug"
+                  }
+                ],
+                staticClass: "input-field",
+                attrs: { type: "text", value: "" },
+                domProps: { value: _vm.business.slug },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.business, "slug", $event.target.value)
                   }
                 }
               })
