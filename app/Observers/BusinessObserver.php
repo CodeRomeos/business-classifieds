@@ -9,6 +9,7 @@ class BusinessObserver
 
     public function creating(Business $business)
     {
+        $business->slug = str_slug($business->slug);
         $business->businessid = uniqidReal(10);
 
         return $business;

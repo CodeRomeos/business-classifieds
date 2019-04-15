@@ -171,6 +171,7 @@ export default {
 					}
 					else {
                         this.loadingForm = true;
+                        this.notCreated = false
                         this.business = response.data.business
 					}
 				})
@@ -220,9 +221,14 @@ export default {
 			axios.post(url, formData)
 				.then(response => {
 					this.saving = false;
-					this.business = response.data.business;
-                    this.saveMessage = 'Updated successfully!'
-                    this.$store.commit('alert', { message: 'Updated successfully!', type: 'success' })
+                    this.business = response.data.business;
+                    let successMsg = 'Updated successfully!'
+                    if(this.notCreated) {
+                        this.notCreated = false
+                        successMsg = 'Created successfully!'
+                    }
+                    this.saveMessage = successMsg
+                    this.$store.commit('alert', { message: successMsg, type: 'success' })
 				})
 				.catch(error => {
 					this.saving = false;

@@ -2426,6 +2426,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           _this3.notCreated = true;
         } else {
           _this3.loadingForm = true;
+          _this3.notCreated = false;
           _this3.business = response.data.business;
         }
       }).catch(function (error) {});
@@ -2473,10 +2474,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.post(url, formData).then(function (response) {
         _this4.saving = false;
         _this4.business = response.data.business;
-        _this4.saveMessage = 'Updated successfully!';
+        var successMsg = 'Updated successfully!';
+
+        if (_this4.notCreated) {
+          _this4.notCreated = false;
+          successMsg = 'Created successfully!';
+        }
+
+        _this4.saveMessage = successMsg;
 
         _this4.$store.commit('alert', {
-          message: 'Updated successfully!',
+          message: successMsg,
           type: 'success'
         });
       }).catch(function (error) {
