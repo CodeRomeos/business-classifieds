@@ -1,7 +1,5 @@
 <?php
 
-Route::get('test', 'Spa\KeywordController@test');
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
