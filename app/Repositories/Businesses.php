@@ -27,40 +27,40 @@ class Businesses extends Repository
 
     public function create($data)
 	{
-
-        $data['contacts'] = !empty($data['contacts']) ? exclude_null($data['contacts']) : [];
-        $data['emails'] = !empty($data['emails']) ? exclude_null($data['emails']) : [];
+        $data = $this->prepareData($data);
 
         $model = parent::create($data);
 
 		$result['created'] = !! ($model);
         $result['business'] = $model;
 
-        if(isset($data['cities']) && is_array($data['cities']))
-        {
-            $cityIds = $this->cityRepo->model()->whereIn('slug', $data['cities'])->pluck('id');
-            $model->cities()->sync($cityIds);
-        }
-
-        if(isset($data['keywords']) && is_array($data['keywords']))
-        {
-            $keywordIds = $this->keywordRepo->findOrCreate($data['keywords'])->pluck('id');
-            $model->keywords()->sync($keywordIds);
-        }
+        $this->syncRelationships($model, $data);
 
 		return $result;
 	}
 
 	public function update($model, $data)
 	{
-		$data['contacts'] = exclude_null($data['contacts']);
-        $data['emails'] = exclude_null($data['emails']);
-
+        $data = $this->prepareData($data);
         $model = parent::update($model, $data);
 
 		$result['updated'] = !! ($model);
         $result['business'] = $model;
 
+        $this->syncRelationships($model, $data);
+
+		return $result;
+    }
+
+    protected function prepareData($data)
+    {
+        $data['contacts'] = !empty($data['contacts']) ? exclude_null($data['contacts']) : [];
+        $data['emails'] = !empty($data['emails']) ? exclude_null($data['emails']) : [];
+        return $data;
+    }
+
+    protected function syncRelationships($model, $data)
+    {
         if(isset($data['cities']) && is_array($data['cities']))
         {
             $cityIds = $this->cityRepo->model()->whereIn('slug', $data['cities'])->pluck('id');
@@ -73,6 +73,6 @@ class Businesses extends Repository
             $model->keywords()->sync($keywordIds);
         }
 
-		return $result;
-	}
+        return $model;
+    }
 }

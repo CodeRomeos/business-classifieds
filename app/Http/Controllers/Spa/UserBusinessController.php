@@ -34,15 +34,14 @@ class UserBusinessController extends Controller
 
     public function create(BusinessCreateRequest $request)
     {
-        $business = $request->user()->business()->create($request->all());
-
         $data = $request->all();
+        $data['user_id'] = $request->user()->id;
         $data['contacts'] = json_decode($data['contacts']);
         $data['emails'] = json_decode($data['emails']);
         $data['cities'] = json_decode($data['cities']);
         $data['keywords'] = json_decode($data['keywords']);
 
-		$result = $this->repo->create($business, $data);
+		$result = $this->repo->create($data);
 		if($result['created'])
 		{
 			return $this->respond(['success' => true, 'create' => true, 'message' => 'Created successfully!', 'business' => new BusinessResource($result['business'])]);

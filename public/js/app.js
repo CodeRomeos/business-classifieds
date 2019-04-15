@@ -2334,6 +2334,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2367,8 +2370,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       businessCities: [],
       businessKeywords: [],
       notCreated: false,
-      updating: false,
-      updateMessage: null,
+      saving: false,
+      saveMessage: null,
       errors: {},
       loadingForm: false,
       imageFile: null,
@@ -2378,9 +2381,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['cities'])),
   watch: {
-    updateMessage: function updateMessage() {
+    saveMessage: function saveMessage() {
       setTimeout(function () {
-        this.updateMessage = null;
+        this.saveMessage = null;
       }.bind(this), 3000);
     },
     business: function business(_business) {
@@ -2425,7 +2428,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     postBusinessForm: function postBusinessForm() {
       var _this4 = this;
 
-      this.updating = true;
+      this.saving = true;
       var url = '/spa/user/business/' + this.business.id + '/update';
 
       if (this.notCreated) {
@@ -2463,16 +2466,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // }
 
       axios.post(url, formData).then(function (response) {
-        _this4.updating = false;
+        _this4.saving = false;
         _this4.business = response.data.business;
-        _this4.updateMessage = 'Updated successfully!';
+        _this4.saveMessage = 'Updated successfully!';
 
         _this4.$store.commit('alert', {
           message: 'Updated successfully!',
           type: 'success'
         });
       }).catch(function (error) {
-        _this4.updating = false; //console.log(error.request);
+        _this4.saving = false; //console.log(error.request);
 
         _this4.errors = error.response.data.errors;
       });
@@ -41586,22 +41589,22 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-primary",
-                  attrs: { type: "submit", disabled: _vm.updating }
+                  attrs: { type: "submit", disabled: _vm.saving }
                 },
                 [
-                  _c("span", { staticClass: "fa fa-save fa-fw" }),
-                  _vm._v(" Submit\n\t\t\t\t\t")
-                ]
+                  _vm.saving
+                    ? _c("span", [
+                        _c("span", { staticClass: "fa fa-spinner fa-spin" })
+                      ])
+                    : _c("span", { staticClass: "fa fa-save fa-fw" }),
+                  _vm._v(" "),
+                  _vm.notCreated ? [_vm._v("Create")] : [_vm._v("Update")]
+                ],
+                2
               ),
               _vm._v(" "),
-              _vm.updating
-                ? _c("span", [
-                    _c("span", { staticClass: "fa fa-spinner fa-spin" })
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.updateMessage && !_vm.updating
-                ? _c("span", [_vm._v(_vm._s(_vm.updateMessage))])
+              _vm.saveMessage && !_vm.saving
+                ? _c("span", [_vm._v(_vm._s(_vm.saveMessage))])
                 : _vm._e()
             ])
           ]),
@@ -41642,17 +41645,25 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c(
-        "user-business-services",
-        { attrs: { business: _vm.business, services: _vm.business.services } },
-        [_c("h4", { staticClass: "h4" }, [_vm._v("Services")])]
-      ),
+      !_vm.notCreated
+        ? _c(
+            "user-business-services",
+            {
+              attrs: { business: _vm.business, services: _vm.business.services }
+            },
+            [_c("h4", { staticClass: "h4" }, [_vm._v("Services")])]
+          )
+        : _vm._e(),
       _vm._v(" "),
-      _c(
-        "user-business-products",
-        { attrs: { business: _vm.business, products: _vm.business.products } },
-        [_c("h4", { staticClass: "h4" }, [_vm._v("Products")])]
-      )
+      !_vm.notCreated
+        ? _c(
+            "user-business-products",
+            {
+              attrs: { business: _vm.business, products: _vm.business.products }
+            },
+            [_c("h4", { staticClass: "h4" }, [_vm._v("Products")])]
+          )
+        : _vm._e()
     ],
     1
   )

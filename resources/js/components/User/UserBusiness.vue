@@ -48,11 +48,14 @@
                 </div>
 				<div></div>
                 <div class="input-container">
-                    <button type='submit' class='btn btn-primary' :disabled='updating'>
-						<span class='fa fa-save fa-fw'></span> Submit
+                    <button type='submit' class='btn btn-primary' :disabled='saving'>
+                        <span v-if='saving'><span class='fa fa-spinner fa-spin'></span></span>
+						<span v-else class='fa fa-save fa-fw'></span>
+                        <template v-if='notCreated'>Create</template>
+                        <template v-else>Update</template>
 					</button>
-					<span v-if='updating'><span class='fa fa-spinner fa-spin'></span></span>
-					<span v-if='updateMessage && !updating'>{{ updateMessage }}</span>
+
+					<span v-if='saveMessage && !saving'>{{ saveMessage }}</span>
                 </div>
             </div>
             <div>
@@ -65,10 +68,10 @@
             </div>
         </form>
 
-        <user-business-services :business='business' :services='business.services'>
+        <user-business-services v-if='!notCreated' :business='business' :services='business.services'>
             <h4 class="h4">Services</h4>
         </user-business-services>
-        <user-business-products :business='business' :products='business.products'>
+        <user-business-products v-if='!notCreated' :business='business' :products='business.products'>
             <h4 class="h4">Products</h4>
         </user-business-products>
     </div>
@@ -110,8 +113,8 @@ export default {
             businessCities: [],
             businessKeywords: [],
 			notCreated: false,
-			updating: false,
-			updateMessage: null,
+			saving: false,
+			saveMessage: null,
 			errors: {},
             loadingForm: false,
             imageFile: null,
@@ -125,9 +128,9 @@ export default {
         ])
     },
 	watch: {
-		updateMessage() {
+		saveMessage() {
 			setTimeout(function() {
-				this.updateMessage = null;
+				this.saveMessage = null;
 			}.bind(this), 3000)
 		},
 		business(business) {
@@ -171,7 +174,7 @@ export default {
 				});
 		},
 		postBusinessForm() {
-			this.updating = true;
+			this.saving = true;
 			var url = '/spa/user/business/' + this.business.id + '/update'
 			if(this.notCreated) {
 				var url = '/spa/user/business/create'
@@ -211,13 +214,13 @@ export default {
 
 			axios.post(url, formData)
 				.then(response => {
-					this.updating = false;
+					this.saving = false;
 					this.business = response.data.business;
-                    this.updateMessage = 'Updated successfully!'
+                    this.saveMessage = 'Updated successfully!'
                     this.$store.commit('alert', { message: 'Updated successfully!', type: 'success' })
 				})
 				.catch(error => {
-					this.updating = false;
+					this.saving = false;
 					//console.log(error.request);
 					this.errors = error.response.data.errors
 				})
